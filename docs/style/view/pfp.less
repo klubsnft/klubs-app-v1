@@ -1,0 +1,31 @@
+@import "../palette.less";
+@import "../font.less";
+
+.pfp-view {
+    .head {
+        display         : flex;
+        flex-direction  : column;
+        font-size       : @hadeline6;
+        background-image: url("../images/eclipse.png");
+        height          : 200px;
+        justify-content : center;
+
+        .slogan {
+            margin: 8px;
+        }
+
+        button {
+            max-width: 150px;
+            margin   : 8px;
+        }
+    }
+
+    .content {
+        height: 50vh;
+    }
+
+    .subtitle {
+        padding-top: 8px;
+        font-size  : @hadeline6;
+    }
+}

@@ -1,0 +1,37 @@
+@import "../palette.less";
+@import "../font.less";
+
+.add-pfp-by-minter-view {
+    display       : flex;
+    flex-direction: column;
+    height        : 50vh;
+
+    .head {
+        display         : flex;
+        flex-direction  : column;
+        font-size       : @hadeline6;
+        background-image: url("../images/eclipse.png");
+        height          : 200px;
+        justify-content : center;
+
+        .slogan {
+            margin: 8px;
+        }
+    }
+
+    .content {
+        padding-top    : 8px;
+        justify-content: center;
+        align-items    : center;
+        height         : 50vh;
+    }
+
+    h4 {
+        padding-bottom: 8px;
+    }
+
+    li {
+        margin-top: 8px;
+        font-size : @body1;
+    }
+}
