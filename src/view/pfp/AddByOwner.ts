@@ -9,7 +9,7 @@ export default class AddByOwner implements View {
     constructor() {
         Layout.current.title = "관리자 PFP 등록";
         Layout.current.content.append(this.container = el(".add-pfp-by-owner-view",
-
+            el("h1", "관리자 PFP 등록"),
         ));
     }
 

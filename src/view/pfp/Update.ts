@@ -9,7 +9,7 @@ export default class Update implements View {
     constructor() {
         Layout.current.title = "PFP 정보 수정";
         Layout.current.content.append(this.container = el(".pfp-update-view",
-
+            el("h1", "PFP 정보 수정"),
         ));
     }
 

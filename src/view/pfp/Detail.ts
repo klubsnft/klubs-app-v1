@@ -9,7 +9,7 @@ export default class Detail implements View {
     constructor() {
         Layout.current.title = "PFP 상세정보";
         Layout.current.content.append(this.container = el(".pfp-detail-view",
-
+            el("h1", "PFP 상세정보"),
         ));
     }
 

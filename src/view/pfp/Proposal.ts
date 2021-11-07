@@ -9,7 +9,7 @@ export default class Proposal implements View {
     constructor() {
         Layout.current.title = "등록을 기다리는 PFP 정보";
         Layout.current.content.append(this.container = el(".pfp-proposal-view",
-
+            el("h1", "등록을 기다리는 PFP 정보"),
         ));
     }
 
