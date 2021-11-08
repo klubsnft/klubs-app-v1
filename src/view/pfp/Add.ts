@@ -11,7 +11,7 @@ export default class Add implements View {
     Layout.current.content.append(
       (this.container = el(
         ".add-pfp-view",
-        el("header.head", el("p.slogan", "프로젝트 등록")),
+        el("header.head", el("p.title", "PFP 프로젝트 등록")),
 
         el(
           ".content",

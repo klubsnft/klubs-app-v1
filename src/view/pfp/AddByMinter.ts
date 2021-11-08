@@ -11,7 +11,7 @@ export default class AddByMinter implements View {
       (this.container = el(
         ".add-pfp-by-minter-view",
 
-        el("header.head", el("p.slogan", "Minter로부터 PFP 등록")),
+        el("header.head", el("p.title", "PFP 프로젝트 등록"), el("p.subtitle", "Minter로부터 PFP 등록")),
 
         el(
           ".content",

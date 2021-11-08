@@ -5,14 +5,19 @@
     .head {
         display         : flex;
         flex-direction  : column;
-        font-size       : @hadeline6;
-        background-image: url("../images/eclipse.png");
+        background-image: url("../images/galaxies.png");
         background-size : cover;
         height          : 200px;
         justify-content : center;
 
-        .slogan {
+        .title {
+            font-size       : @hadeline5;
             margin: 16px;
+        }
+
+        .subtitle {
+            margin-left: 16px;
+            font-size: @body1;
         }
 
         button {
@@ -28,6 +33,7 @@
         justify-content: center;
         align-items    : center;
         height         : 50vh;
+        margin: 16px;
 
         li {
             margin-top: 8px;
