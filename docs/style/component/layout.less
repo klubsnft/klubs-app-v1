@@ -19,12 +19,19 @@
         align-items    : center;
 
         .logo {
-            color    : @brand-primary;
-            font-size: @hadeline4;
+            color      : @brand-primary;
+            font-size  : @hadeline4;
+            font-weight: bold;
+        }
+
+        .logo:hover {
+            color      : @brand-400;
         }
 
         .menu {
+            display        : flex;
             justify-content: flex-end;
+            align-items    : center;
 
             .menu-item {
                 font-size  : @hadeline6;
@@ -34,6 +41,10 @@
             .menu-item:hover {
                 font-size: @hadeline6;
                 color    : @brand-primary
+            }
+
+            .connect-wallet {
+                margin-left: 16px;
             }
         }
     }

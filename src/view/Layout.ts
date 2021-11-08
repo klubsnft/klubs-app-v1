@@ -18,7 +18,8 @@ export default class Layout implements View {
           el(
             ".menu",
             el("a.menu-item", "PFP", { click: () => ViewUtil.go("/pfp") }),
-            el("a.menu-item", "Art", { click: () => ViewUtil.go("/art") })
+            el("a.menu-item", "Art", { click: () => ViewUtil.go("/art") }),
+            el("button.connect-wallet", "CONNECT WALLET")
           )
         ),
         el("main", (this.content = el(".content"))),

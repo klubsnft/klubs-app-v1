@@ -21,7 +21,7 @@ export default class PFP implements View {
             click: () => ViewUtil.go("/pfp/add"),
           })
         ),
-        el(".content", el("p.subtitle", "프로젝트 목록"))
+        el(".content", el("h6", "프로젝트 목록"), el("p", "오픈 준비 중 입니다."))
       ))
     );
   }
