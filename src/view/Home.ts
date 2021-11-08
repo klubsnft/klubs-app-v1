@@ -14,7 +14,7 @@ export default class Home implements View {
           "header.head",
           el("p.slogan", "Klubs는 클레이튼 기반 NFT 마켓플레이스입니다."),
           el("button", "Klubs 소개", {
-            click: () => {},
+            click: () => open("https://medium.com/klubs/klubs-klaytn-based-nft-marketplace-with-mix-2c93d3a9e014"),
           })
         ),
         el(
@@ -28,7 +28,7 @@ export default class Home implements View {
     );
   }
 
-  public changeParams(params: ViewParams, uri: string): void {}
+  public changeParams(params: ViewParams, uri: string): void { }
 
   public close(): void {
     this.container.delete();

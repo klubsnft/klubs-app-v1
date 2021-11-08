@@ -165,4 +165,374 @@ input {
   clear: both;
   visibility: hidden;
 }
+@font-face {
+  font-family: 'Jost*', sans-serif;
+  src: url('http://fonts.cdnfonts.com/css/jost');
+  font-weight: normal;
+  font-style: normal;
+}
+h1 {
+  font-size: 6rem;
+}
+h2 {
+  font-size: 4.125rem;
+}
+h3 {
+  font-size: 3rem;
+}
+h4 {
+  font-size: 2.125rem;
+}
+h5 {
+  font-size: 1.5rem;
+}
+h6 {
+  font-size: 1.25rem;
+}
+body {
+  font-family: "Jost", sans-serif;
+  background: #121212;
+  color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  margin: auto;
+}
+body button {
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 8px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+body button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+body input {
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.87);
+  padding: 8px;
+  height: 40px;
+}
+body a:hover {
+  color: #C7FEA2;
+}
+.layout {
+  width: 100%;
+}
+.layout .navbar {
+  max-width: 100vw;
+  background-color: #222;
+  box-shadow: rgba(4, 17, 29, 0.25) 0px 0px 8px 0px;
+  position: sticky;
+  display: flex;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout .navbar .logo {
+  color: #C7FEA2;
+  font-size: 2.125rem;
+  font-weight: bold;
+}
+.layout .navbar .logo:hover {
+  color: #CFFEB0;
+}
+.layout .navbar .menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.layout .navbar .menu .menu-item {
+  font-size: 1.25rem;
+  margin-left: 16px;
+}
+.layout .navbar .menu .menu-item:hover {
+  font-size: 1.25rem;
+  color: #C7FEA2;
+}
+.layout .navbar .menu .connect-wallet,
+.layout .navbar .menu .wallet-address {
+  margin-left: 16px;
+}
+.layout main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+.layout footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-left: 16px;
+  font-size: 0.875rem;
+}
+.home-view .head {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  background-image: url("./images/eclipse.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.home-view .head .slogan {
+  margin: 16px;
+}
+.home-view .head button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.home-view .content {
+  margin-top: 8px;
+  margin-left: 16px;
+  height: 50vh;
+}
+.home-view .content h6 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.home-view .subtitle {
+  padding-top: 8px;
+  font-size: 1.25rem;
+}
+.art-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  padding: 16px;
+}
+.art-view .title {
+  font-size: 4.125rem;
+  padding: 16px;
+}
+.art-view .subtitle {
+  font-size: body2;
+}
+.pfp-view .head {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  background-image: url("./images/eclipse.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.pfp-view .head .slogan {
+  margin: 16px;
+}
+.pfp-view .head button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.pfp-view .content {
+  margin-top: 8px;
+  margin-left: 16px;
+  height: 50vh;
+}
+.pfp-view .content h6 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.pfp-view .subtitle {
+  padding-top: 8px;
+  font-size: 1.25rem;
+}
+.add-pfp-view .head {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./images/galaxies.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.add-pfp-view .head .title {
+  font-size: 1.5rem;
+  margin: 16px;
+}
+.add-pfp-view .head button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.add-pfp-view .content {
+  margin-top: 8px;
+  margin-left: 16px;
+  height: 50vh;
+  margin: 16px;
+}
+.add-pfp-view .content h6 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.add-pfp-view .content h4 {
+  padding-bottom: 8px;
+}
+.add-pfp-view .content li {
+  margin-top: 16px;
+  font-size: 1rem;
+  padding: 8px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.67);
+}
+.add-pfp-view .content li:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.add-pfp-view .content .danger {
+  color: #ff3b30;
+  font-size: 0.875rem;
+}
+.add-pfp-by-minter-view .head {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./images/galaxies.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.add-pfp-by-minter-view .head .title {
+  font-size: 1.5rem;
+  margin: 16px;
+}
+.add-pfp-by-minter-view .head .subtitle {
+  margin-left: 16px;
+  font-size: 1rem;
+}
+.add-pfp-by-minter-view .head button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.add-pfp-by-minter-view .content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin: 16px;
+}
+.add-pfp-by-minter-view .content li {
+  margin-top: 8px;
+  font-size: 1rem;
+}
+.add-pfp-by-minter-view .content .form {
+  margin-bottom: 8px;
+}
+.add-pfp-by-minter-view .content .form input {
+  width: 100%;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.add-pfp-by-minter-view .content .form button {
+  width: 100%;
+}
+.add-pfp-by-minter-view .content .danger {
+  color: #ff3b30;
+  font-size: 0.875rem;
+}
+.add-pfp-by-owner-view .head {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./images/galaxies.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.add-pfp-by-owner-view .head .title {
+  font-size: 1.5rem;
+  margin: 16px;
+}
+.add-pfp-by-owner-view .head .subtitle {
+  margin-left: 16px;
+  font-size: 1rem;
+}
+.add-pfp-by-owner-view .head button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.add-pfp-by-owner-view .content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin: 16px;
+}
+.add-pfp-by-owner-view .content li {
+  margin-top: 8px;
+  font-size: 1rem;
+}
+.add-pfp-by-owner-view .content .form {
+  margin-bottom: 8px;
+}
+.add-pfp-by-owner-view .content .form input {
+  width: 100%;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.add-pfp-by-owner-view .content .form button {
+  width: 100%;
+}
+.add-pfp-by-owner-view .content .danger {
+  color: #ff3b30;
+  font-size: 0.875rem;
+}
+.pfp-propose-view .head {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./images/galaxies.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.pfp-propose-view .head .title {
+  font-size: 1.5rem;
+  margin: 16px;
+}
+.pfp-propose-view .head .subtitle {
+  margin-left: 16px;
+  font-size: 1rem;
+}
+.pfp-propose-view .head button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.pfp-propose-view .content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+.pfp-propose-view .content li {
+  margin-top: 8px;
+  font-size: 1rem;
+}
+.pfp-propose-view .content .form {
+  margin-bottom: 8px;
+}
+.pfp-propose-view .content .form input {
+  width: 100%;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 24px;
+}
+.pfp-propose-view .content .form button {
+  width: 100%;
+}
+.pfp-propose-view .content .danger {
+  color: #ff3b30;
+  font-size: 0.875rem;
+}
 
