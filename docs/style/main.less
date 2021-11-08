@@ -1,1 +1,49 @@
 @import "base.less";
+@import "font.less";
+@import "palette.less";
+
+body {
+    font-family: "Jost", sans-serif;
+    background : @backgroud;
+    color      : @high-emphasis;
+    display    : flex;
+    margin     : auto;
+
+    button {
+        color           : @backgroud;
+        background-color: @brand-primary;
+        padding         : 8px;
+        font-size       : @body2;
+        border-radius   : 4px;
+    }
+
+    button:hover {
+        background-color: @brand-400;
+    }
+
+    input {
+        border          : 1px solid rgba(255, 255, 255, 0.87);
+        box-sizing      : border-box;
+        border-radius   : 4px;
+        background-color: transparent;
+        color           : @high-emphasis;
+        padding         : 8px;
+        height          : 40px;
+    }
+
+    a:hover {
+        color: @brand-primary
+    }
+}
+
+// components
+@import "component/layout.less";
+
+// views
+@import "view/home.less";
+@import "view/art.less";
+@import "view/pfp.less";
+@import "view/pfp-add.less";
+@import "view/pfp-add-by-minter.less";
+@import "view/pfp-add-by-owner.less";
+@import "view/propose.less";
