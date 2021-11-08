@@ -1,7 +1,7 @@
 @import "../palette.less";
 @import "../font.less";
 
-.add-pfp-view {
+.add-pfp-by-owner-view {
     .head {
         display         : flex;
         flex-direction  : column;
@@ -22,33 +22,31 @@
     }
 
     .content {
-        margin-top : 8px;
-        margin-left: 16px;
-        height     : 50vh;
-
-        h6 {
-            margin-top   : 16px;
-            margin-bottom: 16px;
-        }
-
-        h4 {
-            padding-bottom: 8px;
-        }
-
-        .subtitle {
-            padding-top: 8px;
-            font-size  : @hadeline6;
-        }
+        display        : flex;
+        flex-direction : column;
+        padding-top    : 8px;
+        justify-content: center;
+        align-items    : center;
+        height         : 50vh;
 
         li {
-            margin-top   : 16px;
-            font-size    : @body1;
-            padding      : 8px;
-            border-bottom: 0.5px solid @medium-emphasis;
+            margin-top: 8px;
+            font-size : @body1;
         }
 
-        li:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        .form {
+            margin-bottom: 8px;
+
+            input {
+                width        : 100%;
+                margin-top   : 8px;
+                margin-right : 8px;
+                margin-bottom: 8px;
+            }
+
+            button {
+                width: 100%;
+            }
         }
 
         .danger {

@@ -16,17 +16,23 @@ export default class AddByMinter implements View {
         el(
           ".content",
           el(
-            "p",
-            "반드시 KIP17Mintable을 상속한 PFP여야만 합니다. 그리고 등록자는 Minter중 하나여야 합니다."
-          ),
-          el(
-            ".form",
+            "ul",
             el(
-              "label",
-              el("span", "계약 주소"),
-              el("input", { placeholder: "계약 주소" })
-            ),
-            el("a", "등록하기")
+              "li",
+              el(
+                ".form",
+                el(
+                  "label",
+                  el("h6", "계약 주소"),
+                  el("input", { placeholder: "계약 주소" })
+                ),
+                el("button", "등록하기")
+              ),
+              el(
+                "p.danger",
+                "반드시 KIP17Mintable을 상속한 PFP여야만 합니다. 그리고 등록자는 Minter중 하나여야 합니다."
+              )
+            )
           )
         )
       ))

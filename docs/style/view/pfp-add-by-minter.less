@@ -2,36 +2,56 @@
 @import "../font.less";
 
 .add-pfp-by-minter-view {
-    display       : flex;
-    flex-direction: column;
-    height        : 50vh;
-
     .head {
         display         : flex;
         flex-direction  : column;
         font-size       : @hadeline6;
         background-image: url("../images/eclipse.png");
+        background-size : cover;
         height          : 200px;
         justify-content : center;
 
         .slogan {
-            margin: 8px;
+            margin: 16px;
+        }
+
+        button {
+            max-width  : 150px;
+            margin-left: 16px;
         }
     }
 
     .content {
+        display        : flex;
+        flex-direction : column;
         padding-top    : 8px;
         justify-content: center;
         align-items    : center;
         height         : 50vh;
-    }
 
-    h4 {
-        padding-bottom: 8px;
-    }
+        li {
+            margin-top: 8px;
+            font-size : @body1;
+        }
 
-    li {
-        margin-top: 8px;
-        font-size : @body1;
+        .form {
+            margin-bottom: 8px;
+
+            input {
+                width        : 100%;
+                margin-top   : 8px;
+                margin-right : 8px;
+                margin-bottom: 8px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .danger {
+            color    : @danger;
+            font-size: @body2;
+        }
     }
 }
