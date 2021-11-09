@@ -25,7 +25,7 @@
         }
 
         .logo:hover {
-            color      : @brand-400;
+            color: @brand-400;
         }
 
         .menu {
@@ -43,8 +43,26 @@
                 color    : @brand-primary
             }
 
-            .connect-wallet,.wallet-address {
-                margin-left: 16px;
+            .menu-item:active {
+                font-size: @hadeline6;
+                color    : @brand-primary
+            }
+
+            .connect-wallet,
+            .wallet-address {
+                display         : flex;
+                align-items     : center;
+                margin-left     : 16px;
+                color           : @backgroud;
+                background-color: @brand-primary;
+                font-size       : @body2;
+                padding         : 8px;
+                border-radius   : 4px;
+            }
+
+            .connect-wallet,
+            .wallet-address:hover {
+                background-color: @brand-400;
             }
         }
     }
@@ -62,6 +80,8 @@
         justify-content: center;
         margin         : auto;
         margin-left    : 16px;
+        margin-top     : 16px;
+        margin-bottom  : 16px;
         font-size      : @body2;
     }
 }
