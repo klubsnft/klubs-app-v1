@@ -19,16 +19,16 @@ export default class Home implements View {
         ),
         el(
           ".content",
-          el("h6", "🗂 이 프로젝트는 어때요?"),
+          el("h6", "🗂 이 프로젝트는 어떠신가요?"),
           el("p", "오픈 준비 중 입니다."),
-          el("h6", "🎨 이 작품은 어때요?"),
+          el("h6", "🎨 이 작품은 어떠신가요?"),
           el("p", "오픈 준비 중 입니다.")
         )
       ))
     );
   }
 
-  public changeParams(params: ViewParams, uri: string): void { }
+  public changeParams(params: ViewParams, uri: string): void {}
 
   public close(): void {
     this.container.delete();

@@ -32,6 +32,14 @@ body {
         height          : 40px;
     }
 
+    input:hover {
+        border: 1px solid @brand-primary;
+    }
+
+    input:focus {
+        border: 1px solid @brand-primary;
+    }
+
     a:hover {
         color: @brand-primary
     }
@@ -39,6 +47,7 @@ body {
 
 // components
 @import "component/layout.less";
+@import "component/cardview.less";
 
 // views
 @import "view/home.less";
