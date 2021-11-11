@@ -1,4 +1,5 @@
 import { SkyRouter } from "skyrouter";
+import BuyPopup from "./component/BuyPopup";
 import Art from "./view/Art";
 import Home from "./view/Home";
 import Layout from "./view/Layout";
