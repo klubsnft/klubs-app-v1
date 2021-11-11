@@ -11,6 +11,7 @@ import AddByPFPOwner from "./view/pfp/AddByPFPOwner";
 import Detail from "./view/pfp/Detail";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
+import Sell from "./view/pfp/sell";
 import Update from "./view/pfp/Update";
 import Me from "./view/user/Me";
 import MyArts from "./view/user/MyArts";
@@ -31,12 +32,14 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("pfp/add-by-minter", AddByMinter);
     SkyRouter.route("pfp/add-by-pfp-owner", AddByPFPOwner);
     SkyRouter.route("pfp/propose", Propose);
+    SkyRouter.route("pfp/sell", Sell);
     SkyRouter.route("pfp/{addr}", Detail, [
         "pfp/add",
         "pfp/add-by-owner",
         "pfp/add-by-minter",
         "pfp/add-by-pfp-owner",
         "pfp/propose",
+        "pfp/sell",
     ]);
     SkyRouter.route("pfp/{addr}/update", Update);
     SkyRouter.route("pfp/proposal/{proposalId}", Proposal);
