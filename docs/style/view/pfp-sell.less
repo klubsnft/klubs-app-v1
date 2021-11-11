@@ -1,15 +1,20 @@
 @import "../palette.less";
 @import "../font.less";
 
-.pfp-detail-view {
+.sell-pfp-view {
     display       : flex;
     flex-direction: row;
     max-width     : 100%;
 
-    .over-view {
-        margin-top   : 16px;
-        padding-left : 16px;
-        padding-right: 16px;
+    .image-view {
+        margin-top  : 16px;
+        padding-left: 16px;
+        max-width   : 50%;
+
+        .pfp-image {
+            max-width    : 100%;
+            border-radius: 16px;
+        }
 
         .project {
             font-size: @body2;
@@ -17,7 +22,7 @@
 
         .pfp {
             margin-top: 8px;
-            font-size : @headline3;
+            font-size : @headline4;
         }
 
         .pfp-info {
@@ -49,41 +54,14 @@
                 margin-right: 4px;
             }
         }
-
-        .description {
-            display         : flex;
-            flex-direction  : column;
-            width           : 100%;
-            background-color: @shadow;
-            border-radius   : 4px;
-            margin-top      : 16px;
-            padding-right   : 16px;
-
-            .title {
-                padding  : 8px;
-                font-size: @headline6;
-            }
-
-            .divider {
-                border: 0.5px solid;
-                width : 100%;
-            }
-
-            .body {
-                font-size: @body1;
-                padding  : 8px;
-            }
-        }
     }
 
-    .image-view {
-        margin-top  : 16px;
-        padding-left: 16px;
-        max-width   : 50%;
+    .sell-view {
+        margin-top : 16px;
+        margin-left: 16px;
 
-        .pfp-image {
-            max-width    : 100%;
-            border-radius: 16px;
+        .title {
+            font-size: @headline3;
         }
 
         button {
