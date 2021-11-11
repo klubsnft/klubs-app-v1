@@ -2,47 +2,48 @@
 @import "../font.less";
 
 .pfp-detail-view {
-    display: flex;
+    display       : flex;
     flex-direction: row;
-    max-width: 100%;
+    max-width     : 100%;
 
     .over-view {
-        margin-top: 16px;
-        padding-left: 16px;
+        margin-top   : 16px;
+        padding-left : 16px;
         padding-right: 16px;
+
         .project {
             font-size: @body2;
         }
 
         .pfp {
             margin-top: 8px;
-            font-size: @hadeline3;
+            font-size : @hadeline3;
         }
 
         .pfp-info {
-            margin-top: 8px;
-            display: flex;
+            margin-top    : 8px;
+            display       : flex;
             flex-direction: row;
-            align-items: center;
-            
+            align-items   : center;
+
             .owner {
-                display: flex;
+                display  : flex;
                 font-size: @body1;
             }
-    
+
             .owner-by {
                 margin-left: 8px;
-                font-size: @body1;
-                color: @brand-primary;
+                font-size  : @body1;
+                color      : @brand-primary;
             }
         }
 
         .viewer {
-            display: flex;
-            margin-left: 32px;
-            font-size: @body1;
+            display        : flex;
+            margin-left    : 32px;
+            font-size      : @body1;
             justify-content: center;
-            align-items: center;
+            align-items    : center;
 
             .viewer-icon {
                 margin-right: 4px;
@@ -50,55 +51,55 @@
         }
 
         .description {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
+            display         : flex;
+            flex-direction  : column;
+            width           : 100%;
             background-color: @shadow;
-            border-radius: 4px;
-            margin-top: 16px;
-            padding-right: 16px;
+            border-radius   : 4px;
+            margin-top      : 16px;
+            padding-right   : 16px;
 
             .title {
-                padding: 8px;
+                padding  : 8px;
                 font-size: @hadeline6;
             }
 
             .divider {
                 border: 0.5px solid;
-                width: 98%;
+                width : 100%;
             }
 
             .body {
                 font-size: @body1;
-                padding: 8px;
+                padding  : 8px;
             }
         }
     }
 
     .image-view {
-        margin-top: 16px;
+        margin-top  : 16px;
         padding-left: 16px;
-        max-width: 50%;
+        max-width   : 50%;
 
         .pfp-image {
-            max-width: 100%;
+            max-width    : 100%;
             border-radius: 16px;
         }
 
         button {
-            width: 100%;
-            height: 48px;
+            width     : 100%;
+            height    : 48px;
             margin-top: 16px;
         }
-        
+
         .label {
-            font-size: @body2;
+            font-size : @body2;
             margin-top: 16px;
         }
 
         input {
             margin-top: 8px;
-            width: 100%;
+            width     : 100%;
         }
     }
 }

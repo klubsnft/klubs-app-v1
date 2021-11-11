@@ -1,8 +1,44 @@
+@import "../palette.less";
+@import "../font.less";
+
 .buy-popup {
     position        : relative;
-    width           : 320px;
+    max-width       : 640px;
+    width           : 100%;
     margin          : auto;
     padding         : 20px;
-    border          : 2px solid #ffffff;
-    background-color: #000000;
+    border-radius   : 4px;
+    background-color: @shadow;
+
+    >.divider {
+        margin-top   : 16px;
+        margin-bottom: 16px;
+        border       : 0.5px solid;
+        width        : 100%;
+    }
+
+    >button {
+        margin-top: 16px;
+        width     : 100%;
+    }
+
+    >.label {
+        font-size    : @body2;
+        margin-bottom: 8px;
+    }
+
+    >.price {
+        font-size: @hadeline5;
+    }
+
+    >.danger {
+        padding-top: 4px;
+        font-size  : @caption;
+        color      : @danger;
+        display    : block;
+    }
+
+    >.price:hover {
+        color: @brand-primary;
+    }
 }
