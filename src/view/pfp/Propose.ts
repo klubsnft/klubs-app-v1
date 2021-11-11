@@ -21,11 +21,11 @@ export default class Propose implements View {
             el(
               ".form",
               el(
-                "label",
+                ".label",
                 el("span", "계약 주소"),
                 this.input = el("input", { placeholder: "계약 주소" })
               ),
-              el("button", "등록 신청하기", {
+              el("button.button-contained", "등록 신청하기", {
                 click: async () => {
                   const addr = this.input.domElement.value;
                   const added = await PFPsContract.added(addr);
@@ -39,7 +39,7 @@ export default class Propose implements View {
               })
             ),
             el(
-              "p.danger",
+              "p.danger-caption",
               "반드시 KIP17Mintable나 Ownable을 상속하지 않은 PFP여야만 하며, 계약 배포자만 신청하실 수 있습니다."
             )
           )

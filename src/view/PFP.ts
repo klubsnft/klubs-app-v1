@@ -17,7 +17,7 @@ export default class PFP implements View {
             "p.slogan",
             "PFP는 프로필 이미지 NFT로,\nNFT를 소유한 사람들 끼리 커뮤니티를 이루어 소통하는 목적을 띠고 있습니다."
           ),
-          el("button", "프로젝트 등록", {
+          el("button.button-contained", "프로젝트 등록", {
             click: () => ViewUtil.go("/pfp/add"),
           })
         ),
@@ -26,7 +26,7 @@ export default class PFP implements View {
     );
   }
 
-  public changeParams(params: ViewParams, uri: string): void {}
+  public changeParams(params: ViewParams, uri: string): void { }
 
   public close(): void {
     this.container.delete();

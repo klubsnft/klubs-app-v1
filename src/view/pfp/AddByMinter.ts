@@ -24,11 +24,11 @@ export default class AddByMinter implements View {
               el(
                 ".form",
                 el(
-                  "label",
+                  ".label",
                   el("h6", "계약 주소"),
                   this.input = el("input", { placeholder: "계약 주소" })
                 ),
-                el("button", "등록하기", {
+                el("button.button-contained", "등록하기", {
                   click: async () => {
                     const addr = this.input.domElement.value;
                     const added = await PFPsContract.added(addr);
@@ -42,7 +42,7 @@ export default class AddByMinter implements View {
                 })
               ),
               el(
-                "p.danger",
+                "p.danger-caption",
                 "반드시 KIP17Mintable을 상속한 PFP여야만 합니다. 그리고 등록자는 Minter중 하나여야 합니다."
               )
             )

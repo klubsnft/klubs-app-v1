@@ -1,6 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
-import OfferPopup from "../component/OfferPopup";
 import Layout from "./Layout";
 
 export default class Home implements View {
@@ -14,7 +13,7 @@ export default class Home implements View {
         el(
           "header.head",
           el("p.slogan", "Klubs는 클레이튼 기반 NFT 마켓플레이스입니다."),
-          el("button", "Klubs 소개", {
+          el("button.button-contained", "Klubs 소개", {
             click: () => open("https://medium.com/klubs/klubs-klaytn-based-nft-marketplace-with-mix-2c93d3a9e014"),
           })
         ),

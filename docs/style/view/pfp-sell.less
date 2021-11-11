@@ -6,76 +6,75 @@
     flex-direction: row;
     max-width     : 100%;
 
-    .image-view {
+    >.image-view {
         margin-top  : 16px;
         padding-left: 16px;
         max-width   : 50%;
 
-        .pfp-image {
+        >.pfp-image {
             max-width    : 100%;
             border-radius: 16px;
         }
 
-        .project {
+        >.project {
             font-size: @body2;
         }
 
-        .pfp {
+        >.pfp {
             margin-top: 8px;
             font-size : @headline4;
         }
 
-        .pfp-info {
+        >.pfp-info {
             margin-top    : 8px;
             display       : flex;
             flex-direction: row;
             align-items   : center;
 
-            .owner {
+            >.owner {
                 display  : flex;
                 font-size: @body1;
+
+                >.owner-by {
+                    margin-left: 8px;
+                    font-size  : @body1;
+                    color      : @brand-primary;
+                }
             }
 
-            .owner-by {
-                margin-left: 8px;
-                font-size  : @body1;
-                color      : @brand-primary;
-            }
-        }
+            >.viewer {
+                display        : flex;
+                margin-left    : 32px;
+                font-size      : @body1;
+                justify-content: center;
+                align-items    : center;
 
-        .viewer {
-            display        : flex;
-            margin-left    : 32px;
-            font-size      : @body1;
-            justify-content: center;
-            align-items    : center;
-
-            .viewer-icon {
-                margin-right: 4px;
+                >.viewer-icon {
+                    margin-right: 4px;
+                }
             }
         }
     }
 
-    .sell-view {
+    >.sell-view {
         margin-top : 16px;
         margin-left: 16px;
 
-        .title {
+        >.title {
             font-size: @headline3;
         }
 
-        button {
+        >button {
             width     : 100%;
-            height    : 48px;
             margin-top: 16px;
         }
 
-        .label {
+        >.label {
             font-size : @body2;
             margin-top: 16px;
         }
 
-        input {
+        >input {
             margin-top: 8px;
             width     : 100%;
         }

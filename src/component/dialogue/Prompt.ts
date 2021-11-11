@@ -14,18 +14,19 @@ export default class Prompt extends Popup {
         super(".popup-background");
         this.append(
             this.content = el(".dialogue.prompt",
-                el("h3", title),
+                el("h4", title),
+                el("hr.divider"),
                 el("p", message),
                 this.input = el("input.input"),
-                el("a.cancel-button", "취소", {
+                el(".button-container", el("button.button-text", "취소", {
                     click: () => this.delete(),
                 }),
-                el("a.confirm-button", confirmTitle, {
-                    click: () => {
-                        confirm(this.input.domElement.value);
-                        this.delete();
-                    },
-                }),
+                    el("button.button-text", confirmTitle, {
+                        click: () => {
+                            confirm(this.input.domElement.value);
+                            this.delete();
+                        },
+                    })),
             ),
         );
     }

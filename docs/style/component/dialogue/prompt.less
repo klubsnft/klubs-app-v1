@@ -1,0 +1,32 @@
+@import "../../palette.less";
+@import "../../font.less";
+
+.dialogue.prompt {
+    position        : relative;
+    max-width       : 640px;
+    width           : 100%;
+    margin          : auto;
+    padding         : 20px;
+    border-radius   : 4px;
+    background-color: @shadow;
+
+    >.divider {
+        margin-top   : 16px;
+        margin-bottom: 16px;
+        border       : 0.5px solid;
+        width        : 100%;
+    }
+
+    >p {
+        margin-bottom: 16px;
+    }
+
+    >.button-container {
+        display        : flex;
+        justify-content: flex-end;
+    }
+
+    >input {
+        width: 100%;
+    }
+}

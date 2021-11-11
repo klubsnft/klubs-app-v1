@@ -2,7 +2,7 @@
 @import "../font.less";
 
 .home-view {
-    .head {
+    >.head {
         display         : flex;
         flex-direction  : column;
         font-size       : @headline6;
@@ -11,28 +11,28 @@
         height          : 200px;
         justify-content : center;
 
-        .slogan {
+        >.slogan {
             margin: 16px;
         }
 
-        button {
+        >button {
             max-width  : 150px;
             margin-left: 16px;
         }
     }
 
-    .content {
+    >.content {
         margin-top : 8px;
         margin-left: 16px;
         height     : 50vh;
 
-        h6 {
+        >h6 {
             margin-top   : 16px;
             margin-bottom: 16px;
         }
     }
 
-    .subtitle {
+    >.subtitle {
         padding-top: 8px;
         font-size  : @headline6;
     }

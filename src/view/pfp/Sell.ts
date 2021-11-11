@@ -13,8 +13,8 @@ export default class Sell implements View {
                 ".sell-pfp-view",
                 el(".image-view", el("img.pfp-image", { src: "/images/galaxies.png" }), el("a.project", "Doge Sound Clubs"),
                     el(".pfp", "Robot Hoodie #9748"),
-                    el(".pfp-info", el(".owner", "소유자는", el(".owner-by", "dilrong")), el(".viewer", el("img.viewer-icon", { src: "/images/icon/visibility.png", hegiht: 24 }), "1", " 명 감상"))),
-                el(".sell-view", el(".title", "PFP 판매 등록"), el(".label", "가격"), el("input", { placeholder: "...MIX" }), el(".label", "등록 기간"), el("input", { placeholder: "...Months", type: "date" }), el("button", "판매 등록"))
+                    el(".pfp-info", el(".owner", "소유자는", el(".owner-by", "dilrong")), el(".viewer", el("img.viewer-icon", { src: "/images/icon/visibility.png", height: 24 }), "1", " 명 감상"))),
+                el(".sell-view", el(".title", "PFP 판매 등록"), el(".label", "가격"), el("input", { placeholder: "...MIX" }), el(".label", "등록 기간"), el("input", { placeholder: "...Months", type: "date" }), el("button.button-contained", "판매 등록"))
             ))
         );
     }

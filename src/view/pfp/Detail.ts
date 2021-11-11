@@ -11,12 +11,12 @@ export default class Detail implements View {
         Layout.current.content.append(this.container = el(".pfp-detail-view",
             el(".image-view",
                 el("img.pfp-image", { src: "/images/galaxies.png" }),
-                el("button", "구매하기"),
+                el("button.button-contained", "구매하기"),
                 el(".label", "제안 가격"),
                 el("input", {
                     placeholder: '... MIX'
                 }),
-                el("button", "제안하기"),
+                el("button.button-contained", "제안하기"),
             ),
             el(".over-view",
                 el("a.project", "Doge Sound Clubs"),
