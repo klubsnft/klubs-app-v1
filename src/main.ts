@@ -11,7 +11,7 @@ import AddByPFPOwner from "./view/pfp/AddByPFPOwner";
 import Detail from "./view/pfp/Detail";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
-import Sell from "./view/pfp/sell";
+import Sell from "./view/pfp/Sell";
 import Update from "./view/pfp/Update";
 import Me from "./view/user/Me";
 import MyArts from "./view/user/MyArts";
