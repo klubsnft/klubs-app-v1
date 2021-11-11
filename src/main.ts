@@ -1,4 +1,5 @@
 import { SkyRouter } from "skyrouter";
+import BuyPopup from "./component/BuyPopup";
 import Art from "./view/Art";
 import Home from "./view/Home";
 import Layout from "./view/Layout";
@@ -46,4 +47,6 @@ import MyPFPs from "./view/user/MyPFPs";
         SkyRouter.go(sessionStorage.__spa_path);
         sessionStorage.removeItem("__spa_path");
     }
+
+    new BuyPopup();
 })();

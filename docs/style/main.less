@@ -43,11 +43,27 @@ body {
     a:hover {
         color: @brand-primary
     }
+
+    .popup-background {
+        position        : fixed;
+        left            : 0;
+        top             : 0;
+        z-index         : 99999;
+        width           : 100%;
+        height          : 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display         : flex;
+        flex-direction  : column;
+        overflow-y      : scroll;
+        padding         : 20px 0;
+    }
 }
 
 // components
 @import "component/layout.less";
 @import "component/cardview.less";
+@import "component/buypopup.less";
+@import "component/offerpopup.less";
 
 // views
 @import "view/home.less";
