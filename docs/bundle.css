@@ -216,8 +216,27 @@ body input {
   padding: 8px;
   height: 40px;
 }
+body input:hover {
+  border: 1px solid #C7FEA2;
+}
+body input:focus {
+  border: 1px solid #C7FEA2;
+}
 body a:hover {
   color: #C7FEA2;
+}
+body .popup-background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding: 20px 0;
 }
 .layout {
   width: 100%;
@@ -256,9 +275,24 @@ body a:hover {
   font-size: 1.25rem;
   color: #C7FEA2;
 }
+.layout .navbar .menu .menu-item:active {
+  font-size: 1.25rem;
+  color: #C7FEA2;
+}
 .layout .navbar .menu .connect-wallet,
 .layout .navbar .menu .wallet-address {
+  display: flex;
+  align-items: center;
   margin-left: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  font-size: 0.875rem;
+  padding: 8px;
+  border-radius: 4px;
+}
+.layout .navbar .menu .connect-wallet,
+.layout .navbar .menu .wallet-address:hover {
+  background-color: #CFFEB0;
 }
 .layout main {
   display: flex;
@@ -272,7 +306,63 @@ body a:hover {
   justify-content: center;
   margin: auto;
   margin-left: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   font-size: 0.875rem;
+}
+.card-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1f1f1f;
+  max-width: 200px;
+  border-radius: 8px;
+  margin: 8px;
+}
+.card-view img {
+  border-radius: 8px 8px 0px 0px;
+}
+.card-view .card-title {
+  margin-top: 8px;
+  margin-left: 8px;
+  font-size: 1.25rem;
+}
+.card-view .card-subtitle {
+  margin-top: 8px;
+  margin-left: 8px;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.card-view .card-price {
+  margin-top: 8px;
+  margin: 8px;
+  font-size: 1rem;
+}
+.card-view .card-price:hover {
+  color: #C7FEA2;
+}
+.card-view:hover {
+  background-color: #222222;
+}
+.buy-popup {
+  position: relative;
+  width: 320px;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #ffffff;
+  background-color: #000000;
+}
+.offer-popup {
+  position: relative;
+  width: 320px;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #ffffff;
+  background-color: #000000;
 }
 .home-view .head {
   display: flex;
@@ -347,6 +437,91 @@ body a:hover {
   padding-top: 8px;
   font-size: 1.25rem;
 }
+.pfp-detail-view {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+.pfp-detail-view .over-view {
+  margin-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.pfp-detail-view .over-view .project {
+  font-size: 0.875rem;
+}
+.pfp-detail-view .over-view .pfp {
+  margin-top: 8px;
+  font-size: 3rem;
+}
+.pfp-detail-view .over-view .pfp-info {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.pfp-detail-view .over-view .pfp-info .owner {
+  display: flex;
+  font-size: 1rem;
+}
+.pfp-detail-view .over-view .pfp-info .owner-by {
+  margin-left: 8px;
+  font-size: 1rem;
+  color: #C7FEA2;
+}
+.pfp-detail-view .over-view .viewer {
+  display: flex;
+  margin-left: 32px;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.pfp-detail-view .over-view .viewer .viewer-icon {
+  margin-right: 4px;
+}
+.pfp-detail-view .over-view .description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #1f1f1f;
+  border-radius: 4px;
+  margin-top: 16px;
+  padding-right: 16px;
+}
+.pfp-detail-view .over-view .description .title {
+  padding: 8px;
+  font-size: 1.25rem;
+}
+.pfp-detail-view .over-view .description .divider {
+  border: 0.5px solid;
+  width: 98%;
+}
+.pfp-detail-view .over-view .description .body {
+  font-size: 1rem;
+  padding: 8px;
+}
+.pfp-detail-view .image-view {
+  margin-top: 16px;
+  padding-left: 16px;
+  max-width: 50%;
+}
+.pfp-detail-view .image-view .pfp-image {
+  max-width: 100%;
+  border-radius: 16px;
+}
+.pfp-detail-view .image-view button {
+  width: 100%;
+  height: 48px;
+  margin-top: 16px;
+}
+.pfp-detail-view .image-view .label {
+  font-size: 0.875rem;
+  margin-top: 16px;
+}
+.pfp-detail-view .image-view input {
+  margin-top: 8px;
+  width: 100%;
+}
 .add-pfp-view .head {
   display: flex;
   flex-direction: column;
@@ -383,7 +558,7 @@ body a:hover {
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.67);
 }
 .add-pfp-view .content li:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: #1f1f1f;
 }
 .add-pfp-view .content .danger {
   color: #ff3b30;

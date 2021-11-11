@@ -47,6 +47,4 @@ import MyPFPs from "./view/user/MyPFPs";
         SkyRouter.go(sessionStorage.__spa_path);
         sessionStorage.removeItem("__spa_path");
     }
-
-    new BuyPopup();
 })();
