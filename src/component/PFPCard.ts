@@ -1,7 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import ViewUtil from "../view/ViewUtil";
 
-export default class PFPCardView extends DomNode {
+export default class PFPCard extends DomNode {
 
     constructor(
         addr: string,

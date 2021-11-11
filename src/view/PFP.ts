@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
-import PFPCardView from "../component/PFPCardView";
+import PFPCard from "../component/PFPCard";
 import PFPsContract from "../contracts/PFPsContract";
 import Layout from "./Layout";
 import ViewUtil from "./ViewUtil";
@@ -44,7 +44,7 @@ export default class PFP implements View {
                 } catch (e) {
                     //ignore.
                 }
-                new PFPCardView(
+                new PFPCard(
                     addr,
                     data.banner,
                     data.icon,

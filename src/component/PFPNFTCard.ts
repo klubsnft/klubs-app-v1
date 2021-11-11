@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 
-export default class PFPNFTCardView extends DomNode {
+export default class PFPNFTCard extends DomNode {
 
     constructor(
         img: string | undefined,
