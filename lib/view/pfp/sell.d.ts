@@ -5,4 +5,4 @@ export default class Sell implements View {
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }
-//# sourceMappingURL=sell.d.ts.map
+//# sourceMappingURL=Sell.d.ts.map

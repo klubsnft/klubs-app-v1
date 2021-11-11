@@ -1,3 +1,4 @@
+import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import PFPsArtifact from "./abi/artifacts/contracts/PFPs.sol/PFPs.json";
 import Contract from "./Contract";
@@ -10,6 +11,18 @@ class PFPsContract extends Contract {
 
     public async added(addr: string): Promise<boolean> {
         return await this.runMethod("added", addr);
+    }
+
+    public async getAddrCount(): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("addrCount"));
+    }
+
+    public async addrs(index: BigNumberish): Promise<string> {
+        return await this.runMethod("addrs", index);
+    }
+
+    public async extras(addr: string): Promise<string> {
+        return await this.runMethod("extras", addr);
     }
 
     public async propose(addr: string): Promise<void> {

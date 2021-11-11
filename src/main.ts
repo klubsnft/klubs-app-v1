@@ -1,5 +1,4 @@
 import { SkyRouter } from "skyrouter";
-import BuyPopup from "./component/BuyPopup";
 import Art from "./view/Art";
 import Home from "./view/Home";
 import Layout from "./view/Layout";
@@ -9,6 +8,7 @@ import AddByMinter from "./view/pfp/AddByMinter";
 import AddByOwner from "./view/pfp/AddByOwner";
 import AddByPFPOwner from "./view/pfp/AddByPFPOwner";
 import Detail from "./view/pfp/Detail";
+import NFTDetail from "./view/pfp/NFTDetail";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
 import Sell from "./view/pfp/Sell";
@@ -40,6 +40,10 @@ import MyPFPs from "./view/user/MyPFPs";
         "pfp/add-by-pfp-owner",
         "pfp/propose",
         "pfp/sell",
+    ]);
+    SkyRouter.route("pfp/{addr}/{id}", NFTDetail, [
+        "pfp/{addr}/update",
+        "pfp/proposal/{proposalId}",
     ]);
     SkyRouter.route("pfp/{addr}/update", Update);
     SkyRouter.route("pfp/proposal/{proposalId}", Proposal);

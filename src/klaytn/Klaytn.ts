@@ -3,7 +3,7 @@ import { BigNumber } from "@ethersproject/bignumber";
 class Klaytn {
 
     private caver = (window as any).caver !== undefined ? undefined :
-        new (window as any).Caver("https://api.dogesound.club:9013/");
+        new (window as any).Caver("https://api.klu.bs:9013/");
 
     public createContract(address: string, abi: any) {
         return this.caver === undefined ?

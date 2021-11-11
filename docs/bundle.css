@@ -196,15 +196,38 @@ body {
   display: flex;
   margin: auto;
 }
-body button {
+body .button-contained {
   color: #121212;
   background-color: #C7FEA2;
   padding: 8px;
   font-size: 0.875rem;
   border-radius: 4px;
 }
-body button:hover {
+body .button-contained:hover {
   background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+body .button-text {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+body .button-text:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+body .button-outliend {
+  background-color: transparent;
+  color: #C7FEA2;
+  border-color: #C7FEA2;
+  padding: 8px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+body .button-outlined:hover {
+  background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 body input {
@@ -225,6 +248,22 @@ body input:focus {
 body a:hover {
   color: #C7FEA2;
 }
+body .divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: 0.5px solid;
+  width: 100%;
+}
+body .label {
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}
+body .danger-caption {
+  padding-top: 4px;
+  font-size: 0.625rem;
+  color: #ff3b30;
+  display: block;
+}
 body .popup-background {
   position: fixed;
   left: 0;
@@ -241,7 +280,7 @@ body .popup-background {
 .layout {
   width: 100%;
 }
-.layout .navbar {
+.layout > .navbar {
   max-width: 100vw;
   background-color: #222;
   box-shadow: rgba(4, 17, 29, 0.25) 0px 0px 8px 0px;
@@ -254,33 +293,33 @@ body .popup-background {
   justify-content: space-between;
   align-items: center;
 }
-.layout .navbar .logo {
+.layout > .navbar > .logo {
   color: #C7FEA2;
   font-size: 2.125rem;
   font-weight: bold;
 }
-.layout .navbar .logo:hover {
+.layout > .navbar > .logo:hover {
   color: #CFFEB0;
 }
-.layout .navbar .menu {
+.layout > .navbar > .menu {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.layout .navbar .menu .menu-item {
-  font-size: 1.25rem;
+.layout > .navbar > .menu > .menu-item {
+  font-size: 1rem;
   margin-left: 16px;
 }
-.layout .navbar .menu .menu-item:hover {
-  font-size: 1.25rem;
+.layout > .navbar > .menu .menu-item:hover {
+  font-size: 1rem;
   color: #C7FEA2;
 }
-.layout .navbar .menu .menu-item:active {
-  font-size: 1.25rem;
+.layout > .navbar > .menu .menu-item:active {
+  font-size: 1rem;
   color: #C7FEA2;
 }
-.layout .navbar .menu .connect-wallet,
-.layout .navbar .menu .wallet-address {
+.layout > .navbar > .menu .connect-wallet,
+.layout > .navbar > .menu .wallet-address {
   display: flex;
   align-items: center;
   margin-left: 16px;
@@ -290,8 +329,8 @@ body .popup-background {
   padding: 8px;
   border-radius: 4px;
 }
-.layout .navbar .menu .connect-wallet,
-.layout .navbar .menu .wallet-address:hover {
+.layout > .navbar > .menu .connect-wallet,
+.layout > .navbar > .menu .wallet-address:hover {
   background-color: #CFFEB0;
 }
 .layout main {
@@ -319,15 +358,15 @@ body .popup-background {
   border-radius: 8px;
   margin: 8px;
 }
-.card-view img {
+.card-view > img {
   border-radius: 8px 8px 0px 0px;
 }
-.card-view .card-title {
+.card-view > .title {
   margin-top: 8px;
   margin-left: 8px;
   font-size: 1.25rem;
 }
-.card-view .card-subtitle {
+.card-view > .body {
   margin-top: 8px;
   margin-left: 8px;
   font-size: 0.875rem;
@@ -337,12 +376,12 @@ body .popup-background {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.card-view .card-price {
+.card-view > .price {
   margin-top: 8px;
   margin: 8px;
   font-size: 1rem;
 }
-.card-view .card-price:hover {
+.card-view > .price:hover {
   color: #C7FEA2;
 }
 .card-view:hover {
@@ -357,28 +396,12 @@ body .popup-background {
   border-radius: 4px;
   background-color: #1f1f1f;
 }
-.buy-popup > .divider {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  border: 0.5px solid;
-  width: 100%;
-}
 .buy-popup > button {
   margin-top: 16px;
   width: 100%;
 }
-.buy-popup > .label {
-  font-size: 0.875rem;
-  margin-bottom: 8px;
-}
 .buy-popup > .price {
   font-size: 1.5rem;
-}
-.buy-popup > .danger {
-  padding-top: 4px;
-  font-size: 0.625rem;
-  color: #ff3b30;
-  display: block;
 }
 .buy-popup > .price:hover {
   color: #C7FEA2;
@@ -421,7 +444,76 @@ body .popup-background {
 .offer-popup > .price:hover {
   color: #C7FEA2;
 }
-.home-view .head {
+.dialogue.alert {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.dialogue.alert > .divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: 0.5px solid;
+  width: 100%;
+}
+.dialogue.alert > p {
+  margin-bottom: 16px;
+}
+.dialogue.alert > .button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.dialogue.confirm {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.dialogue.confirm > .divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: 0.5px solid;
+  width: 100%;
+}
+.dialogue.confirm > p {
+  margin-bottom: 16px;
+}
+.dialogue.confirm > .button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.dialogue.prompt {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.dialogue.prompt > .divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: 0.5px solid;
+  width: 100%;
+}
+.dialogue.prompt > p {
+  margin-bottom: 16px;
+}
+.dialogue.prompt > .button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.dialogue.prompt > input {
+  width: 100%;
+}
+.home-view > .head {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
@@ -430,23 +522,23 @@ body .popup-background {
   height: 200px;
   justify-content: center;
 }
-.home-view .head .slogan {
+.home-view > .head > .slogan {
   margin: 16px;
 }
-.home-view .head button {
+.home-view > .head > button {
   max-width: 150px;
   margin-left: 16px;
 }
-.home-view .content {
+.home-view > .content {
   margin-top: 8px;
   margin-left: 16px;
   height: 50vh;
 }
-.home-view .content h6 {
+.home-view > .content > h6 {
   margin-top: 16px;
   margin-bottom: 16px;
 }
-.home-view .subtitle {
+.home-view > .subtitle {
   padding-top: 8px;
   font-size: 1.25rem;
 }
@@ -458,14 +550,14 @@ body .popup-background {
   height: 50vh;
   padding: 16px;
 }
-.art-view .title {
+.art-view > .title {
   font-size: 4.125rem;
   padding: 16px;
 }
-.art-view .subtitle {
-  font-size: body2;
+.art-view > .subtitle {
+  font-size: 0.875rem;
 }
-.pfp-view .head {
+.pfp-view > .head {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
@@ -474,23 +566,23 @@ body .popup-background {
   height: 200px;
   justify-content: center;
 }
-.pfp-view .head .slogan {
+.pfp-view > .head > .slogan {
   margin: 16px;
 }
-.pfp-view .head button {
+.pfp-view > .head > button {
   max-width: 150px;
   margin-left: 16px;
 }
-.pfp-view .content {
+.pfp-view > .content {
   margin-top: 8px;
   margin-left: 16px;
   height: 50vh;
 }
-.pfp-view .content h6 {
+.pfp-view > .content > h6 {
   margin-top: 16px;
   margin-bottom: 16px;
 }
-.pfp-view .subtitle {
+.pfp-view > .content > .subtitle {
   padding-top: 8px;
   font-size: 1.25rem;
 }
@@ -499,44 +591,44 @@ body .popup-background {
   flex-direction: row;
   max-width: 100%;
 }
-.pfp-detail-view .over-view {
+.pfp-detail-view > .over-view {
   margin-top: 16px;
   padding-left: 16px;
   padding-right: 16px;
 }
-.pfp-detail-view .over-view .project {
+.pfp-detail-view > .over-view > .project {
   font-size: 0.875rem;
 }
-.pfp-detail-view .over-view .pfp {
+.pfp-detail-view > .over-view > .pfp {
   margin-top: 8px;
   font-size: 3rem;
 }
-.pfp-detail-view .over-view .pfp-info {
+.pfp-detail-view > .over-view > .pfp-info {
   margin-top: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.pfp-detail-view .over-view .pfp-info .owner {
+.pfp-detail-view > .over-view > .pfp-info > .owner {
   display: flex;
   font-size: 1rem;
 }
-.pfp-detail-view .over-view .pfp-info .owner-by {
+.pfp-detail-view > .over-view > .pfp-info > .owner > .owner-by {
   margin-left: 8px;
   font-size: 1rem;
   color: #C7FEA2;
 }
-.pfp-detail-view .over-view .viewer {
+.pfp-detail-view > .over-view > .pfp-info > .viewer {
   display: flex;
   margin-left: 32px;
   font-size: 1rem;
   justify-content: center;
   align-items: center;
 }
-.pfp-detail-view .over-view .viewer .viewer-icon {
+.pfp-detail-view > .over-view > .pfp-info > .viewer > .viewer-icon {
   margin-right: 4px;
 }
-.pfp-detail-view .over-view .description {
+.pfp-detail-view > .over-view > .description {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -545,41 +637,41 @@ body .popup-background {
   margin-top: 16px;
   padding-right: 16px;
 }
-.pfp-detail-view .over-view .description .title {
+.pfp-detail-view > .over-view > .description > .title {
   padding: 8px;
   font-size: 1.25rem;
 }
-.pfp-detail-view .over-view .description .divider {
+.pfp-detail-view > .over-view > .description > .divider {
   border: 0.5px solid;
   width: 100%;
 }
-.pfp-detail-view .over-view .description .body {
+.pfp-detail-view > .over-view > .description > .body {
   font-size: 1rem;
   padding: 8px;
 }
-.pfp-detail-view .image-view {
+.pfp-detail-view > .image-view {
   margin-top: 16px;
   padding-left: 16px;
   max-width: 50%;
 }
-.pfp-detail-view .image-view .pfp-image {
+.pfp-detail-view > .image-view > .pfp-image {
   max-width: 100%;
   border-radius: 16px;
 }
-.pfp-detail-view .image-view button {
+.pfp-detail-view > .image-view > button {
   width: 100%;
   height: 48px;
   margin-top: 16px;
 }
-.pfp-detail-view .image-view .label {
+.pfp-detail-view > .image-view > .label {
   font-size: 0.875rem;
   margin-top: 16px;
 }
-.pfp-detail-view .image-view input {
+.pfp-detail-view > .image-view > input {
   margin-top: 8px;
   width: 100%;
 }
-.add-pfp-view .head {
+.add-pfp-view > .head {
   display: flex;
   flex-direction: column;
   background-image: url("./images/galaxies.png");
@@ -587,41 +679,41 @@ body .popup-background {
   height: 200px;
   justify-content: center;
 }
-.add-pfp-view .head .title {
+.add-pfp-view > .head > .title {
   font-size: 1.5rem;
   margin: 16px;
 }
-.add-pfp-view .head button {
+.add-pfp-view > .head > .subtitle {
+  margin-left: 16px;
+  font-size: 1rem;
+}
+.add-pfp-view > .head > button {
   max-width: 150px;
   margin-left: 16px;
 }
-.add-pfp-view .content {
+.add-pfp-view > .content {
   margin-top: 8px;
   margin-left: 16px;
   height: 50vh;
   margin: 16px;
 }
-.add-pfp-view .content h6 {
+.add-pfp-view > .content > h6 {
   margin-top: 16px;
   margin-bottom: 16px;
 }
-.add-pfp-view .content h4 {
+.add-pfp-view > .content > h4 {
   padding-bottom: 8px;
 }
-.add-pfp-view .content li {
+.add-pfp-view > .content > ul > li {
   margin-top: 16px;
   font-size: 1rem;
   padding: 8px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.67);
 }
-.add-pfp-view .content li:hover {
+.add-pfp-view > .content > ul > li:hover {
   background-color: #1f1f1f;
 }
-.add-pfp-view .content .danger {
-  color: #ff3b30;
-  font-size: 0.875rem;
-}
-.add-pfp-by-minter-view .head {
+.add-pfp-by-minter-view > .head {
   display: flex;
   flex-direction: column;
   background-image: url("./images/galaxies.png");
@@ -629,19 +721,19 @@ body .popup-background {
   height: 200px;
   justify-content: center;
 }
-.add-pfp-by-minter-view .head .title {
+.add-pfp-by-minter-view > .head > .title {
   font-size: 1.5rem;
   margin: 16px;
 }
-.add-pfp-by-minter-view .head .subtitle {
+.add-pfp-by-minter-view > .head > .subtitle {
   margin-left: 16px;
   font-size: 1rem;
 }
-.add-pfp-by-minter-view .head button {
+.add-pfp-by-minter-view > .head > button {
   max-width: 150px;
   margin-left: 16px;
 }
-.add-pfp-by-minter-view .content {
+.add-pfp-by-minter-view > .content {
   display: flex;
   flex-direction: column;
   padding-top: 8px;
@@ -650,27 +742,23 @@ body .popup-background {
   height: 50vh;
   margin: 16px;
 }
-.add-pfp-by-minter-view .content li {
+.add-pfp-by-minter-view > .content > h6 {
+  margin-top: 8px;
+}
+.add-pfp-by-minter-view > .content > ul > li {
   margin-top: 8px;
   font-size: 1rem;
 }
-.add-pfp-by-minter-view .content .form {
-  margin-bottom: 8px;
-}
-.add-pfp-by-minter-view .content .form input {
+.add-pfp-by-minter-view > .content > ul > li > .form > .label > input {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 16px;
   margin-right: 8px;
   margin-bottom: 8px;
 }
-.add-pfp-by-minter-view .content .form button {
+.add-pfp-by-minter-view > .content > ul > li > .form > button {
   width: 100%;
 }
-.add-pfp-by-minter-view .content .danger {
-  color: #ff3b30;
-  font-size: 0.875rem;
-}
-.add-pfp-by-owner-view .head {
+.add-pfp-by-owner-view > .head {
   display: flex;
   flex-direction: column;
   background-image: url("./images/galaxies.png");
@@ -678,19 +766,19 @@ body .popup-background {
   height: 200px;
   justify-content: center;
 }
-.add-pfp-by-owner-view .head .title {
+.add-pfp-by-owner-view > .head > .title {
   font-size: 1.5rem;
   margin: 16px;
 }
-.add-pfp-by-owner-view .head .subtitle {
+.add-pfp-by-owner-view > .head > .subtitle {
   margin-left: 16px;
   font-size: 1rem;
 }
-.add-pfp-by-owner-view .head button {
+.add-pfp-by-owner-view > .head > button {
   max-width: 150px;
   margin-left: 16px;
 }
-.add-pfp-by-owner-view .content {
+.add-pfp-by-owner-view > .content {
   display: flex;
   flex-direction: column;
   padding-top: 8px;
@@ -699,93 +787,88 @@ body .popup-background {
   height: 50vh;
   margin: 16px;
 }
-.add-pfp-by-owner-view .content li {
+.add-pfp-by-owner-view > .content > h6 {
+  margin-top: 8px;
+}
+.add-pfp-by-owner-view > .content > ul > li {
   margin-top: 8px;
   font-size: 1rem;
 }
-.add-pfp-by-owner-view .content .form {
-  margin-bottom: 8px;
-}
-.add-pfp-by-owner-view .content .form input {
+.add-pfp-by-owner-view > .content > ul > li > .form > .label > input {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 16px;
   margin-right: 8px;
   margin-bottom: 8px;
 }
-.add-pfp-by-owner-view .content .form button {
+.add-pfp-by-owner-view > .content > ul > li > .form > button {
   width: 100%;
-}
-.add-pfp-by-owner-view .content .danger {
-  color: #ff3b30;
-  font-size: 0.875rem;
 }
 .sell-pfp-view {
   display: flex;
   flex-direction: row;
   max-width: 100%;
 }
-.sell-pfp-view .image-view {
+.sell-pfp-view > .image-view {
   margin-top: 16px;
   padding-left: 16px;
   max-width: 50%;
 }
-.sell-pfp-view .image-view .pfp-image {
+.sell-pfp-view > .image-view > .pfp-image {
   max-width: 100%;
   border-radius: 16px;
 }
-.sell-pfp-view .image-view .project {
+.sell-pfp-view > .image-view > .project {
   font-size: 0.875rem;
 }
-.sell-pfp-view .image-view .pfp {
+.sell-pfp-view > .image-view > .pfp {
   margin-top: 8px;
   font-size: 2.125rem;
 }
-.sell-pfp-view .image-view .pfp-info {
+.sell-pfp-view > .image-view > .pfp-info {
   margin-top: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.sell-pfp-view .image-view .pfp-info .owner {
+.sell-pfp-view > .image-view > .pfp-info > .owner {
   display: flex;
   font-size: 1rem;
 }
-.sell-pfp-view .image-view .pfp-info .owner-by {
+.sell-pfp-view > .image-view > .pfp-info > .owner > .owner-by {
   margin-left: 8px;
   font-size: 1rem;
   color: #C7FEA2;
 }
-.sell-pfp-view .image-view .viewer {
+.sell-pfp-view > .image-view > .pfp-info > .viewer {
   display: flex;
   margin-left: 32px;
   font-size: 1rem;
   justify-content: center;
   align-items: center;
 }
-.sell-pfp-view .image-view .viewer .viewer-icon {
+.sell-pfp-view > .image-view > .pfp-info > .viewer > .viewer-icon {
   margin-right: 4px;
 }
-.sell-pfp-view .sell-view {
+.sell-pfp-view > .sell-view {
   margin-top: 16px;
   margin-left: 16px;
 }
-.sell-pfp-view .sell-view .title {
+.sell-pfp-view > .sell-view > .title {
   font-size: 3rem;
 }
-.sell-pfp-view .sell-view button {
+.sell-pfp-view > .sell-view > button {
   width: 100%;
-  height: 48px;
   margin-top: 16px;
 }
-.sell-pfp-view .sell-view .label {
+.sell-pfp-view > .sell-view > .label {
   font-size: 0.875rem;
   margin-top: 16px;
 }
-.sell-pfp-view .sell-view input {
+.sell-pfp-view > .sell-view > input {
   margin-top: 8px;
   width: 100%;
 }
-.pfp-propose-view .head {
+.pfp-propose-view > .head {
   display: flex;
   flex-direction: column;
   background-image: url("./images/galaxies.png");
@@ -793,44 +876,41 @@ body .popup-background {
   height: 200px;
   justify-content: center;
 }
-.pfp-propose-view .head .title {
+.pfp-propose-view > .head > .title {
   font-size: 1.5rem;
   margin: 16px;
 }
-.pfp-propose-view .head .subtitle {
+.pfp-propose-view > .head > .subtitle {
   margin-left: 16px;
   font-size: 1rem;
 }
-.pfp-propose-view .head button {
+.pfp-propose-view > .head > button {
   max-width: 150px;
   margin-left: 16px;
 }
-.pfp-propose-view .content {
+.pfp-propose-view > .content {
   display: flex;
   flex-direction: column;
   padding-top: 8px;
   justify-content: center;
   align-items: center;
   height: 50vh;
+  margin: 16px;
 }
-.pfp-propose-view .content li {
+.pfp-propose-view > .content > h6 {
+  margin-top: 8px;
+}
+.pfp-propose-view > .content > ul {
   margin-top: 8px;
   font-size: 1rem;
 }
-.pfp-propose-view .content .form {
+.pfp-propose-view > .content > ul > .form > .label > input {
+  width: 100%;
+  margin-top: 16px;
+  margin-right: 8px;
   margin-bottom: 8px;
 }
-.pfp-propose-view .content .form input {
+.pfp-propose-view > .content > ul > .form > button {
   width: 100%;
-  margin-top: 8px;
-  margin-right: 8px;
-  margin-bottom: 24px;
-}
-.pfp-propose-view .content .form button {
-  width: 100%;
-}
-.pfp-propose-view .content .danger {
-  color: #ff3b30;
-  font-size: 0.875rem;
 }
 
