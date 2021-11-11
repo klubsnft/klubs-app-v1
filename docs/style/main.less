@@ -9,7 +9,7 @@ body {
     display    : flex;
     margin     : auto;
 
-    button {
+    .button-contained {
         color           : @backgroud;
         background-color: @brand-primary;
         padding         : 8px;
@@ -17,8 +17,35 @@ body {
         border-radius   : 4px;
     }
 
-    button:hover {
+    .button-contained:hover {
         background-color: @brand-400;
+        box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .button-text {
+        background-color: transparent;
+        color           : @brand-primary;
+        padding         : 8px;
+        font-size       : @body2;
+        border-radius   : 4px;
+    }
+
+    .button-text:hover {
+        background-color: rgba(199, 254, 162, 0.2);
+        box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .button-outliend {
+        background-color: transparent;
+        color           : @brand-primary;
+        border-color    : @brand-primary;
+        padding         : 8px;
+        font-size       : @body2;
+        border-radius   : 4px;
+    }
+
+    .button-outlined:hover {
+        background-color: rgba(199, 254, 162, 0.2);
         box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     }
 
@@ -44,6 +71,25 @@ body {
         color: @brand-primary
     }
 
+    .divider {
+        margin-top   : 16px;
+        margin-bottom: 16px;
+        border       : 0.5px solid;
+        width        : 100%;
+    }
+
+    .label {
+        font-size    : @body2;
+        margin-bottom: 8px;
+    }
+
+    .danger-caption {
+        padding-top: 4px;
+        font-size  : @caption;
+        color      : @danger;
+        display    : block;
+    }
+
     .popup-background {
         position        : fixed;
         left            : 0;
@@ -64,6 +110,9 @@ body {
 @import "component/cardview.less";
 @import "component/buypopup.less";
 @import "component/offerpopup.less";
+@import "component/dialogue/alert.less";
+@import "component/dialogue/confirm.less";
+@import "component/dialogue/prompt.less";
 
 // views
 @import "view/home.less";

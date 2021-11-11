@@ -12,11 +12,12 @@ export default class Alert extends Popup {
         super(".popup-background");
         this.append(
             this.content = el(".dialogue.alert",
-                el("h3", title),
+                el("h4", title),
+                el("hr.divider"),
                 el("p", message),
-                el("a.confirm-button", confirmTitle, {
+                el(".button-container", el("button.button-text", confirmTitle, {
                     click: () => this.delete(),
-                }),
+                })),
             ),
         );
     }

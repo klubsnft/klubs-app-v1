@@ -2,7 +2,7 @@
 @import "../font.less";
 
 .add-pfp-by-minter-view {
-    .head {
+    >.head {
         display         : flex;
         flex-direction  : column;
         background-image: url("../images/galaxies.png");
@@ -10,54 +10,55 @@
         height          : 200px;
         justify-content : center;
 
-        .title {
-            font-size       : @headline5;
-            margin: 16px;
+        >.title {
+            font-size: @headline5;
+            margin   : 16px;
         }
 
-        .subtitle {
+        >.subtitle {
             margin-left: 16px;
-            font-size: @body1;
+            font-size  : @body1;
         }
 
-        button {
+        >button {
             max-width  : 150px;
             margin-left: 16px;
         }
     }
 
-    .content {
+    >.content {
         display        : flex;
         flex-direction : column;
         padding-top    : 8px;
         justify-content: center;
         align-items    : center;
         height         : 50vh;
-        margin: 16px;
+        margin         : 16px;
 
-        li {
+        >h6 {
             margin-top: 8px;
-            font-size : @body1;
         }
 
-        .form {
-            margin-bottom: 8px;
+        >ul {
+            >li {
+                margin-top: 8px;
+                font-size : @body1;
 
-            input {
-                width        : 100%;
-                margin-top   : 8px;
-                margin-right : 8px;
-                margin-bottom: 8px;
+                >.form {
+                    >.label {
+                        >input {
+                            width        : 100%;
+                            margin-top   : 16px;
+                            margin-right : 8px;
+                            margin-bottom: 8px;
+                        }
+                    }
+
+                    >button {
+                        width: 100%;
+                    }
+                }
             }
-
-            button {
-                width: 100%;
-            }
-        }
-
-        .danger {
-            color    : @danger;
-            font-size: @body2;
         }
     }
 }

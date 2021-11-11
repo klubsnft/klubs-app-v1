@@ -20,6 +20,7 @@ package-lock.json
 
 # vscode
 .history
+.vscode
 
 # secure
 secure.json

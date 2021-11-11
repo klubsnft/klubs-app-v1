@@ -12,8 +12,8 @@ export default class OfferPopup extends Popup {
             el(".preview"),
             el(".label", "제시 가격"),
             el("input", { placeholder: "... MIX" }),
-            el(".danger", "제시 가격을 꼭 확인하세요."),
-            el("button", "가격 제시"),
+            el(".danger-caption", "제시 가격을 꼭 확인하세요."),
+            el("button.button-contained", "가격 제시"),
         ));
     }
 }

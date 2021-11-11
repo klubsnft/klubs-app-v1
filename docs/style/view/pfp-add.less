@@ -2,7 +2,7 @@
 @import "../font.less";
 
 .add-pfp-view {
-    .head {
+    >.head {
         display         : flex;
         flex-direction  : column;
         background-image: url("../images/galaxies.png");
@@ -10,46 +10,48 @@
         height          : 200px;
         justify-content : center;
 
-        .title {
+        >.title {
             font-size: @headline5;
             margin   : 16px;
         }
 
-        button {
+        >.subtitle {
+            margin-left: 16px;
+            font-size  : @body1;
+        }
+
+        >button {
             max-width  : 150px;
             margin-left: 16px;
         }
     }
 
-    .content {
+    >.content {
         margin-top : 8px;
         margin-left: 16px;
         height     : 50vh;
         margin     : 16px;
 
-        h6 {
+        >h6 {
             margin-top   : 16px;
             margin-bottom: 16px;
         }
 
-        h4 {
+        >h4 {
             padding-bottom: 8px;
         }
 
-        li {
-            margin-top   : 16px;
-            font-size    : @body1;
-            padding      : 8px;
-            border-bottom: 0.5px solid @medium-emphasis;
-        }
+        >ul {
+            >li {
+                margin-top   : 16px;
+                font-size    : @body1;
+                padding      : 8px;
+                border-bottom: 0.5px solid @medium-emphasis;
+            }
 
-        li:hover {
-            background-color: @shadow;
-        }
-
-        .danger {
-            color    : @danger;
-            font-size: @body2;
+            >li:hover {
+                background-color: @shadow;
+            }
         }
     }
 }
