@@ -3,104 +3,116 @@
 
 .pfp-detail-view {
     display       : flex;
-    flex-direction: row;
-    max-width     : 100%;
+    flex-direction: column;
 
-    >.over-view {
-        margin-top   : 16px;
-        padding-left : 16px;
-        padding-right: 16px;
+    >.head {
+        display         : flex;
+        background-image: url("../images/eclipse.png");
+        background-size : cover;
+        height          : 200px;
+        justify-content : center;
+        padding         : 16px;
 
-        >.project {
-            font-size: @body2;
+        >.thumbnail {
+            max-width    : 156px;
+            height       : 156px;
+            border-radius: 8px;
         }
 
-        >.pfp {
-            margin-top: 8px;
-            font-size : @headline3;
-        }
+        >.body {
+            margin-left: 8px;
+            font-size  : @body1;
+            width      : 100%;
 
-        >.pfp-info {
-            margin-top    : 8px;
-            display       : flex;
-            flex-direction: row;
-            align-items   : center;
-
-            >.owner {
-                display  : flex;
-                font-size: @body1;
-
-                >.owner-by {
-                    margin-left: 8px;
-                    font-size  : @body1;
-                    color      : @brand-primary;
-                }
+            .social {
+                display   : flex;
+                margin-top: 16px;
             }
 
-
-            >.viewer {
-                display        : flex;
-                margin-left    : 32px;
-                font-size      : @body1;
-                justify-content: center;
-                align-items    : center;
-
-                >.viewer-icon {
-                    margin-right: 4px;
-                }
+            button {
+                margin-right: 8px;
             }
         }
 
-        >.description {
-            display         : flex;
-            flex-direction  : column;
-            width           : 100%;
-            background-color: @shadow;
-            border-radius   : 4px;
-            margin-top      : 16px;
-            padding-right   : 16px;
-
-            >.title {
-                padding  : 8px;
-                font-size: @headline6;
-            }
-
-            >.divider {
-                border: 0.5px solid;
-                width : 100%;
-            }
-
-            >.body {
-                font-size: @body1;
-                padding  : 8px;
-            }
+        >.title {
+            font-size: @headline5;
+            margin   : 16px;
         }
-    }
 
-    >.image-view {
-        margin-top  : 16px;
-        padding-left: 16px;
-        max-width   : 50%;
-
-        >.pfp-image {
-            max-width    : 100%;
-            border-radius: 16px;
+        >.subtitle {
+            margin-left: 16px;
+            font-size  : @body1;
         }
 
         >button {
-            width     : 100%;
-            height    : 48px;
-            margin-top: 16px;
+            max-width  : 150px;
+            margin-left: 16px;
+        }
+    }
+
+    >.main {
+        >.header {
+            display         : flex;
+            justify-content : space-between;
+            align-items     : center;
+            padding         : 16px;
+            background-color: black;
+
+            >h4 {
+                display        : flex;
+                justify-content: flex-start;
+            }
+
+            >.filter {
+                display        : flex;
+                justify-content: flex-end;
+
+                >select {
+                    margin-left     : 8px;
+                    background-color: @brand-primary;
+                    padding         : 8px;
+                    font-size       : @body2;
+                    border-radius   : 4px;
+                    border          : none;
+                }
+
+                >select:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
+            }
         }
 
-        >.label {
-            font-size : @body2;
+        >.content {
             margin-top: 16px;
-        }
+            display   : flex;
 
-        >input {
-            margin-top: 8px;
-            width     : 100%;
+            >.search-box {
+                width         : 100%;
+                height        : 100%;
+                max-width     : 250px;
+                padding       : 8px;
+                display       : flex;
+                flex-direction: column;
+
+                >select {
+                    margin-top      : 8px;
+                    background-color: @brand-primary;
+                    padding         : 8px;
+                    font-size       : @body2;
+                    border-radius   : 4px;
+                    border          : none;
+                }
+
+                >select:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            >.list {
+                display: flex;
+            }
         }
     }
 }
