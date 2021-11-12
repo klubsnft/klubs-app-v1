@@ -366,6 +366,16 @@ body .popup-background {
   margin-left: 8px;
   font-size: 1.25rem;
 }
+.card-view > .name {
+  margin-top: 8px;
+  margin-left: 8px;
+  font-size: 1.25rem;
+}
+.card-view > .description {
+  margin-top: 8px;
+  margin-left: 8px;
+  font-size: 1rem;
+}
 .card-view > .body {
   margin-top: 8px;
   margin-left: 8px;
@@ -378,7 +388,8 @@ body .popup-background {
 }
 .card-view > .price {
   margin-top: 8px;
-  margin: 8px;
+  margin-left: 8px;
+  margin-bottom: 8px;
   font-size: 1rem;
 }
 .card-view > .price:hover {
@@ -443,6 +454,47 @@ body .popup-background {
 }
 .offer-popup > .price:hover {
   color: #C7FEA2;
+}
+.PFPCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #1f1f1f;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 8px;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+}
+.PFPCard > .banner {
+  max-width: 300px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-left-radius: 0 px;
+  border-bottom-right-radius: 0 px;
+  border-bottom: 1 px solid #e5e8eb;
+  background-color: #e5e8eb;
+}
+.PFPCard > .icon {
+  position: relative;
+  top: -25px;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: rgba(14, 14, 14, 0.6) 0px 0px 2px 0px;
+  border: solid 0.5px black;
+}
+.PFPCard > .name {
+  font-size: 2.125rem;
+  padding: 8px;
+}
+.PFPCard > .description {
+  font-size: 1rem;
+  padding: 0px 8px 8px 8px;
+}
+.PFPCard:hover {
+  background-color: #222222;
 }
 .dialogue.alert {
   position: relative;
@@ -532,7 +584,7 @@ body .popup-background {
 .home-view > .content {
   margin-top: 8px;
   margin-left: 16px;
-  height: 50vh;
+  height: 100%;
 }
 .home-view > .content > h6 {
   margin-top: 16px;
@@ -547,7 +599,7 @@ body .popup-background {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50vh;
+  height: 100%;
   padding: 16px;
 }
 .art-view > .title {
@@ -661,7 +713,7 @@ body .popup-background {
 .pfp-view > .content {
   margin-top: 8px;
   margin-left: 16px;
-  height: 50vh;
+  height: 100%;
 }
 .pfp-view > .content > h6 {
   margin-top: 16px;
@@ -867,7 +919,7 @@ body .popup-background {
 .add-pfp-view > .content {
   margin-top: 8px;
   margin-left: 16px;
-  height: 50vh;
+  height: 100%;
   margin: 16px;
 }
 .add-pfp-view > .content > h6 {
@@ -912,7 +964,7 @@ body .popup-background {
   padding-top: 8px;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 100%;
   margin: 16px;
 }
 .add-pfp-by-minter-view > .content > h6 {
@@ -957,7 +1009,7 @@ body .popup-background {
   padding-top: 8px;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 100%;
   margin: 16px;
 }
 .add-pfp-by-owner-view > .content > h6 {
@@ -1067,7 +1119,7 @@ body .popup-background {
   padding-top: 8px;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 100%;
   margin: 16px;
 }
 .pfp-propose-view > .content > h6 {

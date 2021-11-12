@@ -11,6 +11,7 @@ import Detail from "./view/pfp/Detail";
 import NFTDetail from "./view/pfp/NFTDetail";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
+import Rankings from "./view/pfp/Rankings";
 import Sell from "./view/pfp/Sell";
 import Update from "./view/pfp/Update";
 import Me from "./view/user/Me";
@@ -33,6 +34,7 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("pfp/add-by-pfp-owner", AddByPFPOwner);
     SkyRouter.route("pfp/propose", Propose);
     SkyRouter.route("pfp/sell", Sell);
+    SkyRouter.route("pfp/rankings", Rankings);
     SkyRouter.route("pfp/{addr}", Detail, [
         "pfp/add",
         "pfp/add-by-owner",
@@ -40,6 +42,7 @@ import MyPFPs from "./view/user/MyPFPs";
         "pfp/add-by-pfp-owner",
         "pfp/propose",
         "pfp/sell",
+        "pfp/rankings",
     ]);
     SkyRouter.route("pfp/{addr}/{id}", NFTDetail, [
         "pfp/{addr}/update",
