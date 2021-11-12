@@ -1,0 +1,49 @@
+@import "../palette.less";
+@import "../font.less";
+
+.PFPCard {
+    display         : flex;
+    flex-direction  : column;
+    background-color: @shadow;
+    max-width       : 300px;
+    width           : 100%;
+    border-radius   : 8px;
+    justify-items   : center;
+    align-items     : center;
+    text-align      : center;
+
+    >.banner {
+        max-width                 : 300px;
+        border-top-left-radius    : inherit;
+        border-top-right-radius   : inherit;
+        border-bottom-left-radius : 0 px;
+        border-bottom-right-radius: 0 px;
+        border-bottom             : 1 px solid rgb(229, 232, 235);
+        background-color          : rgb(229, 232, 235);
+    }
+
+    >.icon {
+        position     : relative;
+        top          : -25px;
+        z-index      : 1;
+        width        : 50px;
+        height       : 50px;
+        border-radius: 50%;
+        box-shadow   : rgb(14 14 14 / 60%) 0px 0px 2px 0px;
+        border       : solid 0.5px black;
+    }
+
+    >.name {
+        font-size: @headline4;
+        padding  : 8px;
+    }
+
+    >.description {
+        font-size: @body1;
+        padding  : 0px 8px 8px 8px;
+    }
+}
+
+.PFPCard:hover {
+    background-color: @shadow-hover;
+}
