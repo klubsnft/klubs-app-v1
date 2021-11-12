@@ -36,6 +36,30 @@ class PFPsContract extends Contract {
     public async addByMinter(addr: string): Promise<void> {
         await this.runWalletMethod("addByMinter", addr);
     }
+
+    public async setExtra(addr: string, manager: string): Promise<void> {
+        await this.runWalletMethod("setExtra", addr, manager);
+    }
+
+    public async existsManager(addr: string, manager: string): Promise<boolean> {
+        return await this.runMethod("existsManager", addr, manager);
+    }
+
+    public async addManager(addr: string, manager: string): Promise<void> {
+        await this.runWalletMethod("addManager", addr, manager);
+    }
+
+    public async removeManager(addr: string, manager: string): Promise<void> {
+        await this.runWalletMethod("removeManager", addr, manager);
+    }
+
+    public async getManagerCount(addr: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("managerCount", addr));
+    }
+
+    public async managers(addr: string, index: BigNumberish): Promise<string> {
+        return await this.runMethod("managers", addr, index);
+    }
 }
 
 export default new PFPsContract();

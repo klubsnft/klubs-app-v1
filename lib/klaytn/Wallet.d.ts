@@ -9,6 +9,7 @@ declare class Wallet extends EventContainer {
     connected(): Promise<boolean>;
     connect(): Promise<void>;
     addToken(address: string, symbol: string, decimals: number, image: string): Promise<void>;
+    signMessage(message: string): Promise<any>;
 }
 declare const _default: Wallet;
 export default _default;

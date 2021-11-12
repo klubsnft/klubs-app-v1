@@ -59,6 +59,12 @@ class Wallet extends EventContainer {
             ExtWallet.addToken(address, symbol, decimals, image);
         }
     }
+
+    public async signMessage(message: string) {
+        if (ExtWallet.installed === true) {
+            return await ExtWallet.signMessage(message);
+        }
+    }
 }
 
 export default new Wallet();

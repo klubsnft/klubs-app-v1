@@ -218,7 +218,7 @@ body .button-text:hover {
   background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-body .button-outliend {
+body .button-outlined {
   background-color: transparent;
   color: #C7FEA2;
   border-color: #C7FEA2;
@@ -557,35 +557,6 @@ body .popup-background {
 .art-view > .subtitle {
   font-size: 0.875rem;
 }
-.pfp-view > .head {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.25rem;
-  background-image: url("./images/eclipse.png");
-  background-size: cover;
-  height: 200px;
-  justify-content: center;
-}
-.pfp-view > .head > .slogan {
-  margin: 16px;
-}
-.pfp-view > .head > button {
-  max-width: 150px;
-  margin-left: 16px;
-}
-.pfp-view > .content {
-  margin-top: 8px;
-  margin-left: 16px;
-  height: 50vh;
-}
-.pfp-view > .content > h6 {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-.pfp-view > .content > .subtitle {
-  padding-top: 8px;
-  font-size: 1.25rem;
-}
 .pfp-detail-view {
   display: flex;
   flex-direction: row;
@@ -670,6 +641,208 @@ body .popup-background {
 .pfp-detail-view > .image-view > input {
   margin-top: 8px;
   width: 100%;
+}
+.pfp-view > .head {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  background-image: url("./images/eclipse.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.pfp-view > .head > .slogan {
+  margin: 16px;
+}
+.pfp-view > .head > button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.pfp-view > .content {
+  margin-top: 8px;
+  margin-left: 16px;
+  height: 50vh;
+}
+.pfp-view > .content > h6 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.pfp-view > .content > .subtitle {
+  padding-top: 8px;
+  font-size: 1.25rem;
+}
+.pfp-detail-view {
+  display: flex;
+  flex-direction: column;
+}
+.pfp-detail-view > .head {
+  display: flex;
+  background-image: url("./images/eclipse.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+  padding: 16px;
+}
+.pfp-detail-view > .head > .thumbnail {
+  max-width: 156px;
+  height: 156px;
+  border-radius: 8px;
+}
+.pfp-detail-view > .head > .body {
+  margin-left: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+.pfp-detail-view > .head > .body .social {
+  display: flex;
+  margin-top: 16px;
+}
+.pfp-detail-view > .head > .body button {
+  margin-right: 8px;
+}
+.pfp-detail-view > .head > .title {
+  font-size: 1.5rem;
+  margin: 16px;
+}
+.pfp-detail-view > .head > .subtitle {
+  margin-left: 16px;
+  font-size: 1rem;
+}
+.pfp-detail-view > .head > button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.pfp-detail-view > .main > .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: black;
+}
+.pfp-detail-view > .main > .header > h4 {
+  display: flex;
+  justify-content: flex-start;
+}
+.pfp-detail-view > .main > .header > .filter {
+  display: flex;
+  justify-content: flex-end;
+}
+.pfp-detail-view > .main > .header > .filter > select {
+  margin-left: 8px;
+  background-color: #C7FEA2;
+  padding: 8px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  border: none;
+}
+.pfp-detail-view > .main > .header > .filter > select:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-detail-view > .main > .content {
+  margin-top: 16px;
+  display: flex;
+}
+.pfp-detail-view > .main > .content > .search-box {
+  width: 100%;
+  height: 100%;
+  max-width: 250px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.pfp-detail-view > .main > .content > .search-box > select {
+  margin-top: 8px;
+  background-color: #C7FEA2;
+  padding: 8px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  border: none;
+}
+.pfp-detail-view > .main > .content > .search-box > select:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-detail-view > .main > .content > .list {
+  display: flex;
+}
+.pfp-update-view > .head {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./images/bigBang.png");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.pfp-update-view > .head > .title {
+  font-size: 1.5rem;
+  margin: 16px;
+}
+.pfp-update-view > .head > .subtitle {
+  margin-left: 16px;
+  font-size: 1rem;
+}
+.pfp-update-view > .head > button {
+  max-width: 150px;
+  margin-left: 16px;
+}
+.pfp-update-view > .content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+.pfp-update-view > .content > .form {
+  width: 100%;
+}
+.pfp-update-view > .content > .form > .banner-preview,
+.pfp-update-view > .content > .form > .icon-preview {
+  display: block;
+  max-height: 30px;
+  margin-top: 10px;
+}
+.pfp-update-view > .content > .form > .file-container {
+  margin-top: 16px;
+}
+.pfp-update-view > .content > .form > .file-container > input {
+  width: 100%;
+}
+.pfp-update-view > .content > .form > .input-container {
+  margin-top: 16px;
+}
+.pfp-update-view > .content > .form > .input-container > input {
+  width: 100%;
+}
+.pfp-update-view > .content > .form > button {
+  width: 100%;
+  margin-top: 16px;
+}
+.pfp-update-view > .content > .manage-managers {
+  width: 100%;
+  margin-top: 16px;
+}
+.pfp-update-view > .content > .manage-managers > ul > li {
+  display: flex;
+  padding: 8px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.67);
+  align-items: center;
+}
+.pfp-update-view > .content > .manage-managers > ul > li > .item {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.pfp-update-view > .content > .manage-managers > ul > li > button {
+  justify-content: flex-end;
+}
+.pfp-update-view > .content > .manage-managers > ul > li:hover {
+  background-color: #1f1f1f;
+}
+.pfp-update-view > .content > .manage-managers > button {
+  width: 100%;
+  margin-top: 16px;
+  justify-content: flex-end;
 }
 .add-pfp-view > .head {
   display: flex;

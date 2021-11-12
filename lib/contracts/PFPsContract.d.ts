@@ -9,6 +9,12 @@ declare class PFPsContract extends Contract {
     propose(addr: string): Promise<void>;
     addByPFPOwner(addr: string): Promise<void>;
     addByMinter(addr: string): Promise<void>;
+    setExtra(addr: string, manager: string): Promise<void>;
+    existsManager(addr: string, manager: string): Promise<boolean>;
+    addManager(addr: string, manager: string): Promise<void>;
+    removeManager(addr: string, manager: string): Promise<void>;
+    getManagerCount(addr: string): Promise<BigNumber>;
+    managers(addr: string, index: BigNumberish): Promise<string>;
 }
 declare const _default: PFPsContract;
 export default _default;
