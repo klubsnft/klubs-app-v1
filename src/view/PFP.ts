@@ -20,7 +20,7 @@ export default class PFP implements View {
                     ),
                     el("button.button-contained", "프로젝트 등록", {
                         click: () => ViewUtil.go("/pfp/add"),
-                    })
+                    }),
                 ),
                 el(".content",
                     el("h6", "프로젝트 목록"),
@@ -40,6 +40,7 @@ export default class PFP implements View {
                 const extras = await PFPsContract.extras(addr);
                 let data: any = {};
                 try {
+                    console.log(extras);
                     data = JSON.parse(extras);
                 } catch (e) {
                     //ignore.
