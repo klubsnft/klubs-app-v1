@@ -57,6 +57,10 @@ class PFPsContract extends Contract {
         return BigNumber.from(await this.runMethod("managerCount", addr));
     }
 
+    public async getTotalSupply(addr: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("getTotalSupply", addr));
+    }
+
     public async managers(addr: string, index: BigNumberish): Promise<string> {
         return await this.runMethod("managers", addr, index);
     }

@@ -14,6 +14,7 @@ declare class PFPsContract extends Contract {
     addManager(addr: string, manager: string): Promise<void>;
     removeManager(addr: string, manager: string): Promise<void>;
     getManagerCount(addr: string): Promise<BigNumber>;
+    getTotalSupply(addr: string): Promise<BigNumber>;
     managers(addr: string, index: BigNumberish): Promise<string>;
 }
 declare const _default: PFPsContract;
