@@ -13,8 +13,8 @@ export default class PFPCard extends DomNode {
         super(".PFPCard");
 
         this.append(
-            el("img.banner", { src: banner }),
-            el("img.icon", { src: icon }),
+            el("img.banner", { src: banner, onerror: "this.src='/images/noImage.png'" }),
+            el("img.icon", { src: icon, onerror: "this.src='/images/noImage.png'" }),
             el(".name", name),
             el(".description", description)
         );

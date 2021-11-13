@@ -1,5 +1,4 @@
 @import "../palette.less";
-@import "../font.less";
 
 .pfp-detail-view {
     display       : flex;
@@ -7,6 +6,7 @@
 
     >.head {
         display         : flex;
+        flex-direction  : column;
         background-image: url("../images/eclipse.png");
         background-size : cover;
         height          : 200px;
@@ -19,9 +19,13 @@
             border-radius: 8px;
         }
 
+        >.pfp-title {
+            font-size: 2.125rem;
+        }
+
         >.body {
             margin-left: 8px;
-            font-size  : @body1;
+            font-size  : 1rem;
             width      : 100%;
 
             .social {
@@ -35,13 +39,13 @@
         }
 
         >.title {
-            font-size: @headline5;
+            font-size: 1.5rem;
             margin   : 16px;
         }
 
         >.subtitle {
             margin-left: 16px;
-            font-size  : @body1;
+            font-size  : 1rem;
         }
 
         >button {
@@ -71,7 +75,7 @@
                     margin-left     : 8px;
                     background-color: @brand-primary;
                     padding         : 8px;
-                    font-size       : @body2;
+                    font-size       : 0.875rem;
                     border-radius   : 4px;
                     border          : none;
                 }
@@ -99,7 +103,7 @@
                     margin-top      : 8px;
                     background-color: @brand-primary;
                     padding         : 8px;
-                    font-size       : @body2;
+                    font-size       : 0.875rem;
                     border-radius   : 4px;
                     border          : none;
                 }

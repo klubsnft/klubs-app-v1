@@ -31,12 +31,12 @@ export default class Detail implements View {
                 el(".body",
                     this.descriptionDisplay = el("p"),
                     this.socialList = el(".social",
-                        el("button.button-contained", "트위터"),
-                        el("button.button-contained", "오픈 카카오톡"),
+                        el("button.button-text", el("img", { src: "/images/twitter.svg", height: 24 })),
+                        el("button.button-text", el("img", { src: "/images/kakaoTalk.svg", height: 24 })),
+                        el(".update-container", el("button.button-text", el("img", { src: "/images/icon/edit.svg", height: 24 }), {
+                            click: () => ViewUtil.go(`/pfp/${addr}/update`),
+                        })),
                     ),
-                    el(".update-container", el("button.button-contained", "정보 수정", {
-                        click: () => ViewUtil.go(`/pfp/${addr}/update`),
-                    })),
                 ),
             ),
             el(".main",
