@@ -1,5 +1,4 @@
 @import "../palette.less";
-@import "../font.less";
 
 .buy-popup {
     position        : relative;
@@ -16,10 +15,24 @@
     }
 
     >.price {
-        font-size: @headline5;
+        font-size: 1.5rem;
     }
 
     >.price:hover {
         color: @brand-primary;
+    }
+
+    >.danger-caption {
+        padding-top: 4px;
+        font-size  : 0.625rem;
+        color      : @danger;
+        display    : block;
+    }
+
+    >.divider {
+        margin-top   : 16px;
+        margin-bottom: 16px;
+        border       : 0.5px solid;
+        width        : 100%;
     }
 }

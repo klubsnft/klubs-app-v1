@@ -21,7 +21,7 @@ export default class NFTDetail implements View {
             el(".over-view",
                 el("a.project", "Doge Sound Clubs"),
                 el(".pfp", "Robot Hoodie #9748"),
-                el(".pfp-info", el(".owner", "소유자는", el(".owner-by", "dilrong")), el(".viewer", el("img.viewer-icon", { src: "/images/icon/visibility.png", hegiht: 24 }), "1", " 명 감상")),
+                el(".pfp-info", el(".owner", "소유자는", el(".owner-by", "dilrong")), el(".viewer", el("img.viewer-icon", { src: "/images/icon/visibility.png", height: 24 }), "1", " 명 감상")),
                 el(".description",
                     el(".title", "설명"),
                     el("hr.divider"),
