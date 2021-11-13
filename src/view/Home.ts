@@ -9,7 +9,7 @@ export default class Home implements View {
         Layout.current.title = "Klaytn based NFT marketplace with MIX";
         Layout.current.content.append(
             (this.container = el(".home-view",
-                el("header.head",
+                el("header",
                     el("p.slogan", "Klubs는 클레이튼 기반 NFT 마켓플레이스입니다."),
                     el("button.button-contained", "Klubs 소개", {
                         click: () => open("https://medium.com/klubs/klubs-klaytn-based-nft-marketplace-with-mix-2c93d3a9e014"),

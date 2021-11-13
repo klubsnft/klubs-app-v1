@@ -26,7 +26,7 @@ export default class Update implements View {
 
         Layout.current.title = "PFP 정보 수정";
         Layout.current.content.append(this.container = el(".pfp-update-view",
-            el("header.head", el("p.title", "PFP 정보 수정")),
+            el("header", el("p.title", "PFP 정보 수정")),
             el(".content", el(".form",
                 this.bannerPreview = el("img.banner-preview"),
                 el(".input-container", el(".label",
@@ -158,7 +158,7 @@ export default class Update implements View {
                 const manager = await PFPsContract.managers(addr, index);
                 this.managerList.append(el("li",
                     el("span.item", manager),
-                    el("button.button-text", "삭제", {
+                    el("button.button-text", el("img", { src: '/images/icon/delete' }), {
                         click: async () => {
                             await PFPsContract.removeManager(addr, manager);
                             ViewUtil.waitTransactionAndRefresh();

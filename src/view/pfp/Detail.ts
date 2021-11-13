@@ -24,15 +24,15 @@ export default class Detail implements View {
 
         Layout.current.title = "PFP 상세정보";
         Layout.current.content.append(this.container = el(".pfp-detail-view",
-            el(".head",
+            el("header",
                 // PFP 대표 이미지
                 el("img.thumbnail", { src: "/images/galaxies.png" }),
-                this.nameDisplay = el("h2"),
                 el(".body",
-                    this.descriptionDisplay = el("p"),
+                    this.nameDisplay = el("h1", "Test"),
+                    this.descriptionDisplay = el("p", "test1111"),
                     this.socialList = el(".social",
-                        el("button.button-text", el("img", { src: "/images/twitter.svg", height: 24 })),
-                        el("button.button-text", el("img", { src: "/images/kakaoTalk.svg", height: 24 })),
+                        el("button.button-text", el("img", { src: "/images/icon/twitter.svg", height: 24 })),
+                        el("button.button-text", el("img", { src: "/images/icon/kakaoTalk.svg", height: 24 })),
                         el(".update-container", el("button.button-text", el("img", { src: "/images/icon/edit.svg", height: 24 }), {
                             click: () => ViewUtil.go(`/pfp/${addr}/update`),
                         })),
@@ -40,8 +40,8 @@ export default class Detail implements View {
                 ),
             ),
             el(".main",
-                el(".header",
-                    el("h4", "NFT 목록"),
+                el(".head",
+                    el("h2", "NFT 목록"),
                     el(".filter", el("button.button-contained", "희소 점수 보기"),
                         el("select",
                             el("option", "이름순"),

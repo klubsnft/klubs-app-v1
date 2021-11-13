@@ -10,23 +10,21 @@ export default class Add implements View {
         Layout.current.title = "PFP 등록";
         Layout.current.content.append(
             (this.container = el(".add-pfp-view",
-                el("header.head", el("p.title", "PFP 프로젝트 등록")),
+                el("header", el("h1.title", "PFP 프로젝트 등록")),
                 el(".content",
                     el("ul",
-                        el("li",
-                            el("a", "KIP17Mintable을 상속한 PFP 등록", {
-                                click: () => ViewUtil.go("/pfp/add-by-minter"),
-                            }),
+                        el("li", { click: () => ViewUtil.go("/pfp/add-by-minter") },
+                            el("p", "KIP17Mintable을 상속한 PFP 등록"),
                         ),
-                        el("li",
-                            el("a", "Ownable을 상속한 PFP 등록", {
-                                click: () => ViewUtil.go("/pfp/add-by-pfp-owner"),
-                            }),
+                        el("li", {
+                            click: () => ViewUtil.go("/pfp/add-by-pfp-owner"),
+                        },
+                            el("p", "Ownable을 상속한 PFP 등록"),
                         ),
-                        el("li",
-                            el("a", "둘 다 상속하지 않은 PFP 등록", {
-                                click: () => ViewUtil.go("/pfp/propose"),
-                            }),
+                        el("li", {
+                            click: () => ViewUtil.go("/pfp/propose"),
+                        },
+                            el("p", "둘 다 상속하지 않은 PFP 등록"),
                         ),
                     ),
                 ),
