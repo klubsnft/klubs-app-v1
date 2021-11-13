@@ -12,7 +12,7 @@ export default class Propose implements View {
     Layout.current.content.append(
       (this.container = el(
         ".pfp-propose-view",
-        el("header.head", el("p.title", "PFP 등록 신청"), el("p.subtitle", "둘 다 상속하지 않은 PFP 등록")),
+        el("header", el("h1.title", "PFP 등록 신청"), el("p.subtitle", "둘 다 상속하지 않은 PFP 등록")),
 
         el(
           ".content",

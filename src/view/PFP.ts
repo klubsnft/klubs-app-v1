@@ -14,7 +14,7 @@ export default class PFP implements View {
         Layout.current.title = "PFP Projects";
         Layout.current.content.append(
             this.container = el(".pfp-view",
-                el("header.head",
+                el("header",
                     el("p.slogan",
                         "PFP는 프로필 이미지 NFT로,\nNFT를 소유한 사람들 끼리 커뮤니티를 이루어 소통하는 목적을 띠고 있습니다."
                     ),

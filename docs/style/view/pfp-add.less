@@ -1,7 +1,7 @@
 @import "../palette.less";
 
 .add-pfp-view {
-    >.head {
+    >header {
         display         : flex;
         flex-direction  : column;
         background-image: url("../images/galaxies.png");
@@ -49,6 +49,8 @@
             }
 
             >li:hover {
+                cursor          : pointer;
+                color           : @brand-primary;
                 background-color: @shadow;
             }
         }
