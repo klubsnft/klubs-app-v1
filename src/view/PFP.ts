@@ -8,6 +8,7 @@ import ViewUtil from "./ViewUtil";
 export default class PFP implements View {
 
     private container: DomNode;
+    private pfpLoading: DomNode;
     private pfpList: DomNode;
 
     constructor() {
@@ -15,16 +16,17 @@ export default class PFP implements View {
         Layout.current.content.append(
             this.container = el(".pfp-view",
                 el("header",
-                    el("p.slogan",
+                    el("p",
                         "PFP는 프로필 이미지 NFT로,\nNFT를 소유한 사람들 끼리 커뮤니티를 이루어 소통하는 목적을 띠고 있습니다."
                     ),
-                    el("button.button-contained", "프로젝트 등록", {
+                    el("a", "프로젝트 등록", {
                         click: () => ViewUtil.go("/pfp/add"),
                     }),
                 ),
                 el(".content",
-                    el("h6", "프로젝트 목록"),
-                    this.pfpList = el("ul"),
+                    el("h2", "프로젝트 목록"),
+                    this.pfpLoading = el(".loading", "Loading..."),
+                    this.pfpList = el(".pfp-list"),
                 ),
             ),
         );
@@ -32,33 +34,25 @@ export default class PFP implements View {
     }
 
     private async load() {
+
+        this.pfpList.empty();
         const addrCount = await PFPsContract.getAddrCount();
-        console.log(addrCount.toNumber());
         const promises: Promise<void>[] = [];
         for (let i = 0; i < addrCount.toNumber(); i += 1) {
             const promise = async (index: number) => {
                 const addr = await PFPsContract.addrs(index);
                 const extras = await PFPsContract.extras(addr);
-                const totalSupply = await PFPsContract.getTotalSupply(addr);
-                console.log(totalSupply.toNumber());
-                let data: any = {};
-                try {
-                    console.log(extras);
-                    data = JSON.parse(extras);
-                } catch (e) {
-                    //ignore.
+                if (extras.trim() !== "") {
+                    let data: any = {};
+                    try { data = JSON.parse(extras); } catch (e) { }
+                    new PFPCard(addr, data.banner, data.icon, data.name, data.description).appendTo(this.pfpList);
                 }
-                new PFPCard(
-                    addr,
-                    data.banner,
-                    data.icon,
-                    data.name,
-                    data.description,
-                ).appendTo(this.pfpList);
             };
             promises.push(promise(i));
         }
         await Promise.all(promises);
+
+        this.pfpLoading.delete();
     }
 
     public changeParams(params: ViewParams, uri: string): void { }

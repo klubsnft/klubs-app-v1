@@ -8,7 +8,7 @@ export default class NFTDetail implements View {
 
     constructor() {
         Layout.current.title = "PFP 상세정보";
-        Layout.current.content.append(this.container = el(".pfp-detail-view",
+        Layout.current.content.append(this.container = el(".pfp-nft-detail-view",
             el(".image-view",
                 el("img.pfp-image", { src: "/images/galaxies.png" }),
                 el("button.button-contained", "구매하기"),

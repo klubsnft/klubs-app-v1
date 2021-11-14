@@ -8,7 +8,7 @@ export default class PFPNFTCard extends DomNode {
         description: string | undefined,
         price: number | undefined,
     ) {
-        super(".card-view");
+        super(".pfp-nft-card");
 
         this.append(
             el("img", { src: img, width: "200", height: "200", onerror: "this.src='/images/noImage.png'" }),

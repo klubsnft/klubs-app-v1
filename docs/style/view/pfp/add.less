@@ -1,0 +1,56 @@
+.add-pfp-view {
+    >header {
+        display         : flex;
+        flex-direction  : column;
+        background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+        background-size : cover;
+        height          : 200px;
+        justify-content : center;
+
+        >.title {
+            font-size: 1.5rem;
+            margin   : 16px;
+        }
+
+        >.subtitle {
+            margin-left: 16px;
+            font-size  : 1rem;
+        }
+
+        >button {
+            max-width  : 150px;
+            margin-left: 16px;
+        }
+    }
+
+    >.content {
+        margin-top : 8px;
+        margin-left: 16px;
+        height     : 100%;
+        margin     : 16px;
+
+        >h6 {
+            margin-top   : 16px;
+            margin-bottom: 16px;
+        }
+
+        >h4 {
+            padding-bottom: 8px;
+        }
+
+        >ul {
+            >li {
+                margin-top   : 16px;
+                font-size    : 1rem;
+                padding      : 8px;
+                border-bottom: 0.5px solid #ccc;
+            }
+
+            >li:hover {
+                cursor          : pointer;
+                color           : @brand-primary;
+                background-color: @shadow;
+            }
+        }
+    }
+}

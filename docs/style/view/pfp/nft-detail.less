@@ -1,0 +1,103 @@
+.pfp-nft-detail-view {
+    display       : flex;
+    flex-direction: row;
+    max-width     : 100%;
+
+    >.over-view {
+        margin-top   : 16px;
+        padding-left : 16px;
+        padding-right: 16px;
+
+        >.project {
+            font-size: 0.875rem;
+        }
+
+        >.pfp {
+            margin-top: 8px;
+            font-size : 3rem;
+        }
+
+        >.pfp-info {
+            margin-top    : 8px;
+            display       : flex;
+            flex-direction: row;
+            align-items   : center;
+
+            >.owner {
+                display  : flex;
+                font-size: 1rem;
+
+                >.owner-by {
+                    margin-left: 8px;
+                    font-size  : 1rem;
+                    color      : @brand-primary;
+                }
+            }
+
+
+            >.viewer {
+                display        : flex;
+                margin-left    : 32px;
+                font-size      : 1rem;
+                justify-content: center;
+                align-items    : center;
+
+                >.viewer-icon {
+                    margin-right: 4px;
+                }
+            }
+        }
+
+        >.description {
+            display         : flex;
+            flex-direction  : column;
+            width           : 100%;
+            background-color: @shadow;
+            border-radius   : 4px;
+            margin-top      : 16px;
+            padding-right   : 16px;
+
+            >.title {
+                padding  : 8px;
+                font-size: 1.25rem;
+            }
+
+            >.divider {
+                border: 0.5px solid;
+                width : 100%;
+            }
+
+            >.body {
+                font-size: 1rem;
+                padding  : 8px;
+            }
+        }
+    }
+
+    >.image-view {
+        margin-top  : 16px;
+        padding-left: 16px;
+        max-width   : 50%;
+
+        >.pfp-image {
+            max-width    : 100%;
+            border-radius: 16px;
+        }
+
+        >button {
+            width     : 100%;
+            height    : 48px;
+            margin-top: 16px;
+        }
+
+        >.label {
+            font-size : 0.875rem;
+            margin-top: 16px;
+        }
+
+        >input {
+            margin-top: 8px;
+            width     : 100%;
+        }
+    }
+}

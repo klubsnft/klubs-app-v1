@@ -9,8 +9,7 @@ export default class Art implements View {
     constructor() {
         Layout.current.title = "Art";
         Layout.current.content.append(this.container = el(".art-view",
-            el(".title", "Art는 준비 중 입니다."),
-            el(".subtitle", "2021년 11월 29일 오픈 예정입니다."),
+            el(".title", "Klubs Art는 준비 중입니다."),
         ));
     }
 

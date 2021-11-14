@@ -3,6 +3,9 @@ import ViewUtil from "../view/ViewUtil";
 
 export default class PFPCard extends DomNode {
 
+    private bannerDisplay: DomNode<HTMLImageElement>;
+    private iconDisplay: DomNode<HTMLImageElement>;
+
     constructor(
         addr: string,
         banner: string | undefined,
@@ -10,14 +13,36 @@ export default class PFPCard extends DomNode {
         name: string | undefined,
         description: string | undefined,
     ) {
-        super(".PFPCard");
+        super(".pfp-card");
 
         this.append(
-            el("img.banner", { src: banner, onerror: "this.src='/images/noImage.png'" }),
-            el("img.icon", { src: icon, onerror: "this.src='/images/noImage.png'" }),
-            el(".name", name),
-            el(".description", description)
+            this.bannerDisplay = el("img.banner"),
+            this.iconDisplay = el("img.icon"),
+            el(".info",
+                el(".name", name),
+                el(".description", description === undefined ? undefined : (
+                    description.length > 200 ? `${description.substring(0, 197)}...` : description
+                )),
+            ),
         );
+
+        if (banner === undefined || banner.trim() === "") {
+            this.bannerDisplay.domElement.src = "/images/placeholder.svg";
+        } else {
+            this.bannerDisplay.domElement.src = banner;
+        }
+        this.bannerDisplay.onDom("error", () => {
+            this.bannerDisplay.domElement.src = "/images/placeholder.svg";
+        });
+
+        if (icon === undefined || icon.trim() === "") {
+            this.iconDisplay.domElement.src = "/images/placeholder.svg";
+        } else {
+            this.iconDisplay.domElement.src = icon;
+        }
+        this.iconDisplay.onDom("error", () => {
+            this.iconDisplay.domElement.src = "/images/placeholder.svg";
+        });
 
         this.onDom("click", () => ViewUtil.go(`/pfp/${addr}`));
     }
