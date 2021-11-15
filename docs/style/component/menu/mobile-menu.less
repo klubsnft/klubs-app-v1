@@ -1,0 +1,52 @@
+.mobile-menu {
+    position        : fixed;
+    width           : 170px;
+    background-color: #222;
+    padding         : 10px;
+
+    >ul {
+        >li {
+            >a {
+                display  : block;
+                padding  : 10px 5px;
+                font-size: 18px;
+
+                &:hover {
+                    color: @brand-primary
+                }
+
+                &:active {
+                    color: @brand-primary
+                }
+            }
+
+            >ul {
+                margin-left: 10px;
+
+                >li {
+                    >a {
+                        display: block;
+                        padding: 5px;
+                        color  : #ccc;
+
+                        &:hover {
+                            color: @brand-primary
+                        }
+
+                        &:active {
+                            color: @brand-primary
+                        }
+                    }
+
+                    &.parent {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    >.user-menu {
+        margin: auto;
+    }
+}

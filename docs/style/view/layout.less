@@ -1,8 +1,7 @@
 .layout {
     width: 100%;
 
-    >.navbar {
-        max-width       : 100vw;
+    >header {
         background-color: #222;
         box-shadow      : rgb(4 17 29 / 25%) 0px 0px 8px 0px;
         position        : sticky;
@@ -11,54 +10,36 @@
         padding-bottom  : 12px;
         padding-left    : 16px;
         padding-right   : 16px;
-        justify-content : space-between;
         align-items     : center;
 
-        >.logo {
-            color      : @brand-primary;
-            font-size  : 2.125rem;
-            font-weight: bold;
+        >a {
+            margin-right: 16px;
         }
 
-        >.logo:hover {
-            color: @brand-400;
+        >.pc-menu {
+            @media @phone {
+                display: none;
+            }
         }
 
-        >.menu {
+        >.right {
+            flex-grow      : 1;
             display        : flex;
-            justify-content: flex-end;
-            align-items    : center;
+            justify-content: right;
 
-            >.menu-item {
-                font-size: 16px;
-                padding  : 0 16px;
-
-                &:hover {
-                    font-size: 1rem;
-                    color    : @brand-primary
-                }
-
-                &:active {
-                    font-size: 1rem;
-                    color    : @brand-primary
+            >.user-menu {
+                @media @phone {
+                    display: none;
                 }
             }
 
-            >.connect-wallet,
-            >.wallet-address {
-                display         : flex;
-                align-items     : center;
-                margin-left     : 16px;
-                color           : @background;
-                background-color: @brand-primary;
-                font-size       : 0.875rem;
-                padding         : 8px;
-                border-radius   : 4px;
-            }
+            >.menu-button {
+                display: none;
+                padding: 10px;
 
-            >.connect-wallet,
-            >.wallet-address:hover {
-                background-color: @brand-400;
+                @media @phone {
+                    display: block;
+                }
             }
         }
     }

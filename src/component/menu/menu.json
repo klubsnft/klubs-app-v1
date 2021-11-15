@@ -1,0 +1,20 @@
+{
+    "menu": [{
+            "uri": "pfp",
+            "name": "PFP",
+            "children": [{
+                    "uri": "pfp/rankings",
+                    "name": "PFP 랭킹"
+                },
+                {
+                    "uri": "pfp/add",
+                    "name": "PFP 등록"
+                }
+            ]
+        },
+        {
+            "uri": "art",
+            "name": "Arts"
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+.pc-menu {
+    >ul {
+        display: flex;
+
+        >li {
+            position: relative;
+
+            >a {
+                font-size: 16px;
+                padding  : 0 16px;
+
+                &:hover {
+                    color: @brand-primary
+                }
+
+                &:active {
+                    color: @brand-primary
+                }
+            }
+
+            >ul {
+                position        : absolute;
+                left            : 0;
+                top             : 20px;
+                width           : 100px;
+                display         : none;
+                background-color: #222;
+                padding         : 10px 0;
+
+                >li {
+                    >a {
+                        display   : block;
+                        text-align: center;
+                        padding   : 10px;
+
+                        &:hover {
+                            color: @brand-primary
+                        }
+
+                        &:active {
+                            color: @brand-primary
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                >ul {
+                    display: block;
+                }
+            }
+        }
+    }
+}

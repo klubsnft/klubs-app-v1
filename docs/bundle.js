@@ -1697,6 +1697,50 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 
 /***/ }),
 
+/***/ "./src/component/menu/MenuTreeBuilder.ts":
+/*!***********************************************!*\
+  !*** ./src/component/menu/MenuTreeBuilder.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst ViewUtil_1 = __importDefault(__webpack_require__(/*! ../../view/ViewUtil */ \"./src/view/ViewUtil.ts\"));\r\nclass MenuTreeBuilder {\r\n    build(menus, parent) {\r\n        const lis = parent === undefined ? [] : [(0, skynode_1.el)(\"li.parent\", (0, skynode_1.el)(`a${location.pathname === `/${parent.uri}` ? \".on\" : \"\"}`, parent.name, { click: () => ViewUtil_1.default.go(`/${parent.uri}`) }))];\r\n        for (const menuItem of menus) {\r\n            const li = (0, skynode_1.el)(\"li\", (0, skynode_1.el)(`a${location.pathname === `/${menuItem.uri}` ? \".on\" : \"\"}`, menuItem.name, { click: () => ViewUtil_1.default.go(`/${menuItem.uri}`) }));\r\n            if (menuItem.children !== undefined) {\r\n                li.append(this.build(menuItem.children, menuItem));\r\n            }\r\n            lis.push(li);\r\n        }\r\n        return (0, skynode_1.el)(\"ul\", ...lis);\r\n    }\r\n}\r\nexports[\"default\"] = new MenuTreeBuilder();\r\n\n\n//# sourceURL=webpack:///./src/component/menu/MenuTreeBuilder.ts?");
+
+/***/ }),
+
+/***/ "./src/component/menu/MobileMenu.ts":
+/*!******************************************!*\
+  !*** ./src/component/menu/MobileMenu.ts ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst menu_json_1 = __importDefault(__webpack_require__(/*! ./menu.json */ \"./src/component/menu/menu.json\"));\r\nconst MenuTreeBuilder_1 = __importDefault(__webpack_require__(/*! ./MenuTreeBuilder */ \"./src/component/menu/MenuTreeBuilder.ts\"));\r\nconst UserMenu_1 = __importDefault(__webpack_require__(/*! ./UserMenu */ \"./src/component/menu/UserMenu.ts\"));\r\nclass MobileMenu extends skynode_1.ClosableFloatingDomNode {\r\n    constructor(position) {\r\n        super(position, \".mobile-menu\");\r\n        this.append(MenuTreeBuilder_1.default.build(menu_json_1.default.menu), new UserMenu_1.default());\r\n        this.onDom(\"click\", () => this.delete());\r\n    }\r\n}\r\nexports[\"default\"] = MobileMenu;\r\n\n\n//# sourceURL=webpack:///./src/component/menu/MobileMenu.ts?");
+
+/***/ }),
+
+/***/ "./src/component/menu/PCMenu.ts":
+/*!**************************************!*\
+  !*** ./src/component/menu/PCMenu.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst menu_json_1 = __importDefault(__webpack_require__(/*! ./menu.json */ \"./src/component/menu/menu.json\"));\r\nconst MenuTreeBuilder_1 = __importDefault(__webpack_require__(/*! ./MenuTreeBuilder */ \"./src/component/menu/MenuTreeBuilder.ts\"));\r\nclass PCMenu extends skynode_1.DomNode {\r\n    constructor() {\r\n        super(\".pc-menu\");\r\n        this.append(MenuTreeBuilder_1.default.build(menu_json_1.default.menu));\r\n    }\r\n}\r\nexports[\"default\"] = PCMenu;\r\n\n\n//# sourceURL=webpack:///./src/component/menu/PCMenu.ts?");
+
+/***/ }),
+
+/***/ "./src/component/menu/UserMenu.ts":
+/*!****************************************!*\
+  !*** ./src/component/menu/UserMenu.ts ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst CommonUtil_1 = __importDefault(__webpack_require__(/*! ../../CommonUtil */ \"./src/CommonUtil.ts\"));\r\nconst Wallet_1 = __importDefault(__webpack_require__(/*! ../../klaytn/Wallet */ \"./src/klaytn/Wallet.ts\"));\r\nclass UserMenu extends skynode_1.DomNode {\r\n    constructor() {\r\n        super(\".user-menu\");\r\n        this.connectHandler = () => {\r\n            this.loadAddress();\r\n        };\r\n        this.append(this.connectWalletButton = (0, skynode_1.el)(\"a.connect-wallet\", \"CONNECT WALLET\", {\r\n            click: () => Wallet_1.default.connect(),\r\n        }), this.addressDisplay = (0, skynode_1.el)(\".wallet-address\"));\r\n        Wallet_1.default.on(\"connect\", this.connectHandler);\r\n        this.addressDisplay.style({ display: \"none\" });\r\n    }\r\n    async loadAddress() {\r\n        const address = await Wallet_1.default.loadAddress();\r\n        if (address !== undefined) {\r\n            if (this.connectWalletButton.deleted !== true) {\r\n                this.connectWalletButton.delete();\r\n            }\r\n            this.addressDisplay.style({ display: \"block\" });\r\n            this.addressDisplay.empty().appendText(CommonUtil_1.default.shortenAddress(address));\r\n        }\r\n    }\r\n    delete() {\r\n        Wallet_1.default.off(\"connect\", this.connectHandler);\r\n        super.delete();\r\n    }\r\n}\r\nexports[\"default\"] = UserMenu;\r\n\n\n//# sourceURL=webpack:///./src/component/menu/UserMenu.ts?");
+
+/***/ }),
+
 /***/ "./src/contracts/Contract.ts":
 /*!***********************************!*\
   !*** ./src/contracts/Contract.ts ***!
@@ -1792,7 +1836,7 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst CommonUtil_1 = __importDefault(__webpack_require__(/*! ../CommonUtil */ \"./src/CommonUtil.ts\"));\r\nconst Wallet_1 = __importDefault(__webpack_require__(/*! ../klaytn/Wallet */ \"./src/klaytn/Wallet.ts\"));\r\nconst ViewUtil_1 = __importDefault(__webpack_require__(/*! ./ViewUtil */ \"./src/view/ViewUtil.ts\"));\r\nclass Layout {\r\n    constructor() {\r\n        this.connectHandler = () => {\r\n            this.loadAddress();\r\n        };\r\n        Layout.current = this;\r\n        skynode_1.BodyNode.append((this.container = (0, skynode_1.el)(\".layout\", (0, skynode_1.el)(\"header.navbar\", (0, skynode_1.el)(\"a\", (0, skynode_1.el)(\".logo\", (0, skynode_1.el)(\"img\", { src: \"/images/logo.svg\", height: \"28\" })), { click: () => ViewUtil_1.default.go(\"/\") }), (0, skynode_1.el)(\".menu\", (0, skynode_1.el)(\"a.menu-item\", \"PFP\", { click: () => ViewUtil_1.default.go(\"/pfp\") }), (0, skynode_1.el)(\"a.menu-item\", \"Art\", { click: () => ViewUtil_1.default.go(\"/art\") }), this.connectWalletButton = (0, skynode_1.el)(\"button.connect-wallet\", \"CONNECT WALLET\", {\r\n            click: () => Wallet_1.default.connect(),\r\n        }), this.addressDisplay = (0, skynode_1.el)(\".wallet-address\"))), (0, skynode_1.el)(\"main\", (this.content = (0, skynode_1.el)(\".content\"))), (0, skynode_1.el)(\"footer\", \"Copyright © 2021 Klubs. All rights reserved.\"))));\r\n        Wallet_1.default.on(\"connect\", this.connectHandler);\r\n        this.addressDisplay.style({ display: \"none\" });\r\n    }\r\n    async loadAddress() {\r\n        const address = await Wallet_1.default.loadAddress();\r\n        if (address !== undefined) {\r\n            if (this.connectWalletButton.deleted !== true) {\r\n                this.connectWalletButton.delete();\r\n            }\r\n            this.addressDisplay.style({ display: \"block\" });\r\n            this.addressDisplay.empty().appendText(CommonUtil_1.default.shortenAddress(address));\r\n        }\r\n    }\r\n    set title(title) {\r\n        document.title = `Klubs - ${title}`;\r\n    }\r\n    changeParams(params, uri) { }\r\n    close() {\r\n        Wallet_1.default.off(\"connect\", this.connectHandler);\r\n        this.container.delete();\r\n    }\r\n}\r\nexports[\"default\"] = Layout;\r\n\n\n//# sourceURL=webpack:///./src/view/Layout.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst MobileMenu_1 = __importDefault(__webpack_require__(/*! ../component/menu/MobileMenu */ \"./src/component/menu/MobileMenu.ts\"));\r\nconst PCMenu_1 = __importDefault(__webpack_require__(/*! ../component/menu/PCMenu */ \"./src/component/menu/PCMenu.ts\"));\r\nconst UserMenu_1 = __importDefault(__webpack_require__(/*! ../component/menu/UserMenu */ \"./src/component/menu/UserMenu.ts\"));\r\nconst ViewUtil_1 = __importDefault(__webpack_require__(/*! ./ViewUtil */ \"./src/view/ViewUtil.ts\"));\r\nclass Layout {\r\n    constructor() {\r\n        Layout.current = this;\r\n        skynode_1.BodyNode.append((this.container = (0, skynode_1.el)(\".layout\", (0, skynode_1.el)(\"header\", (0, skynode_1.el)(\"a\", (0, skynode_1.el)(\".logo\", (0, skynode_1.el)(\"img\", { src: \"/images/logo.svg\", height: \"28\" })), { click: () => ViewUtil_1.default.go(\"/\") }), new PCMenu_1.default(), (0, skynode_1.el)(\".right\", new UserMenu_1.default(), (0, skynode_1.el)(\"a.menu-button\", (0, skynode_1.el)(\"i.fas.fa-bars\"), {\r\n            click: (event, button) => {\r\n                const rect = button.rect;\r\n                new MobileMenu_1.default({ left: rect.right - 180, top: rect.bottom }).appendTo(skynode_1.BodyNode);\r\n            },\r\n        }))), (0, skynode_1.el)(\"main\", (this.content = (0, skynode_1.el)(\".content\"))), (0, skynode_1.el)(\"footer\", \"Copyright © 2021 Klubs. All rights reserved.\"))));\r\n    }\r\n    set title(title) {\r\n        document.title = `Klubs - ${title}`;\r\n    }\r\n    changeParams(params, uri) { }\r\n    close() {\r\n        this.container.delete();\r\n    }\r\n}\r\nexports[\"default\"] = Layout;\r\n\n\n//# sourceURL=webpack:///./src/view/Layout.ts?");
 
 /***/ }),
 
@@ -1979,6 +2023,17 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /***/ (() => {
 
 eval("/* (ignored) */\n\n//# sourceURL=webpack:///buffer_(ignored)?");
+
+/***/ }),
+
+/***/ "./src/component/menu/menu.json":
+/*!**************************************!*\
+  !*** ./src/component/menu/menu.json ***!
+  \**************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('{\"menu\":[{\"uri\":\"pfp\",\"name\":\"PFP\",\"children\":[{\"uri\":\"pfp/rankings\",\"name\":\"PFP 랭킹\"},{\"uri\":\"pfp/add\",\"name\":\"PFP 등록\"}]},{\"uri\":\"art\",\"name\":\"Arts\"}]}');\n\n//# sourceURL=webpack:///./src/component/menu/menu.json?");
 
 /***/ }),
 
