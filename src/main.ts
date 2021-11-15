@@ -1,4 +1,5 @@
 import { SkyRouter } from "skyrouter";
+import PFPProposals from "./view/admin/PFPProposals";
 import Art from "./view/Art";
 import Home from "./view/Home";
 import Layout from "./view/Layout";
@@ -52,6 +53,8 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("pfp/proposal/{proposalId}", Proposal);
 
     SkyRouter.route("art", Art);
+    
+    SkyRouter.route("admin/pfp-proposals", PFPProposals);
 
     if (sessionStorage.__spa_path) {
         SkyRouter.go(sessionStorage.__spa_path);

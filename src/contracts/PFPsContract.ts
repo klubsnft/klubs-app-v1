@@ -3,6 +3,11 @@ import Config from "../Config";
 import PFPsArtifact from "./abi/artifacts/contracts/PFPs.sol/PFPs.json";
 import Contract from "./Contract";
 
+interface Proposal {
+    addr: string,
+    manager: string,
+}
+
 class PFPsContract extends Contract {
 
     constructor() {
@@ -61,8 +66,24 @@ class PFPsContract extends Contract {
         return BigNumber.from(await this.runMethod("getTotalSupply", addr));
     }
 
+    public async proposalCount(): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("proposalCount"));
+    }
+
+    public async proposals(index: BigNumberish): Promise<Proposal> {
+        const results = await this.runMethod("proposals", index);
+        return {
+            addr: results[0],
+            manager: results[1],
+        };
+    }
+
     public async managers(addr: string, index: BigNumberish): Promise<string> {
         return await this.runMethod("managers", addr, index);
+    }
+
+    public async passProposal(proposalId: BigNumberish): Promise<void> {
+        await this.runWalletMethod("passProposal", proposalId);
     }
 }
 

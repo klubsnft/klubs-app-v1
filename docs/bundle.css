@@ -507,7 +507,7 @@ p {
 }
 .pc-menu > ul > li > a {
   font-size: 16px;
-  padding: 0 16px;
+  padding: 16px;
 }
 .pc-menu > ul > li > a:hover {
   color: #C7FEA2;
@@ -546,7 +546,7 @@ p {
 }
 .mobile-menu > ul > li > a {
   display: block;
-  padding: 10px 5px;
+  padding: 12px 5px;
   font-size: 18px;
 }
 .mobile-menu > ul > li > a:hover {
@@ -560,7 +560,7 @@ p {
 }
 .mobile-menu > ul > li > ul > li > a {
   display: block;
-  padding: 5px;
+  padding: 8px 5px;
   color: #ccc;
 }
 .mobile-menu > ul > li > ul > li > a:hover {
@@ -574,6 +574,7 @@ p {
 }
 .mobile-menu > .user-menu {
   margin: auto;
+  margin-top: 16px;
 }
 .user-menu > .connect-wallet,
 .user-menu > .wallet-address {
