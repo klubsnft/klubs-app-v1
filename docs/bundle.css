@@ -479,8 +479,8 @@ p {
   align-items: center;
 }
 .layout > .navbar > .menu > .menu-item {
-  font-size: 1rem;
-  margin-left: 16px;
+  font-size: 16px;
+  padding: 0 16px;
 }
 .layout > .navbar > .menu > .menu-item:hover {
   font-size: 1rem;
@@ -933,38 +933,32 @@ p {
   height: 200px;
   justify-content: center;
 }
-.add-pfp-view > header > .title {
-  font-size: 1.5rem;
+.add-pfp-view > header > h1 {
+  font-size: 24px;
   margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.add-pfp-view > header > .subtitle {
-  margin-left: 16px;
-  font-size: 1rem;
+.add-pfp-view > main {
+  max-width: 600px;
+  margin: auto;
+  padding: 16px;
 }
-.add-pfp-view > header > button {
-  max-width: 150px;
-  margin-left: 16px;
-}
-.add-pfp-view > .content {
-  margin-top: 8px;
-  margin-left: 16px;
-  height: 100%;
-  margin: 16px;
-}
-.add-pfp-view > .content > h6 {
+.add-pfp-view > main > section {
   margin-top: 16px;
-  margin-bottom: 16px;
+  font-size: 16px;
+  border: 1px solid #666;
+  border-radius: 10px;
 }
-.add-pfp-view > .content > h4 {
-  padding-bottom: 8px;
+.add-pfp-view > main > section > h2 {
+  font-size: 24px;
+  padding: 16px;
 }
-.add-pfp-view > .content > ul > li {
-  margin-top: 16px;
-  font-size: 1rem;
-  padding: 8px;
-  border-bottom: 0.5px solid #ccc;
+.add-pfp-view > main > section > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
 }
-.add-pfp-view > .content > ul > li:hover {
+.add-pfp-view > main > section:hover {
   cursor: pointer;
   color: #C7FEA2;
   background-color: #1f1f1f;
