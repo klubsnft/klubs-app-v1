@@ -167,7 +167,7 @@ input {
   visibility: hidden;
 }
 * {
-  font-family: "Noto Sans KR", sans-serif !important;
+  font-family: "Noto Sans KR", sans-serif;
 }
 body {
   background: #121212;
@@ -1020,50 +1020,72 @@ p {
   height: 200px;
   justify-content: center;
 }
-.add-pfp-by-minter-view > header > .title {
-  font-size: 1.5rem;
+.add-pfp-by-minter-view > header > h1 {
   margin: 16px;
+  margin-bottom: 0;
+  font-size: 24px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.add-pfp-by-minter-view > header > .subtitle {
-  margin-left: 16px;
-  font-size: 1rem;
-}
-.add-pfp-by-minter-view > header > button {
-  max-width: 150px;
-  margin-left: 16px;
-}
-.add-pfp-by-minter-view > .content {
-  display: flex;
-  flex-direction: column;
-  padding-top: 8px;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.add-pfp-by-minter-view > header > p {
   margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.add-pfp-by-minter-view > .content > h6 {
-  margin-top: 8px;
+.add-pfp-by-minter-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
 }
-.add-pfp-by-minter-view > .content > ul > li {
-  margin-top: 8px;
-  font-size: 1rem;
-}
-.add-pfp-by-minter-view > .content > ul > li > .form > .label > input {
-  width: 100%;
-  margin-top: 16px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-.add-pfp-by-minter-view > .content > ul > li > .form > button {
-  width: 100%;
-}
-.add-pfp-by-minter-view > .content > ul > li > .danger-caption {
-  padding-top: 4px;
-  font-size: 0.625rem;
-  color: #ff3b30;
+.add-pfp-by-minter-view > main > .warning {
   display: block;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
 }
-.add-pfp-by-owner-view > header {
+.add-pfp-by-minter-view > main > .warning > i {
+  margin-right: 6px;
+}
+.add-pfp-by-minter-view > main > label {
+  display: block;
+  margin-top: 16px;
+}
+.add-pfp-by-minter-view > main > label > h6 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.add-pfp-by-minter-view > main > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.add-pfp-by-minter-view > main > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.add-pfp-by-minter-view > main > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.add-pfp-by-minter-view > main > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.add-pfp-by-minter-view > main > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.add-pfp-by-pfp-owner-view > header {
   display: flex;
   flex-direction: column;
   background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
@@ -1071,48 +1093,70 @@ p {
   height: 200px;
   justify-content: center;
 }
-.add-pfp-by-owner-view > header > .title {
-  font-size: 1.5rem;
+.add-pfp-by-pfp-owner-view > header > h1 {
   margin: 16px;
+  margin-bottom: 0;
+  font-size: 24px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.add-pfp-by-owner-view > header > .subtitle {
-  margin-left: 16px;
-  font-size: 1rem;
-}
-.add-pfp-by-owner-view > header > button {
-  max-width: 150px;
-  margin-left: 16px;
-}
-.add-pfp-by-owner-view > .content {
-  display: flex;
-  flex-direction: column;
-  padding-top: 8px;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.add-pfp-by-pfp-owner-view > header > p {
   margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.add-pfp-by-owner-view > .content > h6 {
-  margin-top: 8px;
+.add-pfp-by-pfp-owner-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
 }
-.add-pfp-by-owner-view > .content > ul > li {
-  margin-top: 8px;
-  font-size: 1rem;
-}
-.add-pfp-by-owner-view > .content > ul > li > .form > .label > input {
-  width: 100%;
-  margin-top: 16px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-.add-pfp-by-owner-view > .content > ul > li > .form > button {
-  width: 100%;
-}
-.add-pfp-by-owner-view > .content > ul > li > .danger-caption {
-  padding-top: 4px;
-  font-size: 0.625rem;
-  color: #ff3b30;
+.add-pfp-by-pfp-owner-view > main > .warning {
   display: block;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+}
+.add-pfp-by-pfp-owner-view > main > .warning > i {
+  margin-right: 6px;
+}
+.add-pfp-by-pfp-owner-view > main > label {
+  display: block;
+  margin-top: 16px;
+}
+.add-pfp-by-pfp-owner-view > main > label > h6 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.add-pfp-by-pfp-owner-view > main > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.add-pfp-by-pfp-owner-view > main > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.add-pfp-by-pfp-owner-view > main > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.add-pfp-by-pfp-owner-view > main > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.add-pfp-by-pfp-owner-view > main > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .sell-pfp-view {
   display: flex;
@@ -1246,48 +1290,70 @@ p {
   height: 200px;
   justify-content: center;
 }
-.pfp-propose-view > header > .title {
-  font-size: 1.5rem;
+.pfp-propose-view > header > h1 {
   margin: 16px;
+  margin-bottom: 0;
+  font-size: 24px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.pfp-propose-view > header > .subtitle {
-  margin-left: 16px;
-  font-size: 1rem;
-}
-.pfp-propose-view > header > button {
-  max-width: 150px;
-  margin-left: 16px;
-}
-.pfp-propose-view > .content {
-  display: flex;
-  flex-direction: column;
-  padding-top: 8px;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.pfp-propose-view > header > p {
   margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.pfp-propose-view > .content > h6 {
-  margin-top: 8px;
+.pfp-propose-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
 }
-.pfp-propose-view > .content > ul {
-  margin-top: 8px;
-  font-size: 1rem;
-}
-.pfp-propose-view > .content > ul > .form > .label > input {
-  width: 100%;
-  margin-top: 16px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-.pfp-propose-view > .content > ul > .form > button {
-  width: 100%;
-}
-.pfp-propose-view > .content > ul > .danger-caption {
-  padding-top: 4px;
-  font-size: 0.625rem;
-  color: #ff3b30;
+.pfp-propose-view > main > .warning {
   display: block;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+}
+.pfp-propose-view > main > .warning > i {
+  margin-right: 6px;
+}
+.pfp-propose-view > main > label {
+  display: block;
+  margin-top: 16px;
+}
+.pfp-propose-view > main > label > h6 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.pfp-propose-view > main > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.pfp-propose-view > main > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.pfp-propose-view > main > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.pfp-propose-view > main > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.pfp-propose-view > main > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .art-view {
   padding: 16px;

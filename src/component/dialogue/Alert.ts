@@ -7,7 +7,7 @@ export default class Alert extends Popup {
     constructor(
         title: string,
         message: string,
-        confirmTitle: string,
+        confirmTitle?: string,
     ) {
         super(".popup-background");
         this.append(
@@ -15,7 +15,7 @@ export default class Alert extends Popup {
                 el("h2", title),
                 el("p", message),
                 el(".button-container",
-                    el("button", confirmTitle, {
+                    el("button", confirmTitle === undefined ? "확인" : confirmTitle, {
                         click: () => this.delete(),
                     }),
                 ),
