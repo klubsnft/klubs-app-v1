@@ -10,7 +10,8 @@ export default class Rankings implements View {
         Layout.current.title = "PFP 랭킹";
         Layout.current.content.append(
             (this.container = el(".pfp-ranking-view",
-                el("header",
+                el("p", "충분한 데이터가 축척된 이후 랭킹 페이지가 제공됩니다."),
+                /*el("header",
                     el("h1", "PFP 랭킹"),
                     el(".filter",
                         el("select",
@@ -68,7 +69,7 @@ export default class Rankings implements View {
                     el("a", "4"),
                     el("a", "5"),
                     el("a.next", ">"),
-                ),
+                ),*/
             )),
         );
     }

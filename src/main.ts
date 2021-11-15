@@ -1,4 +1,7 @@
 import { SkyRouter } from "skyrouter";
+import Alert from "./component/dialogue/Alert";
+import Confirm from "./component/dialogue/Confirm";
+import Prompt from "./component/dialogue/Prompt";
 import Art from "./view/Art";
 import Home from "./view/Home";
 import Layout from "./view/Layout";
@@ -57,4 +60,8 @@ import MyPFPs from "./view/user/MyPFPs";
         SkyRouter.go(sessionStorage.__spa_path);
         sessionStorage.removeItem("__spa_path");
     }
+
+    new Prompt("제목", "내용입니다 울ㅇㅁ눠뤄ㅏㅇ너루ㅏㄴ우ㅏㅓ뤄ㅏ", "FAEW", () => {
+
+    });
 })();

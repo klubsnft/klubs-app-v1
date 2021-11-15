@@ -13,18 +13,19 @@ export default class Confirm extends Popup {
         super(".popup-background");
         this.append(
             this.content = el(".dialogue.confirm",
-                el("h4", title),
-                el("hr.divider"),
+                el("h2", title),
                 el("p", message),
-                el(".button-container", el("button.button-text", "취소", {
-                    click: () => this.delete(),
-                }),
-                    el("button.button-text", confirmTitle, {
+                el(".button-container",
+                    el("button", "취소", {
+                        click: () => this.delete(),
+                    }),
+                    el("button", confirmTitle, {
                         click: () => {
                             confirm();
                             this.delete();
                         },
-                    })),
+                    }),
+                ),
             ),
         );
     }

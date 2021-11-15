@@ -382,72 +382,121 @@ p {
 }
 .dialogue.alert {
   position: relative;
-  max-width: 640px;
-  width: 100%;
+  max-width: 600px;
+  width: 90%;
   margin: auto;
-  padding: 20px;
   border-radius: 4px;
   background-color: #1f1f1f;
 }
-.dialogue.alert > .divider {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  border: 0.5px solid;
-  width: 100%;
+.dialogue.alert > h2 {
+  font-size: 24px;
+  padding: 16px;
 }
 .dialogue.alert > p {
-  margin-bottom: 16px;
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
 }
 .dialogue.alert > .button-container {
   display: flex;
   justify-content: flex-end;
+  padding: 16px;
+}
+.dialogue.alert > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+.dialogue.alert > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .dialogue.confirm {
   position: relative;
-  max-width: 640px;
-  width: 100%;
+  max-width: 600px;
+  width: 90%;
   margin: auto;
-  padding: 20px;
   border-radius: 4px;
   background-color: #1f1f1f;
 }
-.dialogue.confirm > .divider {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  border: 0.5px solid;
-  width: 100%;
+.dialogue.confirm > h2 {
+  font-size: 24px;
+  padding: 16px;
 }
 .dialogue.confirm > p {
-  margin-bottom: 16px;
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
 }
 .dialogue.confirm > .button-container {
   display: flex;
   justify-content: flex-end;
+  padding: 16px;
+}
+.dialogue.confirm > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+.dialogue.confirm > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .dialogue.prompt {
   position: relative;
-  max-width: 640px;
-  width: 100%;
+  max-width: 600px;
+  width: 90%;
   margin: auto;
-  padding: 20px;
   border-radius: 4px;
   background-color: #1f1f1f;
 }
-.dialogue.prompt > .divider {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  border: 0.5px solid;
-  width: 100%;
+.dialogue.prompt > h2 {
+  font-size: 24px;
+  padding: 16px;
 }
 .dialogue.prompt > p {
-  margin-bottom: 16px;
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.dialogue.prompt > .input-container {
+  padding: 0 16px;
+}
+.dialogue.prompt > .input-container > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.dialogue.prompt > .input-container > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.dialogue.prompt > .input-container > input:focus {
+  border: 1px solid #C7FEA2;
 }
 .dialogue.prompt > .button-container {
   display: flex;
   justify-content: flex-end;
+  padding: 16px;
 }
-.dialogue.prompt > input {
-  width: 100%;
+.dialogue.prompt > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  border-radius: 4px;
+}
+.dialogue.prompt > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .layout {
   width: 100%;
@@ -939,7 +988,7 @@ p {
   text-shadow: 0px 0px 5px #000000;
 }
 .add-pfp-view > main {
-  max-width: 600px;
+  max-width: 632px;
   margin: auto;
   padding: 16px;
 }
@@ -947,7 +996,7 @@ p {
   margin-top: 16px;
   font-size: 16px;
   border: 1px solid #666;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 .add-pfp-view > main > section > h2 {
   font-size: 24px;
