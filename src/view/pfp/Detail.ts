@@ -1,11 +1,15 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import superagent from "superagent";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
+import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
 export default class Detail implements View {
+
+    private contract: KIP17Contract;
 
     private container: DomNode;
     private nameDisplay: DomNode;
@@ -21,6 +25,7 @@ export default class Detail implements View {
     constructor(params: ViewParams) {
 
         const addr = params.addr;
+        this.contract = new KIP17Contract(addr);
 
         Layout.current.title = "PFP 상세정보";
         Layout.current.content.append(this.container = el(".pfp-detail-view",
@@ -33,7 +38,7 @@ export default class Detail implements View {
                     this.socialList = el(".social",
                         el("button.button-text", el("img", { src: "/images/icon/twitter.svg", height: 24 })),
                         el("button.button-text", el("img", { src: "/images/icon/kakaoTalk.svg", height: 24 })),
-                        el(".update-container", el("button.button-text", el("img", { src: "/images/icon/edit.svg", height: 24 }), {
+                        el(".update-container", el("button.button-text", "정보 수정", {
                             click: () => ViewUtil.go(`/pfp/${addr}/update`),
                         })),
                     ),
@@ -47,37 +52,22 @@ export default class Detail implements View {
                             el("option", "이름순"),
                         ))
                 ),
-                el(".content", el(".search-box",
-                    this.idQueryInput = el("input", { placeholder: "ID로 검색" }),
-                    /*el("select",
-                        el("option", "Face"),
+                el(".content",
+                    el(".search-box",
+                        this.idQueryInput = el("input", { placeholder: "ID로 검색" }),
+                        /*el("select",
+                            el("option", "Face"),
+                        ),
+                        el("select",
+                            el("option", "Mouth"),
+                        ),*/
                     ),
-                    el("select",
-                        el("option", "Mouth"),
-                    ),*/
+                    this.nftList = el(".list"),
                 ),
-                    this.nftList = el(".list",
-                        new PFPNFTCard(
-                            addr,
-                            1,
-                            "img1",
-                            "name1",
-                            "description1",
-                            12,
-                        ),
-                        new PFPNFTCard(
-                            addr,
-                            1,
-                            "img2",
-                            "name2",
-                            "description2",
-                            15,
-                        ),
-                    ))
             ),
         ));
         this.loadInfo(addr);
-        this.loadNFTs();
+        this.loadNFTs(addr);
     }
 
     private async loadInfo(addr: string) {
@@ -92,8 +82,33 @@ export default class Detail implements View {
         }
     }
 
-    private async loadNFTs() {
+    private async loadNFTs(addr: string) {
 
+        const totalSupply = (await PFPsContract.getTotalSupply(addr)).toNumber();
+        const start = this.page * 200;
+        let limit = (this.page + 1) * 200;
+        if (limit > totalSupply) {
+            limit = totalSupply;
+        }
+
+        const promises: Promise<void>[] = [];
+        for (let i = start; i < limit; i += 1) {
+            const promise = async (id: number) => {
+                try {
+                    const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                    new PFPNFTCard(
+                        addr,
+                        id,
+                        result.body.image,
+                        result.body.name,
+                        result.body.description,
+                        12,
+                    ).appendTo(this.nftList);
+                } catch (e) { }
+            };
+            promises.push(promise(i));
+        }
+        await Promise.all(promises);
     }
 
     public changeParams(params: ViewParams, uri: string): void { }

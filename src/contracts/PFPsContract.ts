@@ -58,6 +58,10 @@ class PFPsContract extends Contract {
         await this.runWalletMethod("removeManager", addr, manager);
     }
 
+    public async enumerables(addr: string): Promise<boolean> {
+        return await this.runMethod("enumerables", addr);
+    }
+
     public async getManagerCount(addr: string): Promise<BigNumber> {
         return BigNumber.from(await this.runMethod("managerCount", addr));
     }
@@ -80,6 +84,14 @@ class PFPsContract extends Contract {
 
     public async managers(addr: string, index: BigNumberish): Promise<string> {
         return await this.runMethod("managers", addr, index);
+    }
+
+    public async setEnumerable(addr: string, enumerable: boolean): Promise<void> {
+        await this.runWalletMethod("setEnumerable", addr, enumerable);
+    }
+
+    public async setTotalSupply(addr: string, totalSupply: BigNumberish): Promise<void> {
+        await this.runWalletMethod("setTotalSupply", addr, totalSupply);
     }
 
     public async passProposal(proposalId: BigNumberish): Promise<void> {

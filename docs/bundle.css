@@ -999,12 +999,19 @@ p {
   margin: auto;
   padding: 32px 16px;
 }
+.pfp-update-view > main > .form {
+  margin-bottom: 45px;
+}
+.pfp-update-view > main > .form > h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
 .pfp-update-view > main > .form > label {
   display: block;
   margin-top: 16px;
 }
-.pfp-update-view > main > .form > label > h4 {
-  font-size: 24px;
+.pfp-update-view > main > .form > label > h3 {
+  font-size: 22px;
   margin-bottom: 16px;
 }
 .pfp-update-view > main > .form > label > .banner-preview,
@@ -1014,8 +1021,10 @@ p {
   margin-bottom: 12px;
 }
 .pfp-update-view > main > .form > label > p {
+  margin-top: -4px;
   margin-bottom: 12px;
   display: flex;
+  color: #999;
 }
 .pfp-update-view > main > .form > label > p > span {
   justify-content: flex-start;
@@ -1025,7 +1034,7 @@ p {
   justify-content: flex-end;
   color: #C7FEA2;
 }
-.pfp-update-view > main > .form > label > input,
+.pfp-update-view > main > .form > label > input:not([type=checkbox]),
 .pfp-update-view > main > .form > label > textarea {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.87);
@@ -1036,16 +1045,20 @@ p {
   padding: 8px;
   height: 40px;
 }
-.pfp-update-view > main > .form > label > input:hover,
+.pfp-update-view > main > .form > label > input:not([type=checkbox]):hover,
 .pfp-update-view > main > .form > label > textarea:hover {
   border: 1px solid #C7FEA2;
 }
-.pfp-update-view > main > .form > label > input:focus,
+.pfp-update-view > main > .form > label > input:not([type=checkbox]):focus,
 .pfp-update-view > main > .form > label > textarea:focus {
   border: 1px solid #C7FEA2;
 }
 .pfp-update-view > main > .form > label > textarea {
   height: 160px;
+}
+.pfp-update-view > main > .form > label > input[type=checkbox] {
+  width: 20px;
+  height: 20px;
 }
 .pfp-update-view > main > .form > button {
   margin-top: 16px;
@@ -1064,10 +1077,9 @@ p {
 }
 .pfp-update-view > main > .manage-managers {
   width: 100%;
-  margin-top: 32px;
 }
 .pfp-update-view > main > .manage-managers > h2 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 16px;
 }
 .pfp-update-view > main > .manage-managers > ul > li {

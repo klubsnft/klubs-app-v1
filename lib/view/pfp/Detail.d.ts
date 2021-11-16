@@ -1,5 +1,6 @@
 import { View, ViewParams } from "skyrouter";
 export default class Detail implements View {
+    private contract;
     private container;
     private nameDisplay;
     private descriptionDisplay;

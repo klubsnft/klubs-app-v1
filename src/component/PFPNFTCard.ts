@@ -14,7 +14,11 @@ export default class PFPNFTCard extends DomNode {
         super(".pfp-nft-card");
 
         this.append(
-            el("img", { src: img, width: "200", height: "200" }),
+            img === undefined ? undefined : el("img", {
+                src: img.indexOf("ipfs://") === 0 ? `https://api.klu.bs/ipfsimage/${img.substring(7)}` : img,
+                width: "200",
+                height: "200",
+            }),
             el(".name", name),
             el(".description", description),
             price === undefined ? undefined : el(".price", `${price} MIX`),

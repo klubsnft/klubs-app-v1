@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import Alert from "../../component/dialogue/Alert";
 import Prompt from "../../component/dialogue/Prompt";
 import PFPsContract from "../../contracts/PFPsContract";
 import Wallet from "../../klaytn/Wallet";
@@ -18,6 +19,9 @@ export default class Update implements View {
     private twitterInput: DomNode<HTMLInputElement>;
     private kakaotalkInput: DomNode<HTMLInputElement>;
 
+    private enumerableCheckbox: DomNode<HTMLInputElement>;
+    private totalSupplyLabel: DomNode;
+    private totalSupplyInput: DomNode<HTMLInputElement>;
     private managerList: DomNode;
 
     constructor(params: ViewParams) {
@@ -29,8 +33,9 @@ export default class Update implements View {
             el("header", el("h1", "PFP 정보 수정")),
             el("main",
                 el(".form",
+                    el("h2", "기본 정보 수정"),
                     el("label",
-                        el("h4", "배너 이미지 주소"),
+                        el("h3", "배너 이미지 주소"),
                         this.bannerPreview = el("img.banner-preview"),
                         this.bannerInput = el("input", {
                             type: "url",
@@ -41,7 +46,7 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h4", "배너 업로드"),
+                        el("h3", "배너 업로드"),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -67,7 +72,7 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h4", "아이콘 이미지 주소"),
+                        el("h3", "아이콘 이미지 주소"),
                         this.iconPreview = el("img.icon-preview"),
                         this.iconInput = el("input", {
                             type: "url",
@@ -78,7 +83,7 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h4", "아이콘 업로드"),
+                        el("h3", "아이콘 업로드"),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -104,11 +109,11 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h4", "이름"),
+                        el("h3", "이름"),
                         this.nameInput = el("input", { type: "text", placeholder: "PFP 이름" }),
                     ),
                     el("label",
-                        el("h4", "소개글"),
+                        el("h3", "소개글"),
                         el("p",
                             el("span", "소개글은 마크다운 문법을 사용합니다."),
                             el("a", "마크다운 문법 보기", { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
@@ -116,11 +121,11 @@ export default class Update implements View {
                         this.descriptionTextarea = el("textarea", { placeholder: "PFP 소개" }),
                     ),
                     el("label",
-                        el("h4", "오픈 카카오톡"),
+                        el("h3", "오픈 카카오톡"),
                         this.kakaotalkInput = el("input", { type: "url", placeholder: "오픈 카카오톡 주소" }),
                     ),
                     el("label",
-                        el("h4", "트위터"),
+                        el("h3", "트위터"),
                         this.twitterInput = el("input", { type: "url", placeholder: "트위터 주소" }),
                     ),
                     el("button", "정보 저장", {
@@ -134,6 +139,37 @@ export default class Update implements View {
                                 twitter: this.twitterInput.domElement.value,
                             };
                             await PFPsContract.setExtra(addr, JSON.stringify(extra));
+                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                        },
+                    }),
+                ),
+                el(".form",
+                    el("h2", "발행량 정보 수정"),
+                    el("label",
+                        el("h3", "KIP17Enumerable 상속 여부"),
+                        el("p", "KIP17Enumerable를 상속하신 경우, 총 발행량 정보를 매번 입력하지 않으셔도 됩니다."),
+                        this.enumerableCheckbox = el("input", { type: "checkbox" }, {
+                            change: () => {
+                                if (this.enumerableCheckbox.domElement.checked === true) {
+                                    this.totalSupplyLabel.style({ display: "none" });
+                                } else {
+                                    this.totalSupplyLabel.style({ display: "block" });
+                                }
+                            },
+                        }),
+                    ),
+                    this.totalSupplyLabel = el("label",
+                        el("h3", "총 발행량"),
+                        this.totalSupplyInput = el("input", { type: "number", placeholder: "총 발행량" }),
+                    ),
+                    el("button", "정보 저장", {
+                        click: async () => {
+                            if (this.enumerableCheckbox.domElement.checked === true) {
+                                await PFPsContract.setEnumerable(addr, true);
+                            } else {
+                                await PFPsContract.setTotalSupply(addr, parseInt(this.totalSupplyInput.domElement.value, 10));
+                            }
+                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
                         },
                     }),
                 ),
@@ -153,6 +189,7 @@ export default class Update implements View {
         ));
 
         this.load(addr);
+        this.loadTotalSupply(addr);
         this.loadManagers(addr);
     }
 
@@ -173,6 +210,18 @@ export default class Update implements View {
             this.kakaotalkInput.domElement.value = data.kakaotalk;
             this.twitterInput.domElement.value = data.twitter;
         }
+    }
+
+    private async loadTotalSupply(addr: string) {
+        const enumerable = await PFPsContract.enumerables(addr);
+        if (enumerable === true) {
+            this.enumerableCheckbox.domElement.checked = true;
+            this.enumerableCheckbox.fireDomEvent("change");
+        }
+        try {
+            const totalSupply = await PFPsContract.getTotalSupply(addr);
+            this.totalSupplyInput.domElement.value = totalSupply.toString();
+        } catch (e) { }
     }
 
     private async loadManagers(addr: string) {

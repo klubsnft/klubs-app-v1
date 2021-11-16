@@ -9,9 +9,13 @@ export default class Update implements View {
     private descriptionTextarea;
     private twitterInput;
     private kakaotalkInput;
+    private enumerableCheckbox;
+    private totalSupplyLabel;
+    private totalSupplyInput;
     private managerList;
     constructor(params: ViewParams);
     private load;
+    private loadTotalSupply;
     private loadManagers;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;

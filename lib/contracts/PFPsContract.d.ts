@@ -17,11 +17,14 @@ declare class PFPsContract extends Contract {
     existsManager(addr: string, manager: string): Promise<boolean>;
     addManager(addr: string, manager: string): Promise<void>;
     removeManager(addr: string, manager: string): Promise<void>;
+    enumerables(addr: string): Promise<boolean>;
     getManagerCount(addr: string): Promise<BigNumber>;
     getTotalSupply(addr: string): Promise<BigNumber>;
     proposalCount(): Promise<BigNumber>;
     proposals(index: BigNumberish): Promise<Proposal>;
     managers(addr: string, index: BigNumberish): Promise<string>;
+    setEnumerable(addr: string, enumerable: boolean): Promise<void>;
+    setTotalSupply(addr: string, totalSupply: BigNumberish): Promise<void>;
     passProposal(proposalId: BigNumberish): Promise<void>;
 }
 declare const _default: PFPsContract;
