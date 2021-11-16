@@ -1,9 +1,4 @@
 .pfp-update-view {
-    >.label {
-        font-size    : 0.875rem;
-        margin-bottom: 8px;
-    }
-
     >header {
         display         : flex;
         flex-direction  : column;
@@ -12,80 +7,126 @@
         height          : 200px;
         justify-content : center;
 
-        >.title {
-            font-size: 1.5rem;
-            margin   : 16px;
-        }
-
-        >.subtitle {
-            margin-left: 16px;
-            font-size  : 1rem;
-        }
-
-        >button {
-            max-width  : 150px;
-            margin-left: 16px;
+        >h1 {
+            font-size  : 24px;
+            margin     : 16px;
+            text-shadow: 0px 0px 5px #000000;
         }
     }
 
-    >.content {
-        display        : flex;
-        flex-direction : column;
-        padding-top    : 8px;
-        justify-content: center;
-        align-items    : center;
-        margin         : 16px;
+    >main {
+        max-width: 632px;
+        margin   : auto;
+        padding  : 32px 16px;
 
         >.form {
-            width: 100%;
-
-            >.banner-preview,
-            >.icon-preview {
+            >label {
                 display   : block;
-                max-height: 30px;
-                margin-top: 10px;
-            }
-
-            >.file-container {
                 margin-top: 16px;
 
-                >input {
-                    width: 100%;
+                >h4 {
+                    font-size    : 24px;
+                    margin-bottom: 16px;
                 }
-            }
 
-            >.input-container {
-                margin-top: 16px;
+                >.banner-preview,
+                >.icon-preview {
+                    max-width    : 100%;
+                    max-height   : 100px;
+                    margin-bottom: 12px;
+                }
 
-                >input {
-                    width: 100%;
+                >p {
+                    margin-bottom: 12px;
+                    display      : flex;
+
+                    >span {
+                        justify-content: flex-start;
+                        flex-grow      : 1;
+                    }
+
+                    >a {
+                        justify-content: flex-end;
+                        color          : @brand-primary;
+                    }
+                }
+
+                >input,
+                >textarea {
+                    width           : 100%;
+                    border          : 1px solid rgba(255, 255, 255, 0.87);
+                    box-sizing      : border-box;
+                    border-radius   : 4px;
+                    background-color: transparent;
+                    color           : #fff;
+                    padding         : 8px;
+                    height          : 40px;
+
+                    &:hover {
+                        border: 1px solid @brand-primary;
+                    }
+
+                    &:focus {
+                        border: 1px solid @brand-primary;
+                    }
+                }
+
+                >textarea {
+                    height: 160px;
                 }
             }
 
             >button {
-                width     : 100%;
-                margin-top: 16px;
+                margin-top      : 16px;
+                color           : @background;
+                background-color: @brand-primary;
+                padding         : 12px 0;
+                width           : 100%;
+                font-size       : 16px;
+                text-align      : center;
+                border-radius   : 4px;
+                box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+                &:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
             }
         }
 
         >.manage-managers {
             width     : 100%;
-            margin-top: 16px;
+            margin-top: 32px;
+
+            >h2 {
+                font-size    : 24px;
+                margin-bottom: 16px;
+            }
 
             >ul {
                 >li {
                     display      : flex;
-                    padding      : 8px;
-                    border-bottom: 0.5px solid #ccc;
+                    padding      : 4px 8px;
+                    border-bottom: 1px solid #666;
                     align-items  : center;
 
-                    >.item {
+                    >span {
                         justify-content: flex-start;
                         flex-grow      : 1;
                     }
 
                     >button {
-                        justify-content: flex-end;
+                        justify-content : flex-end;
+                        background-color: transparent;
+                        color           : @brand-primary;
+                        padding         : 6px 8px;
+                        font-size       : 14px;
+                        border-radius   : 4px;
+
+                        &:hover {
+                            background-color: rgba(199, 254, 162, 0.2);
+                            box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                        }
                     }
                 }
 
@@ -95,9 +136,20 @@
             }
 
             >button {
-                width          : 100%;
-                margin-top     : 16px;
-                justify-content: flex-end;
+                margin-top      : 16px;
+                color           : @background;
+                background-color: @brand-primary;
+                padding         : 12px 0;
+                width           : 100%;
+                font-size       : 16px;
+                text-align      : center;
+                border-radius   : 4px;
+                box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+                &:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
             }
         }
     }

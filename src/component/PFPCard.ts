@@ -1,10 +1,13 @@
 import { DomNode, el } from "@hanul/skynode";
+import marked from "marked";
+import xss from "xss";
 import ViewUtil from "../view/ViewUtil";
 
 export default class PFPCard extends DomNode {
 
     private bannerDisplay: DomNode<HTMLImageElement>;
     private iconDisplay: DomNode<HTMLImageElement>;
+    private descriptionDisplay: DomNode<HTMLImageElement>;
 
     constructor(
         addr: string,
@@ -20,11 +23,15 @@ export default class PFPCard extends DomNode {
             this.iconDisplay = el("img.icon"),
             el(".info",
                 el(".name", name),
-                el(".description", description === undefined ? undefined : (
-                    description.length > 200 ? `${description.substring(0, 197)}...` : description
-                )),
+                this.descriptionDisplay = el(".description"),
             ),
         );
+
+        const markdown = description === undefined ? "" : (
+            description.length > 200 ? `${description.substring(0, 197)}...` : description
+        );
+
+        this.descriptionDisplay.domElement.innerHTML = xss(marked(markdown));
 
         if (banner === undefined || banner.trim() === "") {
             this.bannerDisplay.domElement.src = "/images/placeholder.svg";

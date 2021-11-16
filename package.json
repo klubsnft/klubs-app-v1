@@ -8,6 +8,8 @@
         "@hanul/waiter": "^0.0.1",
         "@types/superagent": "^4.1.12",
         "@walletconnect/web3-provider": "^1.4.1",
+        "@types/marked": "^3.0.1",
+        "marked": "^3.0.4",
         "bowser": "^2.11.0",
         "ethers": "^5.0.32",
         "klip-sdk": "^2.0.1",
@@ -16,7 +18,8 @@
         "skyrouter": "^0.0.8",
         "skyutil": "^0.0.12",
         "superagent": "^6.1.0",
-        "web3": "^1.3.6"
+        "web3": "^1.3.6",
+        "xss": "^1.0.9"
     },
     "devDependencies": {
         "assert": "^2.0.0",

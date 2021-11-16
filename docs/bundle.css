@@ -237,7 +237,7 @@ p {
 .card-view > .body {
   margin-top: 8px;
   margin-left: 8px;
-  font-size: 0.875rem;
+  font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -310,7 +310,7 @@ p {
   width: 100%;
 }
 .offer-popup > .label {
-  font-size: 0.875rem;
+  font-size: 14px;
   margin-bottom: 8px;
 }
 .offer-popup > .price {
@@ -407,7 +407,7 @@ p {
   background-color: transparent;
   color: #C7FEA2;
   padding: 8px 16px;
-  font-size: 0.875rem;
+  font-size: 14px;
   border-radius: 4px;
 }
 .dialogue.alert > .button-container > button:hover {
@@ -440,7 +440,7 @@ p {
   background-color: transparent;
   color: #C7FEA2;
   padding: 8px 16px;
-  font-size: 0.875rem;
+  font-size: 14px;
   border-radius: 4px;
 }
 .dialogue.confirm > .button-container > button:hover {
@@ -492,7 +492,7 @@ p {
   background-color: transparent;
   color: #C7FEA2;
   padding: 8px 16px;
-  font-size: 0.875rem;
+  font-size: 14px;
   border-radius: 4px;
 }
 .dialogue.prompt > .button-container > button:hover {
@@ -649,7 +649,7 @@ p {
   margin-top: 16px;
   padding: 16px;
   padding-bottom: 32px;
-  font-size: 0.875rem;
+  font-size: 14px;
 }
 .home-view > header {
   display: flex;
@@ -791,7 +791,7 @@ p {
   padding-right: 16px;
 }
 .pfp-nft-detail-view > .over-view > .project {
-  font-size: 0.875rem;
+  font-size: 14px;
 }
 .pfp-nft-detail-view > .over-view > .pfp {
   margin-top: 8px;
@@ -858,7 +858,7 @@ p {
   margin-top: 16px;
 }
 .pfp-nft-detail-view > .image-view > .label {
-  font-size: 0.875rem;
+  font-size: 14px;
   margin-top: 16px;
 }
 .pfp-nft-detail-view > .image-view > input {
@@ -935,7 +935,7 @@ p {
   margin-left: 8px;
   background-color: #C7FEA2;
   padding: 8px;
-  font-size: 0.875rem;
+  font-size: 14px;
   border-radius: 4px;
   border: none;
 }
@@ -959,7 +959,7 @@ p {
   margin-top: 8px;
   background-color: #C7FEA2;
   padding: 8px;
-  font-size: 0.875rem;
+  font-size: 14px;
   border-radius: 4px;
   border: none;
 }
@@ -970,10 +970,6 @@ p {
 .pfp-detail-view > .main > .content > .list {
   display: flex;
 }
-.pfp-update-view > .label {
-  font-size: 0.875rem;
-  margin-bottom: 8px;
-}
 .pfp-update-view > header {
   display: flex;
   flex-direction: column;
@@ -982,75 +978,126 @@ p {
   height: 200px;
   justify-content: center;
 }
-.pfp-update-view > header > .title {
-  font-size: 1.5rem;
+.pfp-update-view > header > h1 {
+  font-size: 24px;
   margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
 }
-.pfp-update-view > header > .subtitle {
-  margin-left: 16px;
-  font-size: 1rem;
+.pfp-update-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
 }
-.pfp-update-view > header > button {
-  max-width: 150px;
-  margin-left: 16px;
-}
-.pfp-update-view > .content {
-  display: flex;
-  flex-direction: column;
-  padding-top: 8px;
-  justify-content: center;
-  align-items: center;
-  margin: 16px;
-}
-.pfp-update-view > .content > .form {
-  width: 100%;
-}
-.pfp-update-view > .content > .form > .banner-preview,
-.pfp-update-view > .content > .form > .icon-preview {
+.pfp-update-view > main > .form > label {
   display: block;
-  max-height: 30px;
-  margin-top: 10px;
-}
-.pfp-update-view > .content > .form > .file-container {
   margin-top: 16px;
 }
-.pfp-update-view > .content > .form > .file-container > input {
-  width: 100%;
+.pfp-update-view > main > .form > label > h4 {
+  font-size: 24px;
+  margin-bottom: 16px;
 }
-.pfp-update-view > .content > .form > .input-container {
-  margin-top: 16px;
+.pfp-update-view > main > .form > label > .banner-preview,
+.pfp-update-view > main > .form > label > .icon-preview {
+  max-width: 100%;
+  max-height: 100px;
+  margin-bottom: 12px;
 }
-.pfp-update-view > .content > .form > .input-container > input {
-  width: 100%;
-}
-.pfp-update-view > .content > .form > button {
-  width: 100%;
-  margin-top: 16px;
-}
-.pfp-update-view > .content > .manage-managers {
-  width: 100%;
-  margin-top: 16px;
-}
-.pfp-update-view > .content > .manage-managers > ul > li {
+.pfp-update-view > main > .form > label > p {
+  margin-bottom: 12px;
   display: flex;
-  padding: 8px;
-  border-bottom: 0.5px solid #ccc;
-  align-items: center;
 }
-.pfp-update-view > .content > .manage-managers > ul > li > .item {
+.pfp-update-view > main > .form > label > p > span {
   justify-content: flex-start;
   flex-grow: 1;
 }
-.pfp-update-view > .content > .manage-managers > ul > li > button {
+.pfp-update-view > main > .form > label > p > a {
   justify-content: flex-end;
+  color: #C7FEA2;
 }
-.pfp-update-view > .content > .manage-managers > ul > li:hover {
+.pfp-update-view > main > .form > label > input,
+.pfp-update-view > main > .form > label > textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.pfp-update-view > main > .form > label > input:hover,
+.pfp-update-view > main > .form > label > textarea:hover {
+  border: 1px solid #C7FEA2;
+}
+.pfp-update-view > main > .form > label > input:focus,
+.pfp-update-view > main > .form > label > textarea:focus {
+  border: 1px solid #C7FEA2;
+}
+.pfp-update-view > main > .form > label > textarea {
+  height: 160px;
+}
+.pfp-update-view > main > .form > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.pfp-update-view > main > .form > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-update-view > main > .manage-managers {
+  width: 100%;
+  margin-top: 32px;
+}
+.pfp-update-view > main > .manage-managers > h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.pfp-update-view > main > .manage-managers > ul > li {
+  display: flex;
+  padding: 4px 8px;
+  border-bottom: 1px solid #666;
+  align-items: center;
+}
+.pfp-update-view > main > .manage-managers > ul > li > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.pfp-update-view > main > .manage-managers > ul > li > button {
+  justify-content: flex-end;
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-update-view > main > .manage-managers > ul > li > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.pfp-update-view > main > .manage-managers > ul > li:hover {
   background-color: #1f1f1f;
 }
-.pfp-update-view > .content > .manage-managers > button {
-  width: 100%;
+.pfp-update-view > main > .manage-managers > button {
   margin-top: 16px;
-  justify-content: flex-end;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.pfp-update-view > main > .manage-managers > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .add-pfp-view > header {
   display: flex;
@@ -1251,7 +1298,7 @@ p {
   border-radius: 16px;
 }
 .sell-pfp-view > .image-view > .project {
-  font-size: 0.875rem;
+  font-size: 14px;
 }
 .sell-pfp-view > .image-view > .pfp {
   margin-top: 8px;
@@ -1294,7 +1341,7 @@ p {
   margin-top: 16px;
 }
 .sell-pfp-view > .sell-view > .label {
-  font-size: 0.875rem;
+  font-size: 14px;
   margin-top: 16px;
 }
 .sell-pfp-view > .sell-view > input {
@@ -1317,7 +1364,7 @@ p {
   margin-top: 8px;
   background-color: #C7FEA2;
   padding: 8px;
-  font-size: 0.875rem;
+  font-size: 14px;
   border-radius: 4px;
   border: none;
 }

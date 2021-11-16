@@ -55,15 +55,19 @@ export default class Home implements View {
                     realCount += 1;
                     let data: any = {};
                     try { data = JSON.parse(extras); } catch (e) { }
-                    new PFPCard(addr, data.banner, data.icon, data.name, data.description).appendTo(this.pfpList);
+                    if (this.container.deleted !== true) {
+                        new PFPCard(addr, data.banner, data.icon, data.name, data.description).appendTo(this.pfpList);
+                    }
                 }
             };
             promises.push(promise(i));
         }
         await Promise.all(promises);
 
-        this.pfpList.style({ width: realCount * 316 });
-        this.pfpLoading.delete();
+        if (this.container.deleted !== true) {
+            this.pfpList.style({ width: realCount * 316 });
+            this.pfpLoading.delete();
+        }
     }
 
     public changeParams(params: ViewParams, uri: string): void { }
