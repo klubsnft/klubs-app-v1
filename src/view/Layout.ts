@@ -23,7 +23,7 @@ export default class Layout implements View {
                         el("a.menu-button", el("i.fas.fa-bars"), {
                             click: (event, button) => {
                                 const rect = button.rect;
-                                new MobileMenu({ left: rect.right - 180, top: rect.bottom }).appendTo(BodyNode);
+                                new MobileMenu({ left: rect.right - 170, top: rect.bottom }).appendTo(BodyNode);
                             },
                         }),
                     ),

@@ -1,5 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import BuyPopup from "../../component/BuyPopup";
+import OfferPopup from "../../component/OfferPopup";
 import Layout from "../Layout";
 
 export default class NFTDetail implements View {
@@ -11,12 +13,20 @@ export default class NFTDetail implements View {
         Layout.current.content.append(this.container = el(".pfp-nft-detail-view",
             el(".image-view",
                 el("img.pfp-image", { src: "/images/galaxies.png" }),
-                el("button.button-contained", "구매하기"),
+                el("button.button-contained", "구매하기", {
+                    click: () => {
+                        new BuyPopup();
+                    },
+                }),
                 el(".label", "제안 가격"),
                 el("input", {
                     placeholder: '... MIX'
                 }),
-                el("button.button-contained", "제안하기"),
+                el("button.button-contained", "제안하기", {
+                    click: () => {
+                        new OfferPopup();
+                    },
+                }),
             ),
             el(".over-view",
                 el("a.project", "Doge Sound Clubs"),

@@ -23,17 +23,19 @@
         }
 
         >.right {
-            flex-grow      : 1;
-            display        : flex;
-            justify-content: right;
+            flex-grow: 1;
+            .float-wrapper();
 
             >.user-menu {
+                float: right;
+
                 @media @phone {
                     display: none;
                 }
             }
 
             >.menu-button {
+                float  : right;
                 display: none;
                 padding: 10px;
 

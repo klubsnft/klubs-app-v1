@@ -1,5 +1,9 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Contract from "./Contract";
+interface Proposal {
+    addr: string;
+    manager: string;
+}
 declare class PFPsContract extends Contract {
     constructor();
     added(addr: string): Promise<boolean>;
@@ -15,7 +19,10 @@ declare class PFPsContract extends Contract {
     removeManager(addr: string, manager: string): Promise<void>;
     getManagerCount(addr: string): Promise<BigNumber>;
     getTotalSupply(addr: string): Promise<BigNumber>;
+    proposalCount(): Promise<BigNumber>;
+    proposals(index: BigNumberish): Promise<Proposal>;
     managers(addr: string, index: BigNumberish): Promise<string>;
+    passProposal(proposalId: BigNumberish): Promise<void>;
 }
 declare const _default: PFPsContract;
 export default _default;

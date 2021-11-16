@@ -58,12 +58,16 @@ export default class Detail implements View {
                 ),
                     this.nftList = el(".list",
                         new PFPNFTCard(
+                            addr,
+                            1,
                             "img1",
                             "name1",
                             "description1",
                             12,
                         ),
                         new PFPNFTCard(
+                            addr,
+                            1,
                             "img2",
                             "name2",
                             "description2",

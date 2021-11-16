@@ -176,6 +176,7 @@ body {
 a {
   font-family: "Noto Sans KR", sans-serif;
   text-decoration: inherit;
+  color: inherit;
 }
 p {
   line-height: 1.5em;
@@ -615,8 +616,17 @@ p {
 }
 .layout > header > .right {
   flex-grow: 1;
-  display: flex;
-  justify-content: right;
+}
+.layout > header > .right:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.layout > header > .right > .user-menu {
+  float: right;
 }
 @media only screen and (max-width: 719px) {
   .layout > header > .right > .user-menu {
@@ -624,6 +634,7 @@ p {
   }
 }
 .layout > header > .right > .menu-button {
+  float: right;
   display: none;
   padding: 10px;
 }

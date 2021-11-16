@@ -13,7 +13,10 @@ export default class BuyPopup extends Popup {
             el(".label", "구매 가격"),
             el(".price", "100 MIX"),
             el(".danger-caption", "구매 가격을 꼭 확인하세요."),
-            el("button.button-contained", "구매 진행"),
+            el("button", "구매 진행"),
+            el("button", "취소", {
+                click: () => this.delete(),
+            }),
         ));
     }
 }

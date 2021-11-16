@@ -6,11 +6,12 @@ export default class Update implements View {
     private iconPreview;
     private iconInput;
     private nameInput;
-    private descriptionInput;
+    private descriptionTextarea;
     private twitterInput;
     private kakaotalkInput;
     private managerList;
     constructor(params: ViewParams);
+    private load;
     private loadManagers;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
