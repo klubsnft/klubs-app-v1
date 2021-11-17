@@ -4,7 +4,11 @@
     >header {
         background-color: #222;
         box-shadow      : rgb(4 17 29 / 25%) 0px 0px 8px 0px;
-        position        : sticky;
+        position        : fixed;
+        left            : 0;
+        top             : 0;
+        z-index         : 999;
+        width           : 100%;
         display         : flex;
         padding-top     : 12px;
         padding-bottom  : 12px;
@@ -62,6 +66,7 @@
         flex-direction : column;
         justify-content: center;
         margin         : auto;
+        margin-top     : 54px;
     }
 
     >footer {

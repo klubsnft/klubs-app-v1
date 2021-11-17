@@ -863,7 +863,11 @@ p {
 .layout > header {
   background-color: #222;
   box-shadow: rgba(4, 17, 29, 0.25) 0px 0px 8px 0px;
-  position: sticky;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
   display: flex;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -922,6 +926,7 @@ p {
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  margin-top: 54px;
 }
 .layout > footer {
   border-top: 1px solid #333;
