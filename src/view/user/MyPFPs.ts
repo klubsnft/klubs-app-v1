@@ -10,6 +10,18 @@ export default class MyPFPs implements View {
         Layout.current.title = "내 PFP";
         Layout.current.content.append(this.container = el(".user-my-pfps-view",
             el("header", el("h1", "내 PFP 정보")),
+            el("section",
+                el("h2", "내가 관리하는 PFP"),
+            ),
+            el("section",
+                el("h2", "내가 판매중인 PFP"),
+            ),
+            el("section",
+                el("h2", "내가 Offer를 건 PFP"),
+            ),
+            el("section",
+                el("h2", "내 PFP 목록"),
+            ),
         ));
     }
 

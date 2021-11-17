@@ -180,8 +180,30 @@ export default class Detail implements View {
         this.order += 1;
         const currentOrder = this.order;
 
+        // id로 검색
+        if (this.idQuery.trim() !== "") {
+            try {
+                const id = parseInt(this.idQuery.trim(), 10);
+                const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                if (currentOrder === this.order) {
+                    const saleInfo = await PFPStoreContract.sales(addr, id);
+                    if (currentOrder === this.order) {
+                        new PFPNFTCard(
+                            addr,
+                            id,
+                            result.body.image,
+                            result.body.name,
+                            saleInfo.price,
+                        ).appendTo(this.nftList);
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
         // 판매중인 것만 보기
-        if (this.onlySale === true) {
+        else if (this.onlySale === true) {
             this.saleTab.addClass("on");
             this.totalTab.deleteClass("on");
 
@@ -201,7 +223,7 @@ export default class Detail implements View {
                         if (currentOrder === this.order) {
                             const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
                             if (currentOrder === this.order) {
-                                const saleInfo = await PFPStoreContract.sales(addr, i);
+                                const saleInfo = await PFPStoreContract.sales(addr, id);
                                 if (currentOrder === this.order) {
                                     new PFPNFTCard(
                                         addr,
@@ -239,7 +261,7 @@ export default class Detail implements View {
                     try {
                         const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
                         if (currentOrder === this.order) {
-                            const saleInfo = await PFPStoreContract.sales(addr, i);
+                            const saleInfo = await PFPStoreContract.sales(addr, id);
                             if (currentOrder === this.order) {
                                 new PFPNFTCard(
                                     addr,
