@@ -181,6 +181,7 @@ export default class Detail implements View {
             this.totalTab.deleteClass("on");
 
             const count = (await PFPStoreContract.onSalesCount(addr)).toNumber();
+            console.log(count);
 
             const start = this.page * 50;
             let limit = (this.page + 1) * 50;
