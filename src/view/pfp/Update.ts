@@ -170,7 +170,7 @@ export default class Update implements View {
                     el("h2", "2차 판매 수수료 정보 수정"),
                     el("label",
                         el("h3", "2차 판매 수수료 비율(%)"),
-                        el("p", "2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 1번째 자리까지 지정 가능합니다."),
+                        el("p", "2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 2번째 자리까지 지정 가능합니다."),
                         this.royaltyInput = el("input", { type: "number", placeholder: "2차 판매 수수료 비율(%)" }),
                     ),
                     el("label",

@@ -240,6 +240,7 @@ p {
 }
 .sell-popup > .list > section > img {
   width: 100px;
+  height: 100px;
   border-radius: 4px;
   margin-right: 16px;
 }
@@ -319,6 +320,7 @@ p {
 }
 .buy-popup > .list > section > img {
   width: 100px;
+  height: 100px;
   border-radius: 4px;
   margin-right: 16px;
 }
@@ -363,41 +365,158 @@ p {
 }
 .offer-popup {
   position: relative;
-  max-width: 640px;
-  width: 100%;
+  max-width: 600px;
+  width: 90%;
   margin: auto;
-  padding: 20px;
   border-radius: 4px;
   background-color: #1f1f1f;
 }
-.offer-popup > .divider {
-  margin-top: 16px;
+.offer-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.offer-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.offer-popup > .loading {
+  padding: 16px;
+}
+.offer-popup > .list {
+  padding: 0 16px;
+}
+.offer-popup > .list > section {
+  padding: 16px;
   margin-bottom: 16px;
-  border: 0.5px solid;
-  width: 100%;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
 }
-.offer-popup > button {
-  margin-top: 16px;
-  width: 100%;
+.offer-popup > .list > section > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  margin-right: 16px;
 }
-.offer-popup > input {
-  width: 100%;
+.offer-popup > .list > section > .info {
+  flex-grow: 1;
 }
-.offer-popup > .label {
-  font-size: 14px;
+.offer-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.offer-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
   margin-bottom: 8px;
 }
-.offer-popup > .price {
-  font-size: 1.5rem;
+.offer-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.offer-popup > .danger-caption {
-  padding-top: 4px;
-  font-size: 0.625rem;
-  color: #ff3b30;
-  display: block;
+.offer-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
 }
-.offer-popup > .price:hover {
+.offer-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.offer-popup > .button-container > button {
+  background-color: transparent;
   color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.offer-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.accept-offer-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.accept-offer-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.accept-offer-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.accept-offer-popup > .loading {
+  padding: 16px;
+}
+.accept-offer-popup > .list {
+  padding: 0 16px;
+}
+.accept-offer-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.accept-offer-popup > .list > section > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+.accept-offer-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.accept-offer-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.accept-offer-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.accept-offer-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.accept-offer-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.accept-offer-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.accept-offer-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.accept-offer-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.accept-offer-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-card {
   position: relative;
