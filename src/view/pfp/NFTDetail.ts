@@ -5,7 +5,9 @@ import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import xss from "xss";
 import CommonUtil from "../../CommonUtil";
+import AcceptOfferPopup from "../../component/AcceptOfferPopup";
 import BuyPopup from "../../component/BuyPopup";
+import OfferPopup from "../../component/OfferPopup";
 import SellPopup from "../../component/SellPopup";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
@@ -171,13 +173,54 @@ export default class NFTDetail implements View {
         this.offerForm.empty();
 
         const saleInfo = await PFPStoreContract.sales(addr, id);
+        const offerCount = (await PFPStoreContract.offerCount(addr, id)).toNumber();
 
-        this.offerForm.append(el(".list"));
+        const list = el(".list").appendTo(this.offerForm);
+        const promises: Promise<void>[] = [];
+        for (let i = 0; i < offerCount; i += 1) {
+            const promise = async (offerId: number) => {
+                try {
+                    const offerInfo = await PFPStoreContract.offers(addr, id, offerId);
+                    if (offerInfo.price.gt(0)) {
+                        const offer = el(".offer",
+                            el(".offeror",
+                                CommonUtil.shortenAddress(offerInfo.offeror),
+                            ),
+                            el(".price",
+                                el("img", { src: "/images/mix.png", height: "24" }),
+                                el("span", CommonUtil.numberWithCommas(utils.formatEther(offerInfo.price))),
+                            ),
+                        ).appendTo(list);
+
+                        if (walletAddress === owner) {
+                            offer.append(
+                                el("a.accept-offer-button", "제안 수락", {
+                                    click: () => new AcceptOfferPopup(addr, id, offerId),
+                                }),
+                            );
+                        } else if (offerInfo.offeror === walletAddress) {
+                            offer.append(
+                                el("a.cancel-offer-button", "제안 취소", {
+                                    click: async () => {
+                                        await PFPStoreContract.cancelOffer(addr, id, offerId);
+                                        ViewUtil.waitTransactionAndRefresh();
+                                    },
+                                }),
+                            );
+                        }
+                    }
+                } catch (e) {
+                    console.error(e);
+                }
+            };
+            promises.push(promise(i));
+        }
+        await Promise.all(promises);
 
         if (walletAddress !== owner && saleInfo.seller !== walletAddress) {
             this.offerForm.append(
                 el("a.offer-button", "가격 제안하기", {
-                    //click: () => PFPStoreContract.sell(),
+                    click: () => new OfferPopup(addr, id),
                 }),
             );
         }

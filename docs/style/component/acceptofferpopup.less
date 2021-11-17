@@ -53,22 +53,13 @@
                         margin-bottom: 8px;
                     }
 
-                    >input {
-                        width           : 100%;
-                        border          : 1px solid rgba(255, 255, 255, 0.87);
-                        box-sizing      : border-box;
-                        border-radius   : 4px;
-                        background-color: transparent;
-                        color           : #fff;
-                        padding         : 8px;
-                        height          : 40px;
+                    >.price {
+                        display    : flex;
+                        align-items: center;
+                        color      : @mix-price;
 
-                        &:hover {
-                            border: 1px solid @brand-primary;
-                        }
-
-                        &:focus {
-                            border: 1px solid @brand-primary;
+                        >img {
+                            margin-right: 4px;
                         }
                     }
                 }

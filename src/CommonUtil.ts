@@ -1,3 +1,5 @@
+import { el } from "@hanul/skynode";
+
 class CommonUtil {
 
     public shortenAddress(address: string) {
@@ -34,7 +36,7 @@ class CommonUtil {
     public numberWithCommas(x: string, fixed = 3) {
         const parts = String(+(+x).toFixed(fixed)).split(".");
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        return parts.join(".");
+        return el("span.number-with-commas", parts[0], parts.length === 1 ? undefined : el("span", ".", parts[1]));
     }
 }
 

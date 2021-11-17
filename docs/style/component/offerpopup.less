@@ -53,16 +53,22 @@
                         margin-bottom: 8px;
                     }
 
-                    >.price {
-                        display                : flex;
-                        align-items            : center;
-                        color                  : @mix-price;
-                        background             : @mix-price-bg;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
+                    >input {
+                        width           : 100%;
+                        border          : 1px solid rgba(255, 255, 255, 0.87);
+                        box-sizing      : border-box;
+                        border-radius   : 4px;
+                        background-color: transparent;
+                        color           : #fff;
+                        padding         : 8px;
+                        height          : 40px;
 
-                        >img {
-                            margin-right: 4px;
+                        &:hover {
+                            border: 1px solid @brand-primary;
+                        }
+
+                        &:focus {
+                            border: 1px solid @brand-primary;
                         }
                     }
                 }

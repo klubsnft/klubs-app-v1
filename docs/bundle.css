@@ -181,6 +181,10 @@ a {
 p {
   line-height: 1.5em;
 }
+.number-with-commas > span {
+  color: #666;
+  font-size: 12px;
+}
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -340,9 +344,6 @@ p {
   display: flex;
   align-items: center;
   color: #e17d1c;
-  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 .buy-popup > .list > section > .info > label > .price > img {
   margin-right: 4px;
@@ -411,16 +412,21 @@ p {
   color: #999;
   margin-bottom: 8px;
 }
-.offer-popup > .list > section > .info > label > .price {
-  display: flex;
-  align-items: center;
-  color: #e17d1c;
-  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.offer-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
 }
-.offer-popup > .list > section > .info > label > .price > img {
-  margin-right: 4px;
+.offer-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.offer-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
 }
 .offer-popup > .button-container {
   display: flex;
@@ -486,21 +492,13 @@ p {
   color: #999;
   margin-bottom: 8px;
 }
-.accept-offer-popup > .list > section > .info > label > input {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.87);
-  box-sizing: border-box;
-  border-radius: 4px;
-  background-color: transparent;
-  color: #fff;
-  padding: 8px;
-  height: 40px;
+.accept-offer-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
 }
-.accept-offer-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
-}
-.accept-offer-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+.accept-offer-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
 }
 .accept-offer-popup > .button-container {
   display: flex;
@@ -599,9 +597,6 @@ p {
   display: flex;
   align-items: center;
   color: #e17d1c;
-  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 .pfp-nft-card > .info > .price > img {
   margin-right: 4px;
@@ -1134,9 +1129,6 @@ p {
   display: flex;
   align-items: center;
   color: #e17d1c;
-  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   font-size: 32px;
 }
 .pfp-nft-detail-view > section > .trade-form > .price-container > .price > img {
@@ -1168,6 +1160,34 @@ p {
 }
 .pfp-nft-detail-view > section > .offer-form > .list {
   flex-grow: 1;
+}
+.pfp-nft-detail-view > section > .offer-form > .list > .offer {
+  display: flex;
+}
+.pfp-nft-detail-view > section > .offer-form > .list > .offer > .offeror {
+  flex-grow: 1;
+}
+.pfp-nft-detail-view > section > .offer-form > .list > .offer > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.pfp-nft-detail-view > section > .offer-form > .list > .offer > .price > img {
+  margin-right: 4px;
+}
+.pfp-nft-detail-view > section > .offer-form > .list > .offer > .accept-offer-button,
+.pfp-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button {
+  margin-left: 8px;
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-nft-detail-view > section > .offer-form > .list > .offer > .accept-offer-button:hover,
+.pfp-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-nft-detail-view > section > .offer-form > .offer-button {
   margin-top: 16px;

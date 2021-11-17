@@ -84,8 +84,8 @@ class PFPStoreContract extends Contract {
         }
     }
 
-    public async offers(addr: string, id: BigNumberish): Promise<OfferInfo> {
-        const results = await this.runMethod("sales", addr, id);
+    public async offers(addr: string, id: BigNumberish, offerId: BigNumberish): Promise<OfferInfo> {
+        const results = await this.runMethod("offers", addr, id, offerId);
         return {
             offeror: results[0],
             price: BigNumber.from(results[1]),

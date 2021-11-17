@@ -21,7 +21,7 @@ declare class PFPStoreContract extends Contract {
     sell(addrs: string[], ids: BigNumberish[], prices: BigNumberish[]): Promise<void>;
     cancelSale(addr: string[], ids: BigNumberish[]): Promise<void>;
     buy(addr: string[], ids: BigNumberish[]): Promise<void>;
-    offers(addr: string, id: BigNumberish): Promise<OfferInfo>;
+    offers(addr: string, id: BigNumberish, offerId: BigNumberish): Promise<OfferInfo>;
     userOfferInfo(offeror: string, index: BigNumberish): Promise<PFPInfo>;
     userOfferInfoLength(offeror: string): Promise<BigNumber>;
     offerCount(addr: string, id: BigNumberish): Promise<BigNumber>;
