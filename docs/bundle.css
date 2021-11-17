@@ -1407,6 +1407,21 @@ p {
     width: calc(50% - 16px);
   }
 }
+.pfp-detail-view > main > .content > .list-container > .pagination {
+  margin-top: 16px;
+}
+.pfp-detail-view > main > .content > .list-container > .pagination > a {
+  background-color: transparent;
+  color: #999;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-detail-view > main > .content > .list-container > .pagination > a:hover {
+  color: #C7FEA2;
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 .pfp-update-view > header {
   display: flex;
   flex-direction: column;

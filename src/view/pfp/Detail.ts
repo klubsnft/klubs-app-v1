@@ -3,6 +3,7 @@ import marked from "marked";
 import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import xss from "xss";
+import Alert from "../../component/dialogue/Alert";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
@@ -89,25 +90,29 @@ export default class Detail implements View {
                     el(".list-container",
                         this.nftLoading = el(".loading", "Loading..."),
                         this.nftList = el(".list"),
+                        el(".pagination",
+                            this.prevButton = el("a.prev", el("i.fas.fa-arrow-left"), {
+                                click: () => {
+                                    if (this.page > 0) {
+                                        this.page -= 1;
+                                        this.loadNFTs(addr);
+                                    } else {
+                                        new Alert("안내", "첫 페이지입니다.");
+                                    }
+                                },
+                            }),
+                            this.nextButton = el("a.next", el("i.fas.fa-arrow-right"), {
+                                click: () => {
+                                    if (this.page < Math.ceil(this.totalSupply / 50) - 1) {
+                                        this.page += 1;
+                                        this.loadNFTs(addr);
+                                    } else {
+                                        new Alert("안내", "마지막 페이지입니다.");
+                                    }
+                                },
+                            }),
+                        ),
                     ),
-                ),
-                el(".pagination",
-                    this.prevButton = el("a.prev", {
-                        click: () => {
-                            if (this.page > 0) {
-                                this.page -= 1;
-                                this.loadNFTs(addr);
-                            }
-                        },
-                    }),
-                    this.nextButton = el("a.next", {
-                        click: () => {
-                            if (this.page < Math.ceil(this.totalSupply / 50) - 1) {
-                                this.page += 1;
-                                this.loadNFTs(addr);
-                            }
-                        },
-                    }),
                 ),
             ),
         ));
