@@ -12,6 +12,7 @@ export default class Detail implements View {
     private contract: KIP17Contract;
 
     private container: DomNode;
+    private iconDisplay: DomNode<HTMLImageElement>;
     private nameDisplay: DomNode;
     private descriptionDisplay: DomNode;
     private socialList: DomNode;
@@ -19,6 +20,10 @@ export default class Detail implements View {
     private idQueryInput: DomNode<HTMLInputElement>;
     private nftList: DomNode;
 
+    private prevButton: DomNode;
+    private nextButton: DomNode;
+
+    private totalSupply = 0;
     private idQuery = "";
     private page = 0;
 
@@ -30,31 +35,36 @@ export default class Detail implements View {
         Layout.current.title = "PFP 상세정보";
         Layout.current.content.append(this.container = el(".pfp-detail-view",
             el("header",
-                // PFP 대표 이미지
-                el("img.thumbnail", { src: "/images/galaxies.png" }),
+                this.iconDisplay = el("img"),
                 el(".body",
-                    this.nameDisplay = el("h1", "Test"),
-                    this.descriptionDisplay = el("p", "test1111"),
+                    this.nameDisplay = el("h1"),
+                    this.descriptionDisplay = el("p"),
                     this.socialList = el(".social",
-                        el("button.button-text", el("img", { src: "/images/icon/twitter.svg", height: 24 })),
-                        el("button.button-text", el("img", { src: "/images/icon/kakaoTalk.svg", height: 24 })),
-                        el(".update-container", el("button.button-text", "정보 수정", {
-                            click: () => ViewUtil.go(`/pfp/${addr}/update`),
-                        })),
+                        el("button", el("img", { src: "/images/icon/twitter.svg", height: 24 })),
+                        el("button", el("img", { src: "/images/icon/kakaotalk.svg", height: 24 })),
                     ),
+                    el("button.update-button", "정보 수정", {
+                        click: () => ViewUtil.go(`/pfp/${addr}/update`),
+                    }),
                 ),
             ),
-            el(".main",
-                el(".head",
+            el("main",
+                el("header",
                     el("h2", "NFT 목록"),
-                    el(".filter", el("button.button-contained", "희소 점수 보기"),
-                        el("select",
-                            el("option", "이름순"),
-                        ))
+                    //el(".filter", el("button.button-contained", "희소 점수 보기"),
+                    /*el("select",
+                        el("option", "이름순"),
+                    ),*/
                 ),
                 el(".content",
                     el(".search-box",
-                        this.idQueryInput = el("input", { placeholder: "ID로 검색" }),
+                        this.idQueryInput = el("input", {
+                            placeholder: "ID로 검색",
+                            change: () => {
+                                this.idQuery = this.idQueryInput.domElement.value;
+                                this.loadNFTs(addr);
+                            },
+                        }),
                         /*el("select",
                             el("option", "Face"),
                         ),
@@ -63,6 +73,24 @@ export default class Detail implements View {
                         ),*/
                     ),
                     this.nftList = el(".list"),
+                    el(".pagination",
+                        this.prevButton = el("a.prev", {
+                            click: () => {
+                                if (this.page > 0) {
+                                    this.page -= 1;
+                                    this.loadNFTs(addr);
+                                }
+                            },
+                        }),
+                        this.nextButton = el("a.next", {
+                            click: () => {
+                                if (this.page < Math.ceil(this.totalSupply / 200) - 1) {
+                                    this.page += 1;
+                                    this.loadNFTs(addr);
+                                }
+                            },
+                        }),
+                    ),
                 ),
             ),
         ));
@@ -74,8 +102,16 @@ export default class Detail implements View {
         const extras = await PFPsContract.extras(addr);
         try {
             const data: any = JSON.parse(extras);
+            if (data.icon === undefined || data.icon.trim() === "") {
+                this.iconDisplay.domElement.src = "/images/placeholder.svg";
+            } else {
+                this.iconDisplay.domElement.src = data.icon;
+            }
             if (data.name !== undefined) {
                 this.nameDisplay.empty().appendText(data.name);
+            }
+            if (data.description !== undefined) {
+                this.descriptionDisplay.empty().appendText(data.description);
             }
         } catch (e) {
             // ignore.
@@ -84,13 +120,23 @@ export default class Detail implements View {
 
     private async loadNFTs(addr: string) {
 
-        const totalSupply = (await PFPsContract.getTotalSupply(addr)).toNumber();
-        const start = this.page * 200;
-        let limit = (this.page + 1) * 200;
-        if (limit > totalSupply) {
-            limit = totalSupply;
+        this.totalSupply = (await PFPsContract.getTotalSupply(addr)).toNumber();
+
+        if (this.page === 0) {
+            this.prevButton.addClass("disable");
         }
 
+        if (this.page === Math.ceil(this.totalSupply / 200) - 1) {
+            this.nextButton.addClass("disable");
+        }
+
+        const start = this.page * 200;
+        let limit = (this.page + 1) * 200;
+        if (limit > this.totalSupply) {
+            limit = this.totalSupply;
+        }
+
+        this.nftList.empty();
         const promises: Promise<void>[] = [];
         for (let i = start; i < limit; i += 1) {
             const promise = async (id: number) => {

@@ -19,15 +19,17 @@ export default class PFPProposals implements View {
         const count = await PFPsContract.proposalCount();
         for (let id = count.toNumber() - 1; id >= 0; id -= 1) {
             const proposal = await PFPsContract.proposals(id);
-            const proposalDisplay = el(".proposal",
-                JSON.stringify(proposal),
-                el("a", "통과", {
-                    click: async () => {
-                        await PFPsContract.passProposal(id);
-                        proposalDisplay.delete();
-                    },
-                }),
-            ).appendTo(this.container);
+            if (await PFPsContract.added(proposal.addr) !== true) {
+                const proposalDisplay = el(".proposal",
+                    JSON.stringify(proposal),
+                    el("a", "통과", {
+                        click: async () => {
+                            await PFPsContract.passProposal(id);
+                            proposalDisplay.delete();
+                        },
+                    }),
+                ).appendTo(this.container);
+            }
         }
     }
 
