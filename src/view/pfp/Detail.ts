@@ -32,7 +32,7 @@ export default class Detail implements View {
     private totalSupply = 0;
     private idQuery = "";
     private page = 0;
-    private onlySale = true;
+    private onlySale = false;
 
     constructor(params: ViewParams) {
 
@@ -52,15 +52,15 @@ export default class Detail implements View {
                 el("header",
                     el("h2", "NFT 목록"),
                     el(".tab-container",
-                        this.saleTab = el("a.tab", "판매중", {
-                            click: () => {
-                                this.onlySale = true;
-                                this.loadNFTs(addr);
-                            },
-                        }),
                         this.totalTab = el("a.tab", "전체", {
                             click: () => {
                                 this.onlySale = false;
+                                this.loadNFTs(addr);
+                            },
+                        }),
+                        this.saleTab = el("a.tab", "판매중", {
+                            click: () => {
+                                this.onlySale = true;
                                 this.loadNFTs(addr);
                             },
                         }),
@@ -181,7 +181,6 @@ export default class Detail implements View {
             this.totalTab.deleteClass("on");
 
             const count = (await PFPStoreContract.onSalesCount(addr)).toNumber();
-            console.log(count);
 
             const start = this.page * 50;
             let limit = (this.page + 1) * 50;
