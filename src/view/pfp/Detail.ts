@@ -185,6 +185,9 @@ export default class Detail implements View {
         this.order += 1;
         const currentOrder = this.order;
 
+        const onSalesCount = (await PFPStoreContract.onSalesCount(addr)).toNumber();
+        this.saleTab.empty().appendText(`판매중 (${onSalesCount})`);
+
         // id로 검색
         if (this.idQuery.trim() !== "") {
             try {
@@ -212,12 +215,10 @@ export default class Detail implements View {
             this.saleTab.addClass("on");
             this.totalTab.deleteClass("on");
 
-            const count = (await PFPStoreContract.onSalesCount(addr)).toNumber();
-
             const start = this.page * 50;
             let limit = (this.page + 1) * 50;
-            if (limit > count) {
-                limit = count;
+            if (limit > onSalesCount) {
+                limit = onSalesCount;
             }
 
             const promises: Promise<void>[] = [];
