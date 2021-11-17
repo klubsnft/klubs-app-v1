@@ -1,0 +1,39 @@
+.pfp-nft-card {
+    background-color: @shadow;
+    width           : 200px;
+    border-radius   : 8px;
+    cursor          : pointer;
+
+    >img {
+        border-radius: 8px 8px 0px 0px;
+        width        : 100%;
+    }
+
+    >.info {
+        padding  : 4px 8px;
+        display  : flex;
+        font-size: 14px;
+
+        >.name {
+            padding  : 4px 0;
+            flex-grow: 1;
+        }
+
+        >.price {
+            display                : flex;
+            align-items            : center;
+            color                  : @mix-price;
+            background             : @mix-price-bg;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            >img {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.card-view:hover {
+    background-color: @shadow-hover;
+}

@@ -7,6 +7,7 @@ export default class Detail implements View {
     private descriptionDisplay;
     private socialList;
     private idQueryInput;
+    private nftLoading;
     private nftList;
     private prevButton;
     private nextButton;

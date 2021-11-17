@@ -208,55 +208,6 @@ p {
   overflow-y: scroll;
   padding: 20px 0;
 }
-.card-view {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #1f1f1f;
-  max-width: 200px;
-  border-radius: 8px;
-  margin: 8px;
-}
-.card-view > img {
-  border-radius: 8px 8px 0px 0px;
-}
-.card-view > .title {
-  margin-top: 8px;
-  margin-left: 8px;
-  font-size: 1.25rem;
-}
-.card-view > .name {
-  margin-top: 8px;
-  margin-left: 8px;
-  font-size: 1.25rem;
-}
-.card-view > .description {
-  margin-top: 8px;
-  margin-left: 8px;
-  font-size: 1rem;
-}
-.card-view > .body {
-  margin-top: 8px;
-  margin-left: 8px;
-  font-size: 14px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.card-view > .price {
-  margin-top: 8px;
-  margin-left: 8px;
-  margin-bottom: 8px;
-  font-size: 1rem;
-}
-.card-view > .price:hover {
-  color: #C7FEA2;
-}
-.card-view:hover {
-  background-color: #222222;
-}
 .buy-popup {
   position: relative;
   max-width: 640px;
@@ -381,6 +332,39 @@ p {
   color: #ccc;
   overflow: hidden;
   word-break: break-all;
+}
+.pfp-nft-card {
+  background-color: #1f1f1f;
+  width: 200px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pfp-nft-card > img {
+  border-radius: 8px 8px 0px 0px;
+  width: 100%;
+}
+.pfp-nft-card > .info {
+  padding: 4px 8px;
+  display: flex;
+  font-size: 14px;
+}
+.pfp-nft-card > .info > .name {
+  padding: 4px 0;
+  flex-grow: 1;
+}
+.pfp-nft-card > .info > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pfp-nft-card > .info > .price > img {
+  margin-right: 4px;
+}
+.card-view:hover {
+  background-color: #222222;
 }
 .dialogue.alert {
   position: relative;
@@ -881,68 +865,90 @@ p {
   flex-direction: column;
 }
 .pfp-detail-view > header {
+  position: relative;
   display: flex;
   background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
-  height: 200px;
   padding: 16px;
 }
-.pfp-detail-view > header > .thumbnail {
-  max-width: 156px;
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > header {
+    display: block;
+  }
+}
+.pfp-detail-view > header > img {
+  width: 156px;
   height: 156px;
   border-radius: 8px;
 }
-.pfp-detail-view > header > .pfp-title {
-  font-size: 2.125rem;
-}
 .pfp-detail-view > header > .body {
-  margin-left: 8px;
+  margin-left: 16px;
   width: 100%;
 }
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > header > .body {
+    margin-top: 16px;
+    margin-left: 0;
+  }
+}
 .pfp-detail-view > header > .body > h1 {
-  font-size: 3rem;
+  font-size: 32px;
+  text-shadow: 0px 0px 5px #000000;
 }
 .pfp-detail-view > header > .body > p {
   margin-top: 8px;
+  text-shadow: 0px 0px 5px #000000;
 }
 .pfp-detail-view > header > .body > .social {
   display: flex;
-  margin-top: 16px;
+  margin-top: 8px;
   align-self: flex-end;
   align-items: flex-end;
 }
-.pfp-detail-view > header > .body > button {
+.pfp-detail-view > header > .body > .social > a {
   margin-right: 8px;
 }
-.pfp-detail-view > header > .title {
-  font-size: 1.5rem;
-  margin: 16px;
+.pfp-detail-view > header > .update-button {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 150px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.pfp-detail-view > header > .subtitle {
-  margin-left: 16px;
-  font-size: 1rem;
+.pfp-detail-view > header > .update-button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
-.pfp-detail-view > header > button {
-  max-width: 150px;
-  margin-left: 16px;
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > header > .update-button {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
 }
-.pfp-detail-view > .main > .head {
+.pfp-detail-view > main > header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
   background-color: black;
 }
-.pfp-detail-view > .main > .head > h2 {
+.pfp-detail-view > main > header > h2 {
   font-size: 1.5rem;
   display: flex;
   justify-content: flex-start;
 }
-.pfp-detail-view > .main > .head > .filter {
+.pfp-detail-view > main > header > .filter {
   display: flex;
   justify-content: flex-end;
 }
-.pfp-detail-view > .main > .head > .filter > select {
+.pfp-detail-view > main > header > .filter > select {
   margin-left: 8px;
   background-color: #C7FEA2;
   padding: 8px;
@@ -950,23 +956,48 @@ p {
   border-radius: 4px;
   border: none;
 }
-.pfp-detail-view > .main > .head > .filter > select:hover {
+.pfp-detail-view > main > header > .filter > select:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
-.pfp-detail-view > .main > .content {
-  margin-top: 16px;
+.pfp-detail-view > main > .content {
   display: flex;
+  padding: 16px 0 16px 16px;
 }
-.pfp-detail-view > .main > .content > .search-box {
-  width: 100%;
-  height: 100%;
-  max-width: 250px;
-  padding: 8px;
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > main > .content {
+    display: block;
+  }
+}
+.pfp-detail-view > main > .content > .search-box {
+  width: 240px;
   display: flex;
   flex-direction: column;
+  margin-right: 16px;
+  margin-bottom: 16px;
 }
-.pfp-detail-view > .main > .content > .search-box > select {
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > main > .content > .search-box {
+    width: auto;
+  }
+}
+.pfp-detail-view > main > .content > .search-box > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.pfp-detail-view > main > .content > .search-box > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.pfp-detail-view > main > .content > .search-box > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.pfp-detail-view > main > .content > .search-box > select {
   margin-top: 8px;
   background-color: #C7FEA2;
   padding: 8px;
@@ -974,12 +1005,27 @@ p {
   border-radius: 4px;
   border: none;
 }
-.pfp-detail-view > .main > .content > .search-box > select:hover {
+.pfp-detail-view > main > .content > .search-box > select:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
-.pfp-detail-view > .main > .content > .list {
-  display: flex;
+.pfp-detail-view > main > .content > .list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.pfp-detail-view > main > .content > .list > .pfp-nft-card {
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > main > .content > .list > .pfp-nft-card {
+    width: calc(50% - 16px);
+  }
 }
 .pfp-update-view > header {
   display: flex;

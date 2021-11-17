@@ -1,8 +1,10 @@
+import { BigNumber } from "@ethersproject/bignumber";
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
+import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
@@ -18,6 +20,7 @@ export default class Detail implements View {
     private socialList: DomNode;
 
     private idQueryInput: DomNode<HTMLInputElement>;
+    private nftLoading: DomNode;
     private nftList: DomNode;
 
     private prevButton: DomNode;
@@ -39,14 +42,11 @@ export default class Detail implements View {
                 el(".body",
                     this.nameDisplay = el("h1"),
                     this.descriptionDisplay = el("p"),
-                    this.socialList = el(".social",
-                        el("button", el("img", { src: "/images/icon/twitter.svg", height: 24 })),
-                        el("button", el("img", { src: "/images/icon/kakaotalk.svg", height: 24 })),
-                    ),
-                    el("button.update-button", "정보 수정", {
-                        click: () => ViewUtil.go(`/pfp/${addr}/update`),
-                    }),
+                    this.socialList = el(".social"),
                 ),
+                el("button.update-button", "정보 수정", {
+                    click: () => ViewUtil.go(`/pfp/${addr}/update`),
+                }),
             ),
             el("main",
                 el("header",
@@ -72,25 +72,26 @@ export default class Detail implements View {
                             el("option", "Mouth"),
                         ),*/
                     ),
+                    this.nftLoading = el(".loading", "Loading..."),
                     this.nftList = el(".list"),
-                    el(".pagination",
-                        this.prevButton = el("a.prev", {
-                            click: () => {
-                                if (this.page > 0) {
-                                    this.page -= 1;
-                                    this.loadNFTs(addr);
-                                }
-                            },
-                        }),
-                        this.nextButton = el("a.next", {
-                            click: () => {
-                                if (this.page < Math.ceil(this.totalSupply / 200) - 1) {
-                                    this.page += 1;
-                                    this.loadNFTs(addr);
-                                }
-                            },
-                        }),
-                    ),
+                ),
+                el(".pagination",
+                    this.prevButton = el("a.prev", {
+                        click: () => {
+                            if (this.page > 0) {
+                                this.page -= 1;
+                                this.loadNFTs(addr);
+                            }
+                        },
+                    }),
+                    this.nextButton = el("a.next", {
+                        click: () => {
+                            if (this.page < Math.ceil(this.totalSupply / 200) - 1) {
+                                this.page += 1;
+                                this.loadNFTs(addr);
+                            }
+                        },
+                    }),
                 ),
             ),
         ));
@@ -113,6 +114,24 @@ export default class Detail implements View {
             if (data.description !== undefined) {
                 this.descriptionDisplay.empty().appendText(data.description);
             }
+            this.socialList.empty();
+            if (data.twitter !== undefined && data.twitter.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/twitter.svg", height: 24 }),
+                        { href: data.twitter, target: "_blank" },
+                    ),
+                );
+            }
+            if (data.kakaotalk !== undefined && data.kakaotalk.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/kakaotalk.svg", height: 24 }),
+                        { href: data.kakaotalk, target: "_blank" },
+                    ),
+                );
+            }
+
         } catch (e) {
             // ignore.
         }
@@ -120,6 +139,7 @@ export default class Detail implements View {
 
     private async loadNFTs(addr: string) {
 
+        this.nftLoading.style({ display: "block" });
         this.totalSupply = (await PFPsContract.getTotalSupply(addr)).toNumber();
 
         if (this.page === 0) {
@@ -142,19 +162,22 @@ export default class Detail implements View {
             const promise = async (id: number) => {
                 try {
                     const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                    const saleInfo = await PFPStoreContract.sales(addr, i);
                     new PFPNFTCard(
                         addr,
                         id,
                         result.body.image,
                         result.body.name,
-                        result.body.description,
-                        12,
+                        saleInfo.price,
                     ).appendTo(this.nftList);
-                } catch (e) { }
+                } catch (e) {
+                    console.error(e);
+                }
             };
             promises.push(promise(i));
         }
         await Promise.all(promises);
+        this.nftLoading.style({ display: "none" });
     }
 
     public changeParams(params: ViewParams, uri: string): void { }

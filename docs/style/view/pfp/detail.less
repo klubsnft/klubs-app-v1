@@ -3,64 +3,81 @@
     flex-direction: column;
 
     >header {
+        position        : relative;
         display         : flex;
         background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
         background-size : cover;
-        height          : 200px;
         padding         : 16px;
 
-        >.thumbnail {
-            max-width    : 156px;
+        @media @phone {
+            display: block;
+        }
+
+        >img {
+            width        : 156px;
             height       : 156px;
             border-radius: 8px;
         }
 
-        >.pfp-title {
-            font-size: 2.125rem;
-        }
-
         >.body {
-            margin-left: 8px;
+            margin-left: 16px;
             width      : 100%;
 
+            @media @phone {
+                margin-top : 16px;
+                margin-left: 0;
+            }
+
             >h1 {
-                font-size: 3rem;
+                font-size  : 32px;
+                text-shadow: 0px 0px 5px #000000;
             }
 
             >p {
-                margin-top: 8px;
+                margin-top : 8px;
+                text-shadow: 0px 0px 5px #000000;
             }
 
             >.social {
                 display    : flex;
-                margin-top : 16px;
+                margin-top : 8px;
                 align-self : flex-end;
                 align-items: flex-end;
+
+                >a {
+                    margin-right: 8px;
+                }
+            }
+        }
+
+        >.update-button {
+            position        : absolute;
+            right           : 16px;
+            bottom          : 16px;
+            color           : @background;
+            background-color: @brand-primary;
+            padding         : 12px 0;
+            width           : 150px;
+            font-size       : 16px;
+            text-align      : center;
+            border-radius   : 4px;
+            box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+            &:hover {
+                background-color: @brand-400;
+                box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
             }
 
-            >button {
-                margin-right: 8px;
+            @media @phone {
+                position: relative;
+                right   : 0;
+                bottom  : 0;
             }
-        }
-
-        >.title {
-            font-size: 1.5rem;
-            margin   : 16px;
-        }
-
-        >.subtitle {
-            margin-left: 16px;
-            font-size  : 1rem;
-        }
-
-        >button {
-            max-width  : 150px;
-            margin-left: 16px;
         }
     }
 
-    >.main {
-        >.head {
+    >main {
+        >header {
             display         : flex;
             justify-content : space-between;
             align-items     : center;
@@ -94,16 +111,42 @@
         }
 
         >.content {
-            margin-top: 16px;
-            display   : flex;
+            display: flex;
+            padding: 16px 0 16px 16px;
+
+            @media @phone {
+                display: block;
+            }
 
             >.search-box {
-                width         : 100%;
-                height        : 100%;
-                max-width     : 250px;
-                padding       : 8px;
+                width         : 240px;
                 display       : flex;
                 flex-direction: column;
+                margin-right  : 16px;
+                margin-bottom : 16px;
+
+                @media @phone {
+                    width: auto;
+                }
+
+                >input {
+                    width           : 100%;
+                    border          : 1px solid rgba(255, 255, 255, 0.87);
+                    box-sizing      : border-box;
+                    border-radius   : 4px;
+                    background-color: transparent;
+                    color           : #fff;
+                    padding         : 8px;
+                    height          : 40px;
+
+                    &:hover {
+                        border: 1px solid @brand-primary;
+                    }
+
+                    &:focus {
+                        border: 1px solid @brand-primary;
+                    }
+                }
 
                 >select {
                     margin-top      : 8px;
@@ -121,8 +164,20 @@
             }
 
             >.list {
-                display: flex;
+                .float-wrapper();
+
+                >.pfp-nft-card {
+                    float        : left;
+                    margin-right : 16px;
+                    margin-bottom: 16px;
+
+                    @media @phone {
+                        width: calc(50% - 16px);
+                    }
+                }
             }
         }
+
+        >.pagination {}
     }
 }
