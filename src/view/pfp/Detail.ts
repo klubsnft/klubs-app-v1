@@ -143,7 +143,7 @@ export default class Detail implements View {
             if (data.kakaotalk !== undefined && data.kakaotalk.trim() !== "") {
                 this.socialList.append(
                     el("a",
-                        el("img", { src: "/images/icon/kakaotalk.svg", height: 24 }),
+                        el("img", { src: "/images/icon/kakao-talk.svg", height: 24 }),
                         { href: data.kakaotalk, target: "_blank" },
                     ),
                 );

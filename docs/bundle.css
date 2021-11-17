@@ -874,6 +874,15 @@ p {
 .layout > header > a {
   margin-right: 16px;
 }
+.layout > header > a > .logo {
+  display: flex;
+}
+.layout > header > a > .logo > span {
+  margin-left: 4px;
+  margin-top: 12px;
+  font-style: italic;
+  color: #e17d1c;
+}
 @media only screen and (max-width: 719px) {
   .layout > header > .pc-menu {
     display: none;

@@ -16,7 +16,12 @@ export default class Layout implements View {
         BodyNode.append(
             (this.container = el(".layout",
                 el("header",
-                    el("a", el(".logo", el("img", { src: "/images/logo.svg", height: "28" })), { click: () => ViewUtil.go("/") }),
+                    el("a", { click: () => ViewUtil.go("/") },
+                        el(".logo",
+                            el("img", { src: "/images/logo.svg", height: "28" }),
+                            el("span", "Beta"),
+                        ),
+                    ),
                     new PCMenu(),
                     el(".right",
                         new UserInfo(),
