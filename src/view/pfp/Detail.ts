@@ -160,6 +160,8 @@ export default class Detail implements View {
         }
     }
 
+    private order = 0;
+
     private async loadNFTs(addr: string) {
 
         this.nftLoading.style({ display: "block" });
@@ -174,6 +176,9 @@ export default class Detail implements View {
         }
 
         this.nftList.empty();
+
+        this.order += 1;
+        const currentOrder = this.order;
 
         // 판매중인 것만 보기
         if (this.onlySale === true) {
@@ -193,15 +198,21 @@ export default class Detail implements View {
                 const promise = async (index: number) => {
                     try {
                         const id = (await PFPStoreContract.onSales(addr, index)).toNumber();
-                        const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
-                        const saleInfo = await PFPStoreContract.sales(addr, i);
-                        new PFPNFTCard(
-                            addr,
-                            id,
-                            result.body.image,
-                            result.body.name,
-                            saleInfo.price,
-                        ).appendTo(this.nftList);
+                        if (currentOrder === this.order) {
+                            const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                            if (currentOrder === this.order) {
+                                const saleInfo = await PFPStoreContract.sales(addr, i);
+                                if (currentOrder === this.order) {
+                                    new PFPNFTCard(
+                                        addr,
+                                        id,
+                                        result.body.image,
+                                        result.body.name,
+                                        saleInfo.price,
+                                    ).appendTo(this.nftList);
+                                }
+                            }
+                        }
                     } catch (e) {
                         console.error(e);
                     }
@@ -227,14 +238,18 @@ export default class Detail implements View {
                 const promise = async (id: number) => {
                     try {
                         const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
-                        const saleInfo = await PFPStoreContract.sales(addr, i);
-                        new PFPNFTCard(
-                            addr,
-                            id,
-                            result.body.image,
-                            result.body.name,
-                            saleInfo.price,
-                        ).appendTo(this.nftList);
+                        if (currentOrder === this.order) {
+                            const saleInfo = await PFPStoreContract.sales(addr, i);
+                            if (currentOrder === this.order) {
+                                new PFPNFTCard(
+                                    addr,
+                                    id,
+                                    result.body.image,
+                                    result.body.name,
+                                    saleInfo.price,
+                                ).appendTo(this.nftList);
+                            }
+                        }
                     } catch (e) {
                         console.error(e);
                     }

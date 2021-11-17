@@ -19,6 +19,7 @@ export default class Detail implements View {
     private onlySale;
     constructor(params: ViewParams);
     private loadInfo;
+    private order;
     private loadNFTs;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
