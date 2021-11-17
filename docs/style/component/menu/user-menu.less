@@ -16,4 +16,63 @@
     >.wallet-address:hover {
         background-color: @brand-400;
     }
+
+    >.wallet-address {
+        position: relative;
+        cursor  : pointer;
+
+        >ul {
+            position        : absolute;
+            left            : 0;
+            top             : 30px;
+            width           : 100px;
+            display         : none;
+            background-color: #222;
+            padding         : 10px 0;
+
+            >li {
+                >a {
+                    display   : block;
+                    text-align: center;
+                    padding   : 10px;
+                    color     : #fff;
+
+                    &:hover {
+                        color: @brand-primary
+                    }
+
+                    &:active {
+                        color: @brand-primary
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            >ul {
+                display: block;
+            }
+        }
+    }
+
+    >ul {
+        margin-top : 10px;
+        margin-left: 10px;
+
+        >li {
+            >a {
+                display: block;
+                padding: 8px 5px;
+                color  : #ccc;
+
+                &:hover {
+                    color: @brand-primary
+                }
+
+                &:active {
+                    color: @brand-primary
+                }
+            }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
-import PFPsArtifact from "./abi/artifacts/contracts/PFPs.sol/PFPs.json";
+import PFPsArtifact from "./abi/klubs/artifacts/contracts/PFPs.sol/PFPs.json";
 import Contract from "./Contract";
 
 interface Proposal {

@@ -2,7 +2,7 @@ import { BodyNode, DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
 import MobileMenu from "../component/menu/MobileMenu";
 import PCMenu from "../component/menu/PCMenu";
-import UserMenu from "../component/menu/UserMenu";
+import UserInfo from "../component/menu/UserInfo";
 import ViewUtil from "./ViewUtil";
 
 export default class Layout implements View {
@@ -19,7 +19,7 @@ export default class Layout implements View {
                     el("a", el(".logo", el("img", { src: "/images/logo.svg", height: "28" })), { click: () => ViewUtil.go("/") }),
                     new PCMenu(),
                     el(".right",
-                        new UserMenu(),
+                        new UserInfo(),
                         el("a.menu-button", el("i.fas.fa-bars"), {
                             click: (event, button) => {
                                 const rect = button.rect;

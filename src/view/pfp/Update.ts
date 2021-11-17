@@ -180,7 +180,7 @@ export default class Update implements View {
                     ),
                     el("button", "정보 저장", {
                         click: async () => {
-                            await PFPsContract.setRoyalty(addr, this.royaltyReceiverInput.domElement.value, Math.floor(parseFloat(this.royaltyInput.domElement.value) * 10));
+                            await PFPsContract.setRoyalty(addr, this.royaltyReceiverInput.domElement.value, Math.floor(parseFloat(this.royaltyInput.domElement.value) * 100));
                             setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
                         },
                     }),
@@ -239,7 +239,7 @@ export default class Update implements View {
 
     private async loadRoyalty(addr: string) {
         const royaltyInfo = await PFPsContract.royalties(addr);
-        this.royaltyInput.domElement.value = (royaltyInfo.royalty / 10).toString();
+        this.royaltyInput.domElement.value = (royaltyInfo.royalty / 100).toString();
         this.royaltyReceiverInput.domElement.value = royaltyInfo.receiver;
     }
 

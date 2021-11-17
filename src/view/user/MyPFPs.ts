@@ -9,7 +9,7 @@ export default class MyPFPs implements View {
     constructor() {
         Layout.current.title = "내 PFP";
         Layout.current.content.append(this.container = el(".user-my-pfps-view",
-
+            el("header", el("h1", "내 PFP 정보")),
         ));
     }
 

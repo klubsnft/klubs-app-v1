@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish, ContractInterface } from "ethers";
 import Wallet from "../../klaytn/Wallet";
-import KIP17Artifact from "../abi/artifacts/contracts/klaytn-contracts/token/KIP17/KIP17Full.sol/KIP17Full.json";
+import KIP17Artifact from "../abi/klubs/artifacts/contracts/klaytn-contracts/token/KIP17/KIP17Full.sol/KIP17Full.json";
 import Contract from "../Contract";
 
 export default class KIP17Contract extends Contract {

@@ -208,36 +208,158 @@ p {
   overflow-y: scroll;
   padding: 20px 0;
 }
-.buy-popup {
+.sell-popup {
   position: relative;
-  max-width: 640px;
-  width: 100%;
+  max-width: 600px;
+  width: 90%;
   margin: auto;
-  padding: 20px;
   border-radius: 4px;
   background-color: #1f1f1f;
 }
-.buy-popup > button {
-  margin-top: 16px;
-  width: 100%;
+.sell-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
 }
-.buy-popup > .price {
-  font-size: 1.5rem;
+.sell-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
 }
-.buy-popup > .price:hover {
-  color: #C7FEA2;
+.sell-popup > .loading {
+  padding: 16px;
 }
-.buy-popup > .danger-caption {
-  padding-top: 4px;
-  font-size: 0.625rem;
-  color: #ff3b30;
-  display: block;
+.sell-popup > .list {
+  padding: 0 16px;
 }
-.buy-popup > .divider {
-  margin-top: 16px;
+.sell-popup > .list > section {
+  padding: 16px;
   margin-bottom: 16px;
-  border: 0.5px solid;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.sell-popup > .list > section > img {
+  width: 100px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+.sell-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.sell-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.sell-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.sell-popup > .list > section > .info > label > input {
   width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.sell-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.sell-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.sell-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.sell-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.sell-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.buy-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.buy-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.buy-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.buy-popup > .loading {
+  padding: 16px;
+}
+.buy-popup > .list {
+  padding: 0 16px;
+}
+.buy-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.buy-popup > .list > section > img {
+  width: 100px;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+.buy-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.buy-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.buy-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.buy-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.buy-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
+}
+.buy-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.buy-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.buy-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .offer-popup {
   position: relative;
@@ -336,6 +458,8 @@ p {
 .pfp-nft-card {
   background-color: #1f1f1f;
   width: 200px;
+  height: 240px;
+  overflow: hidden;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -576,6 +700,49 @@ p {
 .user-menu > .wallet-address:hover {
   background-color: #CFFEB0;
 }
+.user-menu > .wallet-address {
+  position: relative;
+  cursor: pointer;
+}
+.user-menu > .wallet-address > ul {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  width: 100px;
+  display: none;
+  background-color: #222;
+  padding: 10px 0;
+}
+.user-menu > .wallet-address > ul > li > a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+}
+.user-menu > .wallet-address > ul > li > a:hover {
+  color: #C7FEA2;
+}
+.user-menu > .wallet-address > ul > li > a:active {
+  color: #C7FEA2;
+}
+.user-menu > .wallet-address:hover > ul {
+  display: block;
+}
+.user-menu > ul {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.user-menu > ul > li > a {
+  display: block;
+  padding: 8px 5px;
+  color: #ccc;
+}
+.user-menu > ul > li > a:hover {
+  color: #C7FEA2;
+}
+.user-menu > ul > li > a:active {
+  color: #C7FEA2;
+}
 .layout {
   width: 100%;
 }
@@ -808,11 +975,11 @@ p {
 }
 .pfp-nft-detail-view > section > .pfp {
   color: #C7FEA2;
-  margin-bottom: 16px;
 }
 .pfp-nft-detail-view > section > .name {
   font-size: 24px;
   font-weight: bold;
+  margin-top: 16px;
   margin-bottom: 16px;
 }
 .pfp-nft-detail-view > section > .owner {
@@ -835,6 +1002,68 @@ p {
 .pfp-nft-detail-view > section > .attributes > .attribute > .trait {
   color: #C7FEA2;
   margin-bottom: 16px;
+}
+.pfp-nft-detail-view > section > .trade-form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.pfp-nft-detail-view > section > .trade-form > .price-container {
+  flex-grow: 1;
+}
+.pfp-nft-detail-view > section > .trade-form > .price-container > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+  background: linear-gradient(180deg, #f8bc34 0%, #e17d1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+}
+.pfp-nft-detail-view > section > .trade-form > .price-container > .price > img {
+  margin-right: 4px;
+}
+.pfp-nft-detail-view > section > .trade-form > .sell-button,
+.pfp-nft-detail-view > section > .trade-form > .cancel-sell-button,
+.pfp-nft-detail-view > section > .trade-form > .buy-button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.pfp-nft-detail-view > section > .trade-form > .sell-button:hover,
+.pfp-nft-detail-view > section > .trade-form > .cancel-sell-button:hover,
+.pfp-nft-detail-view > section > .trade-form > .buy-button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-nft-detail-view > section > .offer-form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.pfp-nft-detail-view > section > .offer-form > .list {
+  flex-grow: 1;
+}
+.pfp-nft-detail-view > section > .offer-form > .offer-button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.pfp-nft-detail-view > section > .offer-form > .offer-button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-detail-view {
   display: flex;
@@ -1542,5 +1771,18 @@ p {
 }
 .art-view > .title {
   font-size: 28px;
+}
+.user-my-pfps-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.user-my-pfps-view > header > h1 {
+  font-size: 24px;
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
 }
 

@@ -1,7 +1,6 @@
-import { DomNode, el } from "@hanul/skynode";
+import { DomNode } from "@hanul/skynode";
 import menu from "./menu.json";
 import MenuTreeBuilder from "./MenuTreeBuilder";
-import UserMenu from "./UserMenu";
 
 export default class PCMenu extends DomNode {
 

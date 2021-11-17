@@ -13,6 +13,7 @@ export default class Detail implements View {
     private totalSupply;
     private idQuery;
     private page;
+    private onlySale;
     constructor(params: ViewParams);
     private loadInfo;
     private loadNFTs;

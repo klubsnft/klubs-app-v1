@@ -1,7 +1,7 @@
 import { ClosableFloatingDomNode, Position } from "@hanul/skynode";
 import menu from "./menu.json";
 import MenuTreeBuilder from "./MenuTreeBuilder";
-import UserMenu from "./UserMenu";
+import UserInfo from "./UserInfo";
 
 export default class MobileMenu extends ClosableFloatingDomNode {
 
@@ -9,7 +9,7 @@ export default class MobileMenu extends ClosableFloatingDomNode {
         super(position, ".mobile-menu");
         this.append(
             MenuTreeBuilder.build(menu.menu),
-            new UserMenu(),
+            new UserInfo(true),
         );
         this.onDom("click", () => this.delete());
     }

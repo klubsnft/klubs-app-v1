@@ -27,6 +27,7 @@ export default class Detail implements View {
     private totalSupply = 0;
     private idQuery = "";
     private page = 0;
+    private onlySale = false;
 
     constructor(params: ViewParams) {
 
