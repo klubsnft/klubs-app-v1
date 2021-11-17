@@ -183,7 +183,7 @@ p {
 }
 .number-with-commas > span {
   color: #666;
-  font-size: 12px;
+  font-size: 0.8em;
 }
 ::-webkit-scrollbar {
   width: 6px;
