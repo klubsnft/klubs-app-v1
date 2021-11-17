@@ -100,8 +100,14 @@ export default class NFTDetail implements View {
     private async loadTrade(addr: string, id: number) {
 
         const owner = await this.contract.ownerOf(id);
-        this.ownerDisplay.empty().appendText("소유자 ");
-        this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(owner)));
+        if (owner === "0xeF50df13f88070662459863D05cCD9581dfB1085") {
+            this.ownerDisplay.empty().appendText("판매자 ");
+            const saleInfo = await PFPStoreContract.sales(addr, id);
+            this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(saleInfo.seller)));
+        } else {
+            this.ownerDisplay.empty().appendText("소유자 ");
+            this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(owner)));
+        }
 
         const address = await Wallet.loadAddress();
         this.loadSale(address, owner, addr, id);
