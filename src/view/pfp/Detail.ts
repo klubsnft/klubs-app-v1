@@ -1,17 +1,15 @@
-import { BigNumber } from "@ethersproject/bignumber";
 import { DomNode, el } from "@hanul/skynode";
+import marked from "marked";
 import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
+import xss from "xss";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
-import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
 export default class Detail implements View {
-
-    private contract: KIP17Contract;
 
     private container: DomNode;
     private iconDisplay: DomNode<HTMLImageElement>;
@@ -33,7 +31,6 @@ export default class Detail implements View {
     constructor(params: ViewParams) {
 
         const addr = params.addr;
-        this.contract = new KIP17Contract(addr);
 
         Layout.current.title = "PFP 상세정보";
         Layout.current.content.append(this.container = el(".pfp-detail-view",
@@ -51,6 +48,10 @@ export default class Detail implements View {
             el("main",
                 el("header",
                     el("h2", "NFT 목록"),
+                    el(".tab-container",
+                        el("a.tab", "판매중"),
+                        el("a.tab", "전체"),
+                    ),
                     //el(".filter", el("button.button-contained", "희소 점수 보기"),
                     /*el("select",
                         el("option", "이름순"),
@@ -72,8 +73,10 @@ export default class Detail implements View {
                             el("option", "Mouth"),
                         ),*/
                     ),
-                    this.nftLoading = el(".loading", "Loading..."),
-                    this.nftList = el(".list"),
+                    el(".list-container",
+                        this.nftLoading = el(".loading", "Loading..."),
+                        this.nftList = el(".list"),
+                    ),
                 ),
                 el(".pagination",
                     this.prevButton = el("a.prev", {
@@ -86,7 +89,7 @@ export default class Detail implements View {
                     }),
                     this.nextButton = el("a.next", {
                         click: () => {
-                            if (this.page < Math.ceil(this.totalSupply / 200) - 1) {
+                            if (this.page < Math.ceil(this.totalSupply / 50) - 1) {
                                 this.page += 1;
                                 this.loadNFTs(addr);
                             }
@@ -109,10 +112,11 @@ export default class Detail implements View {
                 this.iconDisplay.domElement.src = data.icon;
             }
             if (data.name !== undefined) {
+                Layout.current.title = data.name;
                 this.nameDisplay.empty().appendText(data.name);
             }
             if (data.description !== undefined) {
-                this.descriptionDisplay.empty().appendText(data.description);
+                this.descriptionDisplay.domElement.innerHTML = xss(marked(data.description));
             }
             this.socialList.empty();
             if (data.twitter !== undefined && data.twitter.trim() !== "") {
@@ -133,7 +137,7 @@ export default class Detail implements View {
             }
 
         } catch (e) {
-            // ignore.
+            console.log(e);
         }
     }
 
@@ -146,12 +150,12 @@ export default class Detail implements View {
             this.prevButton.addClass("disable");
         }
 
-        if (this.page === Math.ceil(this.totalSupply / 200) - 1) {
+        if (this.page === Math.ceil(this.totalSupply / 50) - 1) {
             this.nextButton.addClass("disable");
         }
 
-        const start = this.page * 200;
-        let limit = (this.page + 1) * 200;
+        const start = this.page * 50;
+        let limit = (this.page + 1) * 50;
         if (limit > this.totalSupply) {
             limit = this.totalSupply;
         }

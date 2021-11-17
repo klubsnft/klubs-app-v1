@@ -69,9 +69,10 @@
             }
 
             @media @phone {
-                position: relative;
-                right   : 0;
-                bottom  : 0;
+                position  : relative;
+                right     : 0;
+                bottom    : 0;
+                margin-top: 16px;
             }
         }
     }
@@ -163,16 +164,28 @@
                 }
             }
 
-            >.list {
-                .float-wrapper();
+            >.list-container {
+                width: calc(100% - 240px);
 
-                >.pfp-nft-card {
-                    float        : left;
-                    margin-right : 16px;
+                @media @phone {
+                    width: auto;
+                }
+
+                >.loading {
                     margin-bottom: 16px;
+                }
 
-                    @media @phone {
-                        width: calc(50% - 16px);
+                >.list {
+                    .float-wrapper();
+
+                    >.pfp-nft-card {
+                        float        : left;
+                        margin-right : 16px;
+                        margin-bottom: 16px;
+
+                        @media @phone {
+                            width: calc(50% - 16px);
+                        }
                     }
                 }
             }

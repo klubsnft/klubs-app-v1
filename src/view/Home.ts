@@ -46,8 +46,10 @@ export default class Home implements View {
         let realCount = 0;
         this.pfpList.style({ width: count.toNumber() * 316 });
 
+        const array = new Array(count.toNumber()).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
+
         const promises: Promise<void>[] = [];
-        for (let i = 0; i < count.toNumber(); i += 1) {
+        for (const i of array) {
             const promise = async (index: number) => {
                 const addr = await PFPsContract.addrs(index);
                 const extras = await PFPsContract.extras(addr);

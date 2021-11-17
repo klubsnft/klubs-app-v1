@@ -776,89 +776,65 @@ p {
   }
 }
 .pfp-nft-detail-view {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
 }
-.pfp-nft-detail-view > .over-view {
-  margin-top: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
+@media only screen and (max-width: 719px) {
+  .pfp-nft-detail-view {
+    display: block;
+  }
 }
-.pfp-nft-detail-view > .over-view > .project {
-  font-size: 14px;
+.pfp-nft-detail-view > .nft-image {
+  aspect-ratio: 1;
+  width: 100%;
+  border-radius: 8px;
 }
-.pfp-nft-detail-view > .over-view > .pfp {
-  margin-top: 8px;
-  font-size: 3rem;
+.pfp-nft-detail-view > section {
+  aspect-ratio: 1;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 16px;
 }
-.pfp-nft-detail-view > .over-view > .pfp-info {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+@media only screen and (max-width: 719px) {
+  .pfp-nft-detail-view > section {
+    margin-top: 16px;
+  }
 }
-.pfp-nft-detail-view > .over-view > .pfp-info > .owner {
-  display: flex;
-  font-size: 1rem;
+.pfp-nft-detail-view > section > h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
 }
-.pfp-nft-detail-view > .over-view > .pfp-info > .owner > .owner-by {
-  margin-left: 8px;
-  font-size: 1rem;
+.pfp-nft-detail-view > section > .pfp {
+  color: #C7FEA2;
+  margin-bottom: 16px;
+}
+.pfp-nft-detail-view > section > .name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.pfp-nft-detail-view > section > .owner {
+  color: #999;
+  margin-bottom: 16px;
+}
+.pfp-nft-detail-view > section > .owner > span {
   color: #C7FEA2;
 }
-.pfp-nft-detail-view > .over-view > .pfp-info > .viewer {
-  display: flex;
-  margin-left: 32px;
-  font-size: 1rem;
-  justify-content: center;
-  align-items: center;
+.pfp-nft-detail-view > section > .attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
 }
-.pfp-nft-detail-view > .over-view > .pfp-info > .viewer > .viewer-icon {
-  margin-right: 4px;
+.pfp-nft-detail-view > section > .attributes > .attribute {
+  border: 1px solid #999;
+  padding: 16px;
+  border-radius: 8px;
 }
-.pfp-nft-detail-view > .over-view > .description {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: #1f1f1f;
-  border-radius: 4px;
-  margin-top: 16px;
-  padding-right: 16px;
-}
-.pfp-nft-detail-view > .over-view > .description > .title {
-  padding: 8px;
-  font-size: 1.25rem;
-}
-.pfp-nft-detail-view > .over-view > .description > .divider {
-  border: 0.5px solid;
-  width: 100%;
-}
-.pfp-nft-detail-view > .over-view > .description > .body {
-  font-size: 1rem;
-  padding: 8px;
-}
-.pfp-nft-detail-view > .image-view {
-  margin-top: 16px;
-  padding-left: 16px;
-  max-width: 50%;
-}
-.pfp-nft-detail-view > .image-view > .pfp-image {
-  max-width: 100%;
-  border-radius: 16px;
-}
-.pfp-nft-detail-view > .image-view > button {
-  width: 100%;
-  height: 48px;
-  margin-top: 16px;
-}
-.pfp-nft-detail-view > .image-view > .label {
-  font-size: 14px;
-  margin-top: 16px;
-}
-.pfp-nft-detail-view > .image-view > input {
-  margin-top: 8px;
-  width: 100%;
+.pfp-nft-detail-view > section > .attributes > .attribute > .trait {
+  color: #C7FEA2;
+  margin-bottom: 16px;
 }
 .pfp-detail-view {
   display: flex;
@@ -930,6 +906,7 @@ p {
     position: relative;
     right: 0;
     bottom: 0;
+    margin-top: 16px;
   }
 }
 .pfp-detail-view > main > header {
@@ -1009,7 +986,18 @@ p {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
-.pfp-detail-view > main > .content > .list:after {
+.pfp-detail-view > main > .content > .list-container {
+  width: calc(100% - 240px);
+}
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > main > .content > .list-container {
+    width: auto;
+  }
+}
+.pfp-detail-view > main > .content > .list-container > .loading {
+  margin-bottom: 16px;
+}
+.pfp-detail-view > main > .content > .list-container > .list:after {
   content: " ";
   display: block;
   font-size: 0;
@@ -1017,13 +1005,13 @@ p {
   clear: both;
   visibility: hidden;
 }
-.pfp-detail-view > main > .content > .list > .pfp-nft-card {
+.pfp-detail-view > main > .content > .list-container > .list > .pfp-nft-card {
   float: left;
   margin-right: 16px;
   margin-bottom: 16px;
 }
 @media only screen and (max-width: 719px) {
-  .pfp-detail-view > main > .content > .list > .pfp-nft-card {
+  .pfp-detail-view > main > .content > .list-container > .list > .pfp-nft-card {
     width: calc(50% - 16px);
   }
 }

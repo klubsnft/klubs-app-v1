@@ -36,9 +36,12 @@ export default class PFP implements View {
     private async load() {
 
         this.pfpList.empty();
-        const addrCount = await PFPsContract.getAddrCount();
+        const count = await PFPsContract.getAddrCount();
+
+        const array = new Array(count.toNumber()).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
+
         const promises: Promise<void>[] = [];
-        for (let i = 0; i < addrCount.toNumber(); i += 1) {
+        for (const i of array) {
             const promise = async (index: number) => {
                 const addr = await PFPsContract.addrs(index);
                 const extras = await PFPsContract.extras(addr);
