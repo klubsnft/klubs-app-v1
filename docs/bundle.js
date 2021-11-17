@@ -1959,7 +1959,7 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst TESTNET = false;\r\nexports[\"default\"] = {\r\n    chainId: TESTNET ? 1001 : 8217,\r\n    contracts: TESTNET ? {\r\n        PFPs: \"\",\r\n    } : {\r\n        PFPs: \"0x1627338797B536276Bd6a91151d038cDB07c155f\",\r\n    },\r\n};\r\n\n\n//# sourceURL=webpack:///./src/Config.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst TESTNET = false;\r\nexports[\"default\"] = {\r\n    chainId: TESTNET ? 1001 : 8217,\r\n    contracts: TESTNET ? {\r\n        PFPs: \"\",\r\n    } : {\r\n        PFPs: \"0xFaBf9031e21Ae41eF82Ee812C1F1DD4BE952BFf0\",\r\n    },\r\n};\r\n\n\n//# sourceURL=webpack:///./src/Config.ts?");
 
 /***/ }),
 

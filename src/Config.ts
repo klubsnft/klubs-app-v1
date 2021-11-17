@@ -10,6 +10,6 @@ export default {
         PFPs: "",
     } : {
         // Mainnet
-        PFPs: "0x1627338797B536276Bd6a91151d038cDB07c155f",
+        PFPs: "0xFaBf9031e21Ae41eF82Ee812C1F1DD4BE952BFf0",
     },
 };
