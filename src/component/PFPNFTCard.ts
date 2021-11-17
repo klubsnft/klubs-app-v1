@@ -12,6 +12,7 @@ export default class PFPNFTCard extends DomNode {
         img: string | undefined,
         name: string | undefined,
         price: BigNumber,
+        showingOffer?: boolean
     ) {
         super(".pfp-nft-card");
 
@@ -29,5 +30,14 @@ export default class PFPNFTCard extends DomNode {
         );
 
         this.onDom("click", () => ViewUtil.go(`/pfp/${addr}/${id}`));
+
+        if (showingOffer === true) {
+            this.addClass("offers");
+            this.loadOffers();
+        }
+    }
+
+    private async loadOffers() {
+        //TODO:
     }
 }

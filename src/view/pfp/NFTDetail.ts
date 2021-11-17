@@ -117,7 +117,7 @@ export default class NFTDetail implements View {
     private async loadInfo(addr: string, id: number) {
         try {
             const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
-            (this.imageDisplay as DomNode<HTMLImageElement>).domElement.src = result.body.image;
+            (this.imageDisplay as DomNode<HTMLImageElement>).domElement.src = result.body.image.indexOf("ipfs://") === 0 ? `https://api.klu.bs/ipfsimage/${result.body.image.substring(7)}` : result.body.image;
             this.nameDisplay.empty().appendText(result.body.name !== undefined ? result.body.name : `#${id}`);
             if (result.body.description !== undefined) {
                 this.descriptionDisplay.domElement.innerHTML = xss(marked(result.body.description));
