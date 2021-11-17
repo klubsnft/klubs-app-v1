@@ -1,10 +1,13 @@
 import { View, ViewParams } from "skyrouter";
 export default class Detail implements View {
     private container;
+    private header;
     private iconDisplay;
     private nameDisplay;
     private descriptionDisplay;
     private socialList;
+    private saleTab;
+    private totalTab;
     private idQueryInput;
     private nftLoading;
     private nftList;

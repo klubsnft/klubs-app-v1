@@ -6,16 +6,21 @@ import xss from "xss";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
+import Wallet from "../../klaytn/Wallet";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
 export default class Detail implements View {
 
     private container: DomNode;
+    private header: DomNode;
     private iconDisplay: DomNode<HTMLImageElement>;
     private nameDisplay: DomNode;
     private descriptionDisplay: DomNode;
     private socialList: DomNode;
+
+    private saleTab: DomNode;
+    private totalTab: DomNode;
 
     private idQueryInput: DomNode<HTMLInputElement>;
     private nftLoading: DomNode;
@@ -35,23 +40,30 @@ export default class Detail implements View {
 
         Layout.current.title = "PFP 상세정보";
         Layout.current.content.append(this.container = el(".pfp-detail-view",
-            el("header",
+            this.header = el("header",
                 this.iconDisplay = el("img"),
                 el(".body",
                     this.nameDisplay = el("h1"),
                     this.descriptionDisplay = el("p"),
                     this.socialList = el(".social"),
                 ),
-                el("button.update-button", "정보 수정", {
-                    click: () => ViewUtil.go(`/pfp/${addr}/update`),
-                }),
             ),
             el("main",
                 el("header",
                     el("h2", "NFT 목록"),
                     el(".tab-container",
-                        el("a.tab", "판매중"),
-                        el("a.tab", "전체"),
+                        this.saleTab = el("a.tab", "판매중", {
+                            click: () => {
+                                this.onlySale = true;
+                                this.loadNFTs(addr);
+                            },
+                        }),
+                        this.totalTab = el("a.tab", "전체", {
+                            click: () => {
+                                this.onlySale = false;
+                                this.loadNFTs(addr);
+                            },
+                        }),
                     ),
                     //el(".filter", el("button.button-contained", "희소 점수 보기"),
                     /*el("select",
@@ -137,6 +149,12 @@ export default class Detail implements View {
                 );
             }
 
+            const address = await Wallet.loadAddress();
+            if (address !== undefined && await PFPsContract.existsManager(addr, address) === true) {
+                el("button.update-button", "정보 수정", {
+                    click: () => ViewUtil.go(`/pfp/${addr}/update`),
+                }).appendTo(this.header);
+            }
         } catch (e) {
             console.log(e);
         }
@@ -162,26 +180,42 @@ export default class Detail implements View {
         }
 
         this.nftList.empty();
-        const promises: Promise<void>[] = [];
-        for (let i = start; i < limit; i += 1) {
-            const promise = async (id: number) => {
-                try {
-                    const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
-                    const saleInfo = await PFPStoreContract.sales(addr, i);
-                    new PFPNFTCard(
-                        addr,
-                        id,
-                        result.body.image,
-                        result.body.name,
-                        saleInfo.price,
-                    ).appendTo(this.nftList);
-                } catch (e) {
-                    console.error(e);
-                }
-            };
-            promises.push(promise(i));
+
+        // 판매중인 것만 보기
+        if (this.onlySale === true) {
+            this.saleTab.addClass("on");
+            this.totalTab.deleteClass("on");
+
+            PFPStoreContract.sales
         }
-        await Promise.all(promises);
+
+        // 전체보기
+        else {
+            this.saleTab.deleteClass("on");
+            this.totalTab.addClass("on");
+
+            const promises: Promise<void>[] = [];
+            for (let i = start; i < limit; i += 1) {
+                const promise = async (id: number) => {
+                    try {
+                        const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                        const saleInfo = await PFPStoreContract.sales(addr, i);
+                        new PFPNFTCard(
+                            addr,
+                            id,
+                            result.body.image,
+                            result.body.name,
+                            saleInfo.price,
+                        ).appendTo(this.nftList);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                };
+                promises.push(promise(i));
+            }
+            await Promise.all(promises);
+        }
+
         this.nftLoading.style({ display: "none" });
     }
 

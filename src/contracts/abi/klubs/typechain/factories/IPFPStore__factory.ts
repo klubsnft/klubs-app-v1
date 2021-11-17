@@ -89,6 +89,25 @@ const _abi = [
     constant: true,
     inputs: [
       {
+        name: "addr",
+        type: "address",
+      },
+    ],
+    name: "onSalesCount",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
         name: "seller",
         type: "address",
       },
@@ -373,6 +392,29 @@ const _abi = [
     type: "function",
   },
   {
+    constant: true,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+      {
+        name: "index",
+        type: "uint256",
+      },
+    ],
+    name: "onAuctions",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     constant: false,
     inputs: [
       {
@@ -570,6 +612,48 @@ const _abi = [
       },
       {
         name: "price",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+    ],
+    name: "onAuctionsCount",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+      {
+        name: "index",
+        type: "uint256",
+      },
+    ],
+    name: "onSales",
+    outputs: [
+      {
+        name: "",
         type: "uint256",
       },
     ],

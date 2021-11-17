@@ -27,6 +27,7 @@ interface PFPStoreInterface extends ethers.utils.Interface {
     "bid(address,uint256,uint256)": FunctionFragment;
     "banUser(address)": FunctionFragment;
     "setPFPs(address)": FunctionFragment;
+    "onSalesCount(address)": FunctionFragment;
     "userAuctionInfo(address,uint256)": FunctionFragment;
     "offerCount(address,uint256)": FunctionFragment;
     "sales(address,uint256)": FunctionFragment;
@@ -41,9 +42,11 @@ interface PFPStoreInterface extends ethers.utils.Interface {
     "userSellInfoLength(address)": FunctionFragment;
     "createAuction(address,uint256,uint256,uint256)": FunctionFragment;
     "setFee(uint256)": FunctionFragment;
+    "onAuctionsIndex(address,uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "makeOffer(address,uint256,uint256)": FunctionFragment;
     "setAuctionExtensionInterval(uint256)": FunctionFragment;
+    "onAuctions(address,uint256)": FunctionFragment;
     "cancelAuction(address,uint256)": FunctionFragment;
     "biddingCount(address,uint256)": FunctionFragment;
     "owner()": FunctionFragment;
@@ -60,10 +63,13 @@ interface PFPStoreInterface extends ethers.utils.Interface {
     "feeReceiver()": FunctionFragment;
     "userSellInfo(address,uint256)": FunctionFragment;
     "mix()": FunctionFragment;
+    "onAuctionsCount(address)": FunctionFragment;
+    "onSales(address,uint256)": FunctionFragment;
     "buy(address[],uint256[])": FunctionFragment;
     "userBiddingInfo(address,uint256)": FunctionFragment;
     "fee()": FunctionFragment;
     "offers(address,uint256,uint256)": FunctionFragment;
+    "onSalesIndex(address,uint256)": FunctionFragment;
     "setFeeReceiver(address)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "checkSelling(address,uint256)": FunctionFragment;
@@ -83,6 +89,10 @@ interface PFPStoreInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "banUser", values: [string]): string;
   encodeFunctionData(functionFragment: "setPFPs", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "onSalesCount",
+    values: [string]
+  ): string;
   encodeFunctionData(
     functionFragment: "userAuctionInfo",
     values: [string, BigNumberish]
@@ -134,6 +144,10 @@ interface PFPStoreInterface extends ethers.utils.Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "onAuctionsIndex",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "renounceOwnership",
     values?: undefined
   ): string;
@@ -144,6 +158,10 @@ interface PFPStoreInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "setAuctionExtensionInterval",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "onAuctions",
+    values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "cancelAuction",
@@ -198,6 +216,14 @@ interface PFPStoreInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "mix", values?: undefined): string;
   encodeFunctionData(
+    functionFragment: "onAuctionsCount",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "onSales",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "buy",
     values: [string[], BigNumberish[]]
   ): string;
@@ -209,6 +235,10 @@ interface PFPStoreInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "offers",
     values: [string, BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "onSalesIndex",
+    values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setFeeReceiver",
@@ -234,6 +264,10 @@ interface PFPStoreInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "bid", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "banUser", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setPFPs", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "onSalesCount",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "userAuctionInfo",
     data: BytesLike
@@ -270,6 +304,10 @@ interface PFPStoreInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "setFee", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "onAuctionsIndex",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
   ): Result;
@@ -278,6 +316,7 @@ interface PFPStoreInterface extends ethers.utils.Interface {
     functionFragment: "setAuctionExtensionInterval",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "onAuctions", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "cancelAuction",
     data: BytesLike
@@ -321,6 +360,11 @@ interface PFPStoreInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "mix", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "onAuctionsCount",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "onSales", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "userBiddingInfo",
@@ -328,6 +372,10 @@ interface PFPStoreInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "fee", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "offers", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "onSalesIndex",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "setFeeReceiver",
     data: BytesLike
@@ -443,6 +491,13 @@ export class PFPStore extends Contract {
       _pfps: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    onSalesCount(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "onSalesCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     userAuctionInfo(
       arg0: string,
@@ -642,6 +697,18 @@ export class PFPStore extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
+    onAuctionsIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "onAuctionsIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
     renounceOwnership(overrides?: Overrides): Promise<ContractTransaction>;
 
     "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
@@ -669,6 +736,18 @@ export class PFPStore extends Contract {
       interval: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    onAuctions(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "onAuctions(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     cancelAuction(
       addr: string,
@@ -831,6 +910,28 @@ export class PFPStore extends Contract {
 
     "mix()"(overrides?: CallOverrides): Promise<[string]>;
 
+    onAuctionsCount(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "onAuctionsCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    onSales(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "onSales(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
     buy(
       addrs: string[],
       ids: BigNumberish[],
@@ -884,6 +985,18 @@ export class PFPStore extends Contract {
       arg2: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+
+    onSalesIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "onSalesIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     setFeeReceiver(
       _receiver: string,
@@ -969,6 +1082,13 @@ export class PFPStore extends Contract {
     _pfps: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
+
+  onSalesCount(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  "onSalesCount(address)"(
+    addr: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   userAuctionInfo(
     arg0: string,
@@ -1165,6 +1285,18 @@ export class PFPStore extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  onAuctionsIndex(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "onAuctionsIndex(address,uint256)"(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   renounceOwnership(overrides?: Overrides): Promise<ContractTransaction>;
 
   "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
@@ -1192,6 +1324,18 @@ export class PFPStore extends Contract {
     interval: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
+
+  onAuctions(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "onAuctions(address,uint256)"(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   cancelAuction(
     addr: string,
@@ -1352,6 +1496,25 @@ export class PFPStore extends Contract {
 
   "mix()"(overrides?: CallOverrides): Promise<string>;
 
+  onAuctionsCount(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  "onAuctionsCount(address)"(
+    addr: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  onSales(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "onSales(address,uint256)"(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   buy(
     addrs: string[],
     ids: BigNumberish[],
@@ -1405,6 +1568,18 @@ export class PFPStore extends Contract {
     arg2: BigNumberish,
     overrides?: CallOverrides
   ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+
+  onSalesIndex(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "onSalesIndex(address,uint256)"(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   setFeeReceiver(
     _receiver: string,
@@ -1484,6 +1659,13 @@ export class PFPStore extends Contract {
     setPFPs(_pfps: string, overrides?: CallOverrides): Promise<void>;
 
     "setPFPs(address)"(_pfps: string, overrides?: CallOverrides): Promise<void>;
+
+    onSalesCount(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "onSalesCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     userAuctionInfo(
       arg0: string,
@@ -1677,6 +1859,18 @@ export class PFPStore extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    onAuctionsIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onAuctionsIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
     "renounceOwnership()"(overrides?: CallOverrides): Promise<void>;
@@ -1704,6 +1898,18 @@ export class PFPStore extends Contract {
       interval: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    onAuctions(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onAuctions(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     cancelAuction(
       addr: string,
@@ -1864,6 +2070,28 @@ export class PFPStore extends Contract {
 
     "mix()"(overrides?: CallOverrides): Promise<string>;
 
+    onAuctionsCount(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onAuctionsCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    onSales(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onSales(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     buy(
       addrs: string[],
       ids: BigNumberish[],
@@ -1917,6 +2145,18 @@ export class PFPStore extends Contract {
       arg2: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+
+    onSalesIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onSalesIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     setFeeReceiver(_receiver: string, overrides?: CallOverrides): Promise<void>;
 
@@ -2095,6 +2335,13 @@ export class PFPStore extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    onSalesCount(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "onSalesCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     userAuctionInfo(
       arg0: string,
       arg1: BigNumberish,
@@ -2251,6 +2498,18 @@ export class PFPStore extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    onAuctionsIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onAuctionsIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     renounceOwnership(overrides?: Overrides): Promise<BigNumber>;
 
     "renounceOwnership()"(overrides?: Overrides): Promise<BigNumber>;
@@ -2277,6 +2536,18 @@ export class PFPStore extends Contract {
     "setAuctionExtensionInterval(uint256)"(
       interval: BigNumberish,
       overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    onAuctions(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onAuctions(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     cancelAuction(
@@ -2426,6 +2697,28 @@ export class PFPStore extends Contract {
 
     "mix()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    onAuctionsCount(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onAuctionsCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    onSales(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onSales(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     buy(
       addrs: string[],
       ids: BigNumberish[],
@@ -2465,6 +2758,18 @@ export class PFPStore extends Contract {
       arg0: string,
       arg1: BigNumberish,
       arg2: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    onSalesIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "onSalesIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -2555,6 +2860,16 @@ export class PFPStore extends Contract {
     "setPFPs(address)"(
       _pfps: string,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    onSalesCount(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "onSalesCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     userAuctionInfo(
@@ -2719,6 +3034,18 @@ export class PFPStore extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
+    onAuctionsIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "onAuctionsIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     renounceOwnership(overrides?: Overrides): Promise<PopulatedTransaction>;
 
     "renounceOwnership()"(overrides?: Overrides): Promise<PopulatedTransaction>;
@@ -2745,6 +3072,18 @@ export class PFPStore extends Contract {
     "setAuctionExtensionInterval(uint256)"(
       interval: BigNumberish,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    onAuctions(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "onAuctions(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     cancelAuction(
@@ -2901,6 +3240,28 @@ export class PFPStore extends Contract {
 
     "mix()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    onAuctionsCount(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "onAuctionsCount(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    onSales(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "onSales(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     buy(
       addrs: string[],
       ids: BigNumberish[],
@@ -2940,6 +3301,18 @@ export class PFPStore extends Contract {
       arg0: string,
       arg1: BigNumberish,
       arg2: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    onSalesIndex(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "onSalesIndex(address,uint256)"(
+      arg0: string,
+      arg1: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
