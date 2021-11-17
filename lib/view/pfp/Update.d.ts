@@ -12,10 +12,13 @@ export default class Update implements View {
     private enumerableCheckbox;
     private totalSupplyLabel;
     private totalSupplyInput;
+    private royaltyInput;
+    private royaltyReceiverInput;
     private managerList;
     constructor(params: ViewParams);
     private load;
     private loadTotalSupply;
+    private loadRoyalty;
     private loadManagers;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;

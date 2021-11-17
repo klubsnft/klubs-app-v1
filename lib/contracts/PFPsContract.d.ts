@@ -4,6 +4,10 @@ interface Proposal {
     addr: string;
     manager: string;
 }
+interface RoyaltyInfo {
+    receiver: string;
+    royalty: number;
+}
 declare class PFPsContract extends Contract {
     constructor();
     added(addr: string): Promise<boolean>;
@@ -22,6 +26,7 @@ declare class PFPsContract extends Contract {
     getTotalSupply(addr: string): Promise<BigNumber>;
     proposalCount(): Promise<BigNumber>;
     proposals(index: BigNumberish): Promise<Proposal>;
+    royalties(addr: string): Promise<RoyaltyInfo>;
     managers(addr: string, index: BigNumberish): Promise<string>;
     setEnumerable(addr: string, enumerable: boolean): Promise<void>;
     setTotalSupply(addr: string, totalSupply: BigNumberish): Promise<void>;

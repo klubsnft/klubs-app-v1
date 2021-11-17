@@ -8,6 +8,11 @@ interface Proposal {
     manager: string,
 }
 
+interface RoyaltyInfo {
+    receiver: string,
+    royalty: number,
+}
+
 class PFPsContract extends Contract {
 
     constructor() {
@@ -79,6 +84,14 @@ class PFPsContract extends Contract {
         return {
             addr: results[0],
             manager: results[1],
+        };
+    }
+
+    public async royalties(addr: string): Promise<RoyaltyInfo> {
+        const results = await this.runMethod("royalties", addr);
+        return {
+            receiver: results[0],
+            royalty: parseInt(results[1], 10),
         };
     }
 

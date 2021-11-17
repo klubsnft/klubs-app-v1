@@ -22,6 +22,9 @@ export default class Update implements View {
     private totalSupplyLabel: DomNode;
     private totalSupplyInput: DomNode<HTMLInputElement>;
 
+    private royaltyInput: DomNode<HTMLInputElement>;
+    private royaltyReceiverInput: DomNode<HTMLInputElement>;
+
     private managerList: DomNode;
 
     constructor(params: ViewParams) {
@@ -163,6 +166,25 @@ export default class Update implements View {
                         },
                     }),
                 ),
+                el(".form",
+                    el("h2", "2차 판매 수수료 정보 수정"),
+                    el("label",
+                        el("h3", "2차 판매 수수료 비율"),
+                        el("p", "2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 1번째 자리까지 지정 가능합니다."),
+                        this.royaltyInput = el("input", { type: "number", placeholder: "2차 판매 수수료 비율" }),
+                    ),
+                    el("label",
+                        el("h3", "2차 판매 수수료 수령자"),
+                        el("p", "2차 판매 수수료를 받을 지갑 주소를 입력합니다."),
+                        this.royaltyReceiverInput = el("input", { type: "text", placeholder: "2차 판매 수수료 수령자" }),
+                    ),
+                    el("button", "정보 저장", {
+                        click: async () => {
+                            await PFPsContract.setRoyalty(addr, this.royaltyReceiverInput.domElement.value, Math.floor(parseFloat(this.royaltyInput.domElement.value) * 10));
+                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                        },
+                    }),
+                ),
                 el(".manage-managers",
                     el("h2", "매니저 관리"),
                     this.managerList = el("ul"),
@@ -180,6 +202,7 @@ export default class Update implements View {
 
         this.load(addr);
         this.loadTotalSupply(addr);
+        this.loadRoyalty(addr);
         this.loadManagers(addr);
     }
 
@@ -212,6 +235,12 @@ export default class Update implements View {
             const totalSupply = await PFPsContract.getTotalSupply(addr);
             this.totalSupplyInput.domElement.value = totalSupply.toString();
         } catch (e) { }
+    }
+
+    private async loadRoyalty(addr: string) {
+        const royaltyInfo = await PFPsContract.royalties(addr);
+        this.royaltyInput.domElement.value = (royaltyInfo.royalty / 10).toString();
+        this.royaltyReceiverInput.domElement.value = royaltyInfo.receiver;
     }
 
     private async loadManagers(addr: string) {
