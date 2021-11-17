@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import Prompt from "../../component/dialogue/Prompt";
 import PFPsContract from "../../contracts/PFPsContract";
 import Layout from "../Layout";
 
@@ -27,7 +28,11 @@ export default class PFPs implements View {
             const extras = await PFPsContract.extras(addr);
             el(".pfp", addr, "\n", JSON.stringify(managers), "\n", extras, {
                 style: { marginTop: 20 },
-            }).appendTo(this.container);
+            }, el("a", "Extra 설정", {
+                click: () => new Prompt("Extra 설정", "Extra 입력", "완료", async (extra) => {
+                    await PFPsContract.setExtra(addr, extra);
+                }),
+            })).appendTo(this.container);
         }
     }
 
