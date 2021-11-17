@@ -3,7 +3,6 @@ import { View, ViewParams } from "skyrouter";
 import Alert from "../../component/dialogue/Alert";
 import Prompt from "../../component/dialogue/Prompt";
 import PFPsContract from "../../contracts/PFPsContract";
-import Wallet from "../../klaytn/Wallet";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
@@ -22,6 +21,7 @@ export default class Update implements View {
     private enumerableCheckbox: DomNode<HTMLInputElement>;
     private totalSupplyLabel: DomNode;
     private totalSupplyInput: DomNode<HTMLInputElement>;
+
     private managerList: DomNode;
 
     constructor(params: ViewParams) {
@@ -53,16 +53,11 @@ export default class Update implements View {
                                 const file = event.target.files[0];
                                 const reader = new FileReader();
                                 reader.addEventListener("load", async () => {
-                                    const dataURL = reader.result as string;
-                                    const signedMessage = await Wallet.signMessage("Upload Banner");
-                                    await fetch(`https://api.klu.bs/pfp/${addr}/uploadbanner`, {
+                                    const result = await fetch(`https://api.klu.bs/pfp/uploadbanner`, {
                                         method: "POST",
-                                        body: JSON.stringify({
-                                            dataURL,
-                                            signedMessage,
-                                        }),
+                                        body: reader.result as string,
                                     });
-                                    this.bannerInput.domElement.value = `https://storage.googleapis.com/klubs/pfpbanner/${addr}.png`;
+                                    this.bannerInput.domElement.value = await result.text();
                                     this.bannerInput.fireDomEvent("change");
                                 }, false);
                                 if (file) {
@@ -90,16 +85,11 @@ export default class Update implements View {
                                 const file = event.target.files[0];
                                 const reader = new FileReader();
                                 reader.addEventListener("load", async () => {
-                                    const dataURL = reader.result as string;
-                                    const signedMessage = await Wallet.signMessage("Upload Icon");
-                                    await fetch(`https://api.klu.bs/pfp/${addr}/uploadicon`, {
+                                    const result = await fetch(`https://api.klu.bs/pfp/uploadicon`, {
                                         method: "POST",
-                                        body: JSON.stringify({
-                                            dataURL,
-                                            signedMessage,
-                                        }),
+                                        body: reader.result as string,
                                     });
-                                    this.iconInput.domElement.value = `https://storage.googleapis.com/klubs/pfpicon/${addr}.png`;
+                                    this.iconInput.domElement.value = await result.text();
                                     this.iconInput.fireDomEvent("change");
                                 }, false);
                                 if (file) {
@@ -146,8 +136,8 @@ export default class Update implements View {
                 el(".form",
                     el("h2", "발행량 정보 수정"),
                     el("label",
-                        el("h3", "KIP17Enumerable 상속 여부"),
-                        el("p", "KIP17Enumerable를 상속하신 경우, 총 발행량 정보를 매번 입력하지 않으셔도 됩니다."),
+                        el("h3", "KIP17Full 혹은 KIP17Enumerable 상속 여부"),
+                        el("p", "KIP17Full 혹은 KIP17Enumerable를 상속하신 경우, 총 발행량 정보를 매번 입력하지 않으셔도 됩니다."),
                         this.enumerableCheckbox = el("input", { type: "checkbox" }, {
                             change: () => {
                                 if (this.enumerableCheckbox.domElement.checked === true) {

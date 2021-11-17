@@ -26,6 +26,7 @@ declare class PFPsContract extends Contract {
     setEnumerable(addr: string, enumerable: boolean): Promise<void>;
     setTotalSupply(addr: string, totalSupply: BigNumberish): Promise<void>;
     passProposal(proposalId: BigNumberish): Promise<void>;
+    setRoyalty(addr: string, receiver: string, royalty: BigNumberish): Promise<void>;
 }
 declare const _default: PFPsContract;
 export default _default;

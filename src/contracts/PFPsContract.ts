@@ -97,6 +97,10 @@ class PFPsContract extends Contract {
     public async passProposal(proposalId: BigNumberish): Promise<void> {
         await this.runWalletMethod("passProposal", proposalId);
     }
+
+    public async setRoyalty(addr: string, receiver: string, royalty: BigNumberish): Promise<void> {
+        await this.runWalletMethod("setRoyalty", addr, receiver, royalty);
+    }
 }
 
 export default new PFPsContract();
