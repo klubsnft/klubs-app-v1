@@ -2,6 +2,7 @@ declare const _default: {
     chainId: number;
     contracts: {
         PFPs: string;
+        PFPStore: string;
     };
 };
 export default _default;

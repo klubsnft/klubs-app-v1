@@ -25,19 +25,24 @@ interface IPFPsInterface extends ethers.utils.Interface {
     "propose(address)": FunctionFragment;
     "extras(address)": FunctionFragment;
     "addrs(uint256)": FunctionFragment;
+    "managerPFPs(address,uint256)": FunctionFragment;
     "setExtra(address,string)": FunctionFragment;
     "setRoyalty(address,address,uint256)": FunctionFragment;
+    "addedBlocks(address)": FunctionFragment;
     "addByPFPOwner(address)": FunctionFragment;
     "managers(address,uint256)": FunctionFragment;
     "getTotalSupply(address)": FunctionFragment;
     "setTotalSupply(address,uint256)": FunctionFragment;
+    "added(address)": FunctionFragment;
     "addManager(address,address)": FunctionFragment;
     "addByMinter(address)": FunctionFragment;
     "managerCount(address)": FunctionFragment;
     "enumerables(address)": FunctionFragment;
     "totalSupplies(address)": FunctionFragment;
+    "banned(address)": FunctionFragment;
     "royalties(address)": FunctionFragment;
     "existsManager(address,address)": FunctionFragment;
+    "managerPFPCount(address)": FunctionFragment;
     "setEnumerable(address,bool)": FunctionFragment;
     "removeManager(address,address)": FunctionFragment;
     "addrCount()": FunctionFragment;
@@ -47,6 +52,10 @@ interface IPFPsInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "extras", values: [string]): string;
   encodeFunctionData(functionFragment: "addrs", values: [BigNumberish]): string;
   encodeFunctionData(
+    functionFragment: "managerPFPs",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setExtra",
     values: [string, string]
   ): string;
@@ -54,6 +63,7 @@ interface IPFPsInterface extends ethers.utils.Interface {
     functionFragment: "setRoyalty",
     values: [string, string, BigNumberish]
   ): string;
+  encodeFunctionData(functionFragment: "addedBlocks", values: [string]): string;
   encodeFunctionData(
     functionFragment: "addByPFPOwner",
     values: [string]
@@ -70,6 +80,7 @@ interface IPFPsInterface extends ethers.utils.Interface {
     functionFragment: "setTotalSupply",
     values: [string, BigNumberish]
   ): string;
+  encodeFunctionData(functionFragment: "added", values: [string]): string;
   encodeFunctionData(
     functionFragment: "addManager",
     values: [string, string]
@@ -84,10 +95,15 @@ interface IPFPsInterface extends ethers.utils.Interface {
     functionFragment: "totalSupplies",
     values: [string]
   ): string;
+  encodeFunctionData(functionFragment: "banned", values: [string]): string;
   encodeFunctionData(functionFragment: "royalties", values: [string]): string;
   encodeFunctionData(
     functionFragment: "existsManager",
     values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "managerPFPCount",
+    values: [string]
   ): string;
   encodeFunctionData(
     functionFragment: "setEnumerable",
@@ -102,8 +118,16 @@ interface IPFPsInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "propose", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "extras", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "addrs", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "managerPFPs",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "setExtra", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setRoyalty", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "addedBlocks",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "addByPFPOwner",
     data: BytesLike
@@ -117,6 +141,7 @@ interface IPFPsInterface extends ethers.utils.Interface {
     functionFragment: "setTotalSupply",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "added", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "addManager", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "addByMinter",
@@ -134,9 +159,14 @@ interface IPFPsInterface extends ethers.utils.Interface {
     functionFragment: "totalSupplies",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "banned", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "royalties", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "existsManager",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "managerPFPCount",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -209,6 +239,18 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<[string]>;
 
+    managerPFPs(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    "managerPFPs(address,uint256)"(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
     setExtra(
       addr: string,
       extra: string,
@@ -234,6 +276,13 @@ export class IPFPs extends Contract {
       royalty: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    addedBlocks(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "addedBlocks(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     addByPFPOwner(
       addr: string,
@@ -278,6 +327,13 @@ export class IPFPs extends Contract {
       totalSupply: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    added(addr: string, overrides?: CallOverrides): Promise<[boolean]>;
+
+    "added(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
     addManager(
       addr: string,
@@ -325,6 +381,13 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
+    banned(addr: string, overrides?: CallOverrides): Promise<[boolean]>;
+
+    "banned(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     royalties(
       addr: string,
       overrides?: CallOverrides
@@ -346,6 +409,16 @@ export class IPFPs extends Contract {
       manager: string,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
+
+    managerPFPCount(
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "managerPFPCount(address)"(
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     setEnumerable(
       addr: string,
@@ -394,6 +467,18 @@ export class IPFPs extends Contract {
     overrides?: CallOverrides
   ): Promise<string>;
 
+  managerPFPs(
+    manager: string,
+    index: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  "managerPFPs(address,uint256)"(
+    manager: string,
+    index: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
   setExtra(
     addr: string,
     extra: string,
@@ -419,6 +504,13 @@ export class IPFPs extends Contract {
     royalty: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
+
+  addedBlocks(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  "addedBlocks(address)"(
+    addr: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   addByPFPOwner(
     addr: string,
@@ -460,6 +552,10 @@ export class IPFPs extends Contract {
     totalSupply: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
+
+  added(addr: string, overrides?: CallOverrides): Promise<boolean>;
+
+  "added(address)"(addr: string, overrides?: CallOverrides): Promise<boolean>;
 
   addManager(
     addr: string,
@@ -504,6 +600,10 @@ export class IPFPs extends Contract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
+  banned(addr: string, overrides?: CallOverrides): Promise<boolean>;
+
+  "banned(address)"(addr: string, overrides?: CallOverrides): Promise<boolean>;
+
   royalties(
     addr: string,
     overrides?: CallOverrides
@@ -525,6 +625,16 @@ export class IPFPs extends Contract {
     manager: string,
     overrides?: CallOverrides
   ): Promise<boolean>;
+
+  managerPFPCount(
+    manager: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "managerPFPCount(address)"(
+    manager: string,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   setEnumerable(
     addr: string,
@@ -570,6 +680,18 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<string>;
 
+    managerPFPs(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    "managerPFPs(address,uint256)"(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
     setExtra(
       addr: string,
       extra: string,
@@ -595,6 +717,13 @@ export class IPFPs extends Contract {
       royalty: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    addedBlocks(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "addedBlocks(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     addByPFPOwner(addr: string, overrides?: CallOverrides): Promise<void>;
 
@@ -633,6 +762,10 @@ export class IPFPs extends Contract {
       totalSupply: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    added(addr: string, overrides?: CallOverrides): Promise<boolean>;
+
+    "added(address)"(addr: string, overrides?: CallOverrides): Promise<boolean>;
 
     addManager(
       addr: string,
@@ -674,6 +807,13 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    banned(addr: string, overrides?: CallOverrides): Promise<boolean>;
+
+    "banned(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
     royalties(
       addr: string,
       overrides?: CallOverrides
@@ -695,6 +835,16 @@ export class IPFPs extends Contract {
       manager: string,
       overrides?: CallOverrides
     ): Promise<boolean>;
+
+    managerPFPCount(
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "managerPFPCount(address)"(
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     setEnumerable(
       addr: string,
@@ -766,6 +916,18 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    managerPFPs(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "managerPFPs(address,uint256)"(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     setExtra(
       addr: string,
       extra: string,
@@ -790,6 +952,13 @@ export class IPFPs extends Contract {
       receiver: string,
       royalty: BigNumberish,
       overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    addedBlocks(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "addedBlocks(address)"(
+      addr: string,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     addByPFPOwner(addr: string, overrides?: Overrides): Promise<BigNumber>;
@@ -828,6 +997,13 @@ export class IPFPs extends Contract {
       addr: string,
       totalSupply: BigNumberish,
       overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    added(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "added(address)"(
+      addr: string,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     addManager(
@@ -870,6 +1046,13 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    banned(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "banned(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     royalties(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     "royalties(address)"(
@@ -885,6 +1068,16 @@ export class IPFPs extends Contract {
 
     "existsManager(address,address)"(
       addr: string,
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    managerPFPCount(
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "managerPFPCount(address)"(
       manager: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -946,6 +1139,18 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    managerPFPs(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "managerPFPs(address,uint256)"(
+      manager: string,
+      index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     setExtra(
       addr: string,
       extra: string,
@@ -970,6 +1175,16 @@ export class IPFPs extends Contract {
       receiver: string,
       royalty: BigNumberish,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    addedBlocks(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "addedBlocks(address)"(
+      addr: string,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     addByPFPOwner(
@@ -1014,6 +1229,16 @@ export class IPFPs extends Contract {
       addr: string,
       totalSupply: BigNumberish,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    added(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "added(address)"(
+      addr: string,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     addManager(
@@ -1068,6 +1293,16 @@ export class IPFPs extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    banned(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "banned(address)"(
+      addr: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     royalties(
       addr: string,
       overrides?: CallOverrides
@@ -1086,6 +1321,16 @@ export class IPFPs extends Contract {
 
     "existsManager(address,address)"(
       addr: string,
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    managerPFPCount(
+      manager: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "managerPFPCount(address)"(
       manager: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

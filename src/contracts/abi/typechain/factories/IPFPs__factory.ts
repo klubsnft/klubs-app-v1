@@ -67,6 +67,29 @@ const _abi = [
     type: "function",
   },
   {
+    constant: true,
+    inputs: [
+      {
+        name: "manager",
+        type: "address",
+      },
+      {
+        name: "index",
+        type: "uint256",
+      },
+    ],
+    name: "managerPFPs",
+    outputs: [
+      {
+        name: "",
+        type: "address",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     constant: false,
     inputs: [
       {
@@ -104,6 +127,25 @@ const _abi = [
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+    ],
+    name: "addedBlocks",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -178,6 +220,25 @@ const _abi = [
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+    ],
+    name: "added",
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -277,6 +338,25 @@ const _abi = [
         type: "address",
       },
     ],
+    name: "banned",
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+    ],
     name: "royalties",
     outputs: [
       {
@@ -309,6 +389,25 @@ const _abi = [
       {
         name: "",
         type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "manager",
+        type: "address",
+      },
+    ],
+    name: "managerPFPCount",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
       },
     ],
     payable: false,

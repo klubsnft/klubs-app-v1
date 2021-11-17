@@ -1,4 +1,6 @@
+export type { IMix } from "./IMix";
 export type { IPFPs } from "./IPFPs";
+export type { IPFPStore } from "./IPFPStore";
 export type { MinterRole } from "./MinterRole";
 export type { PauserRole } from "./PauserRole";
 export type { Context } from "./Context";
@@ -67,7 +69,12 @@ export type { KIP7Pausable } from "./KIP7Pausable";
 export type { KIP7Token } from "./KIP7Token";
 export type { KIP7TokenFull } from "./KIP7TokenFull";
 export type { PFPs } from "./PFPs";
+export type { PFPStore } from "./PFPStore";
+export type { TestMix } from "./TestMix";
+export type { TestPFP } from "./TestPFP";
+export { IMix__factory } from "./factories/IMix__factory";
 export { IPFPs__factory } from "./factories/IPFPs__factory";
+export { IPFPStore__factory } from "./factories/IPFPStore__factory";
 export { MinterRole__factory } from "./factories/MinterRole__factory";
 export { PauserRole__factory } from "./factories/PauserRole__factory";
 export { Context__factory } from "./factories/Context__factory";
@@ -136,4 +143,7 @@ export { KIP7Pausable__factory } from "./factories/KIP7Pausable__factory";
 export { KIP7Token__factory } from "./factories/KIP7Token__factory";
 export { KIP7TokenFull__factory } from "./factories/KIP7TokenFull__factory";
 export { PFPs__factory } from "./factories/PFPs__factory";
+export { PFPStore__factory } from "./factories/PFPStore__factory";
+export { TestMix__factory } from "./factories/TestMix__factory";
+export { TestPFP__factory } from "./factories/TestPFP__factory";
 //# sourceMappingURL=index.d.ts.map
