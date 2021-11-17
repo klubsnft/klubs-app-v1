@@ -173,12 +173,6 @@ export default class Detail implements View {
             this.nextButton.addClass("disable");
         }
 
-        const start = this.page * 50;
-        let limit = (this.page + 1) * 50;
-        if (limit > this.totalSupply) {
-            limit = this.totalSupply;
-        }
-
         this.nftList.empty();
 
         // 판매중인 것만 보기
@@ -186,13 +180,47 @@ export default class Detail implements View {
             this.saleTab.addClass("on");
             this.totalTab.deleteClass("on");
 
-            PFPStoreContract.sales
+            const count = (await PFPStoreContract.onSalesCount(addr)).toNumber();
+
+            const start = this.page * 50;
+            let limit = (this.page + 1) * 50;
+            if (limit > count) {
+                limit = count;
+            }
+
+            const promises: Promise<void>[] = [];
+            for (let i = start; i < limit; i += 1) {
+                const promise = async (index: number) => {
+                    try {
+                        const id = (await PFPStoreContract.onSales(addr, index)).toNumber();
+                        const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                        const saleInfo = await PFPStoreContract.sales(addr, i);
+                        new PFPNFTCard(
+                            addr,
+                            id,
+                            result.body.image,
+                            result.body.name,
+                            saleInfo.price,
+                        ).appendTo(this.nftList);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                };
+                promises.push(promise(i));
+            }
+            await Promise.all(promises);
         }
 
         // 전체보기
         else {
             this.saleTab.deleteClass("on");
             this.totalTab.addClass("on");
+
+            const start = this.page * 50;
+            let limit = (this.page + 1) * 50;
+            if (limit > this.totalSupply) {
+                limit = this.totalSupply;
+            }
 
             const promises: Promise<void>[] = [];
             for (let i = start; i < limit; i += 1) {

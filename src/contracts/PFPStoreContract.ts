@@ -67,6 +67,14 @@ class PFPStoreContract extends Contract {
         await this.runWalletMethod("cancelSale", addr, ids);
     }
 
+    public async onSalesCount(addr: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("onSalesCount", addr));
+    }
+
+    public async onSales(addr: string, index: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("onSales", addr, index));
+    }
+
     public async buy(addr: string[], ids: BigNumberish[]): Promise<void> {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
