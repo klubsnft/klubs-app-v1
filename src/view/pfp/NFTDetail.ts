@@ -2,7 +2,6 @@ import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import marked from "marked";
 import { View, ViewParams } from "skyrouter";
-import superagent from "superagent";
 import xss from "xss";
 import CommonUtil from "../../CommonUtil";
 import AcceptOfferPopup from "../../component/AcceptOfferPopup";
@@ -13,6 +12,7 @@ import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
+import ProxyUtil from "../../ProxyUtil";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
@@ -116,15 +116,16 @@ export default class NFTDetail implements View {
 
     private async loadInfo(addr: string, id: number) {
         try {
-            const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
-            (this.imageDisplay as DomNode<HTMLImageElement>).domElement.src = result.body.image.indexOf("ipfs://") === 0 ? `https://api.klu.bs/ipfsimage/${result.body.image.substring(7)}` : result.body.image;
-            this.nameDisplay.empty().appendText(result.body.name !== undefined ? result.body.name : `#${id}`);
-            if (result.body.description !== undefined) {
-                this.descriptionDisplay.domElement.innerHTML = xss(marked(result.body.description));
+            const url = await this.contract.tokenURI(id);
+            const data = await ProxyUtil.loadURL(url);
+            (this.imageDisplay as DomNode<HTMLImageElement>).domElement.src = ProxyUtil.imageSRC(data.image);
+            this.nameDisplay.empty().appendText(data.name !== undefined ? data.name : `#${id}`);
+            if (data.description !== undefined) {
+                this.descriptionDisplay.domElement.innerHTML = xss(marked(data.description));
             }
-            if (result.body.attributes !== undefined) {
+            if (data.attributes !== undefined) {
                 this.attributesDisplay.empty();
-                for (const attribute of result.body.attributes) {
+                for (const attribute of data.attributes) {
                     el(".attribute",
                         el(".trait", attribute.trait_type),
                         el(".value", String(attribute.value)),

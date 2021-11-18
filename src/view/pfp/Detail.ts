@@ -1,19 +1,23 @@
 import { DomNode, el } from "@hanul/skynode";
 import marked from "marked";
 import { View, ViewParams } from "skyrouter";
-import superagent from "superagent";
 import xss from "xss";
 import Alert from "../../component/dialogue/Alert";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
+import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
+import ProxyUtil from "../../ProxyUtil";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
 export default class Detail implements View {
 
+    private contract: KIP17Contract;
+
     private container: DomNode;
+
     private header: DomNode;
     private iconDisplay: DomNode<HTMLImageElement>;
     private nameDisplay: DomNode;
@@ -39,6 +43,7 @@ export default class Detail implements View {
     constructor(params: ViewParams) {
 
         const addr = params.addr;
+        this.contract = new KIP17Contract(addr);
 
         Layout.current.title = "PFP 상세정보";
         Layout.current.content.append(this.container = el(".pfp-detail-view",
@@ -208,15 +213,16 @@ export default class Detail implements View {
         if (this.idQuery.trim() !== "") {
             try {
                 const id = parseInt(this.idQuery.trim(), 10);
-                const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                const url = await this.contract.tokenURI(id);
+                const data = await ProxyUtil.loadURL(url);
                 if (currentOrder === this.order) {
                     const saleInfo = await PFPStoreContract.sales(addr, id);
                     if (currentOrder === this.order) {
                         new PFPNFTCard(
                             addr,
                             id,
-                            result.body.image,
-                            result.body.name,
+                            data.image,
+                            data.name,
                             saleInfo.price,
                         ).appendTo(this.nftList);
                     }
@@ -243,15 +249,16 @@ export default class Detail implements View {
                     try {
                         const id = (await PFPStoreContract.onSales(addr, index)).toNumber();
                         if (currentOrder === this.order) {
-                            const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                            const url = await this.contract.tokenURI(id);
+                            const data = await ProxyUtil.loadURL(url);
                             if (currentOrder === this.order) {
                                 const saleInfo = await PFPStoreContract.sales(addr, id);
                                 if (currentOrder === this.order) {
                                     new PFPNFTCard(
                                         addr,
                                         id,
-                                        result.body.image,
-                                        result.body.name,
+                                        data.image,
+                                        data.name,
                                         saleInfo.price,
                                     ).appendTo(this.nftList);
                                 }
@@ -281,15 +288,16 @@ export default class Detail implements View {
             for (let i = start; i < limit; i += 1) {
                 const promise = async (id: number) => {
                     try {
-                        const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
+                        const url = await this.contract.tokenURI(id);
+                        const data = await ProxyUtil.loadURL(url);
                         if (currentOrder === this.order) {
                             const saleInfo = await PFPStoreContract.sales(addr, id);
                             if (currentOrder === this.order) {
                                 new PFPNFTCard(
                                     addr,
                                     id,
-                                    result.body.image,
-                                    result.body.name,
+                                    data.image,
+                                    data.name,
                                     saleInfo.price,
                                 ).appendTo(this.nftList);
                             }

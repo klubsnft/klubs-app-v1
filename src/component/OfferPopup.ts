@@ -3,6 +3,8 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import superagent from "superagent";
 import PFPStoreContract from "../contracts/PFPStoreContract";
+import KIP17Contract from "../contracts/standard/KIP17Contract";
+import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 
 export default class OfferPopup extends Popup {
@@ -42,14 +44,13 @@ export default class OfferPopup extends Popup {
 
     private async load() {
         let input: DomNode<HTMLInputElement>;
-        const result = await superagent.get(`https://api.klu.bs/pfp/${this.addr}/${this.id}/proxy`);
-        const img = result.body.image;
+        const url = await new KIP17Contract(this.addr).tokenURI(this.id);
+        const data = await ProxyUtil.loadURL(url);
+        const img = data.image;
         this.list.append(el("section",
-            img === undefined ? undefined : el("img", {
-                src: img.indexOf("ipfs://") === 0 ? `https://api.klu.bs/ipfsimage/${img.substring(7)}` : img,
-            }),
+            img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),
             el(".info",
-                el(".name", result.body.name),
+                el(".name", data.name),
                 el("label",
                     el("span", "제안 가격"),
                     input = el("input", { placeholder: "제안 가격 (MIX)" }),

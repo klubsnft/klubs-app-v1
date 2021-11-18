@@ -4,6 +4,8 @@ import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../CommonUtil";
 import PFPStoreContract from "../contracts/PFPStoreContract";
+import KIP17Contract from "../contracts/standard/KIP17Contract";
+import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 
 export default class BuyPopup extends Popup {
@@ -39,15 +41,14 @@ export default class BuyPopup extends Popup {
     private async load() {
         for (const [index, addr] of this.addr.entries()) {
             const id = this.ids[index];
-            const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${id}/proxy`);
-            const img = result.body.image;
+            const url = await new KIP17Contract(addr).tokenURI(id);
+            const data = await ProxyUtil.loadURL(url);
+            const img = data.image;
             const saleInfo = await PFPStoreContract.sales(addr, id);
             this.list.append(el("section",
-                img === undefined ? undefined : el("img", {
-                    src: img.indexOf("ipfs://") === 0 ? `https://api.klu.bs/ipfsimage/${img.substring(7)}` : img,
-                }),
+                img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),
                 el(".info",
-                    el(".name", result.body.name),
+                    el(".name", data.name),
                     el("label",
                         el("span", "판매 가격"),
                         saleInfo.price.eq(0) === true ? undefined : el(".price",

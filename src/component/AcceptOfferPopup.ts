@@ -5,6 +5,8 @@ import superagent from "superagent";
 import CommonUtil from "../CommonUtil";
 import PFPsContract from "../contracts/PFPsContract";
 import PFPStoreContract from "../contracts/PFPStoreContract";
+import KIP17Contract from "../contracts/standard/KIP17Contract";
+import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 
 export default class AcceptOfferPopup extends Popup {
@@ -38,16 +40,15 @@ export default class AcceptOfferPopup extends Popup {
     }
 
     private async load() {
-        const result = await superagent.get(`https://api.klu.bs/pfp/${this.addr}/${this.id}/proxy`);
-        const img = result.body.image;
+        const url = await new KIP17Contract(this.addr).tokenURI(this.id);
+        const data = await ProxyUtil.loadURL(url);
+        const img = data.image;
         const offerInfo = await PFPStoreContract.offers(this.addr, this.id, this.offerId);
         const royalty = await PFPsContract.royalties(this.addr);
         this.list.append(el("section",
-            img === undefined ? undefined : el("img", {
-                src: img.indexOf("ipfs://") === 0 ? `https://api.klu.bs/ipfsimage/${img.substring(7)}` : img,
-            }),
+            img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),
             el(".info",
-                el(".name", result.body.name),
+                el(".name", data.name),
                 el("label",
                     el("span", `제안 가격 (원작자 2차 판매 수수료: ${royalty.royalty / 100}%, Klubs 수수료 2.5% 포함)`),
                     offerInfo.price.eq(0) === true ? undefined : el(".price",

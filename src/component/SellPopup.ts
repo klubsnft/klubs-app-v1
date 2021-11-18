@@ -1,9 +1,10 @@
 import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
-import superagent from "superagent";
 import PFPsContract from "../contracts/PFPsContract";
 import PFPStoreContract from "../contracts/PFPStoreContract";
+import KIP17Contract from "../contracts/standard/KIP17Contract";
+import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 
 export default class SellPopup extends Popup {
@@ -44,15 +45,14 @@ export default class SellPopup extends Popup {
     private async load() {
         for (const [index, addr] of this.addr.entries()) {
             let input: DomNode<HTMLInputElement>;
-            const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/${this.ids[index]}/proxy`);
+            const url = await new KIP17Contract(addr).tokenURI(this.ids[index]);
+            const data = await ProxyUtil.loadURL(url);
             const royalty = await PFPsContract.royalties(addr);
-            const img = result.body.image;
+            const img = data.image;
             this.list.append(el("section",
-                img === undefined ? undefined : el("img", {
-                    src: img.indexOf("ipfs://") === 0 ? `https://api.klu.bs/ipfsimage/${img.substring(7)}` : img,
-                }),
+                img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),
                 el(".info",
-                    el(".name", result.body.name),
+                    el(".name", data.name),
                     el("label",
                         el("span", `판매 가격 (원작자 2차 판매 수수료: ${royalty.royalty / 100}%, Klubs 수수료 2.5% 포함)`),
                         input = el("input", { placeholder: "판매 가격 (MIX)" }),
