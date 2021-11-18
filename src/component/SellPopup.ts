@@ -6,6 +6,7 @@ import PFPStoreContract from "../contracts/PFPStoreContract";
 import KIP17Contract from "../contracts/standard/KIP17Contract";
 import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
+import Loading from "./loading/Loading";
 
 export default class SellPopup extends Popup {
 
@@ -20,7 +21,7 @@ export default class SellPopup extends Popup {
         this.append(this.content = el(".popup.sell-popup",
             el("h2", "판매하기"),
             el("p", "보유중인 NFT를 판매합니다. 최초 판매시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 판매를 위한 것입니다."),
-            this.loading = el(".loading", "Loading..."),
+            this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
                 el("button", "판매 시작", {

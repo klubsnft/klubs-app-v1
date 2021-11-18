@@ -229,9 +229,6 @@ p {
   border-top: 1px solid #666;
   color: #999;
 }
-.sell-popup > .loading {
-  padding: 16px;
-}
 .sell-popup > .list {
   padding: 0 16px;
 }
@@ -309,9 +306,6 @@ p {
   border-top: 1px solid #666;
   color: #999;
 }
-.buy-popup > .loading {
-  padding: 16px;
-}
 .buy-popup > .list {
   padding: 0 16px;
 }
@@ -380,9 +374,6 @@ p {
   padding: 16px;
   border-top: 1px solid #666;
   color: #999;
-}
-.offer-popup > .loading {
-  padding: 16px;
 }
 .offer-popup > .list {
   padding: 0 16px;
@@ -460,9 +451,6 @@ p {
   padding: 16px;
   border-top: 1px solid #666;
   color: #999;
-}
-.accept-offer-popup > .loading {
-  padding: 16px;
 }
 .accept-offer-popup > .list {
   padding: 0 16px;
@@ -1074,9 +1062,6 @@ p {
   color: #999;
   margin-bottom: 16px;
 }
-.home-view > .content > .slide > .loading {
-  margin-bottom: 16px;
-}
 .home-view > .content > .slide > .pfp-list-container {
   overflow-x: scroll;
   padding-bottom: 16px;
@@ -1134,9 +1119,6 @@ p {
 .pfp-view > .content > h2 {
   font-size: 24px;
   color: #999;
-  margin-bottom: 16px;
-}
-.pfp-view > .content > .loading {
   margin-bottom: 16px;
 }
 .pfp-view > .content > .pfp-list:after {
@@ -1500,9 +1482,6 @@ p {
   .pfp-detail-view > main > .content > .list-container {
     width: auto;
   }
-}
-.pfp-detail-view > main > .content > .list-container > .loading {
-  margin-bottom: 16px;
 }
 .pfp-detail-view > main > .content > .list-container > .list:after {
   content: " ";

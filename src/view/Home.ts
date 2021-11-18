@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import Loading from "../component/loading/Loading";
 import PFPCard from "../component/PFPCard";
 import PFPsContract from "../contracts/PFPsContract";
 import Layout from "./Layout";
@@ -24,7 +25,7 @@ export default class Home implements View {
                 el(".content",
                     el(".slide",
                         el("h2", "PFP"),
-                        this.pfpLoading = el(".loading", "Loading..."),
+                        this.pfpLoading = new Loading(),
                         el(".pfp-list-container",
                             this.pfpList = el(".pfp-list"),
                         ),

@@ -10,6 +10,7 @@
         "@types/superagent": "^4.1.12",
         "@walletconnect/web3-provider": "^1.4.1",
         "@types/qrcode": "^1.4.1",
+        "lottie-web": "^5.7.13",
         "qrcode": "^1.4.4",
         "bowser": "^2.11.0",
         "ethers": "^5.0.32",

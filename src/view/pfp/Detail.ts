@@ -3,6 +3,7 @@ import marked from "marked";
 import { View, ViewParams } from "skyrouter";
 import xss from "xss";
 import Alert from "../../component/dialogue/Alert";
+import Loading from "../../component/loading/Loading";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
@@ -95,7 +96,7 @@ export default class Detail implements View {
                         ),*/
                     ),
                     el(".list-container",
-                        this.nftLoading = el(".loading", "Loading..."),
+                        this.nftLoading = new Loading(),
                         this.nftList = el(".list"),
                         el(".pagination",
                             this.prevButton = el("a.prev", el("i.fas.fa-arrow-left"), {

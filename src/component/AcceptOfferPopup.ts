@@ -1,13 +1,13 @@
 import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
-import superagent from "superagent";
 import CommonUtil from "../CommonUtil";
 import PFPsContract from "../contracts/PFPsContract";
 import PFPStoreContract from "../contracts/PFPStoreContract";
 import KIP17Contract from "../contracts/standard/KIP17Contract";
 import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
+import Loading from "./loading/Loading";
 
 export default class AcceptOfferPopup extends Popup {
 
@@ -21,7 +21,7 @@ export default class AcceptOfferPopup extends Popup {
         this.append(this.content = el(".popup.accept-offer-popup",
             el("h2", "제안 수락하기"),
             el("p", "보유중인 NFT에 제안된 가격을 수락합니다. 최초 수락시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 수락을 위한 것입니다. 수락하는 즉시 거래가 완료됩니다."),
-            this.loading = el(".loading", "Loading..."),
+            this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
                 el("button", "제안 수락", {
