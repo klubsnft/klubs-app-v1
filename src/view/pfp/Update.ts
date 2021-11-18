@@ -22,6 +22,10 @@ export default class Update implements View {
     private totalSupplyLabel: DomNode;
     private totalSupplyInput: DomNode<HTMLInputElement>;
 
+    private mineableCheckbox: DomNode<HTMLInputElement>;
+    private miningInfoURLLabel: DomNode;
+    private miningInfoURLInput: DomNode<HTMLInputElement>;
+
     private royaltyInput: DomNode<HTMLInputElement>;
     private royaltyReceiverInput: DomNode<HTMLInputElement>;
 
@@ -121,6 +125,24 @@ export default class Update implements View {
                         el("h3", "트위터"),
                         this.twitterInput = el("input", { type: "url", placeholder: "트위터 주소" }),
                     ),
+                    el("label",
+                        el("h3", "채굴 가능 여부"),
+                        el("p", "PFP 프로젝트가 채굴이 가능한지 설정합니다."),
+                        this.mineableCheckbox = el("input", { type: "checkbox" }, {
+                            change: () => {
+                                if (this.mineableCheckbox.domElement.checked === true) {
+                                    this.miningInfoURLLabel.style({ display: "block" });
+                                } else {
+                                    this.miningInfoURLLabel.style({ display: "none" });
+                                }
+                            },
+                        }),
+                    ),
+                    this.miningInfoURLLabel = el("label",
+                        el("h3", "채굴 정보 URL"),
+                        el("p", "채굴 정보를 확인할 수 있는 페이지의 URL을 기입합니다."),
+                        this.miningInfoURLInput = el("input", { type: "url", placeholder: "채굴 정보 URL" }),
+                    ),
                     el("button", "정보 저장", {
                         click: async () => {
                             const extra = {
@@ -130,6 +152,8 @@ export default class Update implements View {
                                 description: this.descriptionTextarea.domElement.value,
                                 kakaotalk: this.kakaotalkInput.domElement.value,
                                 twitter: this.twitterInput.domElement.value,
+                                mineable: this.mineableCheckbox.domElement.checked,
+                                miningInfoURL: this.miningInfoURLInput.domElement.value,
                             };
                             await PFPsContract.setExtra(addr, JSON.stringify(extra));
                             setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
@@ -213,22 +237,30 @@ export default class Update implements View {
             try { data = JSON.parse(extras); } catch (e) { }
 
             (this.bannerPreview as DomNode<HTMLImageElement>).domElement.src = data.banner;
-            this.bannerInput.domElement.value = data.banner;
+            this.bannerInput.domElement.value = data.banner === undefined ? "" : data.banner;
 
             (this.iconPreview as DomNode<HTMLImageElement>).domElement.src = data.icon;
-            this.iconInput.domElement.value = data.icon;
+            this.iconInput.domElement.value = data.icon === undefined ? "" : data.icon;
 
-            this.nameInput.domElement.value = data.name;
-            this.descriptionTextarea.domElement.value = data.description;
-            this.kakaotalkInput.domElement.value = data.kakaotalk;
-            this.twitterInput.domElement.value = data.twitter;
+            this.nameInput.domElement.value = data.name === undefined ? "" : data.name;
+            this.descriptionTextarea.domElement.value = data.description === undefined ? "" : data.description;
+            this.kakaotalkInput.domElement.value = data.kakaotalk === undefined ? "" : data.kakaotalk;
+            this.twitterInput.domElement.value = data.twitter === undefined ? "" : data.twitter;
+
+            this.mineableCheckbox.domElement.checked = data.mineable;
+            if (data.mineable === true) {
+                this.miningInfoURLLabel.style({ display: "block" });
+            } else {
+                this.miningInfoURLLabel.style({ display: "none" });
+            }
+            this.miningInfoURLInput.domElement.value = data.miningInfoURL === undefined ? "" : data.miningInfoURL;
         }
     }
 
     private async loadTotalSupply(addr: string) {
         const enumerable = await PFPsContract.enumerables(addr);
+        this.enumerableCheckbox.domElement.checked = enumerable;
         if (enumerable === true) {
-            this.enumerableCheckbox.domElement.checked = true;
             this.enumerableCheckbox.fireDomEvent("change");
         }
         try {

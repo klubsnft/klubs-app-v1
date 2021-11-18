@@ -563,6 +563,11 @@ p {
   overflow: hidden;
   white-space: nowrap;
 }
+.pfp-card > .info > .mineable {
+  position: absolute;
+  top: 162px;
+  right: 12px;
+}
 .pfp-card > .info > .description {
   margin-top: 10px;
   font-size: 14px;
@@ -884,7 +889,6 @@ p {
 .layout > header > a > .logo > span {
   margin-left: 4px;
   margin-top: 12px;
-  font-style: italic;
   color: #e17d1c;
 }
 @media only screen and (max-width: 719px) {
@@ -1256,6 +1260,23 @@ p {
 .pfp-detail-view > header > .body > p {
   margin-top: 8px;
   text-shadow: 0px 0px 5px #000000;
+}
+.pfp-detail-view > header > .body > p:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.pfp-detail-view > header > .body > p > .mining {
+  float: left;
+  color: #c7fea2;
+  display: flex;
+  align-items: center;
+}
+.pfp-detail-view > header > .body > p > .mining > img {
+  margin-right: 6px;
 }
 .pfp-detail-view > header > .body > .social {
   display: flex;

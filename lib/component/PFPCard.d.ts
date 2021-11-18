@@ -1,8 +1,9 @@
 import { DomNode } from "@hanul/skynode";
+import PFPExtra from "../datamodel/PFPExtra";
 export default class PFPCard extends DomNode {
     private bannerDisplay;
     private iconDisplay;
     private descriptionDisplay;
-    constructor(addr: string, banner: string | undefined, icon: string | undefined, name: string | undefined, description: string | undefined);
+    constructor(addr: string, extra: PFPExtra);
 }
 //# sourceMappingURL=PFPCard.d.ts.map

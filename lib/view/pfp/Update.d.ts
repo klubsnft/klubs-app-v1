@@ -12,6 +12,9 @@ export default class Update implements View {
     private enumerableCheckbox;
     private totalSupplyLabel;
     private totalSupplyInput;
+    private mineableCheckbox;
+    private miningInfoURLLabel;
+    private miningInfoURLInput;
     private royaltyInput;
     private royaltyReceiverInput;
     private managerList;

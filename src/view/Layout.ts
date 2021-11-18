@@ -19,7 +19,7 @@ export default class Layout implements View {
                     el("a", { click: () => ViewUtil.go("/") },
                         el(".logo",
                             el("img", { src: "/images/logo.svg", height: "28" }),
-                            el("span", "Beta"),
+                            el("span", "0.1"),
                         ),
                     ),
                     new PCMenu(),

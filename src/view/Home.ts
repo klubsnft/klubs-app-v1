@@ -58,7 +58,7 @@ export default class Home implements View {
                     let data: any = {};
                     try { data = JSON.parse(extras); } catch (e) { }
                     if (this.container.deleted !== true) {
-                        new PFPCard(addr, data.banner, data.icon, data.name, data.description).appendTo(this.pfpList);
+                        new PFPCard(addr, data).appendTo(this.pfpList);
                     }
                 }
             };

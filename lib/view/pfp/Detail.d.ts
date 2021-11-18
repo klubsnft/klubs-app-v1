@@ -5,6 +5,7 @@ export default class Detail implements View {
     private iconDisplay;
     private nameDisplay;
     private descriptionDisplay;
+    private miningInfoDisplay;
     private socialList;
     private saleTab;
     private totalTab;

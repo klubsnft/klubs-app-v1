@@ -18,6 +18,7 @@ export default class Detail implements View {
     private iconDisplay: DomNode<HTMLImageElement>;
     private nameDisplay: DomNode;
     private descriptionDisplay: DomNode;
+    private miningInfoDisplay: DomNode;
     private socialList: DomNode;
 
     private saleTab: DomNode;
@@ -46,6 +47,7 @@ export default class Detail implements View {
                 el(".body",
                     this.nameDisplay = el("h1"),
                     this.descriptionDisplay = el("p"),
+                    this.miningInfoDisplay = el("p"),
                     this.socialList = el(".social"),
                 ),
             ),
@@ -135,6 +137,20 @@ export default class Detail implements View {
             }
             if (data.description !== undefined) {
                 this.descriptionDisplay.domElement.innerHTML = xss(marked(data.description));
+            }
+            if (data.mineable === true) {
+                this.miningInfoDisplay.empty().append(
+                    el("a.mining",
+                        el("img", { src: "/images/icon/mining.png", height: "14" }),
+                        el("span", "채굴 가능"),
+                        {
+                            title: "채굴 가능한 PFP입니다. 클릭하시면 자세한 정보를 확인하실 수 있습니다.",
+                            href: data.miningInfoURL,
+                            target: "_blank",
+                            click: (event: MouseEvent) => event.stopPropagation(),
+                        },
+                    ),
+                );
             }
             this.socialList.empty();
             if (data.twitter !== undefined && data.twitter.trim() !== "") {
