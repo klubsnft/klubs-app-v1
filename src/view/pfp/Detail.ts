@@ -125,6 +125,7 @@ export default class Detail implements View {
             ),
         ));
         this.loadInfo(addr);
+        this.loadUpdateButton(addr);
         this.loadNFTs(addr);
     }
 
@@ -175,7 +176,13 @@ export default class Detail implements View {
                     ),
                 );
             }
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
+    private async loadUpdateButton(addr: string) {
+        try {
             const address = await Wallet.loadAddress();
             if (address !== undefined && await PFPsContract.existsManager(addr, address) === true) {
                 el("button.update-button", "정보 수정", {
