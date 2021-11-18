@@ -16,7 +16,7 @@ export default class Home implements View {
         Layout.current.content.append(
             (this.container = el(".home-view",
                 el("header",
-                    el("p", "Klubs는 클레이튼 기반 NFT 마켓플레이스입니다. MIX를 사용합니다."),
+                    el("p", "Klubs는 클레이튼 기반 NFT 마켓플레이스입니다. 100% On-Chain으로 구동되며 MIX를 사용합니다."),
                     el("a", "Klubs 소개", {
                         href: "https://medium.com/klubs/klubs-klaytn-based-nft-marketplace-with-mix-2c93d3a9e014",
                         target: "_blank",
