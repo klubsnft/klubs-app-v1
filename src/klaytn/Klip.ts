@@ -16,7 +16,7 @@ class Klip extends EventContainer {
     }
 
     public set address(address: string | undefined) {
-        this.store.set("address", address);
+        this.store.set("address", address, true);
     }
 
     private async request(res: any): Promise<any> {
