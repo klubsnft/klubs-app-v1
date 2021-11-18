@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import CommonUtil from "../../CommonUtil";
+import Klip from "../../klaytn/Klip";
 import Wallet from "../../klaytn/Wallet";
 import ViewUtil from "../../view/ViewUtil";
 
@@ -36,6 +37,9 @@ export default class UserInfo extends DomNode {
             (this.mobile === true ? this : this.addressDisplay).append(el("ul",
                 el("li", el("a", "내 PFP", {
                     click: () => ViewUtil.go("/user/my-pfps"),
+                })),
+                Klip.connected !== true ? undefined : el("li", el("a", "로그아웃", {
+                    click: () => Klip.disconnect(),
                 })),
             ));
         }

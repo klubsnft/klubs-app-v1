@@ -516,6 +516,95 @@ p {
   background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+.connect-wallet-popup {
+  position: relative;
+  max-width: 420px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.connect-wallet-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.connect-wallet-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.connect-wallet-popup > .button-container {
+  padding: 16px;
+}
+.connect-wallet-popup > .button-container > button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.connect-wallet-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.connect-wallet-popup > .button-container > button > img {
+  margin-right: 10px;
+}
+.connect-wallet-popup > .button-container > .connect-kaikas-button {
+  background-color: #6f6558;
+  color: #ffffff;
+}
+.connect-wallet-popup > .button-container > .connect-klip-button {
+  background-color: #fee500;
+  color: #000000;
+}
+.connect-wallet-popup > .button-container > .cancel-button {
+  border: 1px solid #ffffff;
+}
+.klip-qr-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.klip-qr-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.klip-qr-popup > .qr {
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 16px 0;
+  text-align: center;
+}
+.klip-qr-popup > p {
+  margin-top: 16px;
+  padding: 0 16px;
+  color: #999;
+}
+.klip-qr-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.klip-qr-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.klip-qr-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 .pfp-card {
   position: relative;
   background-color: #1f1f1f;
