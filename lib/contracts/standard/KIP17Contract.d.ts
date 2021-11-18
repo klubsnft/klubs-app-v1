@@ -8,5 +8,6 @@ export default class KIP17Contract extends Contract {
     isApprovedForAll(owner: string, operator: string): Promise<boolean>;
     setApprovalForAll(operator: string, approved: boolean): Promise<void>;
     tokenURI(id: BigNumberish): Promise<string>;
+    tokenOfOwnerByIndex(owner: string, index: BigNumberish): Promise<BigNumber>;
 }
 //# sourceMappingURL=KIP17Contract.d.ts.map

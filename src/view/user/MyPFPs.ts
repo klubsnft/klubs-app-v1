@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import superagent from "superagent";
 import Loading from "../../component/loading/Loading";
 import PFPCard from "../../component/PFPCard";
 import PFPNFTCard from "../../component/PFPNFTCard";
@@ -33,22 +34,30 @@ export default class MyPFPs implements View {
             el("section",
                 el("h2", "내가 관리하는 PFP"),
                 this.managingLoading = new Loading(),
-                this.managingList = el(".list"),
+                el(".list-container",
+                    this.managingList = el(".list"),
+                ),
             ),
             el("section",
                 el("h2", "내가 판매중인 PFP"),
                 this.sellingLoading = new Loading(),
-                this.sellingList = el(".list"),
+                el(".list-container",
+                    this.sellingList = el(".list"),
+                ),
             ),
             el("section",
                 el("h2", "내가 가격을 제시한 PFP"),
                 this.offeringLoading = new Loading(),
-                this.offeringList = el(".list"),
+                el(".list-container",
+                    this.offeringList = el(".list"),
+                ),
             ),
             el("section",
                 el("h2", "내 PFP 목록"),
                 this.myNFTLoading = new Loading(),
-                this.myNFTList = el(".list"),
+                el(".list-container",
+                    this.myNFTList = el(".list"),
+                ),
             ),
         ));
 
@@ -95,7 +104,7 @@ export default class MyPFPs implements View {
 
         this.sellingList.empty();
         const count = (await PFPStoreContract.userSellInfoLength(address)).toNumber();
-        this.sellingList.style({ width: count * 316 });
+        this.sellingList.style({ width: count * 216 });
 
         const promises: Promise<void>[] = [];
         for (let i = 0; i < count; i += 1) {
@@ -103,8 +112,8 @@ export default class MyPFPs implements View {
                 const info = await PFPStoreContract.userSellInfo(address, index);
                 const url = await new KIP17Contract(info.pfp).tokenURI(info.id);
                 const data = await ProxyUtil.loadURL(url);
+                const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                 if (this.container.deleted !== true) {
-                    const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                     new PFPNFTCard(
                         info.pfp,
                         info.id,
@@ -127,7 +136,7 @@ export default class MyPFPs implements View {
 
         this.offeringList.empty();
         const count = (await PFPStoreContract.userOfferInfoLength(address)).toNumber();
-        this.offeringList.style({ width: count * 316 });
+        this.offeringList.style({ width: count * 216 });
 
         const promises: Promise<void>[] = [];
         for (let i = 0; i < count; i += 1) {
@@ -135,8 +144,8 @@ export default class MyPFPs implements View {
                 const info = await PFPStoreContract.userOfferInfo(address, index);
                 const url = await new KIP17Contract(info.pfp).tokenURI(info.id);
                 const data = await ProxyUtil.loadURL(url);
+                const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                 if (this.container.deleted !== true) {
-                    const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                     new PFPNFTCard(
                         info.pfp,
                         info.id,
@@ -159,6 +168,7 @@ export default class MyPFPs implements View {
 
         this.myNFTList.empty();
 
+        let totalCount = 0;
         const count = await PFPsContract.getAddrCount();
         const array = new Array(count.toNumber()).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
 
@@ -168,8 +178,47 @@ export default class MyPFPs implements View {
                 const addr = await PFPsContract.addrs(index);
                 const enumerable = await PFPsContract.enumerables(addr);
                 if (enumerable === true) {
-                } else {
+                    const contract = new KIP17Contract(addr);
+                    const balance = (await contract.balanceOf(address)).toNumber();
 
+                    totalCount += balance;
+                    this.myNFTList.style({ width: totalCount * 216 });
+
+                    for (let j = 0; j < balance; j += 1) {
+                        const id = (await contract.tokenOfOwnerByIndex(address, j)).toNumber();
+                        const url = await contract.tokenURI(id);
+                        const data = await ProxyUtil.loadURL(url);
+                        const saleInfo = await PFPStoreContract.sales(addr, id);
+                        if (this.container.deleted !== true) {
+                            new PFPNFTCard(
+                                addr,
+                                id,
+                                data.image,
+                                data.name,
+                                saleInfo.price,
+                            ).appendTo(this.myNFTList);
+                        }
+                    }
+                } else {
+                    const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/owner/${address}`);
+
+                    totalCount += result.body.length;
+                    this.myNFTList.style({ width: totalCount * 216 });
+
+                    for (const id of result.body) {
+                        const url = await new KIP17Contract(addr).tokenURI(id);
+                        const data = await ProxyUtil.loadURL(url);
+                        const saleInfo = await PFPStoreContract.sales(addr, id);
+                        if (this.container.deleted !== true) {
+                            new PFPNFTCard(
+                                addr,
+                                id,
+                                data.image,
+                                data.name,
+                                saleInfo.price,
+                            ).appendTo(this.myNFTList);
+                        }
+                    }
                 }
             };
             promises.push(promise(i));

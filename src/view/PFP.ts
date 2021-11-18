@@ -49,7 +49,9 @@ export default class PFP implements View {
                 if (extras.trim() !== "") {
                     let data: any = {};
                     try { data = JSON.parse(extras); } catch (e) { }
-                    new PFPCard(addr, data).appendTo(this.pfpList);
+                    if (this.container.deleted !== true) {
+                        new PFPCard(addr, data).appendTo(this.pfpList);
+                    }
                 }
             };
             promises.push(promise(i));

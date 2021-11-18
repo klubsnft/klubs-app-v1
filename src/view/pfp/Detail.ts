@@ -216,17 +216,15 @@ export default class Detail implements View {
                 const id = parseInt(this.idQuery.trim(), 10);
                 const url = await this.contract.tokenURI(id);
                 const data = await ProxyUtil.loadURL(url);
+                const saleInfo = await PFPStoreContract.sales(addr, id);
                 if (currentOrder === this.order) {
-                    const saleInfo = await PFPStoreContract.sales(addr, id);
-                    if (currentOrder === this.order) {
-                        new PFPNFTCard(
-                            addr,
-                            id,
-                            data.image,
-                            data.name,
-                            saleInfo.price,
-                        ).appendTo(this.nftList);
-                    }
+                    new PFPNFTCard(
+                        addr,
+                        id,
+                        data.image,
+                        data.name,
+                        saleInfo.price,
+                    ).appendTo(this.nftList);
                 }
             } catch (e) {
                 console.error(e);
@@ -252,17 +250,15 @@ export default class Detail implements View {
                         if (currentOrder === this.order) {
                             const url = await this.contract.tokenURI(id);
                             const data = await ProxyUtil.loadURL(url);
+                            const saleInfo = await PFPStoreContract.sales(addr, id);
                             if (currentOrder === this.order) {
-                                const saleInfo = await PFPStoreContract.sales(addr, id);
-                                if (currentOrder === this.order) {
-                                    new PFPNFTCard(
-                                        addr,
-                                        id,
-                                        data.image,
-                                        data.name,
-                                        saleInfo.price,
-                                    ).appendTo(this.nftList);
-                                }
+                                new PFPNFTCard(
+                                    addr,
+                                    id,
+                                    data.image,
+                                    data.name,
+                                    saleInfo.price,
+                                ).appendTo(this.nftList);
                             }
                         }
                     } catch (e) {
@@ -291,17 +287,15 @@ export default class Detail implements View {
                     try {
                         const url = await this.contract.tokenURI(id);
                         const data = await ProxyUtil.loadURL(url);
+                        const saleInfo = await PFPStoreContract.sales(addr, id);
                         if (currentOrder === this.order) {
-                            const saleInfo = await PFPStoreContract.sales(addr, id);
-                            if (currentOrder === this.order) {
-                                new PFPNFTCard(
-                                    addr,
-                                    id,
-                                    data.image,
-                                    data.name,
-                                    saleInfo.price,
-                                ).appendTo(this.nftList);
-                            }
+                            new PFPNFTCard(
+                                addr,
+                                id,
+                                data.image,
+                                data.name,
+                                saleInfo.price,
+                            ).appendTo(this.nftList);
                         }
                     } catch (e) {
                         console.error(e);

@@ -32,4 +32,8 @@ export default class KIP17Contract extends Contract {
     public async tokenURI(id: BigNumberish): Promise<string> {
         return await this.runMethod("tokenURI", id);
     }
+
+    public async tokenOfOwnerByIndex(owner: string, index: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("tokenOfOwnerByIndex", owner, index));
+    }
 }

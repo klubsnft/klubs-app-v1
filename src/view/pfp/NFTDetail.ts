@@ -149,7 +149,7 @@ export default class NFTDetail implements View {
                 el("img", { src: "/images/mix.png", height: "48" }),
                 el("span", CommonUtil.numberWithCommas(utils.formatEther(saleInfo.price))),
             ));
-            const result = await superagent.get("https://api.dogesound.club/mix/price");
+            const result = await superagent.get("https://api.klu.bs/mix/price");
             const wonPrice = Math.floor(parseFloat(utils.formatEther(saleInfo.price)) * parseFloat(result.text));
             priceDispay.append(el(".won-price",
                 "(₩ ",
