@@ -2,6 +2,7 @@ import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import marked from "marked";
 import { View, ViewParams } from "skyrouter";
+import superagent from "superagent";
 import xss from "xss";
 import CommonUtil from "../../CommonUtil";
 import AcceptOfferPopup from "../../component/AcceptOfferPopup";
@@ -147,6 +148,13 @@ export default class NFTDetail implements View {
             priceDispay.append(el(".price",
                 el("img", { src: "/images/mix.png", height: "48" }),
                 el("span", CommonUtil.numberWithCommas(utils.formatEther(saleInfo.price))),
+            ));
+            const result = await superagent.get("https://api.dogesound.club/mix/price");
+            const wonPrice = Math.floor(parseFloat(utils.formatEther(saleInfo.price)) * parseFloat(result.text));
+            priceDispay.append(el(".won-price",
+                "(₩ ",
+                CommonUtil.numberWithCommas(wonPrice.toString()),
+                ")",
             ));
         } else {
             priceDispay.appendText("판매중이 아닙니다.");

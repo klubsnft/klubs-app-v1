@@ -114,6 +114,14 @@ class PFPsContract extends Contract {
     public async setRoyalty(addr: string, receiver: string, royalty: BigNumberish): Promise<void> {
         await this.runWalletMethod("setRoyalty", addr, receiver, royalty);
     }
+
+    public async getManagerPFPCount(addr: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("managerPFPCount", addr));
+    }
+
+    public async managerPFPs(addr: string, index: BigNumberish): Promise<string> {
+        return await this.runMethod("managerPFPs", addr, index);
+    }
 }
 
 export default new PFPsContract();

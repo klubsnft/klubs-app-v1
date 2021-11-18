@@ -6,7 +6,7 @@ interface Sale {
 }
 interface PFPInfo {
     pfp: string;
-    id: BigNumber;
+    id: number;
     price: BigNumber;
 }
 interface OfferInfo {

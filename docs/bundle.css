@@ -1223,6 +1223,9 @@ p {
 .pfp-nft-detail-view > section > .trade-form > .price-container > .price > img {
   margin-right: 4px;
 }
+.pfp-nft-detail-view > section > .trade-form > .price-container > .won-price {
+  color: #999;
+}
 .pfp-nft-detail-view > section > .trade-form > .sell-button,
 .pfp-nft-detail-view > section > .trade-form > .cancel-sell-button,
 .pfp-nft-detail-view > section > .trade-form > .buy-button {
@@ -2056,5 +2059,30 @@ p {
   font-size: 24px;
   margin: 16px;
   text-shadow: 0px 0px 5px #000000;
+}
+.user-my-pfps-view > section {
+  padding: 16px;
+}
+.user-my-pfps-view > section > h2 {
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 16px;
+}
+.user-my-pfps-view > section > .list-container {
+  overflow-x: scroll;
+  padding-bottom: 16px;
+}
+.user-my-pfps-view > section > .list-container > .list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.user-my-pfps-view > section > .list-container > .list > .pfp-card,
+.user-my-pfps-view > section > .list-container > .list > .pfp-nft-card {
+  float: left;
+  margin-right: 16px;
 }
 

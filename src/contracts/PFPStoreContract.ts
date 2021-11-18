@@ -14,7 +14,7 @@ interface Sale {
 
 interface PFPInfo {
     pfp: string,
-    id: BigNumber,
+    id: number,
     price: BigNumber,
 }
 
@@ -41,7 +41,7 @@ class PFPStoreContract extends Contract {
         const results = await this.runMethod("userSellInfo", seller, index);
         return {
             pfp: results[0],
-            id: BigNumber.from(results[1]),
+            id: parseInt(results[1], 10),
             price: BigNumber.from(results[2]),
         };
     }
@@ -104,7 +104,7 @@ class PFPStoreContract extends Contract {
         const results = await this.runMethod("userOfferInfo", offeror, index);
         return {
             pfp: results[0],
-            id: BigNumber.from(results[1]),
+            id: parseInt(results[1], 10),
             price: BigNumber.from(results[2]),
         };
     }

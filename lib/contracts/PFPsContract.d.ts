@@ -32,6 +32,8 @@ declare class PFPsContract extends Contract {
     setTotalSupply(addr: string, totalSupply: BigNumberish): Promise<void>;
     passProposal(proposalId: BigNumberish): Promise<void>;
     setRoyalty(addr: string, receiver: string, royalty: BigNumberish): Promise<void>;
+    getManagerPFPCount(addr: string): Promise<BigNumber>;
+    managerPFPs(addr: string, index: BigNumberish): Promise<string>;
 }
 declare const _default: PFPsContract;
 export default _default;
