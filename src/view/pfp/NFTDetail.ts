@@ -207,19 +207,19 @@ export default class NFTDetail implements View {
                             ),
                         ).appendTo(list);
 
-                        if (walletAddress === owner) {
-                            offer.append(
-                                el("a.accept-offer-button", "제안 수락", {
-                                    click: () => new AcceptOfferPopup(addr, id, offerId),
-                                }),
-                            );
-                        } else if (offerInfo.offeror === walletAddress) {
+                        if (offerInfo.offeror === walletAddress) {
                             offer.append(
                                 el("a.cancel-offer-button", "제안 취소", {
                                     click: async () => {
                                         await PFPStoreContract.cancelOffer(addr, id, offerId);
                                         ViewUtil.waitTransactionAndRefresh();
                                     },
+                                }),
+                            );
+                        } else if (walletAddress === owner) {
+                            offer.append(
+                                el("a.accept-offer-button", "제안 수락", {
+                                    click: () => new AcceptOfferPopup(addr, id, offerId),
                                 }),
                             );
                         }
