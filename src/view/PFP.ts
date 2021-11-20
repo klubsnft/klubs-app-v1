@@ -45,12 +45,14 @@ export default class PFP implements View {
         for (const i of array) {
             const promise = async (index: number) => {
                 const addr = await PFPsContract.addrs(index);
-                const extras = await PFPsContract.extras(addr);
-                if (extras.trim() !== "") {
-                    let data: any = {};
-                    try { data = JSON.parse(extras); } catch (e) { }
-                    if (this.container.deleted !== true) {
-                        new PFPCard(addr, data).appendTo(this.pfpList);
+                if (await PFPsContract.banned(addr) !== true) {
+                    const extras = await PFPsContract.extras(addr);
+                    if (extras.trim() !== "") {
+                        let data: any = {};
+                        try { data = JSON.parse(extras); } catch (e) { }
+                        if (this.container.deleted !== true) {
+                            new PFPCard(addr, data).appendTo(this.pfpList);
+                        }
                     }
                 }
             };

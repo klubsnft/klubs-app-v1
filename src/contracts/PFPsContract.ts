@@ -35,6 +35,10 @@ class PFPsContract extends Contract {
         return await this.runMethod("extras", addr);
     }
 
+    public async banned(addr: string): Promise<boolean> {
+        return await this.runMethod("banned", addr);
+    }
+
     public async propose(addr: string): Promise<void> {
         await this.runWalletMethod("propose", addr);
     }

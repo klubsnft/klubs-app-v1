@@ -14,6 +14,7 @@ declare class PFPsContract extends Contract {
     getAddrCount(): Promise<BigNumber>;
     addrs(index: BigNumberish): Promise<string>;
     extras(addr: string): Promise<string>;
+    banned(addr: string): Promise<boolean>;
     propose(addr: string): Promise<void>;
     addByPFPOwner(addr: string): Promise<void>;
     addByMinter(addr: string): Promise<void>;
