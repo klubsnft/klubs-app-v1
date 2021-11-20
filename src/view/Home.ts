@@ -4,6 +4,7 @@ import Loading from "../component/loading/Loading";
 import PFPCard from "../component/PFPCard";
 import PFPsContract from "../contracts/PFPsContract";
 import Layout from "./Layout";
+import ViewUtil from "./ViewUtil";
 
 export default class Home implements View {
 
@@ -24,14 +25,20 @@ export default class Home implements View {
                 ),
                 el(".content",
                     el(".slide",
-                        el("h2", "PFP"),
+                        el("header",
+                            el("h2", "PFP"),
+                            el("a", "PFP 전체 보기", { click: () => ViewUtil.go("/pfp") }),
+                        ),
                         this.pfpLoading = new Loading(),
                         el(".pfp-list-container",
                             this.pfpList = el(".pfp-list"),
                         ),
                     ),
                     el(".slide",
-                        el("h2", "Art"),
+                        el("header",
+                            el("h2", "Art"),
+                            el("a", "Art 전체 보기", { click: () => ViewUtil.go("/art") }),
+                        ),
                         el("p", "Art는 출시 준비중입니다."),
                     ),
                 ),

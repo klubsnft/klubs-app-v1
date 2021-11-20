@@ -38,10 +38,21 @@
         >.slide {
             margin-bottom: 32px;
 
-            >h2 {
-                font-size    : 24px;
-                color        : #999;
+            >header {
                 margin-bottom: 16px;
+                .float-wrapper();
+
+                >h2 {
+                    float    : left;
+                    font-size: 24px;
+                    color    : #999;
+                }
+
+                >a {
+                    margin-top: 5px;
+                    float     : right;
+                    color     : #999;
+                }
             }
 
             >.pfp-list-container {

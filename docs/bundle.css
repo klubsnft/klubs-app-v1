@@ -1057,10 +1057,26 @@ p {
 .home-view > .content > .slide {
   margin-bottom: 32px;
 }
-.home-view > .content > .slide > h2 {
+.home-view > .content > .slide > header {
+  margin-bottom: 16px;
+}
+.home-view > .content > .slide > header:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.home-view > .content > .slide > header > h2 {
+  float: left;
   font-size: 24px;
   color: #999;
-  margin-bottom: 16px;
+}
+.home-view > .content > .slide > header > a {
+  margin-top: 5px;
+  float: right;
+  color: #999;
 }
 .home-view > .content > .slide > .pfp-list-container {
   overflow-x: scroll;
