@@ -1,5 +1,6 @@
 declare const _default: {
     chainId: number;
+    adminAddress: string;
     contracts: {
         PFPs: string;
         PFPStore: string;

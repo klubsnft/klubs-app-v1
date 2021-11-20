@@ -9,10 +9,12 @@ import AcceptOfferPopup from "../../component/AcceptOfferPopup";
 import BuyPopup from "../../component/BuyPopup";
 import OfferPopup from "../../component/OfferPopup";
 import SellPopup from "../../component/SellPopup";
+import Config from "../../Config";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
+import Loader from "../../Loader";
 import ProxyUtil from "../../ProxyUtil";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
@@ -117,8 +119,7 @@ export default class NFTDetail implements View {
 
     private async loadInfo(addr: string, id: number) {
         try {
-            const url = await this.contract.tokenURI(id);
-            const data = await ProxyUtil.loadURL(url);
+            const data = await Loader.loadMetadata(addr, id);
             (this.imageDisplay as DomNode<HTMLImageElement>).domElement.src = ProxyUtil.imageSRC(data.image);
             this.nameDisplay.empty().appendText(data.name !== undefined ? data.name : `#${id}`);
             if (data.description !== undefined) {
@@ -220,6 +221,17 @@ export default class NFTDetail implements View {
                             offer.append(
                                 el("a.accept-offer-button", "제안 수락", {
                                     click: () => new AcceptOfferPopup(addr, id, offerId),
+                                }),
+                            );
+                        }
+
+                        if (walletAddress === Config.adminAddress) {
+                            offer.append(
+                                el("a.cancel-offer-button", "강제 제안 취소", {
+                                    click: async () => {
+                                        await PFPStoreContract.cancelOfferByOwner([addr], [id], [offerId]);
+                                        ViewUtil.waitTransactionAndRefresh();
+                                    },
                                 }),
                             );
                         }

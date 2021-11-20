@@ -4,6 +4,7 @@ import { utils } from "ethers";
 import CommonUtil from "../CommonUtil";
 import PFPStoreContract from "../contracts/PFPStoreContract";
 import KIP17Contract from "../contracts/standard/KIP17Contract";
+import Loader from "../Loader";
 import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 import Loading from "./loading/Loading";
@@ -15,7 +16,7 @@ export default class BuyPopup extends Popup {
     private loading: DomNode;
     private list: DomNode;
 
-    constructor(private addr: string[], private ids: BigNumberish[]) {
+    constructor(private addr: string[], private ids: number[]) {
         super(".popup-background");
         this.append(this.content = el(".popup.buy-popup",
             el("h2", "구매하기"),
@@ -41,8 +42,7 @@ export default class BuyPopup extends Popup {
     private async load() {
         for (const [index, addr] of this.addr.entries()) {
             const id = this.ids[index];
-            const url = await new KIP17Contract(addr).tokenURI(id);
-            const data = await ProxyUtil.loadURL(url);
+            const data = await Loader.loadMetadata(addr, id);
             const img = data.image;
             const saleInfo = await PFPStoreContract.sales(addr, id);
             this.list.append(el("section",

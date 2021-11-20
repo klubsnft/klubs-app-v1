@@ -4,7 +4,7 @@ import { utils } from "ethers";
 import CommonUtil from "../CommonUtil";
 import PFPsContract from "../contracts/PFPsContract";
 import PFPStoreContract from "../contracts/PFPStoreContract";
-import KIP17Contract from "../contracts/standard/KIP17Contract";
+import Loader from "../Loader";
 import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 import Loading from "./loading/Loading";
@@ -16,7 +16,7 @@ export default class AcceptOfferPopup extends Popup {
     private loading: DomNode;
     private list: DomNode;
 
-    constructor(private addr: string, private id: BigNumberish, private offerId: BigNumberish) {
+    constructor(private addr: string, private id: number, private offerId: BigNumberish) {
         super(".popup-background");
         this.append(this.content = el(".popup.accept-offer-popup",
             el("h2", "제안 수락하기"),
@@ -40,8 +40,7 @@ export default class AcceptOfferPopup extends Popup {
     }
 
     private async load() {
-        const url = await new KIP17Contract(this.addr).tokenURI(this.id);
-        const data = await ProxyUtil.loadURL(url);
+        const data = await Loader.loadMetadata(this.addr, this.id);
         const img = data.image;
         const offerInfo = await PFPStoreContract.offers(this.addr, this.id, this.offerId);
         const royalty = await PFPsContract.royalties(this.addr);

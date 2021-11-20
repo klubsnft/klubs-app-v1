@@ -2,7 +2,7 @@ import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import PFPStoreContract from "../contracts/PFPStoreContract";
-import KIP17Contract from "../contracts/standard/KIP17Contract";
+import Loader from "../Loader";
 import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 import Loading from "./loading/Loading";
@@ -15,7 +15,7 @@ export default class OfferPopup extends Popup {
     private list: DomNode;
     private inputs: DomNode<HTMLInputElement>[] = [];
 
-    constructor(private addr: string, private id: BigNumberish) {
+    constructor(private addr: string, private id: number) {
         super(".popup-background");
         this.append(this.content = el(".popup.offer-popup",
             el("h2", "가격 제안"),
@@ -44,8 +44,7 @@ export default class OfferPopup extends Popup {
 
     private async load() {
         let input: DomNode<HTMLInputElement>;
-        const url = await new KIP17Contract(this.addr).tokenURI(this.id);
-        const data = await ProxyUtil.loadURL(url);
+        const data = await Loader.loadMetadata(this.addr, this.id);
         const img = data.image;
         this.list.append(el("section",
             img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),

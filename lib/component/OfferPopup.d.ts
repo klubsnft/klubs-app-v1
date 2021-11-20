@@ -1,4 +1,3 @@
-import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, Popup } from "@hanul/skynode";
 export default class OfferPopup extends Popup {
     private addr;
@@ -7,7 +6,7 @@ export default class OfferPopup extends Popup {
     private loading;
     private list;
     private inputs;
-    constructor(addr: string, id: BigNumberish);
+    constructor(addr: string, id: number);
     private load;
 }
 //# sourceMappingURL=OfferPopup.d.ts.map

@@ -3,7 +3,7 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import PFPsContract from "../contracts/PFPsContract";
 import PFPStoreContract from "../contracts/PFPStoreContract";
-import KIP17Contract from "../contracts/standard/KIP17Contract";
+import Loader from "../Loader";
 import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 import Loading from "./loading/Loading";
@@ -16,7 +16,7 @@ export default class SellPopup extends Popup {
     private list: DomNode;
     private inputs: DomNode<HTMLInputElement>[] = [];
 
-    constructor(private addr: string[], private ids: BigNumberish[]) {
+    constructor(private addr: string[], private ids: number[]) {
         super(".popup-background");
         this.append(this.content = el(".popup.sell-popup",
             el("h2", "판매하기"),
@@ -46,8 +46,7 @@ export default class SellPopup extends Popup {
     private async load() {
         for (const [index, addr] of this.addr.entries()) {
             let input: DomNode<HTMLInputElement>;
-            const url = await new KIP17Contract(addr).tokenURI(this.ids[index]);
-            const data = await ProxyUtil.loadURL(url);
+            const data = await Loader.loadMetadata(addr, this.ids[index]);
             const royalty = await PFPsContract.royalties(addr);
             const img = data.image;
             this.list.append(el("section",

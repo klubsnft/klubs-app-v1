@@ -8,7 +8,7 @@ import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
-import ProxyUtil from "../../ProxyUtil";
+import Loader from "../../Loader";
 import Layout from "../Layout";
 
 export default class MyPFPs implements View {
@@ -110,8 +110,7 @@ export default class MyPFPs implements View {
         for (let i = 0; i < count; i += 1) {
             const promise = async (index: number) => {
                 const info = await PFPStoreContract.userSellInfo(address, index);
-                const url = await new KIP17Contract(info.pfp).tokenURI(info.id);
-                const data = await ProxyUtil.loadURL(url);
+                const data = await Loader.loadMetadata(info.pfp, info.id);
                 const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                 if (this.container.deleted !== true) {
                     new PFPNFTCard(
@@ -142,8 +141,7 @@ export default class MyPFPs implements View {
         for (let i = 0; i < count; i += 1) {
             const promise = async (index: number) => {
                 const info = await PFPStoreContract.userOfferInfo(address, index);
-                const url = await new KIP17Contract(info.pfp).tokenURI(info.id);
-                const data = await ProxyUtil.loadURL(url);
+                const data = await Loader.loadMetadata(info.pfp, info.id);
                 const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                 if (this.container.deleted !== true) {
                     new PFPNFTCard(
@@ -186,8 +184,7 @@ export default class MyPFPs implements View {
 
                     for (let j = 0; j < balance; j += 1) {
                         const id = (await contract.tokenOfOwnerByIndex(address, j)).toNumber();
-                        const url = await contract.tokenURI(id);
-                        const data = await ProxyUtil.loadURL(url);
+                        const data = await Loader.loadMetadata(addr, id);
                         const saleInfo = await PFPStoreContract.sales(addr, id);
                         if (this.container.deleted !== true) {
                             new PFPNFTCard(
@@ -206,8 +203,7 @@ export default class MyPFPs implements View {
                     this.myNFTList.style({ width: totalCount * 216 });
 
                     for (const id of result.body) {
-                        const url = await new KIP17Contract(addr).tokenURI(id);
-                        const data = await ProxyUtil.loadURL(url);
+                        const data = await Loader.loadMetadata(addr, id);
                         const saleInfo = await PFPStoreContract.sales(addr, id);
                         if (this.container.deleted !== true) {
                             new PFPNFTCard(

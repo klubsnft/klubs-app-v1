@@ -9,6 +9,7 @@ import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
+import Loader from "../../Loader";
 import ProxyUtil from "../../ProxyUtil";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
@@ -221,8 +222,7 @@ export default class Detail implements View {
         if (this.idQuery.trim() !== "") {
             try {
                 const id = parseInt(this.idQuery.trim(), 10);
-                const url = await this.contract.tokenURI(id);
-                const data = await ProxyUtil.loadURL(url);
+                const data = await Loader.loadMetadata(addr, id);
                 const saleInfo = await PFPStoreContract.sales(addr, id);
                 if (currentOrder === this.order) {
                     new PFPNFTCard(
@@ -255,8 +255,7 @@ export default class Detail implements View {
                     try {
                         const id = (await PFPStoreContract.onSales(addr, index)).toNumber();
                         if (currentOrder === this.order) {
-                            const url = await this.contract.tokenURI(id);
-                            const data = await ProxyUtil.loadURL(url);
+                            const data = await Loader.loadMetadata(addr, id);
                             const saleInfo = await PFPStoreContract.sales(addr, id);
                             if (currentOrder === this.order) {
                                 new PFPNFTCard(
@@ -292,8 +291,7 @@ export default class Detail implements View {
             for (let i = start; i < limit; i += 1) {
                 const promise = async (id: number) => {
                     try {
-                        const url = await this.contract.tokenURI(id);
-                        const data = await ProxyUtil.loadURL(url);
+                        const data = await Loader.loadMetadata(addr, id);
                         const saleInfo = await PFPStoreContract.sales(addr, id);
                         if (currentOrder === this.order) {
                             new PFPNFTCard(

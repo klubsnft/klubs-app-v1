@@ -5,6 +5,8 @@ export default {
 
     chainId: TESTNET ? 1001 : 8217,
 
+    adminAddress: "0x5d3C6E36538f485C3483B1C0d3e27a3416E16217",
+
     contracts: TESTNET ? {
         // Testnet
         PFPs: "",

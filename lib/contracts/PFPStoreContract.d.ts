@@ -29,6 +29,7 @@ declare class PFPStoreContract extends Contract {
     offerCount(addr: string, id: BigNumberish): Promise<BigNumber>;
     makeOffer(addr: string, id: BigNumberish, price: BigNumberish): Promise<void>;
     cancelOffer(addr: string, id: BigNumberish, offerId: BigNumberish): Promise<void>;
+    cancelOfferByOwner(addrs: string[], ids: BigNumberish[], offerIds: BigNumberish[]): Promise<void>;
     acceptOffer(addr: string, id: BigNumberish, offerId: BigNumberish): Promise<void>;
 }
 declare const _default: PFPStoreContract;
