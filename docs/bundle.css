@@ -2084,11 +2084,7 @@ p {
   color: #999;
   margin-bottom: 16px;
 }
-.user-my-pfps-view > section > .list-container {
-  overflow-x: scroll;
-  padding-bottom: 16px;
-}
-.user-my-pfps-view > section > .list-container > .list:after {
+.user-my-pfps-view > section > .list:after {
   content: " ";
   display: block;
   font-size: 0;
@@ -2096,8 +2092,8 @@ p {
   clear: both;
   visibility: hidden;
 }
-.user-my-pfps-view > section > .list-container > .list > .pfp-card,
-.user-my-pfps-view > section > .list-container > .list > .pfp-nft-card {
+.user-my-pfps-view > section > .list > .pfp-card,
+.user-my-pfps-view > section > .list > .pfp-nft-card {
   float: left;
   margin-right: 16px;
 }

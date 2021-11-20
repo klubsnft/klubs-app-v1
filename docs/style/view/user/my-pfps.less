@@ -23,18 +23,13 @@
             margin-bottom: 16px;
         }
 
-        >.list-container {
-            overflow-x    : scroll;
-            padding-bottom: 16px;
+        >.list {
+            .float-wrapper();
 
-            >.list {
-                .float-wrapper();
-
-                >.pfp-card,
-                >.pfp-nft-card {
-                    float       : left;
-                    margin-right: 16px;
-                }
+            >.pfp-card,
+            >.pfp-nft-card {
+                float       : left;
+                margin-right: 16px;
             }
         }
     }

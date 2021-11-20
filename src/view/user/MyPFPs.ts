@@ -34,30 +34,22 @@ export default class MyPFPs implements View {
             el("section",
                 el("h2", "내가 관리하는 PFP"),
                 this.managingLoading = new Loading(),
-                el(".list-container",
-                    this.managingList = el(".list"),
-                ),
+                this.managingList = el(".list"),
             ),
             el("section",
                 el("h2", "내가 판매중인 PFP"),
                 this.sellingLoading = new Loading(),
-                el(".list-container",
-                    this.sellingList = el(".list"),
-                ),
+                this.sellingList = el(".list"),
             ),
             el("section",
                 el("h2", "내가 가격을 제시한 PFP"),
                 this.offeringLoading = new Loading(),
-                el(".list-container",
-                    this.offeringList = el(".list"),
-                ),
+                this.offeringList = el(".list"),
             ),
             el("section",
                 el("h2", "내 PFP 목록"),
                 this.myNFTLoading = new Loading(),
-                el(".list-container",
-                    this.myNFTList = el(".list"),
-                ),
+                this.myNFTList = el(".list"),
             ),
         ));
 
@@ -78,7 +70,6 @@ export default class MyPFPs implements View {
 
         this.managingList.empty();
         const count = (await PFPsContract.getManagerPFPCount(address)).toNumber();
-        this.managingList.style({ width: count * 316 });
 
         const promises: Promise<void>[] = [];
         for (let i = 0; i < count; i += 1) {
@@ -104,7 +95,6 @@ export default class MyPFPs implements View {
 
         this.sellingList.empty();
         const count = (await PFPStoreContract.userSellInfoLength(address)).toNumber();
-        this.sellingList.style({ width: count * 216 });
 
         const promises: Promise<void>[] = [];
         for (let i = 0; i < count; i += 1) {
@@ -135,7 +125,6 @@ export default class MyPFPs implements View {
 
         this.offeringList.empty();
         const count = (await PFPStoreContract.userOfferInfoLength(address)).toNumber();
-        this.offeringList.style({ width: count * 216 });
 
         const promises: Promise<void>[] = [];
         for (let i = 0; i < count; i += 1) {
@@ -180,7 +169,6 @@ export default class MyPFPs implements View {
                     const balance = (await contract.balanceOf(address)).toNumber();
 
                     totalCount += balance;
-                    this.myNFTList.style({ width: totalCount * 216 });
 
                     for (let j = 0; j < balance; j += 1) {
                         const id = (await contract.tokenOfOwnerByIndex(address, j)).toNumber();
@@ -200,7 +188,6 @@ export default class MyPFPs implements View {
                     const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/owner/${address}`);
 
                     totalCount += result.body.length;
-                    this.myNFTList.style({ width: totalCount * 216 });
 
                     for (const id of result.body) {
                         const data = await Loader.loadMetadata(addr, id);
