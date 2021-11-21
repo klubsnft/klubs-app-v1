@@ -2,8 +2,8 @@ import { BigNumber } from "@ethersproject/bignumber";
 import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import CommonUtil from "../CommonUtil";
-import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
+import NFTDisplay from "./NFTDisplay";
 
 export default class PFPNFTCard extends DomNode {
 
@@ -18,7 +18,7 @@ export default class PFPNFTCard extends DomNode {
         super(".pfp-nft-card");
 
         this.append(
-            img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),
+            img === undefined ? undefined : new NFTDisplay(img),
             el(".info",
                 el(".name", name),
                 price.eq(0) === true ? undefined : el(".price",

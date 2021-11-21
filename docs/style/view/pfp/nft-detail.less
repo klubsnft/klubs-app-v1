@@ -8,10 +8,16 @@
         display: block;
     }
 
-    >.nft-image {
-        aspect-ratio : 1;
-        width        : 100%;
-        border-radius: 8px;
+    >.nft-display-container {
+        overflow    : hidden;
+        width       : 100%;
+        aspect-ratio: 1;
+
+        >.nft-display {
+            >* {
+                border-radius: 8px;
+            }
+        }
     }
 
     >section {

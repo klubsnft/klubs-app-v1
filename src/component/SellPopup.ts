@@ -4,9 +4,9 @@ import { utils } from "ethers";
 import PFPsContract from "../contracts/PFPsContract";
 import PFPStoreContract from "../contracts/PFPStoreContract";
 import Loader from "../Loader";
-import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 import Loading from "./loading/Loading";
+import NFTDisplay from "./NFTDisplay";
 
 export default class SellPopup extends Popup {
 
@@ -50,7 +50,7 @@ export default class SellPopup extends Popup {
             const royalty = await PFPsContract.royalties(addr);
             const img = data.image;
             this.list.append(el("section",
-                img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),
+                img === undefined ? undefined : new NFTDisplay(img),
                 el(".info",
                     el(".name", data.name),
                     el("label",

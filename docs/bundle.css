@@ -239,11 +239,13 @@ p {
   border-radius: 4px;
   display: flex;
 }
-.sell-popup > .list > section > img {
+.sell-popup > .list > section > .nft-display {
   width: 100px;
   height: 100px;
-  border-radius: 4px;
   margin-right: 16px;
+}
+.sell-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
 }
 .sell-popup > .list > section > .info {
   flex-grow: 1;
@@ -316,11 +318,13 @@ p {
   border-radius: 4px;
   display: flex;
 }
-.buy-popup > .list > section > img {
+.buy-popup > .list > section > .nft-display {
   width: 100px;
   height: 100px;
-  border-radius: 4px;
   margin-right: 16px;
+}
+.buy-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
 }
 .buy-popup > .list > section > .info {
   flex-grow: 1;
@@ -385,11 +389,13 @@ p {
   border-radius: 4px;
   display: flex;
 }
-.offer-popup > .list > section > img {
+.offer-popup > .list > section > .nft-display {
   width: 100px;
   height: 100px;
-  border-radius: 4px;
   margin-right: 16px;
+}
+.offer-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
 }
 .offer-popup > .list > section > .info {
   flex-grow: 1;
@@ -462,11 +468,13 @@ p {
   border-radius: 4px;
   display: flex;
 }
-.accept-offer-popup > .list > section > img {
+.accept-offer-popup > .list > section > .nft-display {
   width: 100px;
   height: 100px;
-  border-radius: 4px;
   margin-right: 16px;
+}
+.accept-offer-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
 }
 .accept-offer-popup > .list > section > .info {
   flex-grow: 1;
@@ -662,9 +670,12 @@ p {
   border-radius: 8px;
   cursor: pointer;
 }
-.pfp-nft-card > img {
+.pfp-nft-card > .nft-display {
+  width: 200px;
+  height: 200px;
+}
+.pfp-nft-card > .nft-display > * {
   border-radius: 8px 8px 0px 0px;
-  width: 100%;
 }
 .pfp-nft-card > .info {
   padding: 4px 8px;
@@ -939,6 +950,15 @@ p {
 .user-menu > ul > li > a:active {
   color: #C7FEA2;
 }
+.nft-display {
+  width: 100%;
+  height: 100%;
+}
+.nft-display > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .layout {
   width: 100%;
 }
@@ -1172,9 +1192,12 @@ p {
     display: block;
   }
 }
-.pfp-nft-detail-view > .nft-image {
-  aspect-ratio: 1;
+.pfp-nft-detail-view > .nft-display-container {
+  overflow: hidden;
   width: 100%;
+  aspect-ratio: 1;
+}
+.pfp-nft-detail-view > .nft-display-container > .nft-display > * {
   border-radius: 8px;
 }
 .pfp-nft-detail-view > section {

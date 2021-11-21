@@ -2,7 +2,7 @@ import { View, ViewParams } from "skyrouter";
 export default class NFTDetail implements View {
     private contract;
     private container;
-    private imageDisplay;
+    private nftDisplayContainer;
     private pfpDisplay;
     private nameDisplay;
     private ownerDisplay;

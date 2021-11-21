@@ -10,7 +10,6 @@ import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
 import Loader from "../../Loader";
-import ProxyUtil from "../../ProxyUtil";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 

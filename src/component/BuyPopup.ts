@@ -1,13 +1,11 @@
-import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import CommonUtil from "../CommonUtil";
 import PFPStoreContract from "../contracts/PFPStoreContract";
-import KIP17Contract from "../contracts/standard/KIP17Contract";
 import Loader from "../Loader";
-import ProxyUtil from "../ProxyUtil";
 import ViewUtil from "../view/ViewUtil";
 import Loading from "./loading/Loading";
+import NFTDisplay from "./NFTDisplay";
 
 export default class BuyPopup extends Popup {
 
@@ -46,7 +44,7 @@ export default class BuyPopup extends Popup {
             const img = data.image;
             const saleInfo = await PFPStoreContract.sales(addr, id);
             this.list.append(el("section",
-                img === undefined ? undefined : el("img", { src: ProxyUtil.imageSRC(img) }),
+                img === undefined ? undefined : new NFTDisplay(img),
                 el(".info",
                     el(".name", data.name),
                     el("label",

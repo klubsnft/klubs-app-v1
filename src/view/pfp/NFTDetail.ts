@@ -7,6 +7,7 @@ import xss from "xss";
 import CommonUtil from "../../CommonUtil";
 import AcceptOfferPopup from "../../component/AcceptOfferPopup";
 import BuyPopup from "../../component/BuyPopup";
+import NFTDisplay from "../../component/NFTDisplay";
 import OfferPopup from "../../component/OfferPopup";
 import SellPopup from "../../component/SellPopup";
 import Config from "../../Config";
@@ -15,7 +16,6 @@ import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
 import Loader from "../../Loader";
-import ProxyUtil from "../../ProxyUtil";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
@@ -25,7 +25,7 @@ export default class NFTDetail implements View {
 
     private container: DomNode;
 
-    private imageDisplay: DomNode;
+    private nftDisplayContainer: DomNode;
     private pfpDisplay: DomNode;
     private nameDisplay: DomNode;
     private ownerDisplay: DomNode;
@@ -45,7 +45,7 @@ export default class NFTDetail implements View {
         Layout.current.content.append(this.container = el(".pfp-nft-detail-view",
 
             // 이미지
-            this.imageDisplay = el("img.nft-image"),
+            this.nftDisplayContainer = el(".nft-display-container"),
 
             // 기본 정보
             el("section",
@@ -120,7 +120,10 @@ export default class NFTDetail implements View {
     private async loadInfo(addr: string, id: number) {
         try {
             const data = await Loader.loadMetadata(addr, id);
-            (this.imageDisplay as DomNode<HTMLImageElement>).domElement.src = ProxyUtil.imageSRC(data.image);
+            this.nftDisplayContainer.empty();
+            if (data.image !== undefined) {
+                this.nftDisplayContainer.append(new NFTDisplay(data.image));
+            }
             this.nameDisplay.empty().appendText(data.name !== undefined ? data.name : `#${id}`);
             if (data.description !== undefined) {
                 this.descriptionDisplay.domElement.innerHTML = xss(marked(data.description));
