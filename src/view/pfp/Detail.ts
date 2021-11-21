@@ -26,8 +26,9 @@ export default class Detail implements View {
     private miningInfoDisplay: DomNode;
     private socialList: DomNode;
 
-    private saleTab: DomNode;
     private totalTab: DomNode;
+    private mineTab: DomNode;
+    private saleTab: DomNode;
 
     private idQueryInput: DomNode<HTMLInputElement>;
     private nftLoading: DomNode;
@@ -39,7 +40,7 @@ export default class Detail implements View {
     private totalSupply = 0;
     private idQuery = "";
     private page = 0;
-    private onlySale = false;
+    private listType = "all";
 
     constructor(params: ViewParams) {
 
@@ -63,13 +64,19 @@ export default class Detail implements View {
                     el(".tab-container",
                         this.totalTab = el("a.tab", "전체", {
                             click: () => {
-                                this.onlySale = false;
+                                this.listType = "all";
+                                this.loadNFTs(addr);
+                            },
+                        }),
+                        this.mineTab = el("a.tab", "내 NFT", {
+                            click: () => {
+                                this.listType = "mine";
                                 this.loadNFTs(addr);
                             },
                         }),
                         this.saleTab = el("a.tab", "판매중", {
                             click: () => {
-                                this.onlySale = true;
+                                this.listType = "onSale";
                                 this.loadNFTs(addr);
                             },
                         }),
@@ -214,11 +221,22 @@ export default class Detail implements View {
         this.order += 1;
         const currentOrder = this.order;
 
+        const address = await Wallet.loadAddress();
+        let balance = 0;
+        if (address !== undefined) {
+            balance = (await this.contract.balanceOf(address)).toNumber();
+            this.mineTab.empty().appendText(`내 NFT (${balance})`);
+        }
+
         const onSalesCount = (await PFPStoreContract.onSalesCount(addr)).toNumber();
         this.saleTab.empty().appendText(`판매중 (${onSalesCount})`);
 
         // id로 검색
         if (this.idQuery.trim() !== "") {
+            this.totalTab.addClass("on");
+            this.mineTab.deleteClass("on");
+            this.saleTab.deleteClass("on");
+
             try {
                 const id = parseInt(this.idQuery.trim(), 10);
                 const data = await Loader.loadMetadata(addr, id);
@@ -237,10 +255,53 @@ export default class Detail implements View {
             }
         }
 
-        // 판매중인 것만 보기
-        else if (this.onlySale === true) {
-            this.saleTab.addClass("on");
+        // 내 것만 보기
+        else if (this.listType === "mine") {
             this.totalTab.deleteClass("on");
+            this.mineTab.addClass("on");
+            this.saleTab.deleteClass("on");
+
+            const start = this.page * 50;
+            let limit = (this.page + 1) * 50;
+            if (limit > balance) {
+                limit = balance;
+            }
+
+            const enumerable = await PFPsContract.enumerables(addr);
+            if (enumerable === true && address !== undefined) {
+                const promises: Promise<void>[] = [];
+                for (let i = start; i < limit; i += 1) {
+                    const promise = async (index: number) => {
+                        try {
+                            const id = (await this.contract.tokenOfOwnerByIndex(address, index)).toNumber();
+                            if (currentOrder === this.order) {
+                                const data = await Loader.loadMetadata(addr, id);
+                                const saleInfo = await PFPStoreContract.sales(addr, id);
+                                if (currentOrder === this.order) {
+                                    new PFPNFTCard(
+                                        addr,
+                                        id,
+                                        data.image,
+                                        data.name,
+                                        saleInfo.price,
+                                    ).appendTo(this.nftList);
+                                }
+                            }
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    };
+                    promises.push(promise(i));
+                }
+                await Promise.all(promises);
+            }
+        }
+
+        // 판매중인 것만 보기
+        else if (this.listType === "onSale") {
+            this.totalTab.deleteClass("on");
+            this.mineTab.deleteClass("on");
+            this.saleTab.addClass("on");
 
             const start = this.page * 50;
             let limit = (this.page + 1) * 50;
@@ -277,8 +338,9 @@ export default class Detail implements View {
 
         // 전체보기
         else {
-            this.saleTab.deleteClass("on");
             this.totalTab.addClass("on");
+            this.mineTab.deleteClass("on");
+            this.saleTab.deleteClass("on");
 
             const start = this.page * 50;
             let limit = (this.page + 1) * 50;

@@ -185,23 +185,7 @@ export default class MyPFPs implements View {
                         }
                     }
                 } else {
-                    const result = await superagent.get(`https://api.klu.bs/pfp/${addr}/owner/${address}`);
-
-                    totalCount += result.body.length;
-
-                    for (const id of result.body) {
-                        const data = await Loader.loadMetadata(addr, id);
-                        const saleInfo = await PFPStoreContract.sales(addr, id);
-                        if (this.container.deleted !== true) {
-                            new PFPNFTCard(
-                                addr,
-                                id,
-                                data.image,
-                                data.name,
-                                saleInfo.price,
-                            ).appendTo(this.myNFTList);
-                        }
-                    }
+                    //TODO: 전체적으로 뜯어 고치기
                 }
             };
             promises.push(promise(i));

@@ -1,7 +1,9 @@
 import { View, ViewParams } from "skyrouter";
 export default class Rankings implements View {
     private container;
+    private list;
     constructor();
+    private load;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }

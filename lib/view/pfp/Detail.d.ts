@@ -8,8 +8,9 @@ export default class Detail implements View {
     private descriptionDisplay;
     private miningInfoDisplay;
     private socialList;
-    private saleTab;
     private totalTab;
+    private mineTab;
+    private saleTab;
     private idQueryInput;
     private nftLoading;
     private nftList;
@@ -18,7 +19,7 @@ export default class Detail implements View {
     private totalSupply;
     private idQuery;
     private page;
-    private onlySale;
+    private listType;
     constructor(params: ViewParams);
     private loadInfo;
     private loadUpdateButton;

@@ -1,16 +1,36 @@
 import { DomNode, el } from "@hanul/skynode";
+import { utils } from "ethers";
 import { View, ViewParams } from "skyrouter";
+import superagent from "superagent";
+import CommonUtil from "../../CommonUtil";
+import PFPsContract from "../../contracts/PFPsContract";
 import Layout from "../Layout";
+import ViewUtil from "../ViewUtil";
 
 export default class Rankings implements View {
 
     private container: DomNode;
+    private list: DomNode;
 
     constructor() {
         Layout.current.title = "PFP 랭킹";
         Layout.current.content.append(
             (this.container = el(".pfp-ranking-view",
-                el("p", "충분한 데이터가 축척된 이후 랭킹 페이지가 제공됩니다."),
+                el("header",
+                    el("h1", "PFP 랭킹"),
+                ),
+                el("table",
+                    el("thead",
+                        el("tr",
+                            el("td", "PFP", { colspan: "3" }),
+                            el("td", "총 거래량"),
+                            el("td", "30일 거래량"),
+                            el("td", "7일 거래량"),
+                            el("td", "24시간 거래량"),
+                        ),
+                    ),
+                    this.list = el("tbody"),
+                ),
                 /*el("header",
                     el("h1", "PFP 랭킹"),
                     el(".filter",
@@ -72,6 +92,44 @@ export default class Rankings implements View {
                 ),*/
             )),
         );
+        this.load();
+    }
+
+    private async load() {
+        const result = await superagent.get("https://api.klu.bs/v2/volumes");
+        result.body.sort((a: any, b: any) => {
+            return parseFloat(utils.formatEther(b.total)) - parseFloat(utils.formatEther(a.total));
+        });
+        for (const [index, info] of result.body.entries()) {
+            if (await PFPsContract.banned(info.id) !== true) {
+                const extras = await PFPsContract.extras(info.id);
+                if (extras.trim() !== "") {
+                    let data: any = {};
+                    try { data = JSON.parse(extras); } catch (e) { }
+                    if (this.container.deleted !== true) {
+
+                        let src;
+                        if (data.icon === undefined || data.icon.trim() === "") {
+                            src = "/images/placeholder.svg";
+                        } else {
+                            src = data.icon;
+                        }
+
+                        this.list.append(
+                            el("tr",
+                                el("td", String(index + 1)),
+                                el("td", el("img", { src, height: "24" })),
+                                el("td", el("a", data.name, { click: () => ViewUtil.go(`/pfp/${info.id}`) })),
+                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.total)), " MIX"),
+                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.volume30d)), " MIX"),
+                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.volume7d)), " MIX"),
+                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.volume24h)), " MIX"),
+                            ),
+                        );
+                    }
+                }
+            }
+        }
     }
 
     public changeParams(params: ViewParams, uri: string): void { }
