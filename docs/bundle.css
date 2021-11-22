@@ -1982,11 +1982,19 @@ p {
   padding: 16px;
 }
 .pfp-ranking-view > table > tbody > tr > td {
+  vertical-align: middle;
   text-align: center;
   padding: 16px;
   border-bottom: solid 0.5px #C7FEA2;
 }
+.pfp-ranking-view > table > tbody > tr > td > img {
+  border-radius: 8px;
+}
+.pfp-ranking-view > table > tbody > tr > td > a {
+  font-weight: bold;
+}
 .pfp-ranking-view > table > tbody > tr:hover {
+  color: #C7FEA2;
   background-color: #1f1f1f;
 }
 .pfp-ranking-view > .pagination {
