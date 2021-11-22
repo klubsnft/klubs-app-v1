@@ -118,7 +118,7 @@ export default class Rankings implements View {
                         this.list.append(
                             el("tr",
                                 el("td", String(index + 1)),
-                                el("td", el("img", { src, height: "24" })),
+                                el("td", el("img", { src, height: "40" })),
                                 el("td", el("a", data.name, { click: () => ViewUtil.go(`/pfp/${info.id}`) })),
                                 el("td", CommonUtil.numberWithCommas(utils.formatEther(info.total)), " MIX"),
                                 el("td", CommonUtil.numberWithCommas(utils.formatEther(info.volume30d)), " MIX"),
