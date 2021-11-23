@@ -1,5 +1,4 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
 import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
@@ -98,7 +97,7 @@ export default class Rankings implements View {
     private async load() {
         const result = await superagent.get("https://api.klu.bs/v2/volumes");
         result.body.sort((a: any, b: any) => {
-            return parseFloat(utils.formatEther(b.total)) - parseFloat(utils.formatEther(a.total));
+            return b.total - a.total;
         });
         for (const [index, info] of result.body.entries()) {
             if (await PFPsContract.banned(info.id) !== true) {
@@ -120,10 +119,10 @@ export default class Rankings implements View {
                                 el("td", String(index + 1)),
                                 el("td", el("img", { src, height: "40" })),
                                 el("td", el("a", data.name, { click: () => ViewUtil.go(`/pfp/${info.id}`) })),
-                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.total)), " MIX"),
-                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.volume30d)), " MIX"),
-                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.volume7d)), " MIX"),
-                                el("td", CommonUtil.numberWithCommas(utils.formatEther(info.volume24h)), " MIX"),
+                                el("td", CommonUtil.numberWithCommas(String(info.total)), " MIX"),
+                                el("td", CommonUtil.numberWithCommas(String(info.volume30d)), " MIX"),
+                                el("td", CommonUtil.numberWithCommas(String(info.volume7d)), " MIX"),
+                                el("td", CommonUtil.numberWithCommas(String(info.volume24h)), " MIX"),
                             ),
                         );
                     }
