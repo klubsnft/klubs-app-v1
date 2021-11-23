@@ -4,8 +4,19 @@
     margin        : 16px;
 
     >header {
+        max-width    : 1240px;
+        margin       : auto;
+        margin-bottom: 16px;
+        text-align   : center;
+
         >h1 {
-            font-size: 2.125rem
+            font-size    : 2.125rem;
+            margin-bottom: 8px;
+        }
+
+        >span {
+            font-size: 0.875rem;
+            color    : #999;
         }
 
         >.filter {
@@ -29,10 +40,17 @@
     }
 
     >table {
+        width    : 100%;
+        max-width: 1240px;
+        margin   : auto;
+
         >thead {
-            font-size    : 1.25rem;
-            font-weight  : bold;
-            border-bottom: solid 0.5px @brand-primary;
+            font-size       : 1.25rem;
+            font-weight     : bold;
+            border-bottom   : solid 0.5px @brand-primary;
+            position        : sticky;
+            top             : 50px;
+            background-color: @background;
 
             >tr {
                 >td {
@@ -63,6 +81,28 @@
             >tr:hover {
                 color           : @brand-primary;
                 background-color: @shadow;
+            }
+        }
+    }
+
+    @media @phone {
+        >table {
+            >thead {
+                position: static;
+
+                >tr {
+                    >.mobile {
+                        display: none;
+                    }
+                }
+            }
+
+            >tbody {
+                >tr {
+                    >.mobile {
+                        display: none;
+                    }
+                }
             }
         }
     }

@@ -2010,8 +2010,19 @@ p {
   flex-direction: column;
   margin: 16px;
 }
+.pfp-ranking-view > header {
+  max-width: 1240px;
+  margin: auto;
+  margin-bottom: 16px;
+  text-align: center;
+}
 .pfp-ranking-view > header > h1 {
   font-size: 2.125rem;
+  margin-bottom: 8px;
+}
+.pfp-ranking-view > header > span {
+  font-size: 0.875rem;
+  color: #999;
 }
 .pfp-ranking-view > header > .filter {
   padding-top: 8px;
@@ -2029,10 +2040,18 @@ p {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
+.pfp-ranking-view > table {
+  width: 100%;
+  max-width: 1240px;
+  margin: auto;
+}
 .pfp-ranking-view > table > thead {
   font-size: 1.25rem;
   font-weight: bold;
   border-bottom: solid 0.5px #C7FEA2;
+  position: sticky;
+  top: 50px;
+  background-color: #121212;
 }
 .pfp-ranking-view > table > thead > tr > td {
   text-align: center;
@@ -2053,6 +2072,17 @@ p {
 .pfp-ranking-view > table > tbody > tr:hover {
   color: #C7FEA2;
   background-color: #1f1f1f;
+}
+@media only screen and (max-width: 719px) {
+  .pfp-ranking-view > table > thead {
+    position: static;
+  }
+  .pfp-ranking-view > table > thead > tr > .mobile {
+    display: none;
+  }
+  .pfp-ranking-view > table > tbody > tr > .mobile {
+    display: none;
+  }
 }
 .pfp-ranking-view > .pagination {
   display: inline-block;
