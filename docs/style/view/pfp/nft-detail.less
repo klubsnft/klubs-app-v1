@@ -35,23 +35,51 @@
             margin-bottom: 16px;
         }
 
-        >.pfp {
-            color: @brand-primary;
-        }
+        >.info {
+            display       : flex;
+            flex-direction: column;
+            height        : calc(100% - 40px);
 
-        >.name {
-            font-size    : 24px;
-            font-weight  : bold;
-            margin-top   : 16px;
-            margin-bottom: 16px;
-        }
-
-        >.owner {
-            color        : #999;
-            margin-bottom: 16px;
-
-            >span {
+            >.pfp {
                 color: @brand-primary;
+            }
+
+            >.name {
+                font-size    : 24px;
+                font-weight  : bold;
+                margin-top   : 16px;
+                margin-bottom: 16px;
+            }
+
+            >.owner {
+                color        : #999;
+                margin-bottom: 16px;
+
+                >span {
+                    color: @brand-primary;
+                }
+            }
+
+            >.description {
+                flex-grow: 1;
+            }
+
+            >.refresh-button {
+                margin-top      : 16px;
+                display         : block;
+                color           : @background;
+                background-color: @brand-primary;
+                padding         : 12px 0;
+                width           : 100%;
+                font-size       : 16px;
+                text-align      : center;
+                border-radius   : 4px;
+                box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+                &:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
             }
         }
 

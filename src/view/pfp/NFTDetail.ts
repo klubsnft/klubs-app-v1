@@ -1,7 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import marked from "marked";
-import { View, ViewParams } from "skyrouter";
+import { SkyRouter, View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import xss from "xss";
 import CommonUtil from "../../CommonUtil";
@@ -50,12 +50,20 @@ export default class NFTDetail implements View {
             // 기본 정보
             el("section",
                 el("h2", "기본 정보"),
-                this.pfpDisplay = el("a.pfp", {
-                    click: () => ViewUtil.go(`/pfp/${addr}`),
-                }),
-                this.nameDisplay = el(".name"),
-                this.ownerDisplay = el(".owner"),
-                this.descriptionDisplay = el(".description"),
+                el(".info",
+                    this.pfpDisplay = el("a.pfp", {
+                        click: () => ViewUtil.go(`/pfp/${addr}`),
+                    }),
+                    this.nameDisplay = el(".name"),
+                    this.ownerDisplay = el(".owner"),
+                    this.descriptionDisplay = el(".description"),
+                    el("a.refresh-button", "정보 새로고침", {
+                        click: async () => {
+                            await Loader.cacheMetadata(addr, id);
+                            SkyRouter.refresh();
+                        },
+                    }),
+                ),
             ),
 
             // 프로퍼티

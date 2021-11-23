@@ -1215,21 +1215,45 @@ p {
   font-size: 24px;
   margin-bottom: 16px;
 }
-.pfp-nft-detail-view > section > .pfp {
+.pfp-nft-detail-view > section > .info {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.pfp-nft-detail-view > section > .info > .pfp {
   color: #C7FEA2;
 }
-.pfp-nft-detail-view > section > .name {
+.pfp-nft-detail-view > section > .info > .name {
   font-size: 24px;
   font-weight: bold;
   margin-top: 16px;
   margin-bottom: 16px;
 }
-.pfp-nft-detail-view > section > .owner {
+.pfp-nft-detail-view > section > .info > .owner {
   color: #999;
   margin-bottom: 16px;
 }
-.pfp-nft-detail-view > section > .owner > span {
+.pfp-nft-detail-view > section > .info > .owner > span {
   color: #C7FEA2;
+}
+.pfp-nft-detail-view > section > .info > .description {
+  flex-grow: 1;
+}
+.pfp-nft-detail-view > section > .info > .refresh-button {
+  margin-top: 16px;
+  display: block;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.pfp-nft-detail-view > section > .info > .refresh-button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-nft-detail-view > section > .attributes {
   display: grid;
