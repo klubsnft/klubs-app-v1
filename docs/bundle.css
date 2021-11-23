@@ -1238,8 +1238,11 @@ p {
 }
 .pfp-nft-detail-view > section > .info > .description {
   flex-grow: 1;
+  max-height: 115.33px;
+  overflow-y: scroll;
 }
-.pfp-nft-detail-view > section > .info > .refresh-button {
+.pfp-nft-detail-view > section > .info > .refresh-button,
+.pfp-nft-detail-view > section > .info > .send-button-container > a {
   margin-top: 16px;
   display: block;
   color: #121212;
@@ -1251,7 +1254,8 @@ p {
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.pfp-nft-detail-view > section > .info > .refresh-button:hover {
+.pfp-nft-detail-view > section > .info > .refresh-button:hover,
+.pfp-nft-detail-view > section > .info > .send-button-container > a:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }

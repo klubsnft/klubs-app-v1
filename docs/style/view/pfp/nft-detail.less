@@ -61,10 +61,13 @@
             }
 
             >.description {
-                flex-grow: 1;
+                flex-grow : 1;
+                max-height: 115.33px;
+                overflow-y: scroll;
             }
 
-            >.refresh-button {
+            >.refresh-button,
+            >.send-button-container>a {
                 margin-top      : 16px;
                 display         : block;
                 color           : @background;

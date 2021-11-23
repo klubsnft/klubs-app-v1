@@ -7,6 +7,7 @@ import xss from "xss";
 import CommonUtil from "../../CommonUtil";
 import AcceptOfferPopup from "../../component/AcceptOfferPopup";
 import BuyPopup from "../../component/BuyPopup";
+import Prompt from "../../component/dialogue/Prompt";
 import NFTDisplay from "../../component/NFTDisplay";
 import OfferPopup from "../../component/OfferPopup";
 import SellPopup from "../../component/SellPopup";
@@ -30,6 +31,7 @@ export default class NFTDetail implements View {
     private nameDisplay: DomNode;
     private ownerDisplay: DomNode;
     private descriptionDisplay: DomNode;
+    private sendButtonContainer: DomNode;
     private attributesDisplay: DomNode;
     private tradeForm: DomNode;
     private offerForm: DomNode;
@@ -57,6 +59,7 @@ export default class NFTDetail implements View {
                     this.nameDisplay = el(".name"),
                     this.ownerDisplay = el(".owner"),
                     this.descriptionDisplay = el(".description"),
+                    this.sendButtonContainer = el(".send-button-container"),
                     el("a.refresh-button", "정보 새로고침", {
                         click: async () => {
                             await Loader.cacheMetadata(addr, id);
@@ -121,6 +124,15 @@ export default class NFTDetail implements View {
         }
 
         const address = await Wallet.loadAddress();
+        if (owner === address) {
+            this.sendButtonContainer.empty().append(el("a", "전송하기", {
+                click: () => new Prompt("전송하기", "전송받을 지갑 주소를 입력해주시기 바랍니다. 전송이 완료되면 절대 되찾을 수 없으니, 지갑 주소를 여러번 확인하시기 바랍니다.", "전송하기", async (to) => {
+                    await this.contract.transfer(to, id);
+                    ViewUtil.waitTransactionAndRefresh();
+                }),
+            }));
+        }
+
         this.loadSale(address, owner, addr, id);
         this.loadOffers(address, owner, addr, id);
     }

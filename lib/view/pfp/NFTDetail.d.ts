@@ -7,6 +7,7 @@ export default class NFTDetail implements View {
     private nameDisplay;
     private ownerDisplay;
     private descriptionDisplay;
+    private sendButtonContainer;
     private attributesDisplay;
     private tradeForm;
     private offerForm;
