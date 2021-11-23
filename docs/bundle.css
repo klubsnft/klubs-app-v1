@@ -1042,6 +1042,19 @@ p {
   padding-bottom: 32px;
   font-size: 14px;
 }
+.layout > footer > .sns {
+  display: flex;
+  margin: auto;
+}
+.layout > footer > .sns > a > img {
+  width: 32px;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+.layout > footer > .sns > a > img:hover {
+  cursor: pointer;
+}
 .home-view > header {
   display: flex;
   flex-direction: column;
@@ -1097,6 +1110,9 @@ p {
   margin-top: 5px;
   float: right;
   color: #999;
+}
+.home-view > .content > .slide > header > a:hover {
+  color: #C7FEA2;
 }
 .home-view > .content > .slide > .pfp-list-container {
   overflow-x: scroll;

@@ -80,5 +80,23 @@
         padding        : 16px;
         padding-bottom : 32px;
         font-size      : 14px;
+
+        >.sns {
+            display: flex;
+            margin : auto;
+
+            >a {
+                >img {
+                    width        : 32px;
+                    border-radius: 8px;
+                    margin-top   : 8px;
+                    margin-left  : 8px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 }
