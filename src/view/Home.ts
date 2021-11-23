@@ -63,10 +63,10 @@ export default class Home implements View {
                 if (await PFPsContract.banned(addr) !== true) {
                     const extras = await PFPsContract.extras(addr);
                     if (extras.trim() !== "") {
-                        realCount += 1;
                         let data: any = {};
                         try { data = JSON.parse(extras); } catch (e) { }
-                        if (this.container.deleted !== true) {
+                        if (data.name !== "" && this.container.deleted !== true) {
+                            realCount += 1;
                             new PFPCard(addr, data).appendTo(this.pfpList);
                         }
                     }

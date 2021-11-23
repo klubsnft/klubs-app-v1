@@ -50,7 +50,7 @@ export default class PFP implements View {
                     if (extras.trim() !== "") {
                         let data: any = {};
                         try { data = JSON.parse(extras); } catch (e) { }
-                        if (this.container.deleted !== true) {
+                        if (data.name !== "" && this.container.deleted !== true) {
                             new PFPCard(addr, data).appendTo(this.pfpList);
                         }
                     }
