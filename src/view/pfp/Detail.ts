@@ -10,7 +10,6 @@ import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
-import Loader from "../../Loader";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
@@ -246,23 +245,7 @@ export default class Detail implements View {
             this.totalTab.addClass("on");
             this.mineTab.deleteClass("on");
             this.saleTab.deleteClass("on");
-
-            try {
-                const id = parseInt(this.idQuery.trim(), 10);
-                const data = await Loader.loadMetadata(addr, id);
-                const saleInfo = await PFPStoreContract.sales(addr, id);
-                if (currentOrder === this.order) {
-                    new PFPNFTCard(
-                        addr,
-                        id,
-                        data.image,
-                        data.name,
-                        saleInfo.price,
-                    ).appendTo(this.nftList);
-                }
-            } catch (e) {
-                console.error(e);
-            }
+            new PFPNFTCard(addr, parseInt(this.idQuery.trim(), 10)).appendTo(this.nftList);
         }
 
         // 정렬된 것 보기
@@ -283,31 +266,9 @@ export default class Detail implements View {
                 limit = dataSet.length;
             }
 
-            const promises: Promise<void>[] = [];
             for (let i = start; i < limit; i += 1) {
-                const promise = async (index: number) => {
-                    try {
-                        const id = dataSet[index].nftId;
-                        if (currentOrder === this.order) {
-                            const data = await Loader.loadMetadata(addr, id);
-                            const saleInfo = await PFPStoreContract.sales(addr, id);
-                            if (currentOrder === this.order) {
-                                new PFPNFTCard(
-                                    addr,
-                                    id,
-                                    data.image,
-                                    data.name,
-                                    saleInfo.price,
-                                ).appendTo(this.nftList);
-                            }
-                        }
-                    } catch (e) {
-                        console.error(e);
-                    }
-                };
-                promises.push(promise(i));
+                new PFPNFTCard(addr, dataSet[i].nftId).appendTo(this.nftList);
             }
-            await Promise.all(promises);
         }
 
         // 내 것만 보기
@@ -330,17 +291,7 @@ export default class Detail implements View {
                         try {
                             const id = (await this.contract.tokenOfOwnerByIndex(address, index)).toNumber();
                             if (currentOrder === this.order) {
-                                const data = await Loader.loadMetadata(addr, id);
-                                const saleInfo = await PFPStoreContract.sales(addr, id);
-                                if (currentOrder === this.order) {
-                                    new PFPNFTCard(
-                                        addr,
-                                        id,
-                                        data.image,
-                                        data.name,
-                                        saleInfo.price,
-                                    ).appendTo(this.nftList);
-                                }
+                                new PFPNFTCard(addr, id).appendTo(this.nftList);
                             }
                         } catch (e) {
                             console.error(e);
@@ -370,17 +321,7 @@ export default class Detail implements View {
                     try {
                         const id = (await PFPStoreContract.onSales(addr, index)).toNumber();
                         if (currentOrder === this.order) {
-                            const data = await Loader.loadMetadata(addr, id);
-                            const saleInfo = await PFPStoreContract.sales(addr, id);
-                            if (currentOrder === this.order) {
-                                new PFPNFTCard(
-                                    addr,
-                                    id,
-                                    data.image,
-                                    data.name,
-                                    saleInfo.price,
-                                ).appendTo(this.nftList);
-                            }
+                            new PFPNFTCard(addr, id).appendTo(this.nftList);
                         }
                     } catch (e) {
                         console.error(e);
@@ -403,28 +344,9 @@ export default class Detail implements View {
                 limit = this.totalSupply;
             }
 
-            const promises: Promise<void>[] = [];
-            for (let i = start; i < limit; i += 1) {
-                const promise = async (id: number) => {
-                    try {
-                        const data = await Loader.loadMetadata(addr, id);
-                        const saleInfo = await PFPStoreContract.sales(addr, id);
-                        if (currentOrder === this.order) {
-                            new PFPNFTCard(
-                                addr,
-                                id,
-                                data.image,
-                                data.name,
-                                saleInfo.price,
-                            ).appendTo(this.nftList);
-                        }
-                    } catch (e) {
-                        console.error(e);
-                    }
-                };
-                promises.push(promise(i));
+            for (let id = start; id < limit; id += 1) {
+                new PFPNFTCard(addr, id).appendTo(this.nftList);
             }
-            await Promise.all(promises);
         }
 
         this.nftLoading.style({ display: "none" });

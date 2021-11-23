@@ -1,6 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
-import superagent from "superagent";
 import Loading from "../../component/loading/Loading";
 import PFPCard from "../../component/PFPCard";
 import PFPNFTCard from "../../component/PFPNFTCard";
@@ -100,16 +99,8 @@ export default class MyPFPs implements View {
         for (let i = 0; i < count; i += 1) {
             const promise = async (index: number) => {
                 const info = await PFPStoreContract.userSellInfo(address, index);
-                const data = await Loader.loadMetadata(info.pfp, info.id);
-                const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                 if (this.container.deleted !== true) {
-                    new PFPNFTCard(
-                        info.pfp,
-                        info.id,
-                        data.image,
-                        data.name,
-                        saleInfo.price,
-                    ).appendTo(this.sellingList);
+                    new PFPNFTCard(info.pfp, info.id).appendTo(this.sellingList);
                 }
             };
             promises.push(promise(i));
@@ -130,16 +121,8 @@ export default class MyPFPs implements View {
         for (let i = 0; i < count; i += 1) {
             const promise = async (index: number) => {
                 const info = await PFPStoreContract.userOfferInfo(address, index);
-                const data = await Loader.loadMetadata(info.pfp, info.id);
-                const saleInfo = await PFPStoreContract.sales(info.pfp, info.id);
                 if (this.container.deleted !== true) {
-                    new PFPNFTCard(
-                        info.pfp,
-                        info.id,
-                        data.image,
-                        data.name,
-                        saleInfo.price,
-                    ).appendTo(this.offeringList);
+                    new PFPNFTCard(info.pfp, info.id).appendTo(this.offeringList);
                 }
             };
             promises.push(promise(i));
@@ -172,16 +155,8 @@ export default class MyPFPs implements View {
 
                     for (let j = 0; j < balance; j += 1) {
                         const id = (await contract.tokenOfOwnerByIndex(address, j)).toNumber();
-                        const data = await Loader.loadMetadata(addr, id);
-                        const saleInfo = await PFPStoreContract.sales(addr, id);
                         if (this.container.deleted !== true) {
-                            new PFPNFTCard(
-                                addr,
-                                id,
-                                data.image,
-                                data.name,
-                                saleInfo.price,
-                            ).appendTo(this.myNFTList);
+                            new PFPNFTCard(addr, id).appendTo(this.myNFTList);
                         }
                     }
                 } else {
