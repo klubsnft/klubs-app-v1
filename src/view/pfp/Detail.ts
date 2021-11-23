@@ -1,6 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import marked from "marked";
 import { View, ViewParams } from "skyrouter";
+import superagent from "superagent";
 import xss from "xss";
 import Alert from "../../component/dialogue/Alert";
 import Loading from "../../component/loading/Loading";
@@ -41,6 +42,7 @@ export default class Detail implements View {
     private idQuery = "";
     private page = 0;
     private listType = "all";
+    private sort: string = "";
 
     constructor(params: ViewParams) {
 
@@ -82,9 +84,17 @@ export default class Detail implements View {
                         }),
                     ),
                     //el(".filter", el("button.button-contained", "희소 점수 보기"),
-                    /*el("select",
-                        el("option", "이름순"),
-                    ),*/
+                    el("select",
+                        el("option", "기본 정렬", { value: "" }),
+                        el("option", "최저가순", { value: "price-asc" }),
+                        el("option", "최고가순", { value: "price-desc" }),
+                        {
+                            change: (event, select) => {
+                                this.sort = (select as DomNode<HTMLSelectElement>).domElement.value;
+                                this.loadNFTs(addr);
+                            },
+                        },
+                    ),
                 ),
                 el(".content",
                     el(".search-box",
@@ -253,6 +263,51 @@ export default class Detail implements View {
             } catch (e) {
                 console.error(e);
             }
+        }
+
+        // 정렬된 것 보기
+        else if (
+            this.sort === "price-asc" ||
+            this.sort === "price-desc"
+        ) {
+            this.totalTab.deleteClass("on");
+            this.mineTab.deleteClass("on");
+            this.saleTab.addClass("on");
+
+            const result = await superagent.get(`https://api.klu.bs/v2/pfp/${addr}/sales/${this.sort === "price-asc" ? "asc" : "desc"}`);
+            const dataSet = result.body;
+
+            const start = this.page * 50;
+            let limit = (this.page + 1) * 50;
+            if (limit > dataSet.length) {
+                limit = dataSet.length;
+            }
+
+            const promises: Promise<void>[] = [];
+            for (let i = start; i < limit; i += 1) {
+                const promise = async (index: number) => {
+                    try {
+                        const id = dataSet[index].nftId;
+                        if (currentOrder === this.order) {
+                            const data = await Loader.loadMetadata(addr, id);
+                            const saleInfo = await PFPStoreContract.sales(addr, id);
+                            if (currentOrder === this.order) {
+                                new PFPNFTCard(
+                                    addr,
+                                    id,
+                                    data.image,
+                                    data.name,
+                                    saleInfo.price,
+                                ).appendTo(this.nftList);
+                            }
+                        }
+                    } catch (e) {
+                        console.error(e);
+                    }
+                };
+                promises.push(promise(i));
+            }
+            await Promise.all(promises);
         }
 
         // 내 것만 보기

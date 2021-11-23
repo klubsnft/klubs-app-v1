@@ -20,6 +20,7 @@ export default class Detail implements View {
     private idQuery;
     private page;
     private listType;
+    private sort;
     constructor(params: ViewParams);
     private loadInfo;
     private loadUpdateButton;

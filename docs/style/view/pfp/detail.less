@@ -97,6 +97,10 @@
             padding         : 16px;
             background-color: black;
 
+            @media @phone {
+                display: block;
+            }
+
             >h2 {
                 font-size      : 1.5rem;
                 display        : flex;
@@ -104,6 +108,13 @@
             }
 
             >.tab-container {
+                @media @phone {
+                    display      : flex;
+                    margin-left  : -8px;
+                    margin-top   : 8px;
+                    margin-bottom: 8px;
+                }
+
                 >.tab {
                     margin-left     : 8px;
                     background-color: transparent;
@@ -137,6 +148,19 @@
                 }
 
                 >select:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            >select {
+                background-color: @brand-primary;
+                padding         : 8px;
+                font-size       : 14px;
+                border-radius   : 4px;
+                border          : none;
+
+                &:hover {
                     background-color: @brand-400;
                     box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
                 }
@@ -213,6 +237,12 @@
 
                         @media @phone {
                             width: calc(50% - 16px);
+
+                            >.nft-display {
+                                width       : 100%;
+                                height      : auto;
+                                aspect-ratio: 1;
+                            }
                         }
                     }
                 }

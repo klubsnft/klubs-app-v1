@@ -1456,10 +1456,23 @@ p {
   padding: 16px;
   background-color: black;
 }
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > main > header {
+    display: block;
+  }
+}
 .pfp-detail-view > main > header > h2 {
   font-size: 1.5rem;
   display: flex;
   justify-content: flex-start;
+}
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > main > header > .tab-container {
+    display: flex;
+    margin-left: -8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 }
 .pfp-detail-view > main > header > .tab-container > .tab {
   margin-left: 8px;
@@ -1489,6 +1502,17 @@ p {
   border: none;
 }
 .pfp-detail-view > main > header > .filter > select:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-detail-view > main > header > select {
+  background-color: #C7FEA2;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+}
+.pfp-detail-view > main > header > select:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
@@ -1565,6 +1589,11 @@ p {
 @media only screen and (max-width: 719px) {
   .pfp-detail-view > main > .content > .list-container > .list > .pfp-nft-card {
     width: calc(50% - 16px);
+  }
+  .pfp-detail-view > main > .content > .list-container > .list > .pfp-nft-card > .nft-display {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
   }
 }
 .pfp-detail-view > main > .content > .list-container > .pagination {
