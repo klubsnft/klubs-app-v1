@@ -31,6 +31,8 @@ export default class Update implements View {
 
     private managerList: DomNode;
 
+    private hidingCheckbox: DomNode<HTMLInputElement>;
+
     constructor(params: ViewParams) {
 
         const addr = params.addr;
@@ -143,6 +145,10 @@ export default class Update implements View {
                         el("p", "채굴 정보를 확인할 수 있는 페이지의 URL을 기입합니다."),
                         this.miningInfoURLInput = el("input", { type: "url", placeholder: "채굴 정보 URL" }),
                     ),
+                    el("label",
+                        el("h3", "Klubs에서 숨기기"),
+                        this.hidingCheckbox = el("input", { type: "checkbox" }),
+                    ),
                     el("button", "정보 저장", {
                         click: async () => {
                             const extra = {
@@ -154,6 +160,7 @@ export default class Update implements View {
                                 twitter: this.twitterInput.domElement.value,
                                 mineable: this.mineableCheckbox.domElement.checked,
                                 miningInfoURL: this.miningInfoURLInput.domElement.value,
+                                hiding: this.hidingCheckbox.domElement.checked,
                             };
                             await PFPsContract.setExtra(addr, JSON.stringify(extra));
                             setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
@@ -254,6 +261,10 @@ export default class Update implements View {
                 this.miningInfoURLLabel.style({ display: "none" });
             }
             this.miningInfoURLInput.domElement.value = data.miningInfoURL === undefined ? "" : data.miningInfoURL;
+
+            if (data.hiding === true) {
+                this.hidingCheckbox.domElement.checked = true;
+            }
         }
     }
 

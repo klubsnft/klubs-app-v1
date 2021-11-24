@@ -18,6 +18,7 @@ export default class Update implements View {
     private royaltyInput;
     private royaltyReceiverInput;
     private managerList;
+    private hidingCheckbox;
     constructor(params: ViewParams);
     private load;
     private loadTotalSupply;

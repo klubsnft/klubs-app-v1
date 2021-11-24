@@ -65,7 +65,7 @@ export default class Home implements View {
                     if (extras.trim() !== "") {
                         let data: any = {};
                         try { data = JSON.parse(extras); } catch (e) { }
-                        if (data.name !== "" && this.container.deleted !== true) {
+                        if (data.name !== "" && data.hiding !== true && this.container.deleted !== true) {
                             realCount += 1;
                             new PFPCard(addr, data).appendTo(this.pfpList);
                         }
