@@ -2,16 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer } from "ethers";
+import { Contract, Signer, utils } from "ethers";
 import { Provider } from "@ethersproject/providers";
-
-import type { IMix } from "../IMix";
-
-export class IMix__factory {
-  static connect(address: string, signerOrProvider: Signer | Provider): IMix {
-    return new Contract(address, _abi, signerOrProvider) as IMix;
-  }
-}
+import type { IMix, IMixInterface } from "../IMix";
 
 const _abi = [
   {
@@ -238,3 +231,13 @@ const _abi = [
     type: "event",
   },
 ];
+
+export class IMix__factory {
+  static readonly abi = _abi;
+  static createInterface(): IMixInterface {
+    return new utils.Interface(_abi) as IMixInterface;
+  }
+  static connect(address: string, signerOrProvider: Signer | Provider): IMix {
+    return new Contract(address, _abi, signerOrProvider) as IMix;
+  }
+}

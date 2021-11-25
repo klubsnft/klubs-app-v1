@@ -2237,4 +2237,19 @@ p {
   float: left;
   margin-right: 16px;
 }
+.user-my-pfps-view > section > .pagination {
+  margin-top: 16px;
+}
+.user-my-pfps-view > section > .pagination > a {
+  background-color: transparent;
+  color: #999;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.user-my-pfps-view > section > .pagination > a:hover {
+  color: #C7FEA2;
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 

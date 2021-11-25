@@ -1,13 +1,13 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import superagent from "superagent";
+import Alert from "../../component/dialogue/Alert";
 import Loading from "../../component/loading/Loading";
 import PFPCard from "../../component/PFPCard";
 import PFPNFTCard from "../../component/PFPNFTCard";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
-import KIP17Contract from "../../contracts/standard/KIP17Contract";
 import Wallet from "../../klaytn/Wallet";
-import Loader from "../../Loader";
 import Layout from "../Layout";
 
 export default class MyPFPs implements View {
@@ -25,6 +25,12 @@ export default class MyPFPs implements View {
 
     private myNFTLoading: Loading;
     private myNFTList: DomNode;
+
+    private prevButton: DomNode;
+    private nextButton: DomNode;
+
+    private page = 0;
+    private totalPage = 0;
 
     constructor() {
         Layout.current.title = "내 PFP";
@@ -49,6 +55,34 @@ export default class MyPFPs implements View {
                 el("h2", "내 PFP 목록"),
                 this.myNFTLoading = new Loading(),
                 this.myNFTList = el(".list"),
+                el(".pagination",
+                    this.prevButton = el("a.prev", el("i.fas.fa-arrow-left"), {
+                        click: async () => {
+                            if (this.page > 0) {
+                                this.page -= 1;
+                                const address = await Wallet.loadAddress();
+                                if (address !== undefined) {
+                                    this.loadMyNFTs(address);
+                                }
+                            } else {
+                                new Alert("안내", "첫 페이지입니다.");
+                            }
+                        },
+                    }),
+                    this.nextButton = el("a.next", el("i.fas.fa-arrow-right"), {
+                        click: async () => {
+                            if (this.page < this.totalPage - 1) {
+                                this.page += 1;
+                                const address = await Wallet.loadAddress();
+                                if (address !== undefined) {
+                                    this.loadMyNFTs(address);
+                                }
+                            } else {
+                                new Alert("안내", "마지막 페이지입니다.");
+                            }
+                        },
+                    }),
+                ),
             ),
         ));
 
@@ -136,39 +170,28 @@ export default class MyPFPs implements View {
 
     private async loadMyNFTs(address: string) {
 
+        this.myNFTLoading.style({ display: "block" });
         this.myNFTList.empty();
 
-        let totalCount = 0;
-        const count = await PFPsContract.getAddrCount();
-        const array = new Array(count.toNumber()).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
+        const result = await superagent.get(`https://api.klu.bs/v2/pfp/owned/${address}/${this.page}`);
+        const info = result.body;
 
-        const promises: Promise<void>[] = [];
-        for (const i of array) {
-            const promise = async (index: number) => {
-                const addr = await PFPsContract.addrs(index);
-                const enumerable = await PFPsContract.enumerables(addr);
-                if (enumerable === true) {
-                    const contract = new KIP17Contract(addr);
-                    const balance = (await contract.balanceOf(address)).toNumber();
+        this.totalPage = info.totalPage;
 
-                    totalCount += balance;
-
-                    for (let j = 0; j < balance; j += 1) {
-                        const id = (await contract.tokenOfOwnerByIndex(address, j)).toNumber();
-                        if (this.container.deleted !== true) {
-                            new PFPNFTCard(addr, id).appendTo(this.myNFTList);
-                        }
-                    }
-                } else {
-                    //TODO: 전체적으로 뜯어 고치기
-                }
-            };
-            promises.push(promise(i));
+        if (this.page === 0) {
+            this.prevButton.addClass("disable");
         }
-        await Promise.all(promises);
+
+        if (this.page === info.totalPage - 1) {
+            this.nextButton.addClass("disable");
+        }
+
+        for (const data of info.dataSet) {
+            new PFPNFTCard(data.addr, data.nftId).appendTo(this.myNFTList);
+        }
 
         if (this.container.deleted !== true) {
-            this.myNFTLoading.delete();
+            this.myNFTLoading.style({ display: "none" });
         }
     }
 
