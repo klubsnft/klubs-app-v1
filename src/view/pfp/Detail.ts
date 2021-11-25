@@ -277,29 +277,48 @@ export default class Detail implements View {
             this.mineTab.addClass("on");
             this.saleTab.deleteClass("on");
 
-            const start = this.page * 50;
-            let limit = (this.page + 1) * 50;
-            if (limit > balance) {
-                limit = balance;
-            }
+            if (address !== undefined) {
 
-            const enumerable = await PFPsContract.enumerables(addr);
-            if (enumerable === true && address !== undefined) {
-                const promises: Promise<void>[] = [];
-                for (let i = start; i < limit; i += 1) {
-                    const promise = async (index: number) => {
-                        try {
-                            const id = (await this.contract.tokenOfOwnerByIndex(address, index)).toNumber();
-                            if (currentOrder === this.order) {
-                                new PFPNFTCard(addr, id).appendTo(this.nftList);
+                const enumerable = await PFPsContract.enumerables(addr);
+                if (enumerable === true) {
+
+                    const start = this.page * 50;
+                    let limit = (this.page + 1) * 50;
+                    if (limit > balance) {
+                        limit = balance;
+                    }
+
+                    const promises: Promise<void>[] = [];
+                    for (let i = start; i < limit; i += 1) {
+                        const promise = async (index: number) => {
+                            try {
+                                const id = (await this.contract.tokenOfOwnerByIndex(address, index)).toNumber();
+                                if (currentOrder === this.order) {
+                                    new PFPNFTCard(addr, id).appendTo(this.nftList);
+                                }
+                            } catch (e) {
+                                console.error(e);
                             }
-                        } catch (e) {
-                            console.error(e);
-                        }
-                    };
-                    promises.push(promise(i));
+                        };
+                        promises.push(promise(i));
+                    }
+                    await Promise.all(promises);
                 }
-                await Promise.all(promises);
+
+                else {
+                    const result = await superagent.get(`https://api.klu.bs/v2/pfp/${addr}/owned/${address}`);
+                    const dataSet = result.body;
+
+                    const start = this.page * 50;
+                    let limit = (this.page + 1) * 50;
+                    if (limit > dataSet.length) {
+                        limit = dataSet.length;
+                    }
+
+                    for (let i = start; i < limit; i += 1) {
+                        new PFPNFTCard(addr, dataSet[i].nftId).appendTo(this.nftList);
+                    }
+                }
             }
         }
 
