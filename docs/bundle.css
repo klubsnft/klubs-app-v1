@@ -2197,6 +2197,12 @@ p {
 .art-view > .title {
   font-size: 28px;
 }
+.item-view {
+  padding: 16px;
+}
+.item-view > .title {
+  font-size: 28px;
+}
 .user-my-pfps-view > header {
   display: flex;
   flex-direction: column;

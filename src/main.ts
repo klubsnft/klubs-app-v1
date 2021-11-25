@@ -3,6 +3,7 @@ import PFPProposals from "./view/admin/PFPProposals";
 import PFPs from "./view/admin/PFPs";
 import Art from "./view/Art";
 import Home from "./view/Home";
+import Item from "./view/Item";
 import Layout from "./view/Layout";
 import PFP from "./view/PFP";
 import Add from "./view/pfp/Add";
@@ -54,6 +55,7 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("pfp/proposal/{proposalId}", Proposal);
 
     SkyRouter.route("art", Art);
+    SkyRouter.route("item", Item);
 
     SkyRouter.route("admin/pfp-proposals", PFPProposals);
     SkyRouter.route("admin/pfps", PFPs);
