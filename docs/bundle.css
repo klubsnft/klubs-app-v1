@@ -1012,6 +1012,17 @@ p {
     display: none;
   }
 }
+.layout > header > .right > .mix-button {
+  float: right;
+  margin-top: 2px;
+  margin-right: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .layout > header > .right > .mix-button {
+    margin-top: 6px;
+    margin-right: 10px;
+  }
+}
 .layout > header > .right > .menu-button {
   float: right;
   display: none;
@@ -2202,6 +2213,31 @@ p {
 }
 .item-view > .title {
   font-size: 28px;
+}
+.mix-view {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px 16px;
+  text-align: center;
+}
+.mix-view > h1 {
+  font-size: 30px;
+}
+.mix-view > a {
+  display: block;
+  width: 150px;
+  margin: 16px auto;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.mix-view > a:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .user-my-pfps-view > header {
   display: flex;

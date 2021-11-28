@@ -9,6 +9,10 @@ export default class MyPFPs implements View {
     private offeringList;
     private myNFTLoading;
     private myNFTList;
+    private prevButton;
+    private nextButton;
+    private page;
+    private totalPage;
     constructor();
     private load;
     private loadManaging;

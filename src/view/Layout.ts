@@ -31,6 +31,10 @@ export default class Layout implements View {
                                 new MobileMenu({ left: rect.right - 170, top: rect.bottom }).appendTo(BodyNode);
                             },
                         }),
+                        el("a.mix-button",
+                            el("img", { src: "/images/mix-with-text.png", height: "28" }),
+                            { click: () => ViewUtil.go("/mix") },
+                        ),
                     ),
                 ),
                 el("main", (this.content = el(".content"))),

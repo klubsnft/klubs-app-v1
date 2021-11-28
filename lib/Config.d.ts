@@ -4,6 +4,8 @@ declare const _default: {
     contracts: {
         PFPs: string;
         PFPStore: string;
+        Klayswap: string;
+        MixPriceEstimator: string;
     };
 };
 export default _default;
