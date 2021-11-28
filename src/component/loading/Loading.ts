@@ -20,4 +20,12 @@ export default class Loading extends DomNode {
             overflow: "hidden",
         });
     }
+
+    public hide() {
+        this.style({ display: "none" });
+    }
+
+    public show() {
+        this.style({ display: "block" });
+    }
 }

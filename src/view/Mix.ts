@@ -33,6 +33,7 @@ export default class Mix implements View {
         ));
         this.loadPrice();
     }
+
     private async loadPrice() {
         const result = await superagent.get("https://api.klu.bs/mix/price");
         this.priceDisplay.empty().append(CommonUtil.numberWithCommas(result.text));

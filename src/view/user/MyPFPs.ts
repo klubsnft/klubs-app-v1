@@ -1,16 +1,17 @@
 import { DomNode, el } from "@hanul/skynode";
-import { View, ViewParams } from "skyrouter";
+import { SkyRouter, View, ViewParams } from "skyrouter";
 import superagent from "superagent";
-import Alert from "../../component/dialogue/Alert";
 import Loading from "../../component/loading/Loading";
 import PFPCard from "../../component/PFPCard";
 import PFPNFTCard from "../../component/PFPNFTCard";
+import PFPPagination from "../../component/pfppage/PFPPagination";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import Wallet from "../../klaytn/Wallet";
 import Layout from "../Layout";
+import PFPPage from "../pfp/page/PFPPage";
 
-export default class MyPFPs implements View {
+export default class MyPFPs implements View, PFPPage {
 
     private container: DomNode;
 
@@ -26,13 +27,14 @@ export default class MyPFPs implements View {
     private myNFTLoading: Loading;
     private myNFTList: DomNode;
 
-    private prevButton: DomNode;
-    private nextButton: DomNode;
+    private pagination1: PFPPagination;
+    private pagination2: PFPPagination;
 
-    private page = 0;
-    private totalPage = 0;
+    private page: number;
 
-    constructor() {
+    constructor(params: ViewParams) {
+        this.page = params.page === undefined ? 1 : parseInt(params.page, 10);
+
         Layout.current.title = "내 PFP";
         Layout.current.content.append(this.container = el(".user-my-pfps-view",
             el("header", el("h1", "내 PFP 정보")),
@@ -54,35 +56,9 @@ export default class MyPFPs implements View {
             el("section",
                 el("h2", "내 PFP 목록"),
                 this.myNFTLoading = new Loading(),
+                this.pagination1 = new PFPPagination(this, this.page),
                 this.myNFTList = el(".list"),
-                el(".pagination",
-                    this.prevButton = el("a.prev", el("i.fas.fa-arrow-left"), {
-                        click: async () => {
-                            if (this.page > 0) {
-                                this.page -= 1;
-                                const address = await Wallet.loadAddress();
-                                if (address !== undefined) {
-                                    this.loadMyNFTs(address);
-                                }
-                            } else {
-                                new Alert("안내", "첫 페이지입니다.");
-                            }
-                        },
-                    }),
-                    this.nextButton = el("a.next", el("i.fas.fa-arrow-right"), {
-                        click: async () => {
-                            if (this.page < this.totalPage - 1) {
-                                this.page += 1;
-                                const address = await Wallet.loadAddress();
-                                if (address !== undefined) {
-                                    this.loadMyNFTs(address);
-                                }
-                            } else {
-                                new Alert("안내", "마지막 페이지입니다.");
-                            }
-                        },
-                    }),
-                ),
+                this.pagination2 = new PFPPagination(this, this.page),
             ),
         ));
 
@@ -173,18 +149,15 @@ export default class MyPFPs implements View {
         this.myNFTLoading.style({ display: "block" });
         this.myNFTList.empty();
 
-        const result = await superagent.get(`https://api.klu.bs/v2/pfp/owned/${address}/${this.page}`);
+        const result = await superagent.get(`https://api.klu.bs/v2/pfp/owned/${address}/${this.page - 1}`);
         const info = result.body;
 
-        this.totalPage = info.totalPage;
-
-        if (this.page === 0) {
-            this.prevButton.addClass("disable");
+        if (this.page > info.totalPage) {
+            this.page = info.totalPage;
         }
 
-        if (this.page === info.totalPage - 1) {
-            this.nextButton.addClass("disable");
-        }
+        this.pagination1.update(this.page, info.totalPage);
+        this.pagination2.update(this.page, info.totalPage);
 
         for (const data of info.dataSet) {
             new PFPNFTCard(data.addr, data.nftId).appendTo(this.myNFTList);
@@ -195,7 +168,21 @@ export default class MyPFPs implements View {
         }
     }
 
-    public changeParams(params: ViewParams, uri: string): void { }
+    public async loadNFTs() {
+        const address = await Wallet.loadAddress();
+        if (address !== undefined) {
+            this.loadMyNFTs(address);
+        }
+    }
+
+    public goPage(page: number) {
+        SkyRouter.go(`/user/my-pfps/${page}`);
+    }
+
+    public changeParams(params: ViewParams, uri: string): void {
+        this.page = params.page === undefined ? 1 : parseInt(params.page, 10);
+        this.loadNFTs();
+    }
 
     public close(): void {
         this.container.delete();

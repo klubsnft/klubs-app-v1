@@ -11,8 +11,11 @@ import Add from "./view/pfp/Add";
 import AddByMinter from "./view/pfp/AddByMinter";
 import AddByOwner from "./view/pfp/AddByOwner";
 import AddByPFPOwner from "./view/pfp/AddByPFPOwner";
-import Detail from "./view/pfp/Detail";
 import NFTDetail from "./view/pfp/NFTDetail";
+import PageAll from "./view/pfp/page/PageAll";
+import PageLayout from "./view/pfp/page/PageLayout";
+import PageMine from "./view/pfp/page/PageMine";
+import PageSelling from "./view/pfp/page/PageSelling";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
 import Rankings from "./view/pfp/Rankings";
@@ -29,7 +32,10 @@ import MyPFPs from "./view/user/MyPFPs";
 
     SkyRouter.route("user/me", Me);
     SkyRouter.route("user/my-arts", MyArts);
-    SkyRouter.route("user/my-pfps", MyPFPs);
+    SkyRouter.route([
+        "user/my-pfps",
+        "user/my-pfps/{page}",
+    ], MyPFPs);
 
     SkyRouter.route("pfp", PFP);
     SkyRouter.route("pfp/add", Add);
@@ -39,7 +45,20 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("pfp/propose", Propose);
     SkyRouter.route("pfp/sell", Sell);
     SkyRouter.route("pfp/rankings", Rankings);
-    SkyRouter.route("pfp/{addr}", Detail, [
+
+    SkyRouter.route([
+        "pfp/{addr}",
+        "pfp/{addr}/page/{page}",
+        "pfp/{addr}/mine",
+        "pfp/{addr}/mine/{page}",
+        "pfp/{addr}/selling",
+        "pfp/{addr}/selling/{page}",
+    ], PageLayout);
+
+    SkyRouter.route([
+        "pfp/{addr}",
+        "pfp/{addr}/page/{page}",
+    ], PageAll, [
         "pfp/add",
         "pfp/add-by-owner",
         "pfp/add-by-minter",
@@ -48,7 +67,20 @@ import MyPFPs from "./view/user/MyPFPs";
         "pfp/sell",
         "pfp/rankings",
     ]);
+
+    SkyRouter.route([
+        "pfp/{addr}/mine",
+        "pfp/{addr}/mine/{page}",
+    ], PageMine);
+
+    SkyRouter.route([
+        "pfp/{addr}/selling",
+        "pfp/{addr}/selling/{page}",
+    ], PageSelling);
+
     SkyRouter.route("pfp/{addr}/{id}", NFTDetail, [
+        "pfp/{addr}/mine",
+        "pfp/{addr}/selling",
         "pfp/{addr}/update",
         "pfp/proposal/{proposalId}",
     ]);

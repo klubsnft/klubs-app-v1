@@ -1,0 +1,1 @@
+{"version":3,"file":"PFPSortor.d.ts","sourceRoot":"","sources":["../../../src/component/pfppage/PFPSortor.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAM,MAAM,gBAAgB,CAAC;AAC7C,OAAO,OAAO,MAAM,6BAA6B,CAAC;AAElD,MAAM,CAAC,OAAO,OAAO,SAAU,SAAQ,OAAO;IAE1C,OAAO,CAAC,MAAM,CAA6B;gBAE/B,QAAQ,EAAE,OAAO;IAiB7B,IAAW,QAAQ,WAElB;CACJ"}
