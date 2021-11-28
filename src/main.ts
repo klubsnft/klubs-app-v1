@@ -53,7 +53,15 @@ import MyPFPs from "./view/user/MyPFPs";
         "pfp/{addr}/mine/{page}",
         "pfp/{addr}/selling",
         "pfp/{addr}/selling/{page}",
-    ], PageLayout);
+    ], PageLayout, [
+        "pfp/add",
+        "pfp/add-by-owner",
+        "pfp/add-by-minter",
+        "pfp/add-by-pfp-owner",
+        "pfp/propose",
+        "pfp/sell",
+        "pfp/rankings",
+    ]);
 
     SkyRouter.route([
         "pfp/{addr}",
