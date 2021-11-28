@@ -3,6 +3,7 @@ import { SkyRouter, View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import Loading from "../../../component/loading/Loading";
 import PFPNFTCard from "../../../component/PFPNFTCard";
+import MultiplePFPSelector from "../../../component/pfppage/MultiplePFPSelector";
 import PFPFilter from "../../../component/pfppage/PFPFilter";
 import PFPPageTabs from "../../../component/pfppage/PFPPageTabs";
 import PFPPagination from "../../../component/pfppage/PFPPagination";
@@ -26,6 +27,8 @@ export default class PageSelling implements View, PFPPage {
     private addr!: string;
     private page: number = 1;
 
+    private multipleSelector: MultiplePFPSelector | undefined;
+
     constructor(params: ViewParams) {
         PageLayout.current.content.append(this.container = el(".pfp-page-view.pfp-page-selling-view"));
         this.load(params.addr, params.page);
@@ -40,7 +43,7 @@ export default class PageSelling implements View, PFPPage {
             el("header",
                 el("h2", "NFT 목록"),
                 new PFPPageTabs(addr, "selling"),
-                this.sortor = new PFPSortor(this),
+                this.sortor = new PFPSortor(this, "buy"),
             ),
             el(".content",
                 this.filter = new PFPFilter(this),
@@ -53,6 +56,38 @@ export default class PageSelling implements View, PFPPage {
             ),
         );
         this.loadNFTs();
+
+        this.sortor.on("multiple-buy", () => {
+            if (this.multipleSelector !== undefined) {
+                this.multipleSelector.delete();
+            } else {
+                this.multipleSelector = new MultiplePFPSelector(this.addr, "buy").appendTo(this.container);
+                this.multipleSelector.on("delete", () => {
+                    this.multipleSelector = undefined;
+                    if (this.nftList.deleted !== true) {
+                        for (const card of this.nftList.children) {
+                            if (card instanceof PFPNFTCard) {
+                                card.mode = "view";
+                            }
+                        }
+                    }
+                });
+                for (const card of this.nftList.children) {
+                    if (card instanceof PFPNFTCard) {
+                        card.mode = "select";
+                    }
+                }
+            }
+        });
+    }
+
+    private createCard(id: number) {
+        const card = new PFPNFTCard(this.addr, id, this.multipleSelector?.selecting(id)).appendTo(this.nftList);
+        if (this.multipleSelector !== undefined) {
+            card.mode = "select";
+        }
+        card.on("select", (id) => this.multipleSelector?.select(id));
+        card.on("deselect", (id) => this.multipleSelector?.deselect(id));
     }
 
     public async loadNFTs() {
@@ -69,7 +104,7 @@ export default class PageSelling implements View, PFPPage {
             totalSupply = (await PFPStoreContract.onSalesCount(this.addr)).toNumber();
         }
 
-        const lastPage = Math.ceil(totalSupply / 50);
+        const lastPage = totalSupply === 0 ? 1 : Math.ceil(totalSupply / 50);
         if (this.page > lastPage) {
             this.page = lastPage;
         }
@@ -79,7 +114,7 @@ export default class PageSelling implements View, PFPPage {
 
         // id로 검색
         if (this.filter.idQuery !== undefined) {
-            new PFPNFTCard(this.addr, this.filter.idQuery).appendTo(this.nftList);
+            this.createCard(this.filter.idQuery);
         } else {
 
             const start = (this.page - 1) * 50;
@@ -92,7 +127,7 @@ export default class PageSelling implements View, PFPPage {
                 const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/asc`);
                 const dataSet = result.body;
                 for (let i = start; i < limit; i += 1) {
-                    new PFPNFTCard(this.addr, dataSet[i].nftId).appendTo(this.nftList);
+                    this.createCard(dataSet[i].nftId);
                 }
             }
 
@@ -100,7 +135,7 @@ export default class PageSelling implements View, PFPPage {
                 const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/desc`);
                 const dataSet = result.body;
                 for (let i = start; i < limit; i += 1) {
-                    new PFPNFTCard(this.addr, dataSet[i].nftId).appendTo(this.nftList);
+                    this.createCard(dataSet[i].nftId);
                 }
             }
 
@@ -111,7 +146,7 @@ export default class PageSelling implements View, PFPPage {
                         try {
                             const id = (await PFPStoreContract.onSales(this.addr, index)).toNumber();
                             if (this.container.deleted !== true) {
-                                new PFPNFTCard(this.addr, id).appendTo(this.nftList);
+                                this.createCard(id);
                             }
                         } catch (e) {
                             console.error(e);

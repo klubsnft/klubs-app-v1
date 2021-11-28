@@ -136,10 +136,15 @@
                 }
 
                 >.pfp-sortor {
-                    >.rarity-button {
+                    .float-wrapper();
+
+                    >.rarity-button,
+                    >.multiple-sell-button,
+                    >.multiple-buy-button {
+                        float           : left;
                         margin-right    : 8px;
                         background-color: transparent;
-                        padding         : 8px 16px;
+                        padding         : 12px 16px;
                         font-size       : 14px;
                         border-radius   : 4px;
 
@@ -155,6 +160,7 @@
                     }
 
                     >select {
+                        float           : right;
                         background-color: @brand-primary;
                         padding         : 8px;
                         font-size       : 14px;

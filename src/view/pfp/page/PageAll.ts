@@ -69,7 +69,7 @@ export default class PageAll implements View, PFPPage {
             totalSupply = (await PFPsContract.getTotalSupply(this.addr)).toNumber();
         }
 
-        const lastPage = Math.ceil(totalSupply / 50);
+        const lastPage = totalSupply === 0 ? 1 : Math.ceil(totalSupply / 50);
         if (this.page > lastPage) {
             this.page = lastPage;
         }

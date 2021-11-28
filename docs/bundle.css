@@ -670,6 +670,9 @@ p {
   border-radius: 8px;
   cursor: pointer;
 }
+.pfp-nft-card.selecting {
+  outline: 4px solid #C7FEA2;
+}
 .pfp-nft-card > .nft-display {
   width: 200px;
   height: 200px;
@@ -982,12 +985,41 @@ p {
 .pfp-pagination > a.disable {
   color: #333;
 }
+.multiple-pfp-selector {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+  background-color: #222;
+  box-shadow: #04111d 0px 0px 8px 0px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+.multiple-pfp-selector > p {
+  flex-grow: 1;
+}
+.multiple-pfp-selector > a {
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  margin-right: 8px;
+  width: 110px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+}
+.multiple-pfp-selector > a:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
 .layout {
   width: 100%;
 }
 .layout > header {
   background-color: #222;
-  box-shadow: rgba(4, 17, 29, 0.25) 0px 0px 8px 0px;
+  box-shadow: #04111d 0px 0px 8px 0px;
   position: fixed;
   left: 0;
   top: 0;
@@ -2355,22 +2387,38 @@ p {
   background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button {
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button,
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-sell-button,
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-buy-button {
+  float: left;
   margin-right: 8px;
   background-color: transparent;
-  padding: 8px 16px;
+  padding: 12px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
-.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button.on {
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button.on,
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-sell-button.on,
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-buy-button.on {
   color: #C7FEA2;
 }
-.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button:hover {
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button:hover,
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-sell-button:hover,
+.pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-buy-button:hover {
   color: #C7FEA2;
   background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > select {
+  float: right;
   background-color: #C7FEA2;
   padding: 8px;
   font-size: 14px;

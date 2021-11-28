@@ -10,8 +10,10 @@ export default class PageMine implements View, PFPPage {
     private nftList;
     private addr;
     private page;
+    private multipleSelector;
     constructor(params: ViewParams);
     private load;
+    private createCard;
     loadNFTs(): Promise<void>;
     goPage(page: number): void;
     changeParams(params: ViewParams, uri: string): void;

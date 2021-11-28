@@ -8,13 +8,51 @@ import NFTDisplay from "./NFTDisplay";
 
 export default class PFPNFTCard extends DomNode {
 
-    constructor(private addr: string, private id: number, showingOffer?: boolean) {
+    private _mode: "view" | "select" = "view";
+
+    constructor(
+        private addr: string,
+        private id: number,
+        private selecting?: boolean,
+        showingOffer?: boolean,
+    ) {
         super(".pfp-nft-card");
-        this.onDom("click", () => ViewUtil.go(`/pfp/${addr}/${id}`));
+        this.onDom("click", () => {
+            if (this.mode === "view") {
+                ViewUtil.go(`/pfp/${addr}/${id}`);
+            } else if (this.selecting !== true) {
+                this.selecting = true;
+                this.update();
+                this.fireEvent("select", id);
+            } else {
+                this.selecting = false;
+                this.update();
+                this.fireEvent("deselect", id);
+            }
+        });
         this.load();
         if (showingOffer === true) {
             this.addClass("offers");
             this.loadOffers();
+        }
+        this.update();
+    }
+
+    public set mode(mode: "view" | "select") {
+        this._mode = mode;
+        this.selecting = false;
+        this.update();
+    }
+
+    public get mode() {
+        return this._mode;
+    }
+
+    private update() {
+        if (this.mode === "select" && this.selecting === true) {
+            this.addClass("selecting");
+        } else {
+            this.deleteClass("selecting");
         }
     }
 

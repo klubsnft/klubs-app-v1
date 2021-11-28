@@ -1,0 +1,32 @@
+.multiple-pfp-selector {
+    position        : fixed;
+    left            : 0;
+    bottom          : 0;
+    width           : 100%;
+    height          : 55px;
+    background-color: #222;
+    box-shadow      : rgb(4 17 29) 0px 0px 8px 0px;
+    display         : flex;
+    align-items     : center;
+    padding         : 0 16px;
+
+    >p {
+        flex-grow: 1;
+    }
+
+    >a {
+        color           : @background;
+        background-color: @brand-primary;
+        padding         : 12px 0;
+        margin-right    : 8px;
+        width           : 110px;
+        font-size       : 16px;
+        text-align      : center;
+        border-radius   : 4px;
+
+        &:hover {
+            background-color: @brand-400;
+            box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+        }
+    }
+}
