@@ -179,6 +179,10 @@ export default class MyPFPs implements View, PFPPage {
         SkyRouter.go(`/user/my-pfps/${page}`);
     }
 
+    public toggleRarityMode() {
+        // ignore.
+    }
+
     public changeParams(params: ViewParams, uri: string): void {
         this.page = params.page === undefined ? 1 : parseInt(params.page, 10);
         this.loadNFTs();

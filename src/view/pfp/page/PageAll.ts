@@ -8,6 +8,7 @@ import PFPPageTabs from "../../../component/pfppage/PFPPageTabs";
 import PFPPagination from "../../../component/pfppage/PFPPagination";
 import PFPSortor from "../../../component/pfppage/PFPSortor";
 import PFPsContract from "../../../contracts/PFPsContract";
+import RarityInfo from "../../../RarityInfo";
 import PageLayout from "./PageLayout";
 import PFPPage from "./PFPPage";
 
@@ -25,6 +26,9 @@ export default class PageAll implements View, PFPPage {
 
     private addr!: string;
     private page: number = 1;
+
+    private rarity!: RarityInfo;
+    private rarityMode = false;
 
     constructor(params: ViewParams) {
         PageLayout.current.content.append(this.container = el(".pfp-page-view.pfp-page-all-view"));
@@ -52,7 +56,45 @@ export default class PageAll implements View, PFPPage {
                 ),
             ),
         );
+
+        this.loadRarity();
         this.loadNFTs();
+    }
+
+    private async loadRarity() {
+        this.rarity = await PageLayout.loadRarity(this.addr);
+        this.filter.createFilters(this.rarity);
+        if (this.rarityMode === true) {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.showRarity(this.rarity);
+                }
+            }
+        }
+    }
+
+    public toggleRarityMode() {
+        if (this.rarityMode !== true) {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.showRarity(this.rarity);
+                }
+            }
+        } else {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.hideRarity();
+                }
+            }
+        }
+        this.rarityMode = this.rarityMode !== true;
+    }
+
+    private createCard(id: number) {
+        const card = new PFPNFTCard(this.addr, id).appendTo(this.nftList);
+        if (this.rarityMode === true) {
+            card.showRarity(this.rarity);
+        }
     }
 
     public async loadNFTs() {
@@ -60,13 +102,17 @@ export default class PageAll implements View, PFPPage {
         this.nftLoading.show();
         this.nftList.empty();
 
+        let ids: number[] = [];
         let totalSupply;
 
-        // id로 검색
-        if (this.filter.idQuery !== undefined) {
-            totalSupply = 1;
+        if (this.filter.filteredIds !== undefined) {
+            ids = this.filter.filteredIds;
+            totalSupply = ids.length;
         } else {
             totalSupply = (await PFPsContract.getTotalSupply(this.addr)).toNumber();
+            for (let id = 0; id < totalSupply; id += 1) {
+                ids.push(id);
+            }
         }
 
         const lastPage = totalSupply === 0 ? 1 : Math.ceil(totalSupply / 50);
@@ -77,43 +123,32 @@ export default class PageAll implements View, PFPPage {
         this.pagination1.update(this.page, lastPage);
         this.pagination2.update(this.page, lastPage);
 
-        // id로 검색
-        if (this.filter.idQuery !== undefined) {
-            new PFPNFTCard(this.addr, this.filter.idQuery).appendTo(this.nftList);
-        } else {
-
-            const ids: number[] = [];
-            for (let id = 0; id < totalSupply; id += 1) {
-                ids.push(id);
+        if (this.sortor.sortType === "price-asc") {
+            const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/asc`);
+            const dataSet = result.body;
+            const orders: { [id: number]: number } = {};
+            for (const [index, data] of dataSet.entries()) {
+                orders[data.nftId] = index;
             }
-
-            if (this.sortor.sortType === "price-asc") {
-                const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/asc`);
-                const dataSet = result.body;
-                const orders: { [id: number]: number } = {};
-                for (const [index, data] of dataSet.entries()) {
-                    orders[data.nftId] = index;
-                }
-                ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
-            } else if (this.sortor.sortType === "price-desc") {
-                const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/desc`);
-                const dataSet = result.body;
-                const orders: { [id: number]: number } = {};
-                for (const [index, data] of dataSet.entries()) {
-                    orders[data.nftId] = index;
-                }
-                ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+            ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+        } else if (this.sortor.sortType === "price-desc") {
+            const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/desc`);
+            const dataSet = result.body;
+            const orders: { [id: number]: number } = {};
+            for (const [index, data] of dataSet.entries()) {
+                orders[data.nftId] = index;
             }
+            ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+        }
 
-            const start = (this.page - 1) * 50;
-            let limit = this.page * 50;
-            if (limit > totalSupply) {
-                limit = totalSupply;
-            }
+        const start = (this.page - 1) * 50;
+        let limit = this.page * 50;
+        if (limit > totalSupply) {
+            limit = totalSupply;
+        }
 
-            for (let i = start; i < limit; i += 1) {
-                new PFPNFTCard(this.addr, ids[i]).appendTo(this.nftList);
-            }
+        for (let i = start; i < limit; i += 1) {
+            this.createCard(ids[i]);
         }
 
         this.nftLoading.hide();

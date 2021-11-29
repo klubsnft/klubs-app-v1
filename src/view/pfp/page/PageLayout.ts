@@ -5,14 +5,29 @@ import xss from "xss";
 import PFPsContract from "../../../contracts/PFPsContract";
 import KIP17Contract from "../../../contracts/standard/KIP17Contract";
 import Wallet from "../../../klaytn/Wallet";
+import Loader from "../../../Loader";
+import RarityInfo from "../../../RarityInfo";
 import Layout from "../../Layout";
 import ViewUtil from "../../ViewUtil";
 
 export default class PageLayout implements View {
 
+    public static current: PageLayout;
+    private static rarities: { [addr: string]: any } = {};
+
+    public static async loadRarity(addr: string): Promise<RarityInfo> {
+        if (this.rarities[addr] === undefined) {
+            const rarity = await Loader.loadRarity(addr);
+            if (rarity !== null) {
+                this.rarities[addr] = rarity;
+            }
+        }
+        return this.rarities[addr];
+    }
+
+    private currentAddr: string | undefined;
     public contract!: KIP17Contract;
 
-    public static current: PageLayout;
     private container: DomNode;
     public content: DomNode;
 
@@ -42,9 +57,12 @@ export default class PageLayout implements View {
     }
 
     private load(addr: string) {
-        this.contract = new KIP17Contract(addr);
-        this.loadInfo(addr);
-        this.loadUpdateButton(addr);
+        if (addr !== this.currentAddr) {
+            this.contract = new KIP17Contract(addr);
+            this.loadInfo(addr);
+            this.loadUpdateButton(addr);
+            this.currentAddr = addr;
+        }
     }
 
     private async loadInfo(addr: string) {

@@ -3,12 +3,14 @@ import { utils } from "ethers";
 import CommonUtil from "../CommonUtil";
 import PFPStoreContract from "../contracts/PFPStoreContract";
 import Loader from "../Loader";
+import RarityInfo from "../RarityInfo";
 import ViewUtil from "../view/ViewUtil";
 import NFTDisplay from "./NFTDisplay";
 
 export default class PFPNFTCard extends DomNode {
 
     private _mode: "view" | "select" = "view";
+    private rarityDisplay: DomNode | undefined;
 
     constructor(
         private addr: string,
@@ -82,5 +84,17 @@ export default class PFPNFTCard extends DomNode {
 
     private async loadOffers() {
         //TODO:
+    }
+
+    public showRarity(rarity: RarityInfo) {
+        this.addClass("showing-rarity");
+        this.rarityDisplay?.delete();
+        this.rarityDisplay = el(".rarity", CommonUtil.numberWithCommas(String(rarity.scores[this.id]))).appendTo(this);
+    }
+
+    public hideRarity() {
+        this.deleteClass("showing-rarity");
+        this.rarityDisplay?.delete();
+        this.rarityDisplay = undefined;
     }
 }

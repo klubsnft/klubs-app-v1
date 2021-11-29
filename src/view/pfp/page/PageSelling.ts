@@ -9,6 +9,7 @@ import PFPPageTabs from "../../../component/pfppage/PFPPageTabs";
 import PFPPagination from "../../../component/pfppage/PFPPagination";
 import PFPSortor from "../../../component/pfppage/PFPSortor";
 import PFPStoreContract from "../../../contracts/PFPStoreContract";
+import RarityInfo from "../../../RarityInfo";
 import PageLayout from "./PageLayout";
 import PFPPage from "./PFPPage";
 
@@ -26,6 +27,9 @@ export default class PageSelling implements View, PFPPage {
 
     private addr!: string;
     private page: number = 1;
+
+    private rarity!: RarityInfo;
+    private rarityMode = false;
 
     private multipleSelector: MultiplePFPSelector | undefined;
 
@@ -55,6 +59,8 @@ export default class PageSelling implements View, PFPPage {
                 ),
             ),
         );
+
+        this.loadRarity();
         this.loadNFTs();
 
         this.sortor.on("multiple-buy", () => {
@@ -81,8 +87,48 @@ export default class PageSelling implements View, PFPPage {
         });
     }
 
+    private async loadRarity() {
+        this.rarity = await PageLayout.loadRarity(this.addr);
+        this.filter.createFilters(this.rarity);
+        if (this.rarityMode === true) {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.showRarity(this.rarity);
+                }
+            }
+        }
+    }
+
+    public toggleRarityMode() {
+        if (this.rarityMode !== true) {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.showRarity(this.rarity);
+                }
+            }
+        } else {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.hideRarity();
+                }
+            }
+        }
+        this.rarityMode = this.rarityMode !== true;
+    }
+
+    public addFilter(trait: string, value: any) {
+
+    }
+
+    public resetFilter() {
+
+    }
+
     private createCard(id: number) {
         const card = new PFPNFTCard(this.addr, id, this.multipleSelector?.selecting(id)).appendTo(this.nftList);
+        if (this.rarityMode === true) {
+            card.showRarity(this.rarity);
+        }
         if (this.multipleSelector !== undefined) {
             card.mode = "select";
         }
@@ -95,13 +141,49 @@ export default class PageSelling implements View, PFPPage {
         this.nftLoading.show();
         this.nftList.empty();
 
-        let totalSupply;
+        const ids: number[] = [];
+        const filteredIds = this.filter.filteredIds;
+        let totalSupply = 0;
+        if (this.sortor.sortType === "price-asc") {
+            const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/asc`);
+            const dataSet = result.body;
+            for (const data of dataSet) {
+                if (filteredIds === undefined || filteredIds.includes(data.nftId) === true) {
+                    ids.push(data.nftId);
+                    totalSupply += 1;
+                }
+            }
+        }
 
-        // id로 검색
-        if (this.filter.idQuery !== undefined) {
-            totalSupply = 1;
-        } else {
-            totalSupply = (await PFPStoreContract.onSalesCount(this.addr)).toNumber();
+        else if (this.sortor.sortType === "price-desc") {
+            const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/desc`);
+            const dataSet = result.body;
+            for (const data of dataSet) {
+                if (filteredIds === undefined || filteredIds.includes(data.nftId) === true) {
+                    ids.push(data.nftId);
+                    totalSupply += 1;
+                }
+            }
+        }
+
+        else {
+            const _totalSupply = (await PFPStoreContract.onSalesCount(this.addr)).toNumber();
+            const promises: Promise<void>[] = [];
+            for (let i = 0; i < _totalSupply; i += 1) {
+                const promise = async (index: number) => {
+                    try {
+                        const id = (await PFPStoreContract.onSales(this.addr, index)).toNumber();
+                        if (filteredIds === undefined || filteredIds.includes(id) === true) {
+                            ids.push(id);
+                            totalSupply += 1;
+                        }
+                    } catch (e) {
+                        console.error(e);
+                    }
+                };
+                promises.push(promise(i));
+            }
+            await Promise.all(promises);
         }
 
         const lastPage = totalSupply === 0 ? 1 : Math.ceil(totalSupply / 50);
@@ -112,50 +194,14 @@ export default class PageSelling implements View, PFPPage {
         this.pagination1.update(this.page, lastPage);
         this.pagination2.update(this.page, lastPage);
 
-        // id로 검색
-        if (this.filter.idQuery !== undefined) {
-            this.createCard(this.filter.idQuery);
-        } else {
+        const start = (this.page - 1) * 50;
+        let limit = this.page * 50;
+        if (limit > totalSupply) {
+            limit = totalSupply;
+        }
 
-            const start = (this.page - 1) * 50;
-            let limit = this.page * 50;
-            if (limit > totalSupply) {
-                limit = totalSupply;
-            }
-
-            if (this.sortor.sortType === "price-asc") {
-                const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/asc`);
-                const dataSet = result.body;
-                for (let i = start; i < limit; i += 1) {
-                    this.createCard(dataSet[i].nftId);
-                }
-            }
-
-            else if (this.sortor.sortType === "price-desc") {
-                const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/desc`);
-                const dataSet = result.body;
-                for (let i = start; i < limit; i += 1) {
-                    this.createCard(dataSet[i].nftId);
-                }
-            }
-
-            else {
-                const promises: Promise<void>[] = [];
-                for (let i = start; i < limit; i += 1) {
-                    const promise = async (index: number) => {
-                        try {
-                            const id = (await PFPStoreContract.onSales(this.addr, index)).toNumber();
-                            if (this.container.deleted !== true) {
-                                this.createCard(id);
-                            }
-                        } catch (e) {
-                            console.error(e);
-                        }
-                    };
-                    promises.push(promise(i));
-                }
-                await Promise.all(promises);
-            }
+        for (let i = start; i < limit; i += 1) {
+            this.createCard(ids[i]);
         }
 
         this.nftLoading.hide();

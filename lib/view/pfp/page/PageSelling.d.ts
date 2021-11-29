@@ -10,9 +10,15 @@ export default class PageSelling implements View, PFPPage {
     private nftList;
     private addr;
     private page;
+    private rarity;
+    private rarityMode;
     private multipleSelector;
     constructor(params: ViewParams);
     private load;
+    private loadRarity;
+    toggleRarityMode(): void;
+    addFilter(trait: string, value: any): void;
+    resetFilter(): void;
     private createCard;
     loadNFTs(): Promise<void>;
     goPage(page: number): void;

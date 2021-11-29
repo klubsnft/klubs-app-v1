@@ -10,6 +10,7 @@ import PFPPagination from "../../../component/pfppage/PFPPagination";
 import PFPSortor from "../../../component/pfppage/PFPSortor";
 import PFPsContract from "../../../contracts/PFPsContract";
 import Wallet from "../../../klaytn/Wallet";
+import RarityInfo from "../../../RarityInfo";
 import PageLayout from "./PageLayout";
 import PFPPage from "./PFPPage";
 
@@ -27,6 +28,9 @@ export default class PageMine implements View, PFPPage {
 
     private addr!: string;
     private page: number = 1;
+
+    private rarity!: RarityInfo;
+    private rarityMode = false;
 
     private multipleSelector: MultiplePFPSelector | undefined;
 
@@ -56,6 +60,8 @@ export default class PageMine implements View, PFPPage {
                 ),
             ),
         );
+
+        this.loadRarity();
         this.loadNFTs();
 
         this.sortor.on("multiple-sell", () => {
@@ -82,8 +88,40 @@ export default class PageMine implements View, PFPPage {
         });
     }
 
+    private async loadRarity() {
+        this.rarity = await PageLayout.loadRarity(this.addr);
+        this.filter.createFilters(this.rarity);
+        if (this.rarityMode === true) {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.showRarity(this.rarity);
+                }
+            }
+        }
+    }
+
+    public toggleRarityMode() {
+        if (this.rarityMode !== true) {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.showRarity(this.rarity);
+                }
+            }
+        } else {
+            for (const card of this.nftList.children) {
+                if (card instanceof PFPNFTCard) {
+                    card.hideRarity();
+                }
+            }
+        }
+        this.rarityMode = this.rarityMode !== true;
+    }
+
     private createCard(id: number) {
         const card = new PFPNFTCard(this.addr, id, this.multipleSelector?.selecting(id)).appendTo(this.nftList);
+        if (this.rarityMode === true) {
+            card.showRarity(this.rarity);
+        }
         if (this.multipleSelector !== undefined) {
             card.mode = "select";
         }
@@ -98,38 +136,24 @@ export default class PageMine implements View, PFPPage {
 
         const address = await Wallet.loadAddress();
 
+        const ids: number[] = [];
+        const filteredIds = this.filter.filteredIds;
         let totalSupply = 0;
 
-        // id로 검색
-        if (this.filter.idQuery !== undefined) {
-            totalSupply = 1;
-        } else if (address !== undefined) {
-            totalSupply = (await PageLayout.current.contract.balanceOf(address)).toNumber();
-        }
-
-        const lastPage = totalSupply === 0 ? 1 : Math.ceil(totalSupply / 50);
-        if (this.page > lastPage) {
-            this.page = lastPage;
-        }
-
-        this.pagination1.update(this.page, lastPage);
-        this.pagination2.update(this.page, lastPage);
-
-        // id로 검색
-        if (this.filter.idQuery !== undefined) {
-            this.createCard(this.filter.idQuery);
-        } else if (address !== undefined) {
-
-            const ids: number[] = [];
+        if (address !== undefined) {
+            const _totalSupply = (await PageLayout.current.contract.balanceOf(address)).toNumber();
 
             const enumerable = await PFPsContract.enumerables(this.addr);
             if (enumerable === true) {
                 const promises: Promise<void>[] = [];
-                for (let i = 0; i < totalSupply; i += 1) {
+                for (let i = 0; i < _totalSupply; i += 1) {
                     const promise = async (index: number) => {
                         try {
                             const id = (await PageLayout.current.contract.tokenOfOwnerByIndex(address, index)).toNumber();
-                            ids.push(id);
+                            if (filteredIds === undefined || filteredIds.includes(id) === true) {
+                                ids.push(id);
+                                totalSupply += 1;
+                            }
                         } catch (e) {
                             console.error(e);
                         }
@@ -144,37 +168,48 @@ export default class PageMine implements View, PFPPage {
                 const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/owned/${address}`);
                 const dataSet = result.body;
                 for (const data of dataSet) {
-                    ids.push(data.nftId);
+                    if (filteredIds === undefined || filteredIds.includes(data.nftId) === true) {
+                        ids.push(data.nftId);
+                        totalSupply += 1;
+                    }
                 }
             }
+        }
 
-            if (this.sortor.sortType === "price-asc") {
-                const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/asc`);
-                const dataSet = result.body;
-                const orders: { [id: number]: number } = {};
-                for (const [index, data] of dataSet.entries()) {
-                    orders[data.nftId] = index;
-                }
-                ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
-            } else if (this.sortor.sortType === "price-desc") {
-                const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/desc`);
-                const dataSet = result.body;
-                const orders: { [id: number]: number } = {};
-                for (const [index, data] of dataSet.entries()) {
-                    orders[data.nftId] = index;
-                }
-                ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
-            }
+        const lastPage = totalSupply === 0 ? 1 : Math.ceil(totalSupply / 50);
+        if (this.page > lastPage) {
+            this.page = lastPage;
+        }
 
-            const start = (this.page - 1) * 50;
-            let limit = this.page * 50;
-            if (limit > totalSupply) {
-                limit = totalSupply;
-            }
+        this.pagination1.update(this.page, lastPage);
+        this.pagination2.update(this.page, lastPage);
 
-            for (let i = start; i < limit; i += 1) {
-                this.createCard(ids[i]);
+        if (this.sortor.sortType === "price-asc") {
+            const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/asc`);
+            const dataSet = result.body;
+            const orders: { [id: number]: number } = {};
+            for (const [index, data] of dataSet.entries()) {
+                orders[data.nftId] = index;
             }
+            ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+        } else if (this.sortor.sortType === "price-desc") {
+            const result = await superagent.get(`https://api.klu.bs/v2/pfp/${this.addr}/sales/desc`);
+            const dataSet = result.body;
+            const orders: { [id: number]: number } = {};
+            for (const [index, data] of dataSet.entries()) {
+                orders[data.nftId] = index;
+            }
+            ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+        }
+
+        const start = (this.page - 1) * 50;
+        let limit = this.page * 50;
+        if (limit > totalSupply) {
+            limit = totalSupply;
+        }
+
+        for (let i = start; i < limit; i += 1) {
+            this.createCard(ids[i]);
         }
 
         this.nftLoading.hide();

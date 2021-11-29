@@ -10,6 +10,11 @@
         outline: 4px solid @brand-primary;
     }
 
+    &.showing-rarity {
+        position: relative;
+        height  : 260px;
+    }
+
     >.nft-display {
         width : 200px;
         height: 200px;
@@ -38,6 +43,13 @@
                 margin-right: 4px;
             }
         }
+    }
+
+    >.rarity {
+        position: absolute;
+        left    : 8px;
+        bottom  : 8px;
+        color   : @brand-primary;
     }
 }
 

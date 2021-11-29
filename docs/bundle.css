@@ -673,6 +673,10 @@ p {
 .pfp-nft-card.selecting {
   outline: 4px solid #C7FEA2;
 }
+.pfp-nft-card.showing-rarity {
+  position: relative;
+  height: 260px;
+}
 .pfp-nft-card > .nft-display {
   width: 200px;
   height: 200px;
@@ -696,6 +700,12 @@ p {
 }
 .pfp-nft-card > .info > .price > img {
   margin-right: 4px;
+}
+.pfp-nft-card > .rarity {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  color: #C7FEA2;
 }
 .card-view:hover {
   background-color: #222222;
@@ -2477,6 +2487,23 @@ p {
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > select:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > .reset-button {
+  margin-top: 8px;
+  display: block;
+  background-color: transparent;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  text-align: center;
+}
+.pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > .reset-button.on {
+  color: #C7FEA2;
+}
+.pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > .reset-button:hover {
+  color: #C7FEA2;
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .list-container {
   width: calc(100% - 240px);

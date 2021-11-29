@@ -1,9 +1,13 @@
 import { DomNode } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
 import KIP17Contract from "../../../contracts/standard/KIP17Contract";
+import RarityInfo from "../../../RarityInfo";
 export default class PageLayout implements View {
-    contract: KIP17Contract;
     static current: PageLayout;
+    private static rarities;
+    static loadRarity(addr: string): Promise<RarityInfo>;
+    private currentAddr;
+    contract: KIP17Contract;
     private container;
     content: DomNode;
     private header;

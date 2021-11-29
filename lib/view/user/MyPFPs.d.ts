@@ -21,6 +21,7 @@ export default class MyPFPs implements View, PFPPage {
     private loadMyNFTs;
     loadNFTs(): Promise<void>;
     goPage(page: number): void;
+    toggleRarityMode(): void;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }

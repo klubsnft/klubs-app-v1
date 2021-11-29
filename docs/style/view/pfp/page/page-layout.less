@@ -226,6 +226,26 @@
                         background-color: @brand-400;
                         box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
                     }
+
+                    >.reset-button {
+                        margin-top      : 8px;
+                        display         : block;
+                        background-color: transparent;
+                        padding         : 12px 16px;
+                        font-size       : 14px;
+                        border-radius   : 4px;
+                        text-align      : center;
+
+                        &.on {
+                            color: @brand-primary;
+                        }
+
+                        &:hover {
+                            color           : @brand-primary;
+                            background-color: rgba(199, 254, 162, 0.2);
+                            box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                        }
+                    }
                 }
 
                 >.list-container {
