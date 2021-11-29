@@ -116,14 +116,6 @@ export default class PageSelling implements View, PFPPage {
         this.rarityMode = this.rarityMode !== true;
     }
 
-    public addFilter(trait: string, value: any) {
-
-    }
-
-    public resetFilter() {
-
-    }
-
     private createCard(id: number) {
         const card = new PFPNFTCard(this.addr, id, this.multipleSelector?.selecting(id)).appendTo(this.nftList);
         if (this.rarityMode === true) {

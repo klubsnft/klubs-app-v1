@@ -18,10 +18,11 @@ export default class PFPFilter extends DomNode {
     }
 
     public createFilters(rarity: RarityInfo) {
+        const selects: DomNode<HTMLSelectElement>[] = [];
         this.append(
             ...Object.entries(rarity.traits).map(([trait, values]) => {
                 const none = values[""];
-                return el("select",
+                const select = el("select",
                     {
                         placeholder: trait,
                         change: (event, select) => {
@@ -42,10 +43,15 @@ export default class PFPFilter extends DomNode {
                         }
                     }),
                 );
+                selects.push(select as any);
+                return select;
             }),
             el("a.reset-button", "필터 초기화", {
                 click: () => {
                     this.filtered = {};
+                    for (const select of selects) {
+                        select.domElement.value = "All";
+                    }
                     this.pageView.loadNFTs();
                 },
             }),
