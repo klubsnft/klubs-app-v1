@@ -9,6 +9,8 @@ const klipSDK = require("klip-sdk");
 
 class Klip extends EventContainer {
 
+    private static readonly BAPP_NAME = "Klubs";
+
     public store = new Store("klip-store");
 
     public get address() {
@@ -33,7 +35,7 @@ class Klip extends EventContainer {
                 if (result.result !== undefined) {
                     qrPopup?.delete();
                     clearInterval(interval);
-                    resolve(result.result);
+                    setTimeout(() => resolve(result.result), 2000);
                 }
             }, 1000);
         });
@@ -44,7 +46,7 @@ class Klip extends EventContainer {
     }
 
     public async connect() {
-        const res = await klipSDK.prepare.auth({ bappName: "Klubs" });
+        const res = await klipSDK.prepare.auth({ bappName: Klip.BAPP_NAME });
         this.address = (await this.request(res)).klaytn_address;
         this.fireEvent("connect");
     }
@@ -53,7 +55,17 @@ class Klip extends EventContainer {
 
         const params: any[] = [];
         for (const param of _params) {
-            if (param instanceof BigNumber) {
+            if (Array.isArray(param) === true) {
+                const ps: any[] = [];
+                for (const p of param) {
+                    if (p instanceof BigNumber) {
+                        ps.push(p.toString());
+                    } else {
+                        ps.push(p);
+                    }
+                }
+                params.push(ps);
+            } else if (param instanceof BigNumber) {
                 params.push(param.toString());
             } else {
                 params.push(param);
@@ -61,7 +73,7 @@ class Klip extends EventContainer {
         }
 
         const res = await klipSDK.prepare.executeContract({
-            bappName: "Klubs",
+            bappName: Klip.BAPP_NAME,
             to: address,
             abi: JSON.stringify(abi),
             params: JSON.stringify(params),
