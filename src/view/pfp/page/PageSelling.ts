@@ -28,7 +28,7 @@ export default class PageSelling implements View, PFPPage {
     private addr!: string;
     private page: number = 1;
 
-    private rarity!: RarityInfo;
+    private rarity: RarityInfo | undefined;
     private rarityMode = false;
 
     private multipleSelector: MultiplePFPSelector | undefined;
@@ -89,11 +89,13 @@ export default class PageSelling implements View, PFPPage {
 
     private async loadRarity() {
         this.rarity = await PageLayout.loadRarity(this.addr);
-        this.filter.createFilters(this.rarity);
-        if (this.rarityMode === true) {
-            for (const card of this.nftList.children) {
-                if (card instanceof PFPNFTCard) {
-                    card.showRarity(this.rarity);
+        if (this.rarity !== undefined) {
+            this.filter.createFilters(this.rarity);
+            if (this.rarityMode === true) {
+                for (const card of this.nftList.children) {
+                    if (card instanceof PFPNFTCard) {
+                        card.showRarity(this.rarity);
+                    }
                 }
             }
         }
@@ -101,9 +103,11 @@ export default class PageSelling implements View, PFPPage {
 
     public toggleRarityMode() {
         if (this.rarityMode !== true) {
-            for (const card of this.nftList.children) {
-                if (card instanceof PFPNFTCard) {
-                    card.showRarity(this.rarity);
+            if (this.rarity !== undefined) {
+                for (const card of this.nftList.children) {
+                    if (card instanceof PFPNFTCard) {
+                        card.showRarity(this.rarity);
+                    }
                 }
             }
         } else {
@@ -118,7 +122,7 @@ export default class PageSelling implements View, PFPPage {
 
     private createCard(id: number) {
         const card = new PFPNFTCard(this.addr, id, this.multipleSelector?.selecting(id)).appendTo(this.nftList);
-        if (this.rarityMode === true) {
+        if (this.rarityMode === true && this.rarity !== undefined) {
             card.showRarity(this.rarity);
         }
         if (this.multipleSelector !== undefined) {

@@ -5,7 +5,7 @@ import RarityInfo from "../../../RarityInfo";
 export default class PageLayout implements View {
     static current: PageLayout;
     private static rarities;
-    static loadRarity(addr: string): Promise<RarityInfo>;
+    static loadRarity(addr: string): Promise<RarityInfo | undefined>;
     private currentAddr;
     contract: KIP17Contract;
     private container;

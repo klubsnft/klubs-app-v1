@@ -15,7 +15,7 @@ export default class PageLayout implements View {
     public static current: PageLayout;
     private static rarities: { [addr: string]: any } = {};
 
-    public static async loadRarity(addr: string): Promise<RarityInfo> {
+    public static async loadRarity(addr: string): Promise<RarityInfo | undefined> {
         if (this.rarities[addr] === undefined) {
             const rarity = await Loader.loadRarity(addr);
             if (rarity !== null) {
