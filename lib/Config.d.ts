@@ -6,6 +6,8 @@ declare const _default: {
         PFPStore: string;
         Klayswap: string;
         MixPriceEstimator: string;
+        Artists: string;
+        Arts: string;
     };
 };
 export default _default;

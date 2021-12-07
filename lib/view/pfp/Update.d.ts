@@ -9,6 +9,7 @@ export default class Update implements View {
     private descriptionTextarea;
     private twitterInput;
     private kakaotalkInput;
+    private hidingCheckbox;
     private enumerableCheckbox;
     private totalSupplyLabel;
     private totalSupplyInput;
@@ -18,7 +19,6 @@ export default class Update implements View {
     private royaltyInput;
     private royaltyReceiverInput;
     private managerList;
-    private hidingCheckbox;
     constructor(params: ViewParams);
     private load;
     private loadTotalSupply;

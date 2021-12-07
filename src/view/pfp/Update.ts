@@ -17,6 +17,7 @@ export default class Update implements View {
     private descriptionTextarea: DomNode<HTMLInputElement>;
     private twitterInput: DomNode<HTMLInputElement>;
     private kakaotalkInput: DomNode<HTMLInputElement>;
+    private hidingCheckbox: DomNode<HTMLInputElement>;
 
     private enumerableCheckbox: DomNode<HTMLInputElement>;
     private totalSupplyLabel: DomNode;
@@ -30,8 +31,6 @@ export default class Update implements View {
     private royaltyReceiverInput: DomNode<HTMLInputElement>;
 
     private managerList: DomNode;
-
-    private hidingCheckbox: DomNode<HTMLInputElement>;
 
     constructor(params: ViewParams) {
 

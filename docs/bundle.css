@@ -2540,11 +2540,256 @@ p {
     aspect-ratio: 1;
   }
 }
-.art-view {
-  padding: 16px;
+.arts-view > header {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
 }
-.art-view > .title {
+.arts-view > header > p {
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.arts-view > header > .controller {
+  display: flex;
+}
+.arts-view > header > .controller > a {
+  display: block;
+  margin-left: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 150px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.arts-view > header > .controller > a:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.arts-view > .content {
+  padding: 16px;
+  max-width: 1420px;
+  margin: auto;
+}
+.add-artist-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.add-artist-view > header > h1 {
+  margin: 16px;
+  margin-bottom: 0;
+  font-size: 24px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.add-artist-view > header > p {
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.add-artist-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
+}
+.add-artist-view > main > .warning {
+  display: block;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+}
+.add-artist-view > main > .warning > i {
+  margin-right: 6px;
+}
+.add-artist-view > main > label {
+  display: block;
+  margin-top: 16px;
+}
+.add-artist-view > main > label > h6 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.add-artist-view > main > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.add-artist-view > main > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.add-artist-view > main > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.add-artist-view > main > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.add-artist-view > main > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.artist-update-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.artist-update-view > header > h1 {
+  font-size: 24px;
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.artist-update-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
+}
+.artist-update-view > main > .form {
+  margin-bottom: 45px;
+}
+.artist-update-view > main > .form > h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.artist-update-view > main > .form > label {
+  display: block;
+  margin-top: 16px;
+}
+.artist-update-view > main > .form > label > h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.artist-update-view > main > .form > label > .banner-preview,
+.artist-update-view > main > .form > label > .icon-preview {
+  max-width: 100%;
+  max-height: 100px;
+  margin-bottom: 12px;
+}
+.artist-update-view > main > .form > label > p {
+  margin-top: -4px;
+  margin-bottom: 12px;
+  display: flex;
+  color: #999;
+}
+.artist-update-view > main > .form > label > p > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.artist-update-view > main > .form > label > p > a {
+  justify-content: flex-end;
+  color: #C7FEA2;
+}
+.artist-update-view > main > .form > label > input:not([type=checkbox]),
+.artist-update-view > main > .form > label > textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.artist-update-view > main > .form > label > input:not([type=checkbox]):hover,
+.artist-update-view > main > .form > label > textarea:hover {
+  border: 1px solid #C7FEA2;
+}
+.artist-update-view > main > .form > label > input:not([type=checkbox]):focus,
+.artist-update-view > main > .form > label > textarea:focus {
+  border: 1px solid #C7FEA2;
+}
+.artist-update-view > main > .form > label > textarea {
+  height: 160px;
+}
+.artist-update-view > main > .form > label > input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.artist-update-view > main > .form > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.artist-update-view > main > .form > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.artist-update-view > main > .manage-managers {
+  width: 100%;
+}
+.artist-update-view > main > .manage-managers > h2 {
   font-size: 28px;
+  margin-bottom: 16px;
+}
+.artist-update-view > main > .manage-managers > ul > li {
+  display: flex;
+  padding: 4px 8px;
+  border-bottom: 1px solid #666;
+  align-items: center;
+}
+.artist-update-view > main > .manage-managers > ul > li > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.artist-update-view > main > .manage-managers > ul > li > button {
+  justify-content: flex-end;
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.artist-update-view > main > .manage-managers > ul > li > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.artist-update-view > main > .manage-managers > ul > li:hover {
+  background-color: #1f1f1f;
+}
+.artist-update-view > main > .manage-managers > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.artist-update-view > main > .manage-managers > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .item-view {
   padding: 16px;

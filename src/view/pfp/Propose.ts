@@ -33,7 +33,7 @@ export default class Propose implements View {
                                 new Alert("정보 등록 실패", "해당 계약은 이미 정보가 등록되어있습니다.");
                             } else {
                                 await PFPsContract.propose(addr);
-                                setTimeout(() => new Alert("정보 등록 완료", "계약 정보 등록이 완료되었습니다.\n11일부터 해당 NFT는 거래를 할 수 있게됩니다.\nKlubs에 오신 것을 환영합니다."), 2000);
+                                setTimeout(() => new Alert("정보 등록 완료", "계약 정보 등록이 완료되었습니다.\nKlubs에 오신 것을 환영합니다."), 2000);
                             }
                         },
                     }),

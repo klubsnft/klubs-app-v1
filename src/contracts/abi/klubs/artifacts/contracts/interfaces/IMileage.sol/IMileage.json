@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IMileage",
+  "sourceName": "contracts/interfaces/IMileage.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820b08105c36f7f15f47d0820402a12d8c4f7830ca25eeb5d1b3aa75924cee3804b0029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820b08105c36f7f15f47d0820402a12d8c4f7830ca25eeb5d1b3aa75924cee3804b0029",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
