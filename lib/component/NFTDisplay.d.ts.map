@@ -1,1 +1,1 @@
-{"version":3,"file":"NFTDisplay.d.ts","sourceRoot":"","sources":["../../src/component/NFTDisplay.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAM,MAAM,gBAAgB,CAAC;AAG7C,MAAM,CAAC,OAAO,OAAO,UAAW,SAAQ,OAAO;gBAE/B,GAAG,EAAE,MAAM;CAa1B"}
+{"version":3,"file":"NFTDisplay.d.ts","sourceRoot":"","sources":["../../src/component/NFTDisplay.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAM,MAAM,gBAAgB,CAAC;AAG7C,MAAM,CAAC,OAAO,OAAO,UAAW,SAAQ,OAAO;gBAE/B,GAAG,EAAE,MAAM,EAAE,SAAS,CAAC,EAAE,OAAO;CAiB/C"}
