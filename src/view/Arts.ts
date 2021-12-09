@@ -26,7 +26,12 @@ export default class Arts implements View {
             ),
         ));
         this.load();
+        Wallet.on("connect", this.connectHandler);
     }
+
+    private connectHandler = () => {
+        this.load();
+    };
 
     private async load() {
         const address = await Wallet.loadAddress();
@@ -58,6 +63,7 @@ export default class Arts implements View {
     public changeParams(params: ViewParams, uri: string): void { }
 
     public close(): void {
+        Wallet.off("connect", this.connectHandler);
         this.container.delete();
     }
 }

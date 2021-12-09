@@ -3,6 +3,7 @@ export default class Arts implements View {
     private container;
     private controller;
     constructor();
+    private connectHandler;
     private load;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
