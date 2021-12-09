@@ -710,6 +710,54 @@ p {
 .card-view:hover {
   background-color: #222222;
 }
+.art-nft-card {
+  background-color: #1f1f1f;
+  width: 200px;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.art-nft-card.selecting {
+  outline: 4px solid #C7FEA2;
+}
+.art-nft-card.showing-rarity {
+  position: relative;
+  height: 260px;
+}
+.art-nft-card > .nft-display {
+  width: 200px;
+  height: 200px;
+}
+.art-nft-card > .nft-display > * {
+  border-radius: 8px 8px 0px 0px;
+}
+.art-nft-card > .info {
+  padding: 4px 8px;
+  display: flex;
+  font-size: 14px;
+}
+.art-nft-card > .info > .name {
+  padding: 4px 0;
+  flex-grow: 1;
+}
+.art-nft-card > .info > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.art-nft-card > .info > .price > img {
+  margin-right: 4px;
+}
+.art-nft-card > .rarity {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  color: #C7FEA2;
+}
+.card-view:hover {
+  background-color: #222222;
+}
 .dialogue.alert {
   position: relative;
   max-width: 600px;
@@ -2791,6 +2839,99 @@ p {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
+.art-update-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.art-update-view > header > h1 {
+  font-size: 24px;
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.art-update-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
+}
+.art-update-view > main > .form {
+  margin-bottom: 45px;
+}
+.art-update-view > main > .form > h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.art-update-view > main > .form > label {
+  display: block;
+  margin-top: 16px;
+}
+.art-update-view > main > .form > label > h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.art-update-view > main > .form > label > .image-preview {
+  max-width: 100%;
+  max-height: 100px;
+  margin-bottom: 12px;
+}
+.art-update-view > main > .form > label > p {
+  margin-top: -4px;
+  margin-bottom: 12px;
+  display: flex;
+  color: #999;
+}
+.art-update-view > main > .form > label > p > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.art-update-view > main > .form > label > p > a {
+  justify-content: flex-end;
+  color: #C7FEA2;
+}
+.art-update-view > main > .form > label > input:not([type=checkbox]),
+.art-update-view > main > .form > label > textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.art-update-view > main > .form > label > input:not([type=checkbox]):hover,
+.art-update-view > main > .form > label > textarea:hover {
+  border: 1px solid #C7FEA2;
+}
+.art-update-view > main > .form > label > input:not([type=checkbox]):focus,
+.art-update-view > main > .form > label > textarea:focus {
+  border: 1px solid #C7FEA2;
+}
+.art-update-view > main > .form > label > textarea {
+  height: 160px;
+}
+.art-update-view > main > .form > label > input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.art-update-view > main > .form > button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.art-update-view > main > .form > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
 .item-view {
   padding: 16px;
 }
@@ -2857,6 +2998,43 @@ p {
 }
 .user-my-pfps-view > section > .list > .pfp-card,
 .user-my-pfps-view > section > .list > .pfp-nft-card {
+  float: left;
+  margin-right: 16px;
+}
+.user-my-arts-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.user-my-arts-view > header > h1 {
+  font-size: 24px;
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.user-my-arts-view > section {
+  padding: 16px;
+}
+.user-my-arts-view > section > h2 {
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 16px;
+}
+.user-my-arts-view > section > .list {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.user-my-arts-view > section > .list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.user-my-arts-view > section > .list > .art-nft-card {
   float: left;
   margin-right: 16px;
 }

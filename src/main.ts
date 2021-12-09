@@ -3,6 +3,7 @@ import PFPProposals from "./view/admin/PFPProposals";
 import PFPs from "./view/admin/PFPs";
 import Arts from "./view/Arts";
 import AddArtist from "./view/arts/AddArtist";
+import UpdateArt from "./view/arts/UpdateArt";
 import UpdateArtist from "./view/arts/UpdateArtist";
 import Home from "./view/Home";
 import Item from "./view/Item";
@@ -100,6 +101,9 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("arts", Arts);
     SkyRouter.route("arts/artists/add", AddArtist);
     SkyRouter.route("arts/artists/update", UpdateArtist);
+    SkyRouter.route("arts/{id}/update", UpdateArt, [
+        "arts/artists/update",
+    ]);
 
     SkyRouter.route("item", Item);
     SkyRouter.route("mix", Mix);

@@ -1,7 +1,8 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
-import Alert from "../component/dialogue/Alert";
+import Confirm from "../component/dialogue/Confirm";
 import ArtistsContract from "../contracts/ArtistsContract";
+import ArtsContract from "../contracts/ArtsContract";
 import Wallet from "../klaytn/Wallet";
 import Layout from "./Layout";
 import ViewUtil from "./ViewUtil";
@@ -21,7 +22,7 @@ export default class Arts implements View {
                 this.controller = el(".controller"),
             ),
             el(".content",
-                el("p", "Klubs Arts 작품 등록은 12월 9일에, 거래 기능은 12월 13일에 출시됩니다."),
+                el("p", "Klubs Arts 거래 기능은 12월 13일에 출시됩니다."),
             ),
         ));
         this.load();
@@ -37,7 +38,13 @@ export default class Arts implements View {
                         click: () => ViewUtil.go("/arts/artists/update"),
                     }),
                     el("a", "작품 등록", {
-                        click: () => new Alert("작품 등록", "작품 등록은 12월 9일부터 시작됩니다. :)"),
+                        click: async() => {
+                            new Confirm("작품 등록", "작품 정보를 생성하시겠습니까?", "생성하기", async () => {
+                                await ArtsContract.mint();
+                                const artCount = await ArtsContract.artistArtCount(address);
+                                ViewUtil.go(`/arts/${artCount.toNumber() - 1}/update`);
+                            });
+                        },
                     }),
                 );
             } else {

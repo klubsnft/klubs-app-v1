@@ -40,6 +40,7 @@ interface ArtsInterface extends ethers.utils.Interface {
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "burn(uint256)": FunctionFragment;
     "isPauser(address)": FunctionFragment;
+    "exists(uint256)": FunctionFragment;
     "tokenByIndex(uint256)": FunctionFragment;
     "setBaseURI(string)": FunctionFragment;
     "paused()": FunctionFragment;
@@ -58,6 +59,7 @@ interface ArtsInterface extends ethers.utils.Interface {
     "setApprovalForAll(address,bool)": FunctionFragment;
     "artistArtCount(address)": FunctionFragment;
     "mileageMode(uint256)": FunctionFragment;
+    "exceptionalRoyalties(uint256)": FunctionFragment;
     "artists()": FunctionFragment;
     "isBanned(uint256)": FunctionFragment;
     "tokenURI(uint256)": FunctionFragment;
@@ -118,6 +120,10 @@ interface ArtsInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "burn", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "isPauser", values: [string]): string;
   encodeFunctionData(
+    functionFragment: "exists",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "tokenByIndex",
     values: [BigNumberish]
   ): string;
@@ -157,6 +163,10 @@ interface ArtsInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "mileageMode",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "exceptionalRoyalties",
     values: [BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "artists", values?: undefined): string;
@@ -223,6 +233,7 @@ interface ArtsInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "burn", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "isPauser", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "exists", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "tokenByIndex",
     data: BytesLike
@@ -257,6 +268,10 @@ interface ArtsInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "mileageMode",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "exceptionalRoyalties",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "artists", data: BytesLike): Result;
@@ -491,6 +506,16 @@ export class Arts extends Contract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
+    exists(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    "exists(uint256)"(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     tokenByIndex(
       index: BigNumberish,
       overrides?: CallOverrides
@@ -618,6 +643,16 @@ export class Arts extends Contract {
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
+
+    exceptionalRoyalties(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "exceptionalRoyalties(uint256)"(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     artists(overrides?: CallOverrides): Promise<[string]>;
 
@@ -837,6 +872,13 @@ export class Arts extends Contract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
+  exists(tokenId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+  "exists(uint256)"(
+    tokenId: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
   tokenByIndex(
     index: BigNumberish,
     overrides?: CallOverrides
@@ -952,6 +994,16 @@ export class Arts extends Contract {
     arg0: BigNumberish,
     overrides?: CallOverrides
   ): Promise<boolean>;
+
+  exceptionalRoyalties(
+    arg0: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "exceptionalRoyalties(uint256)"(
+    arg0: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   artists(overrides?: CallOverrides): Promise<string>;
 
@@ -1159,6 +1211,13 @@ export class Arts extends Contract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
+    exists(tokenId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+    "exists(uint256)"(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
     tokenByIndex(
       index: BigNumberish,
       overrides?: CallOverrides
@@ -1271,6 +1330,16 @@ export class Arts extends Contract {
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<boolean>;
+
+    exceptionalRoyalties(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "exceptionalRoyalties(uint256)"(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     artists(overrides?: CallOverrides): Promise<string>;
 
@@ -1526,6 +1595,16 @@ export class Arts extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    exists(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "exists(uint256)"(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     tokenByIndex(
       index: BigNumberish,
       overrides?: CallOverrides
@@ -1638,6 +1717,16 @@ export class Arts extends Contract {
     ): Promise<BigNumber>;
 
     "mileageMode(uint256)"(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    exceptionalRoyalties(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "exceptionalRoyalties(uint256)"(
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1867,6 +1956,16 @@ export class Arts extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    exists(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "exists(uint256)"(
+      tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     tokenByIndex(
       index: BigNumberish,
       overrides?: CallOverrides
@@ -1994,6 +2093,16 @@ export class Arts extends Contract {
     ): Promise<PopulatedTransaction>;
 
     "mileageMode(uint256)"(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    exceptionalRoyalties(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "exceptionalRoyalties(uint256)"(
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

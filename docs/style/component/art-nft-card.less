@@ -1,0 +1,58 @@
+.art-nft-card {
+    background-color: @shadow;
+    width           : 200px;
+    height          : 240px;
+    overflow        : hidden;
+    border-radius   : 8px;
+    cursor          : pointer;
+
+    &.selecting {
+        outline: 4px solid @brand-primary;
+    }
+
+    &.showing-rarity {
+        position: relative;
+        height  : 260px;
+    }
+
+    >.nft-display {
+        width : 200px;
+        height: 200px;
+
+        >* {
+            border-radius: 8px 8px 0px 0px;
+        }
+    }
+
+    >.info {
+        padding  : 4px 8px;
+        display  : flex;
+        font-size: 14px;
+
+        >.name {
+            padding  : 4px 0;
+            flex-grow: 1;
+        }
+
+        >.price {
+            display    : flex;
+            align-items: center;
+            color      : @mix-price;
+
+            >img {
+                margin-right: 4px;
+            }
+        }
+    }
+
+    >.rarity {
+        position: absolute;
+        left    : 8px;
+        bottom  : 8px;
+        color   : @brand-primary;
+    }
+}
+
+.card-view:hover {
+    background-color: @shadow-hover;
+}

@@ -10,11 +10,35 @@ class ArtsContract extends KIP17Contract {
     }
 
     public async royalties(id: BigNumberish): Promise<BigNumber> {
-        return await this.runMethod("royalties", id);
+        return BigNumber.from(await this.runMethod("royalties", id));
+    }
+
+    public async exceptionalRoyalties(id: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("exceptionalRoyalties", id));
     }
 
     public async setExceptionalRoyalties(ids: BigNumberish[], royalties: BigNumberish[]): Promise<void> {
         await this.runWalletMethod("setExceptionalRoyalties", ids, royalties);
+    }
+
+    public async mint(): Promise<void> {
+        await this.runWalletMethod("mint");
+    }
+
+    public async artistArtCount(artist: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("artistArtCount", artist));
+    }
+
+    public async artistArts(artist: string, id: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("artistArts", artist, id));
+    }
+
+    public async burn(id: BigNumberish): Promise<void> {
+        await this.runWalletMethod("burn", id);
+    }
+
+    public async exists(id: BigNumberish): Promise<boolean> {
+        return await this.runMethod("exists", id);
     }
 }
 
