@@ -43,11 +43,12 @@ export default class Arts implements View {
                         click: () => ViewUtil.go("/arts/artists/update"),
                     }),
                     el("a", "작품 등록", {
-                        click: async() => {
+                        click: async () => {
                             new Confirm("작품 등록", "작품 정보를 생성하시겠습니까?", "생성하기", async () => {
                                 await ArtsContract.mint();
                                 const artCount = await ArtsContract.artistArtCount(address);
-                                ViewUtil.go(`/arts/${artCount.toNumber() - 1}/update`);
+                                const id = await ArtsContract.artistArts(address, artCount.toNumber() - 1);
+                                ViewUtil.go(`/arts/${id}/update`);
                             });
                         },
                     }),
