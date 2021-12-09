@@ -38,7 +38,7 @@ export default class Arts implements View {
         if (address !== undefined) {
             const added = await ArtistsContract.added(address);
             if (added === true) {
-                this.controller.append(
+                this.controller.empty().append(
                     el("a", "작가 정보 수정", {
                         click: () => ViewUtil.go("/arts/artists/update"),
                     }),
@@ -53,7 +53,7 @@ export default class Arts implements View {
                     }),
                 );
             } else {
-                this.controller.append(el("a", "작가 등록", {
+                this.controller.empty().append(el("a", "작가 등록", {
                     click: () => ViewUtil.go("/arts/artists/add"),
                 }));
             }
