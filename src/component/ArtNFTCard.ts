@@ -57,7 +57,7 @@ export default class ArtNFTCard extends DomNode {
 
     private async load() {
         try {
-            const result = await superagent.get(`https://api.klu.bs/arts/${this.id}/metadata`);
+            const result = await superagent.get(`https://api.klu.bs/arts/${this.id}`);
             const data = result.body;
             //const saleInfo = await PFPStoreContract.sales(this.addr, this.id);
             if (this.deleted !== true) {

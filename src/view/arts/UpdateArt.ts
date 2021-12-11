@@ -151,7 +151,7 @@ export default class UpdateArt implements View {
     }
 
     private async load(id: number) {
-        const result = await superagent.get(`https://api.klu.bs/arts/${id}/metadata`);
+        const result = await superagent.get(`https://api.klu.bs/arts/${id}`);
         const data = result.body;
 
         if (data.image !== undefined) {
