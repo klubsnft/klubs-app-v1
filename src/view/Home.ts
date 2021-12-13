@@ -1,7 +1,9 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import ArtNFTCard from "../component/ArtNFTCard";
 import Loading from "../component/loading/Loading";
 import PFPCard from "../component/PFPCard";
+import ArtsContract from "../contracts/ArtsContract";
 import PFPsContract from "../contracts/PFPsContract";
 import Layout from "./Layout";
 import ViewUtil from "./ViewUtil";
@@ -11,6 +13,8 @@ export default class Home implements View {
     private container: DomNode;
     private pfpLoading: DomNode;
     private pfpList: DomNode;
+    private artsLoading: DomNode;
+    private artsList: DomNode;
 
     constructor() {
         Layout.current.title = "Klaytn based NFT marketplace with MIX";
@@ -36,23 +40,27 @@ export default class Home implements View {
                     ),
                     el(".slide",
                         el("header",
-                            el("h2", "Art"),
-                            el("a", "Art 전체 보기", { click: () => ViewUtil.go("/art") }),
+                            el("h2", "Arts"),
+                            el("a", "Arts 전체 보기", { click: () => ViewUtil.go("/arts") }),
                         ),
-                        el("p", "Art는 출시 준비중입니다."),
+                        this.artsLoading = new Loading(),
+                        el(".arts-list-container",
+                            this.artsList = el(".arts-list"),
+                        ),
                     ),
                 ),
             )),
         );
-        this.load();
+        this.loadPFPs();
+        this.loadArts();
     }
 
-    private async load() {
+    private async loadPFPs() {
 
         this.pfpList.empty();
         const count = await PFPsContract.getAddrCount();
         let realCount = 0;
-        this.pfpList.style({ width: count.toNumber() * 316 });
+        this.pfpList.style({ width: 100 * 316 });
 
         const array = new Array(count.toNumber()).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
 
@@ -66,8 +74,10 @@ export default class Home implements View {
                         let data: any = {};
                         try { data = JSON.parse(extras); } catch (e) { }
                         if (data.name !== "" && data.hiding !== true && this.container.deleted !== true) {
-                            realCount += 1;
-                            new PFPCard(addr, data).appendTo(this.pfpList);
+                            if (realCount < 100) {
+                                new PFPCard(addr, data).appendTo(this.pfpList);
+                                realCount += 1;
+                            }
                         }
                     }
                 }
@@ -77,8 +87,29 @@ export default class Home implements View {
         await Promise.all(promises);
 
         if (this.container.deleted !== true) {
-            this.pfpList.style({ width: realCount * 316 });
             this.pfpLoading.delete();
+        }
+    }
+
+    private async loadArts() {
+
+        this.artsList.empty();
+        this.artsList.style({ width: 50 * 216 });
+
+        const totalSupply = (await ArtsContract.totalSupply()).toNumber();
+        const ids = new Array(totalSupply).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
+
+        let count = 0;
+        for (const id of ids) {
+            new ArtNFTCard(id).appendTo(this.artsList);
+            count += 1;
+            if (count === 50) {
+                break;
+            }
+        }
+
+        if (this.container.deleted !== true) {
+            this.artsLoading.delete();
         }
     }
 

@@ -1554,6 +1554,22 @@ p {
   float: left;
   margin-right: 16px;
 }
+.home-view > .content > .slide > .arts-list-container {
+  overflow-x: scroll;
+  padding-bottom: 16px;
+}
+.home-view > .content > .slide > .arts-list-container > .arts-list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.home-view > .content > .slide > .arts-list-container > .arts-list > .art-nft-card {
+  float: left;
+  margin-right: 16px;
+}
 .home-view > .subtitle {
   padding-top: 8px;
   font-size: 1.25rem;
