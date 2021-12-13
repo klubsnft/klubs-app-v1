@@ -99,16 +99,15 @@ export default class Home implements View {
         const totalSupply = (await ArtsContract.totalSupply()).toNumber();
         const ids = new Array(totalSupply).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
 
-        let count = 0;
-        for (const id of ids) {
-            new ArtNFTCard(id).appendTo(this.artsList);
-            count += 1;
-            if (count === 50) {
-                break;
-            }
-        }
-
         if (this.container.deleted !== true) {
+            let count = 0;
+            for (const id of ids) {
+                new ArtNFTCard(id).appendTo(this.artsList);
+                count += 1;
+                if (count === 50) {
+                    break;
+                }
+            }
             this.artsLoading.delete();
         }
     }

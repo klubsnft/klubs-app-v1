@@ -3,6 +3,7 @@ import { View, ViewParams } from "skyrouter";
 import ArtNFTCard from "../../component/ArtNFTCard";
 import Loading from "../../component/loading/Loading";
 import ArtsContract from "../../contracts/ArtsContract";
+import ArtStoreContract from "../../contracts/ArtStoreContract";
 import Wallet from "../../klaytn/Wallet";
 import Layout from "../Layout";
 
@@ -13,6 +14,15 @@ export default class MyArts implements View {
     private artistArtsLoading: Loading;
     private artistArtsList: DomNode;
 
+    private sellingLoading: Loading;
+    private sellingList: DomNode;
+
+    private offeringLoading: Loading;
+    private offeringList: DomNode;
+
+    private myNFTLoading: Loading;
+    private myNFTList: DomNode;
+
     constructor() {
         Layout.current.title = "내 Arts";
         Layout.current.content.append(this.container = el(".user-my-arts-view",
@@ -22,6 +32,21 @@ export default class MyArts implements View {
                 this.artistArtsLoading = new Loading(),
                 this.artistArtsList = el(".list"),
             ),
+            el("section",
+                el("h2", "내가 판매중인 Arts"),
+                this.sellingLoading = new Loading(),
+                this.sellingList = el(".list"),
+            ),
+            el("section",
+                el("h2", "내가 가격을 제시한 Arts"),
+                this.offeringLoading = new Loading(),
+                this.offeringList = el(".list"),
+            ),
+            el("section",
+                el("h2", "내 Arts 목록"),
+                this.myNFTLoading = new Loading(),
+                this.myNFTList = el(".list"),
+            ),
         ));
         this.load();
     }
@@ -30,6 +55,9 @@ export default class MyArts implements View {
         const address = await Wallet.loadAddress();
         if (address !== undefined) {
             this.loadArtistArts(address);
+            this.loadSelling(address);
+            this.loadOffering(address);
+            this.loadMyNFTs(address);
         }
     }
 
@@ -52,6 +80,83 @@ export default class MyArts implements View {
 
         if (this.container.deleted !== true) {
             this.artistArtsLoading.delete();
+        }
+    }
+
+    private async loadSelling(address: string) {
+
+        this.sellingList.empty();
+        const count = (await ArtStoreContract.userSellInfoLength(address)).toNumber();
+
+        const promises: Promise<void>[] = [];
+        for (let i = 0; i < count; i += 1) {
+            const promise = async (index: number) => {
+                const info = await ArtStoreContract.userSellInfo(address, index);
+                if (this.container.deleted !== true) {
+                    new ArtNFTCard(info.id).appendTo(this.sellingList);
+                }
+            };
+            promises.push(promise(i));
+        }
+        await Promise.all(promises);
+
+        if (this.container.deleted !== true) {
+            this.sellingLoading.delete();
+        }
+    }
+
+    private async loadOffering(address: string) {
+
+        this.offeringList.empty();
+        const count = (await ArtStoreContract.userOfferInfoLength(address)).toNumber();
+
+        const promises: Promise<void>[] = [];
+        for (let i = 0; i < count; i += 1) {
+            const promise = async (index: number) => {
+                const info = await ArtStoreContract.userOfferInfo(address, index);
+                if (this.container.deleted !== true) {
+                    new ArtNFTCard(info.id).appendTo(this.offeringList);
+                }
+            };
+            promises.push(promise(i));
+        }
+        await Promise.all(promises);
+
+        if (this.container.deleted !== true) {
+            this.offeringLoading.delete();
+        }
+    }
+
+    private async loadMyNFTs(address: string) {
+
+        this.myNFTLoading.style({ display: "block" });
+        this.myNFTList.empty();
+
+        const ids: number[] = [];
+
+        const totalSupply = (await ArtsContract.balanceOf(address)).toNumber();
+
+        const promises: Promise<void>[] = [];
+        for (let i = 0; i < totalSupply; i += 1) {
+            const promise = async (index: number) => {
+                try {
+                    const id = (await ArtsContract.tokenOfOwnerByIndex(address, index)).toNumber();
+                    ids.push(id);
+                } catch (e) {
+                    console.error(e);
+                }
+            };
+            promises.push(promise(i));
+        }
+        await Promise.all(promises);
+        ids.sort((a, b) => a - b);
+
+        for (const id of ids) {
+            new ArtNFTCard(id).appendTo(this.myNFTList);
+        }
+
+        if (this.container.deleted !== true) {
+            this.myNFTLoading.style({ display: "none" });
         }
     }
 
