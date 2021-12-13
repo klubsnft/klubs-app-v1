@@ -5,12 +5,12 @@ import { SkyRouter, View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import xss from "xss";
 import CommonUtil from "../../CommonUtil";
-import AcceptOfferPopup from "../../component/AcceptOfferPopup";
-import BuyPopup from "../../component/BuyPopup";
+import AcceptOfferPopup from "../../component/pfptrade/AcceptOfferPopup";
+import BuyPopup from "../../component/pfptrade/BuyPopup";
 import Prompt from "../../component/dialogue/Prompt";
 import NFTDisplay from "../../component/NFTDisplay";
-import OfferPopup from "../../component/OfferPopup";
-import SellPopup from "../../component/SellPopup";
+import OfferPopup from "../../component/pfptrade/OfferPopup";
+import SellPopup from "../../component/pfptrade/SellPopup";
 import Config from "../../Config";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
@@ -114,7 +114,7 @@ export default class NFTDetail implements View {
     private async loadTrade(addr: string, id: number) {
 
         const owner = await this.contract.ownerOf(id);
-        if (owner === "0xeF50df13f88070662459863D05cCD9581dfB1085") {
+        if (owner === PFPStoreContract.address) {
             this.ownerDisplay.empty().appendText("판매자 ");
             const saleInfo = await PFPStoreContract.sales(addr, id);
             this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(saleInfo.seller)));

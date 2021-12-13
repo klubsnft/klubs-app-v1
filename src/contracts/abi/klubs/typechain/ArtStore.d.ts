@@ -23,18 +23,18 @@ import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 interface ArtStoreInterface extends ethers.utils.Interface {
   functions: {
     "onAuctionsCount()": FunctionFragment;
-    "makeOffer(uint256,uint256)": FunctionFragment;
     "userAuctionInfoLength(address)": FunctionFragment;
     "cancelAuctionByOwner(uint256[])": FunctionFragment;
     "biddings(uint256,uint256)": FunctionFragment;
     "banUser(address)": FunctionFragment;
+    "mileage()": FunctionFragment;
     "setArtists(address)": FunctionFragment;
     "onSalesIndex(uint256)": FunctionFragment;
     "userAuctionInfo(address,uint256)": FunctionFragment;
     "checkAuction(uint256)": FunctionFragment;
     "onSalesCount()": FunctionFragment;
+    "bid(uint256,uint256,uint256)": FunctionFragment;
     "cancelOfferByOwner(uint256[],uint256[])": FunctionFragment;
-    "buy(uint256[],uint256[])": FunctionFragment;
     "claim(uint256)": FunctionFragment;
     "cancelSaleByOwner(uint256[])": FunctionFragment;
     "userBiddingInfoLength(address)": FunctionFragment;
@@ -44,7 +44,6 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     "unbanUser(address)": FunctionFragment;
     "biddingCount(uint256)": FunctionFragment;
     "auctions(uint256)": FunctionFragment;
-    "bid(uint256,uint256)": FunctionFragment;
     "userSellInfoLength(address)": FunctionFragment;
     "setFee(uint256)": FunctionFragment;
     "offerCount(uint256)": FunctionFragment;
@@ -75,17 +74,15 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     "userBiddingInfo(address,uint256)": FunctionFragment;
     "fee()": FunctionFragment;
     "onSales(uint256)": FunctionFragment;
+    "makeOffer(uint256,uint256,uint256)": FunctionFragment;
     "setFeeReceiver(address)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
+    "buy(uint256[],uint256[],uint256[])": FunctionFragment;
   };
 
   encodeFunctionData(
     functionFragment: "onAuctionsCount",
     values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "makeOffer",
-    values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "userAuctionInfoLength",
@@ -100,6 +97,7 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "banUser", values: [string]): string;
+  encodeFunctionData(functionFragment: "mileage", values?: undefined): string;
   encodeFunctionData(functionFragment: "setArtists", values: [string]): string;
   encodeFunctionData(
     functionFragment: "onSalesIndex",
@@ -118,11 +116,11 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "cancelOfferByOwner",
-    values: [BigNumberish[], BigNumberish[]]
+    functionFragment: "bid",
+    values: [BigNumberish, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "buy",
+    functionFragment: "cancelOfferByOwner",
     values: [BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(functionFragment: "claim", values: [BigNumberish]): string;
@@ -154,10 +152,6 @@ interface ArtStoreInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "auctions",
     values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "bid",
-    values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "userSellInfoLength",
@@ -253,6 +247,10 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "makeOffer",
+    values: [BigNumberish, BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setFeeReceiver",
     values: [string]
   ): string;
@@ -260,12 +258,15 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     functionFragment: "transferOwnership",
     values: [string]
   ): string;
+  encodeFunctionData(
+    functionFragment: "buy",
+    values: [BigNumberish[], BigNumberish[], BigNumberish[]]
+  ): string;
 
   decodeFunctionResult(
     functionFragment: "onAuctionsCount",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "makeOffer", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "userAuctionInfoLength",
     data: BytesLike
@@ -276,6 +277,7 @@ interface ArtStoreInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "biddings", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "banUser", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "mileage", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setArtists", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "onSalesIndex",
@@ -293,11 +295,11 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     functionFragment: "onSalesCount",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "bid", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "cancelOfferByOwner",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "cancelSaleByOwner",
@@ -322,7 +324,6 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "auctions", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "bid", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "userSellInfoLength",
     data: BytesLike
@@ -398,6 +399,7 @@ interface ArtStoreInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "fee", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "onSales", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "makeOffer", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setFeeReceiver",
     data: BytesLike
@@ -406,6 +408,7 @@ interface ArtStoreInterface extends ethers.utils.Interface {
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
 
   events: {
     "Sell(uint256,address,uint256)": EventFragment;
@@ -460,24 +463,9 @@ export class ArtStore extends Contract {
   interface: ArtStoreInterface;
 
   functions: {
+    onAuctionsCount(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     "onAuctionsCount()"(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    "onAuctionsCount(address)"(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    makeOffer(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
-    "makeOffer(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
 
     userAuctionInfoLength(
       seller: string,
@@ -503,13 +491,25 @@ export class ArtStore extends Contract {
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "biddings(uint256,uint256)"(
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     banUser(user: string, overrides?: Overrides): Promise<ContractTransaction>;
 
@@ -517,6 +517,10 @@ export class ArtStore extends Contract {
       user: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    mileage(overrides?: CallOverrides): Promise<[string]>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<[string]>;
 
     setArtists(
       _artists: string,
@@ -564,6 +568,20 @@ export class ArtStore extends Contract {
 
     "onSalesCount()"(overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    bid(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "bid(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
     cancelOfferByOwner(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
@@ -573,17 +591,6 @@ export class ArtStore extends Contract {
     "cancelOfferByOwner(uint256[],uint256[])"(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
-    "buy(uint256[],uint256[])"(
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
-    "buy(uint256[])"(
-      ids: BigNumberish[],
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -643,13 +650,25 @@ export class ArtStore extends Contract {
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "offers(uint256,uint256)"(
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     unbanUser(
       user: string,
@@ -692,18 +711,6 @@ export class ArtStore extends Contract {
         endBlock: BigNumber;
       }
     >;
-
-    bid(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
-    "bid(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
 
     userSellInfoLength(
       seller: string,
@@ -965,6 +972,20 @@ export class ArtStore extends Contract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
+    makeOffer(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "makeOffer(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
     setFeeReceiver(
       _receiver: string,
       overrides?: Overrides
@@ -984,26 +1005,25 @@ export class ArtStore extends Contract {
       newOwner: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    buy(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "buy(uint256[],uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
   };
 
+  onAuctionsCount(overrides?: CallOverrides): Promise<BigNumber>;
+
   "onAuctionsCount()"(overrides?: CallOverrides): Promise<BigNumber>;
-
-  "onAuctionsCount(address)"(
-    addr: string,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  makeOffer(
-    id: BigNumberish,
-    price: BigNumberish,
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
-  "makeOffer(uint256,uint256)"(
-    id: BigNumberish,
-    price: BigNumberish,
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
 
   userAuctionInfoLength(
     seller: string,
@@ -1029,13 +1049,25 @@ export class ArtStore extends Contract {
     arg0: BigNumberish,
     arg1: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      bidder: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
 
   "biddings(uint256,uint256)"(
     arg0: BigNumberish,
     arg1: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      bidder: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
 
   banUser(user: string, overrides?: Overrides): Promise<ContractTransaction>;
 
@@ -1043,6 +1075,10 @@ export class ArtStore extends Contract {
     user: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
+
+  mileage(overrides?: CallOverrides): Promise<string>;
+
+  "mileage()"(overrides?: CallOverrides): Promise<string>;
 
   setArtists(
     _artists: string,
@@ -1087,6 +1123,20 @@ export class ArtStore extends Contract {
 
   "onSalesCount()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+  bid(
+    id: BigNumberish,
+    price: BigNumberish,
+    _mileage: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "bid(uint256,uint256,uint256)"(
+    id: BigNumberish,
+    price: BigNumberish,
+    _mileage: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   cancelOfferByOwner(
     ids: BigNumberish[],
     offerIds: BigNumberish[],
@@ -1096,17 +1146,6 @@ export class ArtStore extends Contract {
   "cancelOfferByOwner(uint256[],uint256[])"(
     ids: BigNumberish[],
     offerIds: BigNumberish[],
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
-  "buy(uint256[],uint256[])"(
-    ids: BigNumberish[],
-    prices: BigNumberish[],
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
-  "buy(uint256[])"(
-    ids: BigNumberish[],
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1160,13 +1199,25 @@ export class ArtStore extends Contract {
     arg0: BigNumberish,
     arg1: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      offeror: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
 
   "offers(uint256,uint256)"(
     arg0: BigNumberish,
     arg1: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      offeror: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
 
   unbanUser(user: string, overrides?: Overrides): Promise<ContractTransaction>;
 
@@ -1203,18 +1254,6 @@ export class ArtStore extends Contract {
       endBlock: BigNumber;
     }
   >;
-
-  bid(
-    id: BigNumberish,
-    price: BigNumberish,
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
-  "bid(uint256,uint256)"(
-    id: BigNumberish,
-    price: BigNumberish,
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
 
   userSellInfoLength(
     seller: string,
@@ -1465,6 +1504,20 @@ export class ArtStore extends Contract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
+  makeOffer(
+    id: BigNumberish,
+    price: BigNumberish,
+    _mileage: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "makeOffer(uint256,uint256,uint256)"(
+    id: BigNumberish,
+    price: BigNumberish,
+    _mileage: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   setFeeReceiver(
     _receiver: string,
     overrides?: Overrides
@@ -1485,25 +1538,24 @@ export class ArtStore extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  buy(
+    ids: BigNumberish[],
+    prices: BigNumberish[],
+    mileages: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "buy(uint256[],uint256[],uint256[])"(
+    ids: BigNumberish[],
+    prices: BigNumberish[],
+    mileages: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   callStatic: {
+    onAuctionsCount(overrides?: CallOverrides): Promise<BigNumber>;
+
     "onAuctionsCount()"(overrides?: CallOverrides): Promise<BigNumber>;
-
-    "onAuctionsCount(address)"(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    makeOffer(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    "makeOffer(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
 
     userAuctionInfoLength(
       seller: string,
@@ -1529,17 +1581,33 @@ export class ArtStore extends Contract {
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "biddings(uint256,uint256)"(
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     banUser(user: string, overrides?: CallOverrides): Promise<void>;
 
     "banUser(address)"(user: string, overrides?: CallOverrides): Promise<void>;
+
+    mileage(overrides?: CallOverrides): Promise<string>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<string>;
 
     setArtists(_artists: string, overrides?: CallOverrides): Promise<void>;
 
@@ -1581,6 +1649,20 @@ export class ArtStore extends Contract {
 
     "onSalesCount()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    bid(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "bid(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     cancelOfferByOwner(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
@@ -1590,17 +1672,6 @@ export class ArtStore extends Contract {
     "cancelOfferByOwner(uint256[],uint256[])"(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    "buy(uint256[],uint256[])"(
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    "buy(uint256[])"(
-      ids: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1654,13 +1725,25 @@ export class ArtStore extends Contract {
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "offers(uint256,uint256)"(
       arg0: BigNumberish,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     unbanUser(user: string, overrides?: CallOverrides): Promise<void>;
 
@@ -1700,18 +1783,6 @@ export class ArtStore extends Contract {
         endBlock: BigNumber;
       }
     >;
-
-    bid(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    "bid(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
 
     userSellInfoLength(
       seller: string,
@@ -1953,6 +2024,20 @@ export class ArtStore extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    makeOffer(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "makeOffer(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     setFeeReceiver(_receiver: string, overrides?: CallOverrides): Promise<void>;
 
     "setFeeReceiver(address)"(
@@ -1967,6 +2052,20 @@ export class ArtStore extends Contract {
 
     "transferOwnership(address)"(
       newOwner: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    buy(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "buy(uint256[],uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
   };
@@ -2052,24 +2151,9 @@ export class ArtStore extends Contract {
   };
 
   estimateGas: {
+    onAuctionsCount(overrides?: CallOverrides): Promise<BigNumber>;
+
     "onAuctionsCount()"(overrides?: CallOverrides): Promise<BigNumber>;
-
-    "onAuctionsCount(address)"(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    makeOffer(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
-    "makeOffer(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<BigNumber>;
 
     userAuctionInfoLength(
       seller: string,
@@ -2106,6 +2190,10 @@ export class ArtStore extends Contract {
     banUser(user: string, overrides?: Overrides): Promise<BigNumber>;
 
     "banUser(address)"(user: string, overrides?: Overrides): Promise<BigNumber>;
+
+    mileage(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     setArtists(_artists: string, overrides?: Overrides): Promise<BigNumber>;
 
@@ -2150,6 +2238,20 @@ export class ArtStore extends Contract {
 
     "onSalesCount()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    bid(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "bid(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
     cancelOfferByOwner(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
@@ -2159,17 +2261,6 @@ export class ArtStore extends Contract {
     "cancelOfferByOwner(uint256[],uint256[])"(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
-    "buy(uint256[],uint256[])"(
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
-    "buy(uint256[])"(
-      ids: BigNumberish[],
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -2256,18 +2347,6 @@ export class ArtStore extends Contract {
     "auctions(uint256)"(
       arg0: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    bid(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
-    "bid(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
     ): Promise<BigNumber>;
 
     userSellInfoLength(
@@ -2510,6 +2589,20 @@ export class ArtStore extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    makeOffer(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "makeOffer(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
     setFeeReceiver(
       _receiver: string,
       overrides?: Overrides
@@ -2529,28 +2622,27 @@ export class ArtStore extends Contract {
       newOwner: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
+
+    buy(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "buy(uint256[],uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    onAuctionsCount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     "onAuctionsCount()"(
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    "onAuctionsCount(address)"(
-      addr: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    makeOffer(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
-    "makeOffer(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     userAuctionInfoLength(
@@ -2591,6 +2683,10 @@ export class ArtStore extends Contract {
       user: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
+
+    mileage(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     setArtists(
       _artists: string,
@@ -2638,6 +2734,20 @@ export class ArtStore extends Contract {
 
     "onSalesCount()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    bid(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "bid(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
     cancelOfferByOwner(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
@@ -2647,17 +2757,6 @@ export class ArtStore extends Contract {
     "cancelOfferByOwner(uint256[],uint256[])"(
       ids: BigNumberish[],
       offerIds: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
-    "buy(uint256[],uint256[])"(
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
-    "buy(uint256[])"(
-      ids: BigNumberish[],
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -2753,18 +2852,6 @@ export class ArtStore extends Contract {
     "auctions(uint256)"(
       arg0: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    bid(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
-    "bid(uint256,uint256)"(
-      id: BigNumberish,
-      price: BigNumberish,
-      overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     userSellInfoLength(
@@ -3035,6 +3122,20 @@ export class ArtStore extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    makeOffer(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "makeOffer(uint256,uint256,uint256)"(
+      id: BigNumberish,
+      price: BigNumberish,
+      _mileage: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
     setFeeReceiver(
       _receiver: string,
       overrides?: Overrides
@@ -3052,6 +3153,20 @@ export class ArtStore extends Contract {
 
     "transferOwnership(address)"(
       newOwner: string,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    buy(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "buy(uint256[],uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
   };

@@ -48,10 +48,6 @@ p {
 
 // components
 @import "component/popup.less";
-@import "component/sellpopup.less";
-@import "component/buypopup.less";
-@import "component/offerpopup.less";
-@import "component/acceptofferpopup.less";
 @import "component/connectwalletpopup.less";
 @import "component/klipqrpopup.less";
 @import "component/pfp-card.less";
@@ -66,6 +62,14 @@ p {
 @import "component/nftdisplay.less";
 @import "component/pfppage/pfppagination.less";
 @import "component/pfppage/multiple-pfp-selector.less";
+@import "component/pfptrade/sellpopup.less";
+@import "component/pfptrade/buypopup.less";
+@import "component/pfptrade/offerpopup.less";
+@import "component/pfptrade/acceptofferpopup.less";
+@import "component/arttrade/sellpopup.less";
+@import "component/arttrade/buypopup.less";
+@import "component/arttrade/offerpopup.less";
+@import "component/arttrade/acceptofferpopup.less";
 
 // views
 @import "view/layout.less";
@@ -79,7 +83,6 @@ p {
 @import "view/pfp/add.less";
 @import "view/pfp/add-by-minter.less";
 @import "view/pfp/add-by-pfp-owner.less";
-@import "view/pfp/sell.less";
 @import "view/pfp/rankings.less";
 @import "view/pfp/propose.less";
 
@@ -87,10 +90,11 @@ p {
 @import "view/pfp/page/page-layout.less";
 
 // arts views
-@import "view/arts.less";
+@import "view/arts/page/page-layout.less";
 @import "view/arts/add-artist.less";
 @import "view/arts/update-artist.less";
 @import "view/arts/update-art.less";
+@import "view/arts/nft-detail.less";
 
 // item views
 @import "view/item.less";

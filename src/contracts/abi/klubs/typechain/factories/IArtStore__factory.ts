@@ -18,26 +18,17 @@ export class IArtStore__factory {
 
 const _abi = [
   {
-    constant: false,
-    inputs: [
-      {
-        name: "id",
-        type: "uint256",
-      },
-      {
-        name: "price",
-        type: "uint256",
-      },
-    ],
-    name: "makeOffer",
+    constant: true,
+    inputs: [],
+    name: "onAuctionsCount",
     outputs: [
       {
-        name: "offerId",
+        name: "",
         type: "uint256",
       },
     ],
     payable: false,
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -79,6 +70,10 @@ const _abi = [
       },
       {
         name: "price",
+        type: "uint256",
+      },
+      {
+        name: "mileage",
         type: "uint256",
       },
     ],
@@ -144,6 +139,33 @@ const _abi = [
     ],
     payable: false,
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "id",
+        type: "uint256",
+      },
+      {
+        name: "price",
+        type: "uint256",
+      },
+      {
+        name: "mileage",
+        type: "uint256",
+      },
+    ],
+    name: "bid",
+    outputs: [
+      {
+        name: "biddingId",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -247,6 +269,10 @@ const _abi = [
         name: "price",
         type: "uint256",
       },
+      {
+        name: "mileage",
+        type: "uint256",
+      },
     ],
     payable: false,
     stateMutability: "view",
@@ -296,29 +322,6 @@ const _abi = [
     ],
     payable: false,
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "id",
-        type: "uint256",
-      },
-      {
-        name: "price",
-        type: "uint256",
-      },
-    ],
-    name: "bid",
-    outputs: [
-      {
-        name: "biddingId",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -494,39 +497,6 @@ const _abi = [
     type: "function",
   },
   {
-    constant: true,
-    inputs: [
-      {
-        name: "addr",
-        type: "address",
-      },
-    ],
-    name: "onAuctionsCount",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "ids",
-        type: "uint256[]",
-      },
-    ],
-    name: "buy",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     constant: false,
     inputs: [
       {
@@ -660,6 +630,55 @@ const _abi = [
     ],
     payable: false,
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "id",
+        type: "uint256",
+      },
+      {
+        name: "price",
+        type: "uint256",
+      },
+      {
+        name: "mileage",
+        type: "uint256",
+      },
+    ],
+    name: "makeOffer",
+    outputs: [
+      {
+        name: "offerId",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        name: "prices",
+        type: "uint256[]",
+      },
+      {
+        name: "mileages",
+        type: "uint256[]",
+      },
+    ],
+    name: "buy",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
     type: "function",
   },
   {

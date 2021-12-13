@@ -1,0 +1,1 @@
+{"version":3,"file":"ArtsSortor.d.ts","sourceRoot":"","sources":["../../../src/component/artpage/ArtsSortor.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAM,MAAM,gBAAgB,CAAC;AAC7C,OAAO,QAAQ,MAAM,+BAA+B,CAAC;AAErD,MAAM,CAAC,OAAO,OAAO,UAAW,SAAQ,OAAO;IAE3C,OAAO,CAAC,MAAM,CAA6B;gBAE/B,QAAQ,EAAE,QAAQ;IAgB9B,IAAW,QAAQ,WAElB;CACJ"}

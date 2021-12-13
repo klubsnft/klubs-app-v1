@@ -56,6 +56,7 @@ interface ArtsInterface extends ethers.utils.Interface {
     "owner()": FunctionFragment;
     "isOwner()": FunctionFragment;
     "symbol()": FunctionFragment;
+    "mintCount()": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
     "artistArtCount(address)": FunctionFragment;
     "mileageMode(uint256)": FunctionFragment;
@@ -153,6 +154,7 @@ interface ArtsInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "isOwner", values?: undefined): string;
   encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
+  encodeFunctionData(functionFragment: "mintCount", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "setApprovalForAll",
     values: [string, boolean]
@@ -258,6 +260,7 @@ interface ArtsInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "isOwner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "mintCount", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setApprovalForAll",
     data: BytesLike
@@ -611,6 +614,10 @@ export class Arts extends Contract {
     symbol(overrides?: CallOverrides): Promise<[string]>;
 
     "symbol()"(overrides?: CallOverrides): Promise<[string]>;
+
+    mintCount(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "mintCount()"(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     setApprovalForAll(
       to: string,
@@ -969,6 +976,10 @@ export class Arts extends Contract {
 
   "symbol()"(overrides?: CallOverrides): Promise<string>;
 
+  mintCount(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "mintCount()"(overrides?: CallOverrides): Promise<BigNumber>;
+
   setApprovalForAll(
     to: string,
     approved: boolean,
@@ -1298,6 +1309,10 @@ export class Arts extends Contract {
     symbol(overrides?: CallOverrides): Promise<string>;
 
     "symbol()"(overrides?: CallOverrides): Promise<string>;
+
+    mintCount(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "mintCount()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     setApprovalForAll(
       to: string,
@@ -1689,6 +1704,10 @@ export class Arts extends Contract {
 
     "symbol()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    mintCount(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "mintCount()"(overrides?: CallOverrides): Promise<BigNumber>;
+
     setApprovalForAll(
       to: string,
       approved: boolean,
@@ -2064,6 +2083,10 @@ export class Arts extends Contract {
     symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     "symbol()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    mintCount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "mintCount()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     setApprovalForAll(
       to: string,

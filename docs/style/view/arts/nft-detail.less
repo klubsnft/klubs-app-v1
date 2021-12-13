@@ -1,0 +1,206 @@
+.arts-nft-detail-view {
+    padding              : 16px;
+    display              : grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap             : 16px;
+
+    @media @phone {
+        display: block;
+    }
+
+    >.nft-display-container {
+        overflow    : hidden;
+        width       : 100%;
+        aspect-ratio: 1;
+
+        >.nft-display {
+            >* {
+                border-radius: 8px;
+            }
+        }
+    }
+
+    >section {
+        aspect-ratio    : 1;
+        background-color: @shadow;
+        border-radius   : 8px;
+        padding         : 16px;
+
+        @media @phone {
+            margin-top: 16px;
+        }
+
+        >h2 {
+            font-size    : 24px;
+            margin-bottom: 16px;
+        }
+
+        >.info {
+            display       : flex;
+            flex-direction: column;
+            height        : calc(100% - 24px);
+
+            >.name {
+                font-size    : 24px;
+                font-weight  : bold;
+                margin-top   : 16px;
+                margin-bottom: 16px;
+            }
+
+            >.owner {
+                color        : #999;
+                margin-bottom: 16px;
+
+                >span {
+                    color: @brand-primary;
+                }
+            }
+
+            >.description {
+                flex-grow : 1;
+                max-height: 131.33px;
+                overflow-y: scroll;
+            }
+
+            >.send-button-container>a,
+            >.update-button-container>a {
+                margin-top      : 16px;
+                display         : block;
+                color           : @background;
+                background-color: @brand-primary;
+                padding         : 12px 0;
+                width           : 100%;
+                font-size       : 16px;
+                text-align      : center;
+                border-radius   : 4px;
+                box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+                &:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+
+        >.attributes {
+            display              : grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap             : 16px;
+
+            >.attribute {
+                border       : 1px solid #999;
+                padding      : 16px;
+                border-radius: 8px;
+
+                >.trait {
+                    color        : @brand-primary;
+                    margin-bottom: 16px;
+                }
+            }
+        }
+
+        >.trade-form {
+            display       : flex;
+            flex-direction: column;
+            height        : calc(100% - 40px);
+
+            >.price-container {
+                flex-grow: 1;
+
+                >.price {
+                    display    : flex;
+                    align-items: center;
+                    color      : @mix-price;
+                    font-size  : 32px;
+
+                    >img {
+                        margin-right: 4px;
+                    }
+                }
+
+                >.won-price {
+                    color: #999;
+                }
+            }
+
+            >.sell-button,
+            >.cancel-sell-button,
+            >.buy-button {
+                margin-top      : 16px;
+                color           : @background;
+                background-color: @brand-primary;
+                padding         : 12px 0;
+                width           : 100%;
+                font-size       : 16px;
+                text-align      : center;
+                border-radius   : 4px;
+                box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+                &:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+
+        >.offer-form {
+            display       : flex;
+            flex-direction: column;
+            height        : calc(100% - 40px);
+
+            >.list {
+                flex-grow: 1;
+
+                >.offer {
+                    display: flex;
+
+                    >.offeror {
+                        flex-grow: 1;
+                    }
+
+                    >.price {
+                        display    : flex;
+                        align-items: center;
+                        color      : @mix-price;
+
+                        >img {
+                            margin-right: 4px;
+                        }
+                    }
+
+                    >.accept-offer-button,
+                    >.cancel-offer-button {
+                        margin-left     : 8px;
+                        background-color: transparent;
+                        color           : @brand-primary;
+                        padding         : 8px 16px;
+                        font-size       : 14px;
+                        border-radius   : 4px;
+
+                        &:hover {
+                            background-color: rgba(199, 254, 162, 0.2);
+                            box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+            }
+
+            >.offer-button {
+                margin-top      : 16px;
+                color           : @background;
+                background-color: @brand-primary;
+                padding         : 12px 0;
+                width           : 100%;
+                font-size       : 16px;
+                text-align      : center;
+                border-radius   : 4px;
+                box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+                &:hover {
+                    background-color: @brand-400;
+                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+    }
+}

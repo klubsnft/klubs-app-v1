@@ -212,306 +212,6 @@ p {
   overflow-y: scroll;
   padding: 20px 0;
 }
-.sell-popup {
-  position: relative;
-  max-width: 600px;
-  width: 90%;
-  margin: auto;
-  border-radius: 4px;
-  background-color: #1f1f1f;
-}
-.sell-popup > h2 {
-  font-size: 24px;
-  padding: 16px;
-}
-.sell-popup > p {
-  padding: 16px;
-  border-top: 1px solid #666;
-  color: #999;
-}
-.sell-popup > .list {
-  padding: 0 16px;
-}
-.sell-popup > .list > section {
-  padding: 16px;
-  margin-bottom: 16px;
-  border: 1px solid #666;
-  border-radius: 4px;
-  display: flex;
-}
-.sell-popup > .list > section > .nft-display {
-  width: 100px;
-  height: 100px;
-  margin-right: 16px;
-}
-.sell-popup > .list > section > .nft-display > * {
-  border-radius: 4px;
-}
-.sell-popup > .list > section > .info {
-  flex-grow: 1;
-}
-.sell-popup > .list > section > .info > .name {
-  font-size: 24px;
-  margin-bottom: 16px;
-}
-.sell-popup > .list > section > .info > label > span {
-  display: block;
-  color: #999;
-  margin-bottom: 8px;
-}
-.sell-popup > .list > section > .info > label > input {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.87);
-  box-sizing: border-box;
-  border-radius: 4px;
-  background-color: transparent;
-  color: #fff;
-  padding: 8px;
-  height: 40px;
-}
-.sell-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
-}
-.sell-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
-}
-.sell-popup > .button-container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 16px;
-}
-.sell-popup > .button-container > button {
-  background-color: transparent;
-  color: #C7FEA2;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 4px;
-}
-.sell-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.buy-popup {
-  position: relative;
-  max-width: 600px;
-  width: 90%;
-  margin: auto;
-  border-radius: 4px;
-  background-color: #1f1f1f;
-}
-.buy-popup > h2 {
-  font-size: 24px;
-  padding: 16px;
-}
-.buy-popup > p {
-  padding: 16px;
-  border-top: 1px solid #666;
-  color: #999;
-}
-.buy-popup > .list {
-  padding: 0 16px;
-}
-.buy-popup > .list > section {
-  padding: 16px;
-  margin-bottom: 16px;
-  border: 1px solid #666;
-  border-radius: 4px;
-  display: flex;
-}
-.buy-popup > .list > section > .nft-display {
-  width: 100px;
-  height: 100px;
-  margin-right: 16px;
-}
-.buy-popup > .list > section > .nft-display > * {
-  border-radius: 4px;
-}
-.buy-popup > .list > section > .info {
-  flex-grow: 1;
-}
-.buy-popup > .list > section > .info > .name {
-  font-size: 24px;
-  margin-bottom: 16px;
-}
-.buy-popup > .list > section > .info > label > span {
-  display: block;
-  color: #999;
-  margin-bottom: 8px;
-}
-.buy-popup > .list > section > .info > label > .price {
-  display: flex;
-  align-items: center;
-  color: #e17d1c;
-}
-.buy-popup > .list > section > .info > label > .price > img {
-  margin-right: 4px;
-}
-.buy-popup > .button-container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 16px;
-}
-.buy-popup > .button-container > button {
-  background-color: transparent;
-  color: #C7FEA2;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 4px;
-}
-.buy-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.offer-popup {
-  position: relative;
-  max-width: 600px;
-  width: 90%;
-  margin: auto;
-  border-radius: 4px;
-  background-color: #1f1f1f;
-}
-.offer-popup > h2 {
-  font-size: 24px;
-  padding: 16px;
-}
-.offer-popup > p {
-  padding: 16px;
-  border-top: 1px solid #666;
-  color: #999;
-}
-.offer-popup > .list {
-  padding: 0 16px;
-}
-.offer-popup > .list > section {
-  padding: 16px;
-  margin-bottom: 16px;
-  border: 1px solid #666;
-  border-radius: 4px;
-  display: flex;
-}
-.offer-popup > .list > section > .nft-display {
-  width: 100px;
-  height: 100px;
-  margin-right: 16px;
-}
-.offer-popup > .list > section > .nft-display > * {
-  border-radius: 4px;
-}
-.offer-popup > .list > section > .info {
-  flex-grow: 1;
-}
-.offer-popup > .list > section > .info > .name {
-  font-size: 24px;
-  margin-bottom: 16px;
-}
-.offer-popup > .list > section > .info > label > span {
-  display: block;
-  color: #999;
-  margin-bottom: 8px;
-}
-.offer-popup > .list > section > .info > label > input {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.87);
-  box-sizing: border-box;
-  border-radius: 4px;
-  background-color: transparent;
-  color: #fff;
-  padding: 8px;
-  height: 40px;
-}
-.offer-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
-}
-.offer-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
-}
-.offer-popup > .button-container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 16px;
-}
-.offer-popup > .button-container > button {
-  background-color: transparent;
-  color: #C7FEA2;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 4px;
-}
-.offer-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.accept-offer-popup {
-  position: relative;
-  max-width: 600px;
-  width: 90%;
-  margin: auto;
-  border-radius: 4px;
-  background-color: #1f1f1f;
-}
-.accept-offer-popup > h2 {
-  font-size: 24px;
-  padding: 16px;
-}
-.accept-offer-popup > p {
-  padding: 16px;
-  border-top: 1px solid #666;
-  color: #999;
-}
-.accept-offer-popup > .list {
-  padding: 0 16px;
-}
-.accept-offer-popup > .list > section {
-  padding: 16px;
-  margin-bottom: 16px;
-  border: 1px solid #666;
-  border-radius: 4px;
-  display: flex;
-}
-.accept-offer-popup > .list > section > .nft-display {
-  width: 100px;
-  height: 100px;
-  margin-right: 16px;
-}
-.accept-offer-popup > .list > section > .nft-display > * {
-  border-radius: 4px;
-}
-.accept-offer-popup > .list > section > .info {
-  flex-grow: 1;
-}
-.accept-offer-popup > .list > section > .info > .name {
-  font-size: 24px;
-  margin-bottom: 16px;
-}
-.accept-offer-popup > .list > section > .info > label > span {
-  display: block;
-  color: #999;
-  margin-bottom: 8px;
-}
-.accept-offer-popup > .list > section > .info > label > .price {
-  display: flex;
-  align-items: center;
-  color: #e17d1c;
-}
-.accept-offer-popup > .list > section > .info > label > .price > img {
-  margin-right: 4px;
-}
-.accept-offer-popup > .button-container {
-  display: flex;
-  justify-content: flex-end;
-  padding: 16px;
-}
-.accept-offer-popup > .button-container > button {
-  background-color: transparent;
-  color: #C7FEA2;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 4px;
-}
-.accept-offer-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
 .connect-wallet-popup {
   position: relative;
   max-width: 420px;
@@ -1071,6 +771,606 @@ p {
 .multiple-pfp-selector > a:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-sell-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.pfp-sell-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.pfp-sell-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.pfp-sell-popup > .list {
+  padding: 0 16px;
+}
+.pfp-sell-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.pfp-sell-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.pfp-sell-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.pfp-sell-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.pfp-sell-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.pfp-sell-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.pfp-sell-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.pfp-sell-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.pfp-sell-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.pfp-sell-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.pfp-sell-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-sell-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.pfp-buy-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.pfp-buy-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.pfp-buy-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.pfp-buy-popup > .list {
+  padding: 0 16px;
+}
+.pfp-buy-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.pfp-buy-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.pfp-buy-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.pfp-buy-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.pfp-buy-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.pfp-buy-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.pfp-buy-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.pfp-buy-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
+}
+.pfp-buy-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.pfp-buy-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-buy-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.pfp-offer-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.pfp-offer-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.pfp-offer-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.pfp-offer-popup > .list {
+  padding: 0 16px;
+}
+.pfp-offer-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.pfp-offer-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.pfp-offer-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.pfp-offer-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.pfp-offer-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.pfp-offer-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.pfp-offer-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.pfp-offer-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.pfp-offer-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.pfp-offer-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.pfp-offer-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-offer-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.pfp-accept-offer-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.pfp-accept-offer-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.pfp-accept-offer-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.pfp-accept-offer-popup > .list {
+  padding: 0 16px;
+}
+.pfp-accept-offer-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.pfp-accept-offer-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.pfp-accept-offer-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.pfp-accept-offer-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.pfp-accept-offer-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.pfp-accept-offer-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.pfp-accept-offer-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.pfp-accept-offer-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
+}
+.pfp-accept-offer-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.pfp-accept-offer-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-accept-offer-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.art-sell-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.art-sell-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.art-sell-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.art-sell-popup > .list {
+  padding: 0 16px;
+}
+.art-sell-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.art-sell-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.art-sell-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.art-sell-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.art-sell-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.art-sell-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.art-sell-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.art-sell-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.art-sell-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.art-sell-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.art-sell-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.art-sell-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.art-buy-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.art-buy-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.art-buy-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.art-buy-popup > .list {
+  padding: 0 16px;
+}
+.art-buy-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.art-buy-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.art-buy-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.art-buy-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.art-buy-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.art-buy-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.art-buy-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.art-buy-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
+}
+.art-buy-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.art-buy-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.art-buy-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.art-offer-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.art-offer-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.art-offer-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.art-offer-popup > .list {
+  padding: 0 16px;
+}
+.art-offer-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.art-offer-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.art-offer-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.art-offer-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.art-offer-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.art-offer-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.art-offer-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.art-offer-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.art-offer-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.art-offer-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.art-offer-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.art-offer-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.art-accept-offer-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.art-accept-offer-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.art-accept-offer-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.art-accept-offer-popup > .list {
+  padding: 0 16px;
+}
+.art-accept-offer-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.art-accept-offer-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.art-accept-offer-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.art-accept-offer-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.art-accept-offer-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.art-accept-offer-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.art-accept-offer-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.art-accept-offer-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
+}
+.art-accept-offer-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.art-accept-offer-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.art-accept-offer-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .layout {
   width: 100%;
@@ -2080,71 +2380,6 @@ p {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
-.sell-pfp-view {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
-}
-.sell-pfp-view > .image-view {
-  margin-top: 16px;
-  padding-left: 16px;
-  max-width: 50%;
-}
-.sell-pfp-view > .image-view > .pfp-image {
-  max-width: 100%;
-  border-radius: 16px;
-}
-.sell-pfp-view > .image-view > .project {
-  font-size: 14px;
-}
-.sell-pfp-view > .image-view > .pfp {
-  margin-top: 8px;
-  font-size: 2.125rem;
-}
-.sell-pfp-view > .image-view > .pfp-info {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.sell-pfp-view > .image-view > .pfp-info > .owner {
-  display: flex;
-  font-size: 1rem;
-}
-.sell-pfp-view > .image-view > .pfp-info > .owner > .owner-by {
-  margin-left: 8px;
-  font-size: 1rem;
-  color: #C7FEA2;
-}
-.sell-pfp-view > .image-view > .pfp-info > .viewer {
-  display: flex;
-  margin-left: 32px;
-  font-size: 1rem;
-  justify-content: center;
-  align-items: center;
-}
-.sell-pfp-view > .image-view > .pfp-info > .viewer > .viewer-icon {
-  margin-right: 4px;
-}
-.sell-pfp-view > .sell-view {
-  margin-top: 16px;
-  margin-left: 16px;
-}
-.sell-pfp-view > .sell-view > .title {
-  font-size: 3rem;
-}
-.sell-pfp-view > .sell-view > button {
-  width: 100%;
-  margin-top: 16px;
-}
-.sell-pfp-view > .sell-view > .label {
-  font-size: 14px;
-  margin-top: 16px;
-}
-.sell-pfp-view > .sell-view > input {
-  margin-top: 8px;
-  width: 100%;
-}
 .pfp-ranking-view {
   display: flex;
   flex-direction: column;
@@ -2588,7 +2823,7 @@ p {
     aspect-ratio: 1;
   }
 }
-.arts-view > header {
+.arts-page-layout > header {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
@@ -2597,14 +2832,14 @@ p {
   height: 200px;
   justify-content: center;
 }
-.arts-view > header > p {
+.arts-page-layout > header > p {
   margin: 16px;
   text-shadow: 0px 0px 5px #000000;
 }
-.arts-view > header > .controller {
+.arts-page-layout > header > .controller {
   display: flex;
 }
-.arts-view > header > .controller > a {
+.arts-page-layout > header > .controller > a {
   display: block;
   margin-left: 16px;
   color: #121212;
@@ -2616,14 +2851,85 @@ p {
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-.arts-view > header > .controller > a:hover {
+.arts-page-layout > header > .controller > a:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
-.arts-view > .content {
+.arts-page-layout > main > .arts-page-view > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 16px;
-  max-width: 1420px;
-  margin: auto;
+  background-color: black;
+}
+@media only screen and (max-width: 719px) {
+  .arts-page-layout > main > .arts-page-view > header {
+    display: block;
+  }
+}
+.arts-page-layout > main > .arts-page-view > header > h2 {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+@media only screen and (max-width: 719px) {
+  .arts-page-layout > main > .arts-page-view > header > .arts-page-tabs {
+    display: flex;
+    margin-left: -8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+.arts-page-layout > main > .arts-page-view > header > .arts-page-tabs > .tab {
+  margin-left: 8px;
+  background-color: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.arts-page-layout > main > .arts-page-view > header > .arts-page-tabs > .tab.on {
+  color: #C7FEA2;
+}
+.arts-page-layout > main > .arts-page-view > header > .arts-page-tabs > .tab:hover {
+  color: #C7FEA2;
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.arts-page-layout > main > .arts-page-view > .content {
+  display: flex;
+  padding: 16px 0 16px 16px;
+}
+@media only screen and (max-width: 719px) {
+  .arts-page-layout > main > .arts-page-view > .content {
+    display: block;
+  }
+}
+.arts-page-layout > main > .arts-page-view > .content > .list-container > .list {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.arts-page-layout > main > .arts-page-view > .content > .list-container > .list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.arts-page-layout > main > .arts-page-view > .content > .list-container > .list > .art-nft-card {
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .arts-page-layout > main > .arts-page-view > .content > .list-container > .list > .art-nft-card {
+    width: calc(50% - 16px);
+  }
+  .arts-page-layout > main > .arts-page-view > .content > .list-container > .list > .art-nft-card > .nft-display {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
 }
 .add-artist-view > header {
   display: flex;
@@ -2929,6 +3235,185 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .art-update-view > main > .form > button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.arts-nft-detail-view {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .arts-nft-detail-view {
+    display: block;
+  }
+}
+.arts-nft-detail-view > .nft-display-container {
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1;
+}
+.arts-nft-detail-view > .nft-display-container > .nft-display > * {
+  border-radius: 8px;
+}
+.arts-nft-detail-view > section {
+  aspect-ratio: 1;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .arts-nft-detail-view > section {
+    margin-top: 16px;
+  }
+}
+.arts-nft-detail-view > section > h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.arts-nft-detail-view > section > .info {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 24px);
+}
+.arts-nft-detail-view > section > .info > .name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.arts-nft-detail-view > section > .info > .owner {
+  color: #999;
+  margin-bottom: 16px;
+}
+.arts-nft-detail-view > section > .info > .owner > span {
+  color: #C7FEA2;
+}
+.arts-nft-detail-view > section > .info > .description {
+  flex-grow: 1;
+  max-height: 131.33px;
+  overflow-y: scroll;
+}
+.arts-nft-detail-view > section > .info > .send-button-container > a,
+.arts-nft-detail-view > section > .info > .update-button-container > a {
+  margin-top: 16px;
+  display: block;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.arts-nft-detail-view > section > .info > .send-button-container > a:hover,
+.arts-nft-detail-view > section > .info > .update-button-container > a:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.arts-nft-detail-view > section > .attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+.arts-nft-detail-view > section > .attributes > .attribute {
+  border: 1px solid #999;
+  padding: 16px;
+  border-radius: 8px;
+}
+.arts-nft-detail-view > section > .attributes > .attribute > .trait {
+  color: #C7FEA2;
+  margin-bottom: 16px;
+}
+.arts-nft-detail-view > section > .trade-form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.arts-nft-detail-view > section > .trade-form > .price-container {
+  flex-grow: 1;
+}
+.arts-nft-detail-view > section > .trade-form > .price-container > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+  font-size: 32px;
+}
+.arts-nft-detail-view > section > .trade-form > .price-container > .price > img {
+  margin-right: 4px;
+}
+.arts-nft-detail-view > section > .trade-form > .price-container > .won-price {
+  color: #999;
+}
+.arts-nft-detail-view > section > .trade-form > .sell-button,
+.arts-nft-detail-view > section > .trade-form > .cancel-sell-button,
+.arts-nft-detail-view > section > .trade-form > .buy-button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.arts-nft-detail-view > section > .trade-form > .sell-button:hover,
+.arts-nft-detail-view > section > .trade-form > .cancel-sell-button:hover,
+.arts-nft-detail-view > section > .trade-form > .buy-button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.arts-nft-detail-view > section > .offer-form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.arts-nft-detail-view > section > .offer-form > .list {
+  flex-grow: 1;
+}
+.arts-nft-detail-view > section > .offer-form > .list > .offer {
+  display: flex;
+}
+.arts-nft-detail-view > section > .offer-form > .list > .offer > .offeror {
+  flex-grow: 1;
+}
+.arts-nft-detail-view > section > .offer-form > .list > .offer > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.arts-nft-detail-view > section > .offer-form > .list > .offer > .price > img {
+  margin-right: 4px;
+}
+.arts-nft-detail-view > section > .offer-form > .list > .offer > .accept-offer-button,
+.arts-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button {
+  margin-left: 8px;
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.arts-nft-detail-view > section > .offer-form > .list > .offer > .accept-offer-button:hover,
+.arts-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.arts-nft-detail-view > section > .offer-form > .offer-button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.arts-nft-detail-view > section > .offer-form > .offer-button:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }

@@ -9,6 +9,10 @@ class ArtsContract extends KIP17Contract {
         super(Config.contracts.Arts, ArtsArtifact.abi);
     }
 
+    public async totalSupply(): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("totalSupply"));
+    }
+
     public async royalties(id: BigNumberish): Promise<BigNumber> {
         return BigNumber.from(await this.runMethod("royalties", id));
     }
@@ -27,6 +31,10 @@ class ArtsContract extends KIP17Contract {
 
     public async artistArtCount(artist: string): Promise<BigNumber> {
         return BigNumber.from(await this.runMethod("artistArtCount", artist));
+    }
+
+    public async artToArtist(id: BigNumberish): Promise<string> {
+        return await this.runMethod("artToArtist", id);
     }
 
     public async artistArts(artist: string, id: BigNumberish): Promise<BigNumber> {

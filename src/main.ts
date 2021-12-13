@@ -1,8 +1,12 @@
 import { SkyRouter } from "skyrouter";
 import PFPProposals from "./view/admin/PFPProposals";
 import PFPs from "./view/admin/PFPs";
-import Arts from "./view/Arts";
 import AddArtist from "./view/arts/AddArtist";
+import ArtDetail from "./view/arts/ArtDetail";
+import ArtsPageAll from "./view/arts/page/PageAll";
+import PageLayout from "./view/arts/page/PageLayout";
+import ArtsPageMine from "./view/arts/page/PageMine";
+import ArtsPageSelling from "./view/arts/page/PageSelling";
 import UpdateArt from "./view/arts/UpdateArt";
 import UpdateArtist from "./view/arts/UpdateArtist";
 import Home from "./view/Home";
@@ -15,14 +19,13 @@ import AddByMinter from "./view/pfp/AddByMinter";
 import AddByOwner from "./view/pfp/AddByOwner";
 import AddByPFPOwner from "./view/pfp/AddByPFPOwner";
 import NFTDetail from "./view/pfp/NFTDetail";
-import PageAll from "./view/pfp/page/PageAll";
-import PageLayout from "./view/pfp/page/PageLayout";
-import PageMine from "./view/pfp/page/PageMine";
-import PageSelling from "./view/pfp/page/PageSelling";
+import PFPPageAll from "./view/pfp/page/PageAll";
+import PFPPageLayout from "./view/pfp/page/PageLayout";
+import PFPPageMine from "./view/pfp/page/PageMine";
+import PFPPageSelling from "./view/pfp/page/PageSelling";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
 import Rankings from "./view/pfp/Rankings";
-import Sell from "./view/pfp/Sell";
 import Update from "./view/pfp/Update";
 import Me from "./view/user/Me";
 import MyArts from "./view/user/MyArts";
@@ -46,7 +49,6 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("pfp/add-by-minter", AddByMinter);
     SkyRouter.route("pfp/add-by-pfp-owner", AddByPFPOwner);
     SkyRouter.route("pfp/propose", Propose);
-    SkyRouter.route("pfp/sell", Sell);
     SkyRouter.route("pfp/rankings", Rankings);
 
     SkyRouter.route([
@@ -56,38 +58,36 @@ import MyPFPs from "./view/user/MyPFPs";
         "pfp/{addr}/mine/{page}",
         "pfp/{addr}/selling",
         "pfp/{addr}/selling/{page}",
-    ], PageLayout, [
+    ], PFPPageLayout, [
         "pfp/add",
         "pfp/add-by-owner",
         "pfp/add-by-minter",
         "pfp/add-by-pfp-owner",
         "pfp/propose",
-        "pfp/sell",
         "pfp/rankings",
     ]);
 
     SkyRouter.route([
         "pfp/{addr}",
         "pfp/{addr}/page/{page}",
-    ], PageAll, [
+    ], PFPPageAll, [
         "pfp/add",
         "pfp/add-by-owner",
         "pfp/add-by-minter",
         "pfp/add-by-pfp-owner",
         "pfp/propose",
-        "pfp/sell",
         "pfp/rankings",
     ]);
 
     SkyRouter.route([
         "pfp/{addr}/mine",
         "pfp/{addr}/mine/{page}",
-    ], PageMine);
+    ], PFPPageMine);
 
     SkyRouter.route([
         "pfp/{addr}/selling",
         "pfp/{addr}/selling/{page}",
-    ], PageSelling);
+    ], PFPPageSelling);
 
     SkyRouter.route("pfp/{addr}/{id}", NFTDetail, [
         "pfp/{addr}/mine",
@@ -98,9 +98,22 @@ import MyPFPs from "./view/user/MyPFPs";
     SkyRouter.route("pfp/{addr}/update", Update);
     SkyRouter.route("pfp/proposal/{proposalId}", Proposal);
 
-    SkyRouter.route("arts", Arts);
+    SkyRouter.route([
+        "arts",
+        "arts/mine",
+        "arts/selling",
+    ], PageLayout);
+
+    SkyRouter.route("arts", ArtsPageAll);
+    SkyRouter.route("arts/mine", ArtsPageMine);
+    SkyRouter.route("arts/selling", ArtsPageSelling);
+
     SkyRouter.route("arts/artists/add", AddArtist);
     SkyRouter.route("arts/artists/update", UpdateArtist);
+    SkyRouter.route("arts/{id}", ArtDetail, [
+        "arts/mine",
+        "arts/selling",
+    ]);
     SkyRouter.route("arts/{id}/update", UpdateArt, [
         "arts/artists/update",
     ]);

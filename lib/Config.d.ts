@@ -1,6 +1,7 @@
 declare const _default: {
     chainId: number;
     adminAddress: string;
+    fee: number;
     contracts: {
         PFPs: string;
         PFPStore: string;
@@ -8,6 +9,7 @@ declare const _default: {
         MixPriceEstimator: string;
         Artists: string;
         Arts: string;
+        ArtStore: string;
     };
 };
 export default _default;

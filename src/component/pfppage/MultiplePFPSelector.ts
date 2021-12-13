@@ -1,7 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import BuyPopup from "../BuyPopup";
-import SellPopup from "../SellPopup";
+import BuyPopup from "../pfptrade/BuyPopup";
+import SellPopup from "../pfptrade/SellPopup";
 
 export default class MultiplePFPSelector extends DomNode {
 
