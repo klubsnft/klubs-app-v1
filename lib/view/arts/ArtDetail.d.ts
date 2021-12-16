@@ -3,14 +3,15 @@ export default class ArtDetail implements View {
     private container;
     private nftDisplayContainer;
     private nameDisplay;
+    private artistDisplay;
     private ownerDisplay;
     private descriptionDisplay;
     private sendButtonContainer;
     private updateButtonContainer;
-    private attributesDisplay;
     private tradeForm;
     private offerForm;
     constructor(params: ViewParams);
+    private loadArtist;
     private loadTrade;
     private loadInfo;
     private loadSale;

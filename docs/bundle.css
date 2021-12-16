@@ -3299,6 +3299,13 @@ p {
   margin-top: 16px;
   margin-bottom: 16px;
 }
+.arts-nft-detail-view > section > .info > .artist {
+  color: #999;
+  margin-bottom: 16px;
+}
+.arts-nft-detail-view > section > .info > .artist > span {
+  color: #C7FEA2;
+}
 .arts-nft-detail-view > section > .info > .owner {
   color: #999;
   margin-bottom: 16px;

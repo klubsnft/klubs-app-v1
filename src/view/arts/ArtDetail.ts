@@ -12,6 +12,7 @@ import SellPopup from "../../component/arttrade/ArtSellPopup";
 import Prompt from "../../component/dialogue/Prompt";
 import NFTDisplay from "../../component/NFTDisplay";
 import Config from "../../Config";
+import ArtistsContract from "../../contracts/ArtistsContract";
 import ArtsContract from "../../contracts/ArtsContract";
 import ArtStoreContract from "../../contracts/ArtStoreContract";
 import Wallet from "../../klaytn/Wallet";
@@ -24,11 +25,11 @@ export default class ArtDetail implements View {
 
     private nftDisplayContainer: DomNode;
     private nameDisplay: DomNode;
+    private artistDisplay: DomNode;
     private ownerDisplay: DomNode;
     private descriptionDisplay: DomNode;
     private sendButtonContainer: DomNode;
     private updateButtonContainer: DomNode;
-    private attributesDisplay: DomNode;
     private tradeForm: DomNode;
     private offerForm: DomNode;
 
@@ -47,17 +48,12 @@ export default class ArtDetail implements View {
                 el("h2", "기본 정보"),
                 el(".info",
                     this.nameDisplay = el(".name"),
+                    this.artistDisplay = el(".artist"),
                     this.ownerDisplay = el(".owner"),
                     this.descriptionDisplay = el(".description"),
                     this.sendButtonContainer = el(".send-button-container"),
                     this.updateButtonContainer = el(".update-button-container"),
                 ),
-            ),
-
-            // 프로퍼티
-            el("section",
-                el("h2", "속성"),
-                this.attributesDisplay = el(".attributes"),
             ),
 
             // 가격
@@ -78,8 +74,22 @@ export default class ArtDetail implements View {
                 el("p", "경매 기능은 추후 제공됩니다."),
             ),
         ));
+        this.loadArtist(id);
         this.loadInfo(id);
         this.loadTrade(id);
+    }
+
+    private async loadArtist(id: number) {
+        const artist = await ArtsContract.artToArtist(id);
+        const extras = await ArtistsContract.extras(artist);
+        let data: any = {};
+        try {
+            data = JSON.parse(extras);
+        } catch (e) {
+            console.log(e);
+        }
+        this.artistDisplay.empty().appendText("작가 ");
+        this.artistDisplay.append(el("span", data.name !== undefined ? data.name : CommonUtil.shortenAddress(artist)));
     }
 
     private async loadTrade(id: number) {
@@ -126,15 +136,6 @@ export default class ArtDetail implements View {
             this.nameDisplay.empty().appendText(data.name !== undefined ? data.name : `#${id}`);
             if (data.description !== undefined) {
                 this.descriptionDisplay.domElement.innerHTML = xss(marked(data.description));
-            }
-            if (data.attributes !== undefined) {
-                this.attributesDisplay.empty();
-                for (const attribute of data.attributes) {
-                    el(".attribute",
-                        el(".trait", attribute.trait_type),
-                        el(".value", String(attribute.value)),
-                    ).appendTo(this.attributesDisplay);
-                }
             }
         } catch (e) {
             console.error(e);
