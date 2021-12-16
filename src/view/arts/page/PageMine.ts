@@ -65,7 +65,7 @@ export default class PageMine implements View {
             ids.sort((a, b) => a - b);
 
             for (const id of ids) {
-                new ArtNFTCard(id).appendTo(this.nftList);
+                new ArtNFTCard(id, false, true).appendTo(this.nftList);
             }
         }
 

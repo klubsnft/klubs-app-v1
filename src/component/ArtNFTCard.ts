@@ -11,6 +11,7 @@ export default class ArtNFTCard extends DomNode {
     constructor(
         private id: number,
         showingOffer?: boolean,
+        private showingForce?: boolean,
     ) {
         super(".art-nft-card");
         this.onDom("click", () => ViewUtil.go(`/arts/${id}`));
@@ -25,7 +26,7 @@ export default class ArtNFTCard extends DomNode {
         try {
             const result = await superagent.get(`https://api.klu.bs/arts/${this.id}`);
             const data = result.body;
-            if (data.image === undefined) {
+            if (data.image === undefined && this.showingForce !== true) {
                 this.delete();
             } else {
                 const saleInfo = await ArtStoreContract.sales(this.id);

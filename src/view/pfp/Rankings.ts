@@ -100,13 +100,15 @@ export default class Rankings implements View {
         result.body.sort((a: any, b: any) => {
             return b.total - a.total;
         });
+
+        let realIndex = 0;
         for (const [index, info] of result.body.entries()) {
             if (await PFPsContract.banned(info.id) !== true) {
                 const extras = await PFPsContract.extras(info.id);
                 if (extras.trim() !== "") {
                     let data: any = {};
                     try { data = JSON.parse(extras); } catch (e) { }
-                    if (this.container.deleted !== true) {
+                    if (data.name !== "" && data.hiding !== true && this.container.deleted !== true) {
 
                         let src;
                         if (data.icon === undefined || data.icon.trim() === "") {
@@ -117,7 +119,7 @@ export default class Rankings implements View {
 
                         this.list.append(
                             el("tr",
-                                el("td", String(index + 1)),
+                                el("td", String(realIndex + 1)),
                                 el("td", el("img", { src, height: "40" })),
                                 el("td", el("a", data.name, { click: () => ViewUtil.go(`/pfp/${info.id}`) })),
                                 el("td", CommonUtil.numberWithCommas(String(info.total)), " MIX"),
@@ -126,6 +128,7 @@ export default class Rankings implements View {
                                 el("td.mobile", CommonUtil.numberWithCommas(String(info.volume24h)), " MIX"),
                             ),
                         );
+                        realIndex += 1;
                     }
                 }
             }
