@@ -1689,7 +1689,8 @@ p {
   color: #999;
   margin-bottom: 16px;
 }
-.pfp-nft-detail-view > section > .info > .owner > span {
+.pfp-nft-detail-view > section > .info > .owner > span,
+.pfp-nft-detail-view > section > .info > .owner > a {
   color: #C7FEA2;
 }
 .pfp-nft-detail-view > section > .info > .description {
@@ -3303,14 +3304,16 @@ p {
   color: #999;
   margin-bottom: 16px;
 }
-.arts-nft-detail-view > section > .info > .artist > span {
+.arts-nft-detail-view > section > .info > .artist > span,
+.arts-nft-detail-view > section > .info > .artist > a {
   color: #C7FEA2;
 }
 .arts-nft-detail-view > section > .info > .owner {
   color: #999;
   margin-bottom: 16px;
 }
-.arts-nft-detail-view > section > .info > .owner > span {
+.arts-nft-detail-view > section > .info > .owner > span,
+.arts-nft-detail-view > section > .info > .owner > a {
   color: #C7FEA2;
 }
 .arts-nft-detail-view > section > .info > .description {
@@ -3446,6 +3449,12 @@ p {
 .item-view > .title {
   font-size: 28px;
 }
+.meme-view {
+  padding: 16px;
+}
+.meme-view > .title {
+  font-size: 28px;
+}
 .mix-view {
   max-width: 600px;
   margin: auto;
@@ -3470,6 +3479,24 @@ p {
 .mix-view > a:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.user-view > header {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.user-view > header > p {
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.user-view > main {
+  padding: 16px;
+  max-width: 1420px;
+  margin: auto;
 }
 .user-my-pfps-view > header {
   display: flex;

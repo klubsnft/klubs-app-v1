@@ -12,6 +12,7 @@ import UpdateArtist from "./view/arts/UpdateArtist";
 import Home from "./view/Home";
 import Item from "./view/Item";
 import Layout from "./view/Layout";
+import Meme from "./view/Meme";
 import Mix from "./view/Mix";
 import PFP from "./view/PFP";
 import Add from "./view/pfp/Add";
@@ -30,6 +31,7 @@ import Update from "./view/pfp/Update";
 import Me from "./view/user/Me";
 import MyArts from "./view/user/MyArts";
 import MyPFPs from "./view/user/MyPFPs";
+import User from "./view/user/User";
 
 (async () => {
 
@@ -42,6 +44,11 @@ import MyPFPs from "./view/user/MyPFPs";
         "user/my-pfps",
         "user/my-pfps/{page}",
     ], MyPFPs);
+    SkyRouter.route("user/{address}", User, [
+        "user/me",
+        "user/my-arts",
+        "user/my-pfps",
+    ]);
 
     SkyRouter.route("pfp", PFP);
     SkyRouter.route("pfp/add", Add);
@@ -119,6 +126,8 @@ import MyPFPs from "./view/user/MyPFPs";
     ]);
 
     SkyRouter.route("item", Item);
+    SkyRouter.route("meme", Meme);
+
     SkyRouter.route("mix", Mix);
 
     SkyRouter.route("admin/pfp-proposals", PFPProposals);

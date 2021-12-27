@@ -89,7 +89,9 @@ export default class ArtDetail implements View {
             console.log(e);
         }
         this.artistDisplay.empty().appendText("작가 ");
-        this.artistDisplay.append(el("span", data.name !== undefined ? data.name : CommonUtil.shortenAddress(artist)));
+        this.artistDisplay.append(el("a", data.name !== undefined ? data.name : CommonUtil.shortenAddress(artist), {
+            click: () => ViewUtil.go(`/user/${artist}`),
+        }));
     }
 
     private async loadTrade(id: number) {
@@ -98,10 +100,14 @@ export default class ArtDetail implements View {
         if (owner === ArtStoreContract.address) {
             this.ownerDisplay.empty().appendText("판매자 ");
             const saleInfo = await ArtStoreContract.sales(id);
-            this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(saleInfo.seller)));
+            this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(saleInfo.seller), {
+                click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
+            }));
         } else {
             this.ownerDisplay.empty().appendText("소유자 ");
-            this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(owner)));
+            this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(owner), {
+                click: () => ViewUtil.go(`/user/${owner}`),
+            }));
         }
 
         const address = await Wallet.loadAddress();

@@ -117,10 +117,14 @@ export default class NFTDetail implements View {
         if (owner === PFPStoreContract.address) {
             this.ownerDisplay.empty().appendText("판매자 ");
             const saleInfo = await PFPStoreContract.sales(addr, id);
-            this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(saleInfo.seller)));
+            this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(saleInfo.seller), {
+                click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
+            }));
         } else {
             this.ownerDisplay.empty().appendText("소유자 ");
-            this.ownerDisplay.append(el("span", CommonUtil.shortenAddress(owner)));
+            this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(owner), {
+                click: () => ViewUtil.go(`/user/${owner}`),
+            }));
         }
 
         const address = await Wallet.loadAddress();
