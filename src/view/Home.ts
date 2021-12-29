@@ -60,7 +60,7 @@ export default class Home implements View {
         this.pfpList.empty();
         const count = await PFPsContract.getAddrCount();
         let realCount = 0;
-        this.pfpList.style({ width: 100 * 316 });
+        this.pfpList.style({ width: 25 * 316 });
 
         const array = new Array(count.toNumber()).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
 
@@ -74,7 +74,7 @@ export default class Home implements View {
                         let data: any = {};
                         try { data = JSON.parse(extras); } catch (e) { }
                         if (data.name !== "" && data.hiding !== true && this.container.deleted !== true) {
-                            if (realCount < 100) {
+                            if (realCount < 25) {
                                 new PFPCard(addr, data).appendTo(this.pfpList);
                                 realCount += 1;
                             }
@@ -94,7 +94,7 @@ export default class Home implements View {
     private async loadArts() {
 
         this.artsList.empty();
-        this.artsList.style({ width: 50 * 216 });
+        this.artsList.style({ width: 25 * 216 });
 
         const totalSupply = (await ArtsContract.totalSupply()).toNumber();
         const ids = new Array(totalSupply).fill(undefined).map((a, i) => a = i).sort(() => Math.random() - 0.5);
@@ -104,7 +104,7 @@ export default class Home implements View {
             for (const id of ids) {
                 new ArtNFTCard(id).appendTo(this.artsList);
                 count += 1;
-                if (count === 50) {
+                if (count === 25) {
                     break;
                 }
             }
