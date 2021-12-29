@@ -43,7 +43,7 @@ export default class PFPCard extends DomNode {
         if (extra.banner === undefined || extra.banner.trim() === "") {
             this.bannerDisplay.domElement.src = "/images/placeholder.svg";
         } else {
-            this.bannerDisplay.domElement.src = extra.banner;
+            this.bannerDisplay.domElement.src = `https://api.klu.bs/thumbnail?url=${encodeURIComponent(extra.banner)}`;
         }
         this.bannerDisplay.onDom("error", () => {
             this.bannerDisplay.domElement.src = "/images/placeholder.svg";
@@ -52,7 +52,7 @@ export default class PFPCard extends DomNode {
         if (extra.icon === undefined || extra.icon.trim() === "") {
             this.iconDisplay.domElement.src = "/images/placeholder.svg";
         } else {
-            this.iconDisplay.domElement.src = extra.icon;
+            this.iconDisplay.domElement.src = `https://api.klu.bs/thumbnail?url=${encodeURIComponent(extra.icon)}`;
         }
         this.iconDisplay.onDom("error", () => {
             this.iconDisplay.domElement.src = "/images/placeholder.svg";
