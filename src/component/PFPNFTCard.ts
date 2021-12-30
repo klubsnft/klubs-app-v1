@@ -89,7 +89,7 @@ export default class PFPNFTCard extends DomNode {
     public showRarity(rarity: RarityInfo) {
         this.addClass("showing-rarity");
         this.rarityDisplay?.delete();
-        this.rarityDisplay = el(".rarity", CommonUtil.numberWithCommas(String(rarity.scores[this.id]))).appendTo(this);
+        this.rarityDisplay = el(".rarity", rarity.scores[this.id] === undefined ? "아직 계산되지 않았습니다." : CommonUtil.numberWithCommas(String(rarity.scores[this.id]))).appendTo(this);
     }
 
     public hideRarity() {
