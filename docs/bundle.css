@@ -3519,6 +3519,18 @@ p {
   color: #999;
   margin-bottom: 16px;
 }
+.user-my-pfps-view > section > .warning {
+  display: block;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.user-my-pfps-view > section > .warning > i {
+  margin-right: 6px;
+}
 .user-my-pfps-view > section > .list {
   margin-top: 16px;
   margin-bottom: 16px;
