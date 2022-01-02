@@ -1,6 +1,7 @@
 export default interface RarityInfo {
     totalCount: number,
     scores: { [id: number]: number },
+    rankings: { [id: number]: number },
     traitCounts: {
         [traitCount: number]: {
             count: number,

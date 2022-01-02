@@ -13,12 +13,18 @@ import ViewUtil from "../../ViewUtil";
 export default class PageLayout implements View {
 
     public static current: PageLayout;
-    private static rarities: { [addr: string]: any } = {};
+    private static rarities: { [addr: string]: RarityInfo } = {};
 
     public static async loadRarity(addr: string): Promise<RarityInfo | undefined> {
         if (this.rarities[addr] === undefined) {
             const rarity = await Loader.loadRarity(addr);
             if (rarity !== null) {
+                rarity.rankings = {};
+                const all = Object.entries(rarity.scores);
+                all.sort((a: any, b: any) => b[1] - a[1]);
+                for (const [index, [id]] of all.entries()) {
+                    rarity.rankings[parseInt(id, 10)] = index;
+                }
                 this.rarities[addr] = rarity;
             }
         }

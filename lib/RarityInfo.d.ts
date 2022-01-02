@@ -3,6 +3,9 @@ export default interface RarityInfo {
     scores: {
         [id: number]: number;
     };
+    rankings: {
+        [id: number]: number;
+    };
     traitCounts: {
         [traitCount: number]: {
             count: number;

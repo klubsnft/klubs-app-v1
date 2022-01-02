@@ -406,6 +406,15 @@ p {
   left: 8px;
   bottom: 8px;
   color: #C7FEA2;
+  display: flex;
+  align-items: flex-end;
+  width: calc(100% - 16px);
+}
+.pfp-nft-card > .rarity > .number-with-commas {
+  flex-grow: 1;
+}
+.pfp-nft-card > .rarity > .rank {
+  font-size: 12px;
 }
 .card-view:hover {
   background-color: #222222;
@@ -448,12 +457,6 @@ p {
 }
 .art-nft-card > .info > .price > img {
   margin-right: 4px;
-}
-.art-nft-card > .rarity {
-  position: absolute;
-  left: 8px;
-  bottom: 8px;
-  color: #C7FEA2;
 }
 .card-view:hover {
   background-color: #222222;

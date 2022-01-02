@@ -204,6 +204,11 @@ export default class PageMine implements View, PFPPage {
                 orders[data.nftId] = index;
             }
             ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+        } else if (this.sortor.sortType === "rarity-desc") {
+            if (this.rarity !== undefined) {
+                const orders = this.rarity.rankings;
+                ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+            }
         }
 
         const start = (this.page - 1) * 50;

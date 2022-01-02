@@ -151,12 +151,7 @@ export default class PageAll implements View, PFPPage {
             ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
         } else if (this.sortor.sortType === "rarity-desc") {
             if (this.rarity !== undefined) {
-                const all = Object.entries(this.rarity.scores);
-                all.sort((a, b) => b[1] - a[1]);
-                const orders: { [id: number]: number } = {};
-                for (const [index, [id]] of all.entries()) {
-                    orders[parseInt(id, 10)] = index;
-                }
+                const orders = this.rarity.rankings;
                 ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
             }
         }

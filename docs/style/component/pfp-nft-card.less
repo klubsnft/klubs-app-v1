@@ -46,10 +46,21 @@
     }
 
     >.rarity {
-        position: absolute;
-        left    : 8px;
-        bottom  : 8px;
-        color   : @brand-primary;
+        position   : absolute;
+        left       : 8px;
+        bottom     : 8px;
+        color      : @brand-primary;
+        display    : flex;
+        align-items: flex-end;
+        width      : calc(100% - 16px);
+
+        >.number-with-commas {
+            flex-grow: 1;
+        }
+
+        >.rank {
+            font-size: 12px;
+        }
     }
 }
 

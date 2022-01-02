@@ -182,6 +182,13 @@ export default class PageSelling implements View, PFPPage {
             await Promise.all(promises);
         }
 
+        if (this.sortor.sortType === "rarity-desc") {
+            if (this.rarity !== undefined) {
+                const orders = this.rarity.rankings;
+                ids.sort((a, b) => (orders[a] === undefined ? Infinity : orders[a]) - (orders[b] === undefined ? Infinity : orders[b]));
+            }
+        }
+
         const lastPage = totalSupply === 0 ? 1 : Math.ceil(totalSupply / 50);
         if (this.page > lastPage) {
             this.page = lastPage;
