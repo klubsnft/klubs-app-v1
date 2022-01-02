@@ -5,16 +5,19 @@ import { SkyRouter, View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import xss from "xss";
 import CommonUtil from "../../CommonUtil";
-import AcceptOfferPopup from "../../component/pfptrade/AcceptOfferPopup";
-import BuyPopup from "../../component/pfptrade/BuyPopup";
 import Prompt from "../../component/dialogue/Prompt";
 import NFTDisplay from "../../component/NFTDisplay";
+import AcceptOfferPopup from "../../component/pfptrade/AcceptOfferPopup";
+import BidPopup from "../../component/pfptrade/BidPopup";
+import BuyPopup from "../../component/pfptrade/BuyPopup";
+import CreateAuctionPopup from "../../component/pfptrade/CreateAuctionPopup";
 import OfferPopup from "../../component/pfptrade/OfferPopup";
 import SellPopup from "../../component/pfptrade/SellPopup";
 import Config from "../../Config";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import KIP17Contract from "../../contracts/standard/KIP17Contract";
+import Klaytn from "../../klaytn/Klaytn";
 import Wallet from "../../klaytn/Wallet";
 import Loader from "../../Loader";
 import Layout from "../Layout";
@@ -35,6 +38,8 @@ export default class NFTDetail implements View {
     private attributesDisplay: DomNode;
     private tradeForm: DomNode;
     private offerForm: DomNode;
+    private auctionForm: DomNode;
+    private activity: DomNode;
 
     constructor(params: ViewParams) {
 
@@ -90,7 +95,13 @@ export default class NFTDetail implements View {
             // 경매
             el("section",
                 el("h2", "경매"),
-                el("p", "경매 기능은 추후 제공됩니다."),
+                this.auctionForm = el(".auction-form"),
+            ),
+
+            // 거래 이력
+            el("section",
+                el("h2", "거래 이력"),
+                this.activity = el(".activity"),
             ),
         ));
         this.loadPFP(addr);
@@ -116,10 +127,18 @@ export default class NFTDetail implements View {
         const owner = await this.contract.ownerOf(id);
         if (owner === PFPStoreContract.address) {
             this.ownerDisplay.empty().appendText("판매자 ");
-            const saleInfo = await PFPStoreContract.sales(addr, id);
-            this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(saleInfo.seller), {
-                click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
-            }));
+            const selling = await PFPStoreContract.checkSelling(addr, id);
+            if (selling === true) {
+                const saleInfo = await PFPStoreContract.sales(addr, id);
+                this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(saleInfo.seller), {
+                    click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
+                }));
+            } else {
+                const auction = await PFPStoreContract.auctions(addr, id);
+                this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(auction.seller), {
+                    click: () => ViewUtil.go(`/user/${auction.seller}`),
+                }));
+            }
         } else {
             this.ownerDisplay.empty().appendText("소유자 ");
             this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(owner), {
@@ -139,6 +158,8 @@ export default class NFTDetail implements View {
 
         this.loadSale(address, owner, addr, id);
         this.loadOffers(address, owner, addr, id);
+        this.loadAuction(address, owner, addr, id);
+        this.loadActivity(address, owner, addr, id);
     }
 
     private async loadInfo(addr: string, id: number) {
@@ -277,6 +298,129 @@ export default class NFTDetail implements View {
                     click: () => new OfferPopup(addr, id),
                 }),
             );
+        }
+    }
+
+    private async loadAuction(walletAddress: string | undefined, owner: string, addr: string, id: number) {
+
+        const auctionStarted = await PFPStoreContract.checkAuction(addr, id);
+        if (auctionStarted === true) {
+
+            const auction = await PFPStoreContract.auctions(addr, id);
+            const biddingCount = (await PFPStoreContract.biddingCount(addr, id)).toNumber();
+
+            const diff = auction.endBlock - await Klaytn.loadBlockNumber();
+            if (diff < 0) {
+                this.auctionForm.append(el("p", "경매 종료됨"));
+            } else {
+                this.auctionForm.append(el("p", `경매 종료까지 ${diff} 블록 남음`));
+            }
+
+            const list = el(".list").appendTo(this.auctionForm);
+
+            const promises: Promise<void>[] = [];
+            for (let i = 0; i < biddingCount; i += 1) {
+                const promise = async (biddingId: number) => {
+                    try {
+                        const bidding = await PFPStoreContract.biddings(addr, id, biddingId);
+                        if (bidding.price.gt(0)) {
+                            el(".bid",
+                                el(".bidder",
+                                    CommonUtil.shortenAddress(bidding.bidder),
+                                ),
+                                el(".price",
+                                    el("img", { src: "/images/mix.png", height: "24" }),
+                                    el("span", CommonUtil.numberWithCommas(utils.formatEther(bidding.price))),
+                                ),
+                            ).appendTo(list);
+                        }
+                    } catch (e) {
+                        console.error(e);
+                    }
+                };
+                promises.push(promise(i));
+            }
+            await Promise.all(promises);
+
+            if (diff < 0) {
+                if (biddingCount === 0) {
+                    if (walletAddress === auction.seller) {
+                        this.auctionForm.append(
+                            el("a.claim-button", "경매 종료", {
+                                click: async () => {
+                                    await PFPStoreContract.cancelAuction(addr, id);
+                                    ViewUtil.waitTransactionAndRefresh();
+                                },
+                            }),
+                        );
+                    }
+                } else {
+                    this.auctionForm.append(
+                        el("a.claim-button", "경매 종료", {
+                            click: async () => {
+                                await PFPStoreContract.claim(addr, id);
+                                ViewUtil.waitTransactionAndRefresh();
+                            },
+                        }),
+                    );
+                }
+            }
+
+            else if (walletAddress !== auction.seller) {
+                this.auctionForm.append(
+                    el("a.bid-button", "입찰하기", {
+                        click: () => new BidPopup(addr, id),
+                    }),
+                );
+            }
+        }
+
+        else if (walletAddress === owner) {
+            this.auctionForm.append(
+                el("a.create-auction-button", "경매 시작하기", {
+                    click: () => new CreateAuctionPopup(addr, id),
+                }),
+            );
+        }
+    }
+
+    private async loadActivity(walletAddress: string | undefined, owner: string, addr: string, id: number) {
+        const list = el(".list").appendTo(this.activity);
+        const result = await superagent.get(`https://api.klu.bs/v2/pfp/${addr}/${id}/trades`);
+        for (const trade of result.body) {
+            let eventName;
+            if (trade.event === "Sell") {
+                eventName = "판매";
+            } else if (trade.event === "Buy") {
+                eventName = "구매";
+            } else if (trade.event === "CancelSale") {
+                eventName = "판매 취소";
+            } else if (trade.event === "MakeOffer") {
+                eventName = "제안";
+            } else if (trade.event === "CancelOffer") {
+                eventName = "제안 취소";
+            } else if (trade.event === "AcceptOffer") {
+                eventName = "제안 수락";
+            } else if (trade.event === "CreateAuction") {
+                eventName = "경매 시작";
+            } else if (trade.event === "CancelAuction") {
+                eventName = "경매 취소";
+            } else if (trade.event === "Bid") {
+                eventName = "입찰";
+            } else if (trade.event === "Claim") {
+                eventName = "경매 종료";
+            }
+
+            el(".activity",
+                el(".event", eventName),
+                el(".user",
+                    CommonUtil.shortenAddress(trade.user),
+                ),
+                trade.price === undefined ? undefined : el(".price",
+                    el("img", { src: "/images/mix.png", height: "24" }),
+                    el("span", CommonUtil.numberWithCommas(utils.formatEther(trade.price))),
+                ),
+            ).appendTo(list);
         }
     }
 

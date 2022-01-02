@@ -11,6 +11,10 @@ class Klaytn {
     public async balanceOf(address: string) {
         return BigNumber.from(await this.caver.klay.getBalance(address));
     }
+
+    public async loadBlockNumber() {
+        return await this.caver.klay.getBlockNumber();
+    }
 }
 
 export default new Klaytn();

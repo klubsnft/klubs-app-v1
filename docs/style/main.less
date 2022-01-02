@@ -1,9 +1,9 @@
 @import "base.less";
 @import "palette.less";
-@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
 
-* {
-    font-family: "Noto Sans KR", sans-serif;
+*:not(i) {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
 }
 
 body {
@@ -62,14 +62,20 @@ p {
 @import "component/nftdisplay.less";
 @import "component/pfppage/pfppagination.less";
 @import "component/pfppage/multiple-pfp-selector.less";
+
 @import "component/pfptrade/sellpopup.less";
 @import "component/pfptrade/buypopup.less";
 @import "component/pfptrade/offerpopup.less";
 @import "component/pfptrade/acceptofferpopup.less";
+@import "component/pfptrade/createauctionpopup.less";
+@import "component/pfptrade/bidpopup.less";
+
 @import "component/arttrade/sellpopup.less";
 @import "component/arttrade/buypopup.less";
 @import "component/arttrade/offerpopup.less";
 @import "component/arttrade/acceptofferpopup.less";
+@import "component/arttrade/createauctionpopup.less";
+@import "component/arttrade/bidpopup.less";
 
 // views
 @import "view/layout.less";

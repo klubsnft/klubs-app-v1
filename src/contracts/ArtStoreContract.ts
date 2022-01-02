@@ -22,6 +22,17 @@ interface OfferInfo {
     price: BigNumber,
 }
 
+interface Auction {
+    seller: string,
+    startPrice: BigNumber,
+    endBlock: number,
+}
+
+interface Bidding {
+    bidder: string,
+    price: BigNumber,
+}
+
 class ArtStoreContract extends Contract {
 
     constructor() {
@@ -34,6 +45,10 @@ class ArtStoreContract extends Contract {
             seller: results[0],
             price: BigNumber.from(results[1]),
         };
+    }
+
+    public async checkSelling(id: BigNumberish): Promise<boolean> {
+        return await this.runMethod("checkSelling", id);
     }
 
     public async userSellInfo(seller: string, index: BigNumberish): Promise<ArtInfo> {
@@ -143,6 +158,82 @@ class ArtStoreContract extends Contract {
                 await ArtsContract.setApprovalForAll(this.address, true);
             }
             await this.runWalletMethod("acceptOffer", id, offerId);
+        }
+    }
+
+    public async auctions(id: BigNumberish): Promise<Auction> {
+        const results = await this.runMethod("auctions", id);
+        return {
+            seller: results[0],
+            startPrice: BigNumber.from(results[1]),
+            endBlock: parseInt(results[2], 10),
+        };
+    }
+
+    public async createAuction(id: BigNumberish, startPrice: BigNumberish, endBlock: BigNumberish): Promise<void> {
+        const owner = await Wallet.loadAddress();
+        if (owner !== undefined) {
+            if (await ArtsContract.isApprovedForAll(owner, this.address) !== true) {
+                await ArtsContract.setApprovalForAll(this.address, true);
+            }
+            await this.runWalletMethod("createAuction", id, startPrice, endBlock);
+        }
+    }
+
+    public async checkAuction(id: BigNumberish): Promise<boolean> {
+        return await this.runMethod("checkAuction", id);
+    }
+
+    public async userAuctionInfoLength(seller: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("userAuctionInfoLength", seller));
+    }
+
+    public async userAuctionInfo(seller: string, index: BigNumberish): Promise<ArtInfo> {
+        const results = await this.runMethod("userAuctionInfo", seller, index);
+        return {
+            id: parseInt(results[1], 10),
+            price: BigNumber.from(results[2]),
+        };
+    }
+
+    public async biddings(id: BigNumberish, biddingId: BigNumberish): Promise<Bidding> {
+        const results = await this.runMethod("biddings", id, biddingId);
+        return {
+            bidder: results[0],
+            price: BigNumber.from(results[1]),
+        };
+    }
+
+    public async biddingCount(id: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("biddingCount", id));
+    }
+
+    public async userBiddingInfoLength(bidder: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("userBiddingInfoLength", bidder));
+    }
+
+    public async claim(id: BigNumberish): Promise<void> {
+        await this.runWalletMethod("claim", id);
+    }
+
+    public async cancelAuction(id: BigNumberish): Promise<void> {
+        await this.runWalletMethod("cancelAuction", id);
+    }
+
+    public async bid(id: BigNumberish, price: BigNumberish): Promise<void> {
+        const owner = await Wallet.loadAddress();
+        if (owner !== undefined) {
+            if ((await MixContract.allowance(owner, this.address)).lt(constants.MaxUint256.div(2))) {
+                await MixContract.approve(this.address, constants.MaxUint256);
+                await new Promise<void>((resolve) => {
+                    setTimeout(async () => {
+                        await this.runWalletMethod("bid", id, price);
+                        resolve();
+                    }, 2000);
+                });
+            } else {
+                await this.runWalletMethod("bid", id, price);
+            }
         }
     }
 }

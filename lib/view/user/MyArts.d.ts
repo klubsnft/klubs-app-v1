@@ -5,6 +5,8 @@ export default class MyArts implements View {
     private artistArtsList;
     private sellingLoading;
     private sellingList;
+    private auctionLoading;
+    private auctionList;
     private offeringLoading;
     private offeringList;
     private myNFTLoading;
@@ -13,6 +15,7 @@ export default class MyArts implements View {
     private load;
     private loadArtistArts;
     private loadSelling;
+    private loadAuctions;
     private loadOffering;
     private loadMyNFTs;
     changeParams(params: ViewParams, uri: string): void;

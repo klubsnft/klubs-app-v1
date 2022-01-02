@@ -23,6 +23,17 @@ interface OfferInfo {
     price: BigNumber,
 }
 
+interface Auction {
+    seller: string,
+    startPrice: BigNumber,
+    endBlock: number,
+}
+
+interface Bidding {
+    bidder: string,
+    price: BigNumber,
+}
+
 class PFPStoreContract extends Contract {
 
     constructor() {
@@ -35,6 +46,10 @@ class PFPStoreContract extends Contract {
             seller: results[0],
             price: BigNumber.from(results[1]),
         };
+    }
+
+    public async checkSelling(addr: string, id: BigNumberish): Promise<boolean> {
+        return await this.runMethod("checkSelling", addr, id);
     }
 
     public async userSellInfo(seller: string, index: BigNumberish): Promise<PFPInfo> {
@@ -150,6 +165,84 @@ class PFPStoreContract extends Contract {
                 await nftContract.setApprovalForAll(this.address, true);
             }
             await this.runWalletMethod("acceptOffer", addr, id, offerId);
+        }
+    }
+
+    public async auctions(addr: string, id: BigNumberish): Promise<Auction> {
+        const results = await this.runMethod("auctions", addr, id);
+        return {
+            seller: results[0],
+            startPrice: BigNumber.from(results[1]),
+            endBlock: parseInt(results[2], 10),
+        };
+    }
+
+    public async createAuction(addr: string, id: BigNumberish, startPrice: BigNumberish, endBlock: BigNumberish): Promise<void> {
+        const owner = await Wallet.loadAddress();
+        if (owner !== undefined) {
+            const nftContract = new KIP17Contract(addr);
+            if (await nftContract.isApprovedForAll(owner, this.address) !== true) {
+                await nftContract.setApprovalForAll(this.address, true);
+            }
+            await this.runWalletMethod("createAuction", addr, id, startPrice, endBlock);
+        }
+    }
+
+    public async checkAuction(addr: string, id: BigNumberish): Promise<boolean> {
+        return await this.runMethod("checkAuction", addr, id);
+    }
+
+    public async userAuctionInfoLength(seller: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("userAuctionInfoLength", seller));
+    }
+    
+    public async userAuctionInfo(seller: string, index: BigNumberish): Promise<PFPInfo> {
+        const results = await this.runMethod("userAuctionInfo", seller, index);
+        return {
+            pfp: results[0],
+            id: parseInt(results[1], 10),
+            price: BigNumber.from(results[2]),
+        };
+    }
+
+    public async biddings(addr: string, id: BigNumberish, biddingId: BigNumberish): Promise<Bidding> {
+        const results = await this.runMethod("biddings", addr, id, biddingId);
+        return {
+            bidder: results[0],
+            price: BigNumber.from(results[1]),
+        };
+    }
+
+    public async biddingCount(addr: string, id: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("biddingCount", addr, id));
+    }
+
+    public async userBiddingInfoLength(bidder: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("userBiddingInfoLength", bidder));
+    }
+
+    public async claim(addr: string, id: BigNumberish): Promise<void> {
+        await this.runWalletMethod("claim", addr, id);
+    }
+
+    public async cancelAuction(addr: string, id: BigNumberish): Promise<void> {
+        await this.runWalletMethod("cancelAuction", addr, id);
+    }
+
+    public async bid(addr: string, id: BigNumberish, price: BigNumberish): Promise<void> {
+        const owner = await Wallet.loadAddress();
+        if (owner !== undefined) {
+            if ((await MixContract.allowance(owner, this.address)).lt(constants.MaxUint256.div(2))) {
+                await MixContract.approve(this.address, constants.MaxUint256);
+                await new Promise<void>((resolve) => {
+                    setTimeout(async () => {
+                        await this.runWalletMethod("bid", addr, id, price);
+                        resolve();
+                    }, 2000);
+                });
+            } else {
+                await this.runWalletMethod("bid", addr, id, price);
+            }
         }
     }
 }

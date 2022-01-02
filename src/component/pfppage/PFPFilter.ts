@@ -37,7 +37,7 @@ export default class PFPFilter extends DomNode {
                     },
                     el("option", trait, { value: "All" }),
                     el("option", `None (${none.count})`, { value: "" }),
-                    ...Object.entries(values).map(([value, r]) => {
+                    ...Object.entries(values).sort((a, b) => a[1].count - b[1].count).map(([value, r]) => {
                         if (value !== "") {
                             return el("option", `${value} (${r.count})`, { value });
                         }

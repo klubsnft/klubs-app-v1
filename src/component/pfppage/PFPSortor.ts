@@ -13,8 +13,9 @@ export default class PFPSortor extends DomNode {
             multiple === "buy" ? el("a.multiple-buy-button", "다중 구매", { click: () => this.fireEvent("multiple-buy") }) : undefined,
             this.select = el("select",
                 el("option", "기본 정렬", { value: "" }),
-                el("option", "최저가순", { value: "price-asc" }),
-                el("option", "최고가순", { value: "price-desc" }),
+                el("option", "최저가 순", { value: "price-asc" }),
+                el("option", "최고가 순", { value: "price-desc" }),
+                el("option", "희소 점수 순", { value: "rarity-desc" }),
                 {
                     change: () => {
                         pageView.loadNFTs();

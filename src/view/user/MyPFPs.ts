@@ -21,6 +21,9 @@ export default class MyPFPs implements View, PFPPage {
     private sellingLoading: Loading;
     private sellingList: DomNode;
 
+    private auctionLoading: Loading;
+    private auctionList: DomNode;
+
     private offeringLoading: Loading;
     private offeringList: DomNode;
 
@@ -49,6 +52,11 @@ export default class MyPFPs implements View, PFPPage {
                 this.sellingList = el(".list"),
             ),
             el("section",
+                el("h2", "내가 경매 진행중인 PFP"),
+                this.auctionLoading = new Loading(),
+                this.auctionList = el(".list"),
+            ),
+            el("section",
                 el("h2", "내가 가격을 제시한 PFP"),
                 this.offeringLoading = new Loading(),
                 this.offeringList = el(".list"),
@@ -74,6 +82,7 @@ export default class MyPFPs implements View, PFPPage {
         if (address !== undefined) {
             this.loadManaging(address);
             this.loadSelling(address);
+            this.loadAuctions(address);
             this.loadOffering(address);
             this.loadMyNFTs(address);
         }
@@ -123,6 +132,28 @@ export default class MyPFPs implements View, PFPPage {
 
         if (this.container.deleted !== true) {
             this.sellingLoading.delete();
+        }
+    }
+
+    private async loadAuctions(address: string) {
+
+        this.auctionList.empty();
+        const count = (await PFPStoreContract.userAuctionInfoLength(address)).toNumber();
+
+        const promises: Promise<void>[] = [];
+        for (let i = 0; i < count; i += 1) {
+            const promise = async (index: number) => {
+                const info = await PFPStoreContract.userAuctionInfo(address, index);
+                if (this.container.deleted !== true) {
+                    new PFPNFTCard(info.pfp, info.id).appendTo(this.auctionList);
+                }
+            };
+            promises.push(promise(i));
+        }
+        await Promise.all(promises);
+
+        if (this.container.deleted !== true) {
+            this.auctionLoading.delete();
         }
     }
 

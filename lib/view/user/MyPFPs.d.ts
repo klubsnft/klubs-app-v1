@@ -6,6 +6,8 @@ export default class MyPFPs implements View, PFPPage {
     private managingList;
     private sellingLoading;
     private sellingList;
+    private auctionLoading;
+    private auctionList;
     private offeringLoading;
     private offeringList;
     private myNFTLoading;
@@ -17,6 +19,7 @@ export default class MyPFPs implements View, PFPPage {
     private load;
     private loadManaging;
     private loadSelling;
+    private loadAuctions;
     private loadOffering;
     private loadMyNFTs;
     loadNFTs(): Promise<void>;

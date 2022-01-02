@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css);
 /*
 https://github.com/Hanul/sky-css-base
 v0.0.1 | 20210109
@@ -166,8 +166,8 @@ input {
   clear: both;
   visibility: hidden;
 }
-* {
-  font-family: "Noto Sans KR", sans-serif;
+*:not(i) {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
 }
 body {
   background: #121212;
@@ -1072,6 +1072,163 @@ p {
   background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+.pfp-create-auction-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.pfp-create-auction-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.pfp-create-auction-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.pfp-create-auction-popup > .info {
+  padding: 16px;
+  border-top: 1px solid #666;
+  margin-bottom: 16px;
+}
+.pfp-create-auction-popup > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.pfp-create-auction-popup > .info > .nft-display {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+.pfp-create-auction-popup > .info > .nft-display > * {
+  border-radius: 4px;
+}
+.pfp-create-auction-popup > .info > label {
+  display: block;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 16px;
+}
+.pfp-create-auction-popup > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.pfp-create-auction-popup > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.pfp-create-auction-popup > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.pfp-create-auction-popup > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.pfp-create-auction-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.pfp-create-auction-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-create-auction-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.pfp-bid-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.pfp-bid-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.pfp-bid-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.pfp-bid-popup > .list {
+  padding: 0 16px;
+}
+.pfp-bid-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.pfp-bid-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.pfp-bid-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.pfp-bid-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.pfp-bid-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.pfp-bid-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.pfp-bid-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.pfp-bid-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.pfp-bid-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.pfp-bid-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.pfp-bid-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.pfp-bid-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 .art-sell-popup {
   position: relative;
   max-width: 600px;
@@ -1369,6 +1526,163 @@ p {
   border-radius: 4px;
 }
 .art-accept-offer-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.art-create-auction-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.art-create-auction-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.art-create-auction-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.art-create-auction-popup > .info {
+  padding: 16px;
+  border-top: 1px solid #666;
+  margin-bottom: 16px;
+}
+.art-create-auction-popup > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.art-create-auction-popup > .info > .nft-display {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+.art-create-auction-popup > .info > .nft-display > * {
+  border-radius: 4px;
+}
+.art-create-auction-popup > .info > label {
+  display: block;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 16px;
+}
+.art-create-auction-popup > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.art-create-auction-popup > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.art-create-auction-popup > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.art-create-auction-popup > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.art-create-auction-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.art-create-auction-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.art-create-auction-popup > .button-container > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.art-bid-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.art-bid-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.art-bid-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.art-bid-popup > .list {
+  padding: 0 16px;
+}
+.art-bid-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.art-bid-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.art-bid-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.art-bid-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.art-bid-popup > .list > section > .info > .name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.art-bid-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.art-bid-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.art-bid-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #C7FEA2;
+}
+.art-bid-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #C7FEA2;
+}
+.art-bid-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.art-bid-popup > .button-container > button {
+  background-color: transparent;
+  color: #C7FEA2;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.art-bid-popup > .button-container > button:hover {
   background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -1776,6 +2090,7 @@ p {
 }
 .pfp-nft-detail-view > section > .offer-form > .list {
   flex-grow: 1;
+  overflow-y: auto;
 }
 .pfp-nft-detail-view > section > .offer-form > .list > .offer {
   display: flex;
@@ -1819,6 +2134,84 @@ p {
 .pfp-nft-detail-view > section > .offer-form > .offer-button:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-nft-detail-view > section > .auction-form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.pfp-nft-detail-view > section > .auction-form > p {
+  margin-bottom: 16px;
+  color: #999;
+}
+.pfp-nft-detail-view > section > .auction-form > .list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.pfp-nft-detail-view > section > .auction-form > .list > .bid {
+  display: flex;
+}
+.pfp-nft-detail-view > section > .auction-form > .list > .bid > .bidder {
+  flex-grow: 1;
+}
+.pfp-nft-detail-view > section > .auction-form > .list > .bid > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.pfp-nft-detail-view > section > .auction-form > .list > .bid > .price > img {
+  margin-right: 4px;
+}
+.pfp-nft-detail-view > section > .auction-form > .create-auction-button,
+.pfp-nft-detail-view > section > .auction-form > .claim-button,
+.pfp-nft-detail-view > section > .auction-form > .bid-button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.pfp-nft-detail-view > section > .auction-form > .create-auction-button:hover,
+.pfp-nft-detail-view > section > .auction-form > .claim-button:hover,
+.pfp-nft-detail-view > section > .auction-form > .bid-button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.pfp-nft-detail-view > section > .activity {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.pfp-nft-detail-view > section > .activity > p {
+  margin-bottom: 16px;
+  color: #999;
+}
+.pfp-nft-detail-view > section > .activity > .list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.pfp-nft-detail-view > section > .activity > .list > .activity {
+  display: flex;
+}
+.pfp-nft-detail-view > section > .activity > .list > .activity > .event {
+  width: 80px;
+  height: 24px;
+  color: #C7FEA2;
+}
+.pfp-nft-detail-view > section > .activity > .list > .activity > .user {
+  flex-grow: 1;
+}
+.pfp-nft-detail-view > section > .activity > .list > .activity > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.pfp-nft-detail-view > section > .activity > .list > .activity > .price > img {
+  margin-right: 4px;
 }
 .pfp-detail-view {
   display: flex;
@@ -3442,6 +3835,84 @@ p {
 .arts-nft-detail-view > section > .offer-form > .offer-button:hover {
   background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.arts-nft-detail-view > section > .auction-form {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.arts-nft-detail-view > section > .auction-form > p {
+  margin-bottom: 16px;
+  color: #999;
+}
+.arts-nft-detail-view > section > .auction-form > .list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.arts-nft-detail-view > section > .auction-form > .list > .bid {
+  display: flex;
+}
+.arts-nft-detail-view > section > .auction-form > .list > .bid > .bidder {
+  flex-grow: 1;
+}
+.arts-nft-detail-view > section > .auction-form > .list > .bid > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.arts-nft-detail-view > section > .auction-form > .list > .bid > .price > img {
+  margin-right: 4px;
+}
+.arts-nft-detail-view > section > .auction-form > .create-auction-button,
+.arts-nft-detail-view > section > .auction-form > .claim-button,
+.arts-nft-detail-view > section > .auction-form > .bid-button {
+  margin-top: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.arts-nft-detail-view > section > .auction-form > .create-auction-button:hover,
+.arts-nft-detail-view > section > .auction-form > .claim-button:hover,
+.arts-nft-detail-view > section > .auction-form > .bid-button:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.arts-nft-detail-view > section > .activity {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+}
+.arts-nft-detail-view > section > .activity > p {
+  margin-bottom: 16px;
+  color: #999;
+}
+.arts-nft-detail-view > section > .activity > .list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.arts-nft-detail-view > section > .activity > .list > .activity {
+  display: flex;
+}
+.arts-nft-detail-view > section > .activity > .list > .activity > .event {
+  width: 80px;
+  height: 24px;
+  color: #C7FEA2;
+}
+.arts-nft-detail-view > section > .activity > .list > .activity > .user {
+  flex-grow: 1;
+}
+.arts-nft-detail-view > section > .activity > .list > .activity > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.arts-nft-detail-view > section > .activity > .list > .activity > .price > img {
+  margin-right: 4px;
 }
 .item-view {
   padding: 16px;
