@@ -41,7 +41,7 @@ export default class MyArts implements View {
                 this.sellingList = el(".list"),
             ),
             el("section",
-                el("h2", "내가 경매 진행중인 PFP"),
+                el("h2", "내가 경매 진행중인 Arts"),
                 this.auctionLoading = new Loading(),
                 this.auctionList = el(".list"),
             ),
@@ -113,6 +113,7 @@ export default class MyArts implements View {
             this.sellingLoading.delete();
         }
     }
+
     private async loadAuctions(address: string) {
 
         this.auctionList.empty();

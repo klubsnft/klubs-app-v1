@@ -199,8 +199,8 @@ class ArtStoreContract extends Contract {
     public async userAuctionInfo(seller: string, index: BigNumberish): Promise<ArtInfo> {
         const results = await this.runMethod("userAuctionInfo", seller, index);
         return {
-            id: parseInt(results[1], 10),
-            price: BigNumber.from(results[2]),
+            id: parseInt(results[0], 10),
+            price: BigNumber.from(results[1]),
         };
     }
 
