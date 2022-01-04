@@ -168,6 +168,14 @@ class PFPStoreContract extends Contract {
         }
     }
 
+    public async onAuctionsCount(addr: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("onAuctionsCount", addr));
+    }
+
+    public async onAuctions(addr: string, index: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("onAuctions", addr, index));
+    }
+
     public async auctions(addr: string, id: BigNumberish): Promise<Auction> {
         const results = await this.runMethod("auctions", addr, id);
         return {

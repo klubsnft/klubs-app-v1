@@ -8,6 +8,7 @@ export default class ArtsPageTabs extends DomNode {
 
     private mineTab: DomNode;
     private saleTab: DomNode;
+    private auctionTab: DomNode;
 
     constructor(type: string) {
         super(".arts-page-tabs");
@@ -20,6 +21,9 @@ export default class ArtsPageTabs extends DomNode {
             }),
             this.saleTab = el(`a.tab${type === "selling" ? ".on" : ""}`, "판매중", {
                 click: () => ViewUtil.go(`/arts/selling`),
+            }),
+            this.auctionTab = el(`a.tab${type === "auctions" ? ".on" : ""}`, "경매중", {
+                click: () => ViewUtil.go(`/arts/auctions`),
             }),
         );
         this.load();
@@ -35,5 +39,8 @@ export default class ArtsPageTabs extends DomNode {
 
         const onSalesCount = (await ArtStoreContract.onSalesCount()).toNumber();
         this.saleTab.empty().appendText(`판매중 (${onSalesCount})`);
+
+        const onAuctionsCount = (await ArtStoreContract.onAuctionsCount()).toNumber();
+        this.auctionTab.empty().appendText(`경매중 (${onAuctionsCount})`);
     }
 }

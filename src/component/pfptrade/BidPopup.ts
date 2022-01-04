@@ -1,7 +1,9 @@
 import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
+import CommonUtil from "../../CommonUtil";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
+import Wallet from "../../klaytn/Wallet";
 import Loader from "../../Loader";
 import ViewUtil from "../../view/ViewUtil";
 import Loading from "../loading/Loading";
@@ -25,6 +27,9 @@ export default class BidPopup extends Popup {
             el(".button-container",
                 el("button", "입찰하기", {
                     click: async () => {
+                        if (await Wallet.connected() !== true) {
+                            await Wallet.connect();
+                        }
                         const prices: BigNumberish[] = [];
                         for (const input of this.inputs) {
                             prices.push(utils.parseEther(input.domElement.value));
@@ -45,13 +50,14 @@ export default class BidPopup extends Popup {
     private async load() {
         let input: DomNode<HTMLInputElement>;
         const data = await Loader.loadMetadata(this.addr, this.id);
+        const auction = await PFPStoreContract.auctions(this.addr, this.id);
         const img = data.image;
         this.list.append(el("section",
             img === undefined ? undefined : new NFTDisplay(img),
             el(".info",
                 el(".name", data.name),
                 el("label",
-                    el("span", "입찰 가격"),
+                el("span", "입찰 가격 (최소 입찰 가격: ", CommonUtil.numberWithCommas(utils.formatEther(auction.startPrice)), " MIX)"),
                     input = el("input", { placeholder: "입찰 가격 (MIX)" }),
                 ),
             ),

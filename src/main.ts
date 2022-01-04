@@ -7,6 +7,7 @@ import ArtsPageAll from "./view/arts/page/PageAll";
 import PageLayout from "./view/arts/page/PageLayout";
 import ArtsPageMine from "./view/arts/page/PageMine";
 import ArtsPageSelling from "./view/arts/page/PageSelling";
+import ArtsPageAuctions from "./view/arts/page/PageAuctions";
 import UpdateArt from "./view/arts/UpdateArt";
 import UpdateArtist from "./view/arts/UpdateArtist";
 import Home from "./view/Home";
@@ -24,6 +25,7 @@ import PFPPageAll from "./view/pfp/page/PageAll";
 import PFPPageLayout from "./view/pfp/page/PageLayout";
 import PFPPageMine from "./view/pfp/page/PageMine";
 import PFPPageSelling from "./view/pfp/page/PageSelling";
+import PFPPageAuctions from "./view/pfp/page/PageAuctions";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
 import Rankings from "./view/pfp/Rankings";
@@ -65,6 +67,8 @@ import User from "./view/user/User";
         "pfp/{addr}/mine/{page}",
         "pfp/{addr}/selling",
         "pfp/{addr}/selling/{page}",
+        "pfp/{addr}/auctions",
+        "pfp/{addr}/auctions/{page}",
     ], PFPPageLayout, [
         "pfp/add",
         "pfp/add-by-owner",
@@ -96,9 +100,15 @@ import User from "./view/user/User";
         "pfp/{addr}/selling/{page}",
     ], PFPPageSelling);
 
+    SkyRouter.route([
+        "pfp/{addr}/auctions",
+        "pfp/{addr}/auctions/{page}",
+    ], PFPPageAuctions);
+
     SkyRouter.route("pfp/{addr}/{id}", NFTDetail, [
         "pfp/{addr}/mine",
         "pfp/{addr}/selling",
+        "pfp/{addr}/auctions",
         "pfp/{addr}/update",
         "pfp/proposal/{proposalId}",
     ]);
@@ -109,17 +119,20 @@ import User from "./view/user/User";
         "arts",
         "arts/mine",
         "arts/selling",
+        "arts/auctions",
     ], PageLayout);
 
     SkyRouter.route("arts", ArtsPageAll);
     SkyRouter.route("arts/mine", ArtsPageMine);
     SkyRouter.route("arts/selling", ArtsPageSelling);
+    SkyRouter.route("arts/auctions", ArtsPageAuctions);
 
     SkyRouter.route("arts/artists/add", AddArtist);
     SkyRouter.route("arts/artists/update", UpdateArtist);
     SkyRouter.route("arts/{id}", ArtDetail, [
         "arts/mine",
         "arts/selling",
+        "arts/auctions",
     ]);
     SkyRouter.route("arts/{id}/update", UpdateArt, [
         "arts/artists/update",

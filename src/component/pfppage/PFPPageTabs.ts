@@ -8,6 +8,7 @@ export default class PFPPageTabs extends DomNode {
 
     private mineTab: DomNode;
     private saleTab: DomNode;
+    private auctionTab: DomNode;
 
     constructor(private addr: string, type: string) {
         super(".pfp-page-tabs");
@@ -20,6 +21,9 @@ export default class PFPPageTabs extends DomNode {
             }),
             this.saleTab = el(`a.tab${type === "selling" ? ".on" : ""}`, "판매중", {
                 click: () => ViewUtil.go(`/pfp/${addr}/selling`),
+            }),
+            this.auctionTab = el(`a.tab${type === "auctions" ? ".on" : ""}`, "경매중", {
+                click: () => ViewUtil.go(`/pfp/${addr}/auctions`),
             }),
         );
         this.load();
@@ -35,5 +39,8 @@ export default class PFPPageTabs extends DomNode {
 
         const onSalesCount = (await PFPStoreContract.onSalesCount(this.addr)).toNumber();
         this.saleTab.empty().appendText(`판매중 (${onSalesCount})`);
+
+        const onAuctionsCount = (await PFPStoreContract.onAuctionsCount(this.addr)).toNumber();
+        this.auctionTab.empty().appendText(`경매중 (${onAuctionsCount})`);
     }
 }

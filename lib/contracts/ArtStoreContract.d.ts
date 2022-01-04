@@ -39,6 +39,8 @@ declare class ArtStoreContract extends Contract {
     makeOffer(id: BigNumberish, price: BigNumberish, mileage: BigNumberish): Promise<void>;
     cancelOffer(id: BigNumberish, offerId: BigNumberish): Promise<void>;
     cancelOfferByOwner(ids: BigNumberish[], offerIds: BigNumberish[]): Promise<void>;
+    onAuctionsCount(): Promise<BigNumber>;
+    onAuctions(index: BigNumberish): Promise<BigNumber>;
     acceptOffer(id: BigNumberish, offerId: BigNumberish): Promise<void>;
     auctions(id: BigNumberish): Promise<Auction>;
     createAuction(id: BigNumberish, startPrice: BigNumberish, endBlock: BigNumberish): Promise<void>;
@@ -50,7 +52,7 @@ declare class ArtStoreContract extends Contract {
     userBiddingInfoLength(bidder: string): Promise<BigNumber>;
     claim(id: BigNumberish): Promise<void>;
     cancelAuction(id: BigNumberish): Promise<void>;
-    bid(id: BigNumberish, price: BigNumberish): Promise<void>;
+    bid(id: BigNumberish, price: BigNumberish, mileage: BigNumberish): Promise<void>;
 }
 declare const _default: ArtStoreContract;
 export default _default;

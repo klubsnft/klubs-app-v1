@@ -2,7 +2,9 @@ import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import superagent from "superagent";
+import CommonUtil from "../../CommonUtil";
 import ArtStoreContract from "../../contracts/ArtStoreContract";
+import Wallet from "../../klaytn/Wallet";
 import ViewUtil from "../../view/ViewUtil";
 import Loading from "../loading/Loading";
 import NFTDisplay from "../NFTDisplay";
@@ -25,11 +27,14 @@ export default class ArtBidPopup extends Popup {
             el(".button-container",
                 el("button", "입찰하기", {
                     click: async () => {
+                        if (await Wallet.connected() !== true) {
+                            await Wallet.connect();
+                        }
                         const prices: BigNumberish[] = [];
                         for (const input of this.inputs) {
                             prices.push(utils.parseEther(input.domElement.value));
                         }
-                        await ArtStoreContract.bid(id, prices[0]);
+                        await ArtStoreContract.bid(id, prices[0], 0);
                         this.delete();
                         ViewUtil.waitTransactionAndRefresh();
                     },
@@ -45,6 +50,7 @@ export default class ArtBidPopup extends Popup {
     private async load() {
         let input: DomNode<HTMLInputElement>;
         const result = await superagent.get(`https://api.klu.bs/arts/${this.id}`);
+        const auction = await ArtStoreContract.auctions(this.id);
         const data = result.body;
         const img = data.image;
         this.list.append(el("section",
@@ -52,7 +58,7 @@ export default class ArtBidPopup extends Popup {
             el(".info",
                 el(".name", data.name),
                 el("label",
-                    el("span", "입찰 가격"),
+                    el("span", "입찰 가격 (최소 입찰 가격: ", CommonUtil.numberWithCommas(utils.formatEther(auction.startPrice)), " MIX)"),
                     input = el("input", { placeholder: "입찰 가격 (MIX)" }),
                 ),
             ),

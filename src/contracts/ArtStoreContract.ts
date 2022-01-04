@@ -151,6 +151,14 @@ class ArtStoreContract extends Contract {
         await this.runWalletMethod("cancelOfferByOwner", ids, offerIds);
     }
 
+    public async onAuctionsCount(): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("onAuctionsCount"));
+    }
+
+    public async onAuctions(index: BigNumberish): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("onAuctions", index));
+    }
+
     public async acceptOffer(id: BigNumberish, offerId: BigNumberish): Promise<void> {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
@@ -220,19 +228,19 @@ class ArtStoreContract extends Contract {
         await this.runWalletMethod("cancelAuction", id);
     }
 
-    public async bid(id: BigNumberish, price: BigNumberish): Promise<void> {
+    public async bid(id: BigNumberish, price: BigNumberish, mileage: BigNumberish): Promise<void> {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
             if ((await MixContract.allowance(owner, this.address)).lt(constants.MaxUint256.div(2))) {
                 await MixContract.approve(this.address, constants.MaxUint256);
                 await new Promise<void>((resolve) => {
                     setTimeout(async () => {
-                        await this.runWalletMethod("bid", id, price);
+                        await this.runWalletMethod("bid", id, price, mileage);
                         resolve();
                     }, 2000);
                 });
             } else {
-                await this.runWalletMethod("bid", id, price);
+                await this.runWalletMethod("bid", id, price, mileage);
             }
         }
     }

@@ -3,6 +3,7 @@ export default class PFPPageTabs extends DomNode {
     private addr;
     private mineTab;
     private saleTab;
+    private auctionTab;
     constructor(addr: string, type: string);
     private load;
 }

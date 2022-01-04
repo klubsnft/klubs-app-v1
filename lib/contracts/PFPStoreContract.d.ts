@@ -41,6 +41,8 @@ declare class PFPStoreContract extends Contract {
     cancelOffer(addr: string, id: BigNumberish, offerId: BigNumberish): Promise<void>;
     cancelOfferByOwner(addrs: string[], ids: BigNumberish[], offerIds: BigNumberish[]): Promise<void>;
     acceptOffer(addr: string, id: BigNumberish, offerId: BigNumberish): Promise<void>;
+    onAuctionsCount(addr: string): Promise<BigNumber>;
+    onAuctions(addr: string, index: BigNumberish): Promise<BigNumber>;
     auctions(addr: string, id: BigNumberish): Promise<Auction>;
     createAuction(addr: string, id: BigNumberish, startPrice: BigNumberish, endBlock: BigNumberish): Promise<void>;
     checkAuction(addr: string, id: BigNumberish): Promise<boolean>;
