@@ -51,6 +51,7 @@ export default class Rankings implements View {
         let realIndex = 0;
         for (const [, _info] of result.body.entries()) {
             const promise = async (info: any) => {
+                const tr = el("tr").appendTo(this.list);
                 if (await PFPsContract.banned(info.id) !== true) {
                     const extras = await PFPsContract.extras(info.id);
                     if (extras.trim() !== "") {
@@ -65,20 +66,20 @@ export default class Rankings implements View {
                                 src = data.icon;
                             }
 
-                            this.list.append(
-                                el("tr",
-                                    el("td", String(realIndex + 1)),
-                                    el("td", el("img", { src, height: "40" })),
-                                    el("td", el("a", data.name, { click: () => ViewUtil.go(`/pfp/${info.id}`) })),
-                                    el("td", CommonUtil.numberWithCommas(String(info.total)), " MIX"),
-                                    el("td.mobile", CommonUtil.numberWithCommas(String(info.volume30d)), " MIX"),
-                                    el("td.mobile", CommonUtil.numberWithCommas(String(info.volume7d)), " MIX"),
-                                    el("td.mobile", CommonUtil.numberWithCommas(String(info.volume24h)), " MIX"),
-                                ),
+                            tr.append(
+                                el("td", String(realIndex + 1)),
+                                el("td", el("img", { src, height: "40" })),
+                                el("td", el("a", data.name, { click: () => ViewUtil.go(`/pfp/${info.id}`) })),
+                                el("td", CommonUtil.numberWithCommas(String(info.total)), " MIX"),
+                                el("td.mobile", CommonUtil.numberWithCommas(String(info.volume30d)), " MIX"),
+                                el("td.mobile", CommonUtil.numberWithCommas(String(info.volume7d)), " MIX"),
+                                el("td.mobile", CommonUtil.numberWithCommas(String(info.volume24h)), " MIX"),
                             );
                             realIndex += 1;
                         }
                     }
+                } else {
+                    tr.delete();
                 }
             };
             promises.push(promise(_info));
