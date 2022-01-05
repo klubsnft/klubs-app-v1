@@ -355,6 +355,17 @@ export default class ArtDetail implements View {
                     }),
                 );
             }
+
+            else if (biddingCount === 0) {
+                this.auctionForm.append(
+                    el("a.claim-button", "경매 종료", {
+                        click: async () => {
+                            await ArtStoreContract.cancelAuction(id);
+                            ViewUtil.waitTransactionAndRefresh();
+                        },
+                    }),
+                );
+            }
         }
 
         else if (walletAddress === owner) {

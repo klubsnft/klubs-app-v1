@@ -373,6 +373,17 @@ export default class NFTDetail implements View {
                     }),
                 );
             }
+
+            else if (biddingCount === 0) {
+                this.auctionForm.append(
+                    el("a.claim-button", "경매 종료", {
+                        click: async () => {
+                            await PFPStoreContract.cancelAuction(addr, id);
+                            ViewUtil.waitTransactionAndRefresh();
+                        },
+                    }),
+                );
+            }
         }
 
         else if (walletAddress === owner) {
