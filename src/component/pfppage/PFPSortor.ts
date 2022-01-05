@@ -1,8 +1,10 @@
 import { DomNode, el } from "@hanul/skynode";
+import Store from "../../Store";
 import PFPPage from "../../view/pfp/page/PFPPage";
 
 export default class PFPSortor extends DomNode {
 
+    public store = new Store("storter-store");
     private select: DomNode<HTMLSelectElement>;
 
     constructor(pageView: PFPPage, multiple?: "sell" | "buy") {
@@ -18,11 +20,16 @@ export default class PFPSortor extends DomNode {
                 el("option", "희소 점수 순", { value: "rarity-desc" }),
                 {
                     change: () => {
+                        this.store.set("sort-type", this.select.domElement.value, true);
                         pageView.loadNFTs();
                     },
                 },
             ),
         );
+        const sortType = this.store.get<string>("sort-type");
+        if (sortType !== undefined) {
+            this.select.domElement.value = sortType;
+        }
     }
 
     public get sortType() {
