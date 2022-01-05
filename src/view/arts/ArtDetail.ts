@@ -38,6 +38,8 @@ export default class ArtDetail implements View {
     private auctionForm: DomNode;
     private activity: DomNode;
 
+    private refreshInterval: any;
+
     constructor(params: ViewParams) {
 
         const id = parseInt(params.id, 10);
@@ -291,12 +293,20 @@ export default class ArtDetail implements View {
             const auction = await ArtStoreContract.auctions(id);
             const biddingCount = (await ArtStoreContract.biddingCount(id)).toNumber();
 
-            const diff = auction.endBlock - await Klaytn.loadBlockNumber();
-            if (diff < 0) {
-                this.auctionForm.append(el("p", "경매 종료됨"));
-            } else {
-                this.auctionForm.append(el("p", `경매 종료까지 ${diff} 블록 남음`));
-            }
+            let diff = 0;
+            const p = el("p").appendTo(this.auctionForm);
+            const refresh = async () => {
+                diff = auction.endBlock - await Klaytn.loadBlockNumber();
+                p.empty();
+                if (diff < 0) {
+                    p.appendText("경매 종료됨");
+                } else {
+                    p.appendText(`경매 종료까지 ${diff} 블록 남음 (${CommonUtil.displayBlockDuration(diff)})`);
+                }
+            };
+            await refresh();
+            clearInterval(this.refreshInterval);
+            this.refreshInterval = setInterval(() => refresh(), 1000);
 
             const list = el(".list").appendTo(this.auctionForm);
 
@@ -422,6 +432,7 @@ export default class ArtDetail implements View {
     public changeParams(params: ViewParams, uri: string): void { }
 
     public close(): void {
+        clearInterval(this.refreshInterval);
         this.container.delete();
     }
 }

@@ -59,6 +59,10 @@ export default class CreateAuctionPopup extends Popup {
             ),
             el("label",
                 el("span", `경매 종료 블록 (현재 블록: ${currentBlock})`),
+                el("p.warning",
+                    el("i.fas.fa-exclamation-triangle"),
+                    "클레이튼의 블록 타임은 대략 1초입니다. 종료 시간 계산에 유의해주시기 바랍니다.",
+                ),
                 this.endBlockInput = el("input", { placeholder: "경매 종료 블록" }),
             ),
         );

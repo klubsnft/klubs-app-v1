@@ -13,6 +13,7 @@ export default class NFTDetail implements View {
     private offerForm;
     private auctionForm;
     private activity;
+    private refreshInterval;
     constructor(params: ViewParams);
     private loadPFP;
     private loadTrade;

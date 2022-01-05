@@ -12,6 +12,7 @@ export default class ArtDetail implements View {
     private offerForm;
     private auctionForm;
     private activity;
+    private refreshInterval;
     constructor(params: ViewParams);
     private loadArtist;
     private loadTrade;

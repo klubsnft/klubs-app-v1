@@ -1121,6 +1121,18 @@ p {
   color: #999;
   margin-bottom: 8px;
 }
+.pfp-create-auction-popup > .info > label > .warning {
+  display: block;
+  margin-bottom: 8px;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+}
+.pfp-create-auction-popup > .info > label > .warning > i {
+  margin-right: 6px;
+}
 .pfp-create-auction-popup > .info > label > input {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.87);
@@ -1577,6 +1589,18 @@ p {
   display: block;
   color: #999;
   margin-bottom: 8px;
+}
+.art-create-auction-popup > .info > label > .warning {
+  display: block;
+  margin-bottom: 8px;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+}
+.art-create-auction-popup > .info > label > .warning > i {
+  margin-right: 6px;
 }
 .art-create-auction-popup > .info > label > input {
   width: 100%;
