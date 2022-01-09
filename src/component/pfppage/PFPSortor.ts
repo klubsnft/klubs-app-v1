@@ -4,7 +4,7 @@ import PFPPage from "../../view/pfp/page/PFPPage";
 
 export default class PFPSortor extends DomNode {
 
-    public store = new Store("storter-store");
+    private store = new Store("storter-store");
     private select: DomNode<HTMLSelectElement>;
 
     constructor(pageView: PFPPage, multiple?: "sell" | "buy") {

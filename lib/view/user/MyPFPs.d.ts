@@ -15,6 +15,7 @@ export default class MyPFPs implements View, PFPPage {
     private pagination1;
     private pagination2;
     private page;
+    addr: string;
     constructor(params: ViewParams);
     private load;
     private loadManaging;

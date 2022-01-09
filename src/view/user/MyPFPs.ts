@@ -35,6 +35,8 @@ export default class MyPFPs implements View, PFPPage {
 
     private page: number;
 
+    public addr = "";
+
     constructor(params: ViewParams) {
         this.page = params.page === undefined ? 1 : parseInt(params.page, 10);
 

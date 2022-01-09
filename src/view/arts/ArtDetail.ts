@@ -103,7 +103,7 @@ export default class ArtDetail implements View {
         }
         this.artistDisplay.empty().appendText("작가 ");
         this.artistDisplay.append(el("a", data.name !== undefined ? data.name : CommonUtil.shortenAddress(artist), {
-            click: () => ViewUtil.go(`/user/${artist}`),
+            click: () => ViewUtil.go(`/artists/${artist}`),
         }));
     }
 
@@ -311,12 +311,13 @@ export default class ArtDetail implements View {
             const list = el(".list").appendTo(this.auctionForm);
 
             const promises: Promise<void>[] = [];
-            for (let i = 0; i < biddingCount; i += 1) {
+            for (let i = biddingCount - 1; i >= 0; i -= 1) {
                 const promise = async (biddingId: number) => {
+                    const bid = el(".bid").appendTo(list);
                     try {
                         const bidding = await ArtStoreContract.biddings(id, biddingId);
                         if (bidding.price.gt(0)) {
-                            el(".bid",
+                            bid.append(
                                 el(".bidder",
                                     CommonUtil.shortenAddress(bidding.bidder),
                                 ),
@@ -324,7 +325,9 @@ export default class ArtDetail implements View {
                                     el("img", { src: "/images/mix.png", height: "24" }),
                                     el("span", CommonUtil.numberWithCommas(utils.formatEther(bidding.price))),
                                 ),
-                            ).appendTo(list);
+                            );
+                        } else {
+                            bid.delete();
                         }
                     } catch (e) {
                         console.error(e);

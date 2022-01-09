@@ -329,12 +329,13 @@ export default class NFTDetail implements View {
             const list = el(".list").appendTo(this.auctionForm);
 
             const promises: Promise<void>[] = [];
-            for (let i = 0; i < biddingCount; i += 1) {
+            for (let i = biddingCount - 1; i >= 0; i -= 1) {
                 const promise = async (biddingId: number) => {
+                    const bid = el(".bid").appendTo(list);
                     try {
                         const bidding = await PFPStoreContract.biddings(addr, id, biddingId);
                         if (bidding.price.gt(0)) {
-                            el(".bid",
+                            bid.append(
                                 el(".bidder",
                                     CommonUtil.shortenAddress(bidding.bidder),
                                 ),
@@ -342,7 +343,9 @@ export default class NFTDetail implements View {
                                     el("img", { src: "/images/mix.png", height: "24" }),
                                     el("span", CommonUtil.numberWithCommas(utils.formatEther(bidding.price))),
                                 ),
-                            ).appendTo(list);
+                            );
+                        } else {
+                            bid.delete();
                         }
                     } catch (e) {
                         console.error(e);

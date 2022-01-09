@@ -6,6 +6,7 @@ import ArtsContract from "../../contracts/ArtsContract";
 import ArtStoreContract from "../../contracts/ArtStoreContract";
 import Klaytn from "../../klaytn/Klaytn";
 import ViewUtil from "../../view/ViewUtil";
+import Alert from "../dialogue/Alert";
 import Loading from "../loading/Loading";
 import NFTDisplay from "../NFTDisplay";
 
@@ -31,9 +32,14 @@ export default class ArtCreateAuctionPopup extends Popup {
                         if (this.startPriceInput !== undefined && this.endBlockInput !== undefined) {
                             const startPrice = utils.parseEther(this.startPriceInput.domElement.value);
                             const endBlock = this.endBlockInput.domElement.value;
-                            await ArtStoreContract.createAuction(id, startPrice, endBlock);
-                            this.delete();
-                            ViewUtil.waitTransactionAndRefresh();
+                            const currentBlock = await Klaytn.loadBlockNumber();
+                            if (parseInt(endBlock) < currentBlock) {
+                                new Alert("오류", "경매 종료 블록은 현재 블록보다 커야합니다.");
+                            } else {
+                                await ArtStoreContract.createAuction(id, startPrice, endBlock);
+                                this.delete();
+                                ViewUtil.waitTransactionAndRefresh();
+                            }
                         }
                     },
                 }),

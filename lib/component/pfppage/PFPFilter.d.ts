@@ -4,7 +4,9 @@ import PFPPage from "../../view/pfp/page/PFPPage";
 export default class PFPFilter extends DomNode {
     private pageView;
     private idInput;
+    private filterData;
     private filtered;
+    private store;
     constructor(pageView: PFPPage);
     createFilters(rarity: RarityInfo): void;
     get filteredIds(): number[] | undefined;

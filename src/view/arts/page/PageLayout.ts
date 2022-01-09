@@ -41,8 +41,8 @@ export default class PageLayout implements View {
             const added = await ArtistsContract.added(address);
             if (added === true) {
                 this.controller.empty().append(
-                    el("a", "작가 정보 수정", {
-                        click: () => ViewUtil.go("/arts/artists/update"),
+                    el("a", "작가 정보", {
+                        click: () => ViewUtil.go(`/artists/${address}`),
                     }),
                     el("a", "작품 등록", {
                         click: async () => {

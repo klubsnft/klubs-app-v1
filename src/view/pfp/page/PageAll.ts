@@ -24,7 +24,7 @@ export default class PageAll implements View, PFPPage {
     private nftLoading!: Loading;
     private nftList!: DomNode;
 
-    private addr!: string;
+    public addr!: string;
     private page: number = 1;
 
     private rarity: RarityInfo | undefined;
@@ -94,14 +94,21 @@ export default class PageAll implements View, PFPPage {
         this.rarityMode = this.rarityMode !== true;
     }
 
-    private createCard(id: number) {
-        const card = new PFPNFTCard(this.addr, id).appendTo(this.nftList);
-        if (this.rarityMode === true && this.rarity !== undefined) {
-            card.showRarity(this.rarity);
+    private loadCount = 0;
+
+    private createCard(currentLoadCount: number, id: number) {
+        if (this.loadCount === currentLoadCount) {
+            const card = new PFPNFTCard(this.addr, id).appendTo(this.nftList);
+            if (this.rarityMode === true && this.rarity !== undefined) {
+                card.showRarity(this.rarity);
+            }
         }
     }
 
     public async loadNFTs() {
+
+        this.loadCount += 1;
+        const currentLoadCount = this.loadCount;
 
         this.nftLoading.show();
         this.nftList.empty();
@@ -163,7 +170,7 @@ export default class PageAll implements View, PFPPage {
         }
 
         for (let i = start; i < limit; i += 1) {
-            this.createCard(ids[i]);
+            this.createCard(currentLoadCount, ids[i]);
         }
 
         this.nftLoading.hide();

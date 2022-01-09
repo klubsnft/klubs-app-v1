@@ -1,11 +1,16 @@
 import { DomNode, el } from "@hanul/skynode";
 import RarityInfo from "../../RarityInfo";
+import Store from "../../Store";
 import PFPPage from "../../view/pfp/page/PFPPage";
 
 export default class PFPFilter extends DomNode {
 
     private idInput: DomNode<HTMLInputElement>;
+
+    private filterData: { [trait: string]: string } = {};
     private filtered: { [key: string]: number[] } = {};
+
+    private store = new Store("filter-store");
 
     constructor(private pageView: PFPPage) {
         super(".pfp-filter");
@@ -15,6 +20,10 @@ export default class PFPFilter extends DomNode {
                 change: () => pageView.loadNFTs(),
             }),
         );
+        const saved = this.store.get<{ [trait: string]: string }>(`${this.pageView.addr}-filter`);
+        if (saved !== undefined) {
+            this.filterData = saved;
+        }
     }
 
     public createFilters(rarity: RarityInfo) {
@@ -32,6 +41,8 @@ export default class PFPFilter extends DomNode {
                             } else {
                                 Object.assign(this.filtered, { [trait]: values[value].ids });
                             }
+                            this.filterData[trait] = value;
+                            this.store.set(`${this.pageView.addr}-filter`, this.filterData);
                             this.pageView.loadNFTs();
                         },
                     },
@@ -43,11 +54,26 @@ export default class PFPFilter extends DomNode {
                         }
                     }),
                 );
+
+                const value = this.filterData[trait];
+                if (value !== undefined) {
+                    (select.domElement as HTMLSelectElement).value = value;
+                    if (value === "All") {
+                        delete this.filtered[trait];
+                    } else {
+                        Object.assign(this.filtered, { [trait]: values[value].ids });
+                    }
+                }
+
                 selects.push(select as any);
                 return select;
             }),
             el("a.reset-button", "필터 초기화", {
                 click: () => {
+
+                    this.filterData = {};
+                    this.store.set(`${this.pageView.addr}-filter`, this.filterData);
+
                     this.filtered = {};
                     for (const select of selects) {
                         select.domElement.value = "All";
@@ -56,6 +82,10 @@ export default class PFPFilter extends DomNode {
                 },
             }),
         );
+
+        if (Object.keys(this.filtered).length > 0) {
+            this.pageView.loadNFTs();
+        }
     }
 
     public get filteredIds() {

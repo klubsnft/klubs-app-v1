@@ -48,9 +48,8 @@ export default class Rankings implements View {
         });
 
         const promises: Promise<void>[] = [];
-        let realIndex = 0;
-        for (const [, _info] of result.body.entries()) {
-            const promise = async (info: any) => {
+        for (const [index, _info] of result.body.entries()) {
+            const promise = async (index: number, info: any) => {
                 const tr = el("tr").appendTo(this.list);
                 if (await PFPsContract.banned(info.id) !== true) {
                     const extras = await PFPsContract.extras(info.id);
@@ -67,7 +66,7 @@ export default class Rankings implements View {
                             }
 
                             tr.append(
-                                el("td", String(realIndex + 1)),
+                                el("td", String(index + 1)),
                                 el("td", el("img", { src, height: "40" })),
                                 el("td", el("a", data.name, { click: () => ViewUtil.go(`/pfp/${info.id}`) })),
                                 el("td", CommonUtil.numberWithCommas(String(info.total)), " MIX"),
@@ -75,14 +74,13 @@ export default class Rankings implements View {
                                 el("td.mobile", CommonUtil.numberWithCommas(String(info.volume7d)), " MIX"),
                                 el("td.mobile", CommonUtil.numberWithCommas(String(info.volume24h)), " MIX"),
                             );
-                            realIndex += 1;
                         }
                     }
                 } else {
                     tr.delete();
                 }
             };
-            promises.push(promise(_info));
+            promises.push(promise(index, _info));
         }
         await Promise.all(promises);
 

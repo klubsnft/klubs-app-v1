@@ -9,6 +9,10 @@
                 {
                     "uri": "pfp/add",
                     "name": "PFP 등록"
+                },
+                {
+                    "href": "https://studio.klu.bs",
+                    "name": "Studio"
                 }
             ]
         },

@@ -3,11 +3,12 @@ import PFPProposals from "./view/admin/PFPProposals";
 import PFPs from "./view/admin/PFPs";
 import AddArtist from "./view/arts/AddArtist";
 import ArtDetail from "./view/arts/ArtDetail";
+import Artist from "./view/arts/Artist";
 import ArtsPageAll from "./view/arts/page/PageAll";
+import ArtsPageAuctions from "./view/arts/page/PageAuctions";
 import PageLayout from "./view/arts/page/PageLayout";
 import ArtsPageMine from "./view/arts/page/PageMine";
 import ArtsPageSelling from "./view/arts/page/PageSelling";
-import ArtsPageAuctions from "./view/arts/page/PageAuctions";
 import UpdateArt from "./view/arts/UpdateArt";
 import UpdateArtist from "./view/arts/UpdateArtist";
 import Home from "./view/Home";
@@ -22,10 +23,10 @@ import AddByOwner from "./view/pfp/AddByOwner";
 import AddByPFPOwner from "./view/pfp/AddByPFPOwner";
 import NFTDetail from "./view/pfp/NFTDetail";
 import PFPPageAll from "./view/pfp/page/PageAll";
+import PFPPageAuctions from "./view/pfp/page/PageAuctions";
 import PFPPageLayout from "./view/pfp/page/PageLayout";
 import PFPPageMine from "./view/pfp/page/PageMine";
 import PFPPageSelling from "./view/pfp/page/PageSelling";
-import PFPPageAuctions from "./view/pfp/page/PageAuctions";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
 import Rankings from "./view/pfp/Rankings";
@@ -137,6 +138,8 @@ import User from "./view/user/User";
     SkyRouter.route("arts/{id}/update", UpdateArt, [
         "arts/artists/update",
     ]);
+
+    SkyRouter.route("artists/{address}", Artist);
 
     SkyRouter.route("item", Item);
     SkyRouter.route("meme", Meme);

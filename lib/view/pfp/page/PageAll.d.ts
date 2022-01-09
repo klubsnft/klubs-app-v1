@@ -8,7 +8,7 @@ export default class PageAll implements View, PFPPage {
     private pagination2;
     private nftLoading;
     private nftList;
-    private addr;
+    addr: string;
     private page;
     private rarity;
     private rarityMode;
@@ -16,6 +16,7 @@ export default class PageAll implements View, PFPPage {
     private load;
     private loadRarity;
     toggleRarityMode(): void;
+    private loadCount;
     private createCard;
     loadNFTs(): Promise<void>;
     goPage(page: number): void;

@@ -1,13 +1,11 @@
 import { DomNode, el } from "@hanul/skynode";
 import { SkyRouter, View, ViewParams } from "skyrouter";
-import superagent from "superagent";
 import Loading from "../../../component/loading/Loading";
 import PFPNFTCard from "../../../component/PFPNFTCard";
 import MultiplePFPSelector from "../../../component/pfppage/MultiplePFPSelector";
 import PFPFilter from "../../../component/pfppage/PFPFilter";
 import PFPPageTabs from "../../../component/pfppage/PFPPageTabs";
 import PFPPagination from "../../../component/pfppage/PFPPagination";
-import PFPSortor from "../../../component/pfppage/PFPSortor";
 import PFPStoreContract from "../../../contracts/PFPStoreContract";
 import RarityInfo from "../../../RarityInfo";
 import PageLayout from "./PageLayout";
@@ -24,7 +22,7 @@ export default class PageAuctions implements View, PFPPage {
     private nftLoading!: Loading;
     private nftList!: DomNode;
 
-    private addr!: string;
+    public addr!: string;
     private page: number = 1;
 
     private rarity: RarityInfo | undefined;
@@ -95,19 +93,26 @@ export default class PageAuctions implements View, PFPPage {
         this.rarityMode = this.rarityMode !== true;
     }
 
-    private createCard(id: number) {
-        const card = new PFPNFTCard(this.addr, id, this.multipleSelector?.selecting(id)).appendTo(this.nftList);
-        if (this.rarityMode === true && this.rarity !== undefined) {
-            card.showRarity(this.rarity);
+    private loadCount = 0;
+
+    private createCard(currentLoadCount: number, id: number) {
+        if (this.loadCount === currentLoadCount) {
+            const card = new PFPNFTCard(this.addr, id, this.multipleSelector?.selecting(id)).appendTo(this.nftList);
+            if (this.rarityMode === true && this.rarity !== undefined) {
+                card.showRarity(this.rarity);
+            }
+            if (this.multipleSelector !== undefined) {
+                card.mode = "select";
+            }
+            card.on("select", (id) => this.multipleSelector?.select(id));
+            card.on("deselect", (id) => this.multipleSelector?.deselect(id));
         }
-        if (this.multipleSelector !== undefined) {
-            card.mode = "select";
-        }
-        card.on("select", (id) => this.multipleSelector?.select(id));
-        card.on("deselect", (id) => this.multipleSelector?.deselect(id));
     }
 
     public async loadNFTs() {
+
+        this.loadCount += 1;
+        const currentLoadCount = this.loadCount;
 
         this.nftLoading.show();
         this.nftList.empty();
@@ -149,7 +154,7 @@ export default class PageAuctions implements View, PFPPage {
         }
 
         for (let i = start; i < limit; i += 1) {
-            this.createCard(ids[i]);
+            this.createCard(currentLoadCount, ids[i]);
         }
 
         this.nftLoading.hide();
