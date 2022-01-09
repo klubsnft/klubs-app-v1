@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import ArtNFTCard from "../../../component/ArtNFTCard";
 import ArtsPageTabs from "../../../component/artpage/ArtsPageTabs";
 import Loading from "../../../component/loading/Loading";
@@ -22,7 +23,7 @@ export default class PageAll implements View {
 
         this.container.append(
             el("header",
-                el("h2", "NFT 목록"),
+                el("h2", msg("NFT_LIST")),
                 new ArtsPageTabs("all"),
             ),
             el(".content",

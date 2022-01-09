@@ -1,4 +1,7 @@
+import msg from "msg.js";
 import { SkyRouter } from "skyrouter";
+import superagent from "superagent";
+import BrowserInfo from "./BrowserInfo";
 import PFPProposals from "./view/admin/PFPProposals";
 import PFPs from "./view/admin/PFPs";
 import AddArtist from "./view/arts/AddArtist";
@@ -37,6 +40,8 @@ import MyPFPs from "./view/user/MyPFPs";
 import User from "./view/user/User";
 
 (async () => {
+    msg.language = BrowserInfo.language;
+    msg.parseCSV((await superagent.get("/msg.csv")).text);
 
     SkyRouter.route("**", Layout);
     SkyRouter.route("", Home);

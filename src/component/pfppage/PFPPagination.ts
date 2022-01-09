@@ -1,4 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
+import msg from "msg.js";
 import PFPPage from "../../view/pfp/page/PFPPage";
 import Alert from "../dialogue/Alert";
 
@@ -22,7 +23,7 @@ export default class PFPPagination extends DomNode {
                         this.page = 1;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert("안내", "첫 페이지입니다.");
+                        new Alert(msg("ANNOUNCEMENT"), msg("FIRST_PAGE"));
                     }
                 },
             }),
@@ -32,7 +33,7 @@ export default class PFPPagination extends DomNode {
                         this.page -= 1;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert("안내", "첫 페이지입니다.");
+                        new Alert(msg("ANNOUNCEMENT"), msg("FIRST_PAGE"));
                     }
                 },
             }),
@@ -43,7 +44,7 @@ export default class PFPPagination extends DomNode {
                         this.page += 1;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert("안내", "마지막 페이지입니다.");
+                        new Alert(msg("ANNOUNCEMENT"), msg("LAST_PAGE"));
                     }
                 },
             }),
@@ -53,7 +54,7 @@ export default class PFPPagination extends DomNode {
                         this.page = this.lastPage;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert("안내", "마지막 페이지입니다.");
+                        new Alert(msg("ANNOUNCEMENT"), msg("LAST_PAGE"));
                     }
                 },
             }),

@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
+import msg from "msg.js";
 import superagent from "superagent";
 import CommonUtil from "../CommonUtil";
 import ArtStoreContract from "../contracts/ArtStoreContract";
@@ -34,7 +35,7 @@ export default class ArtNFTCard extends DomNode {
                     this.append(
                         data.image === undefined ? undefined : new NFTDisplay(data.image, true),
                         el(".info",
-                            el(".name", data.name === undefined ? "제목 없음" : data.name),
+                            el(".name", data.name === undefined ? msg("NO_TITLE") : data.name),
                             saleInfo.price.eq(0) === true ? undefined : el(".price",
                                 el("img", { src: "/images/mix.png", height: "24" }),
                                 el("span", CommonUtil.numberWithCommas(utils.formatEther(saleInfo.price))),

@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import marked from "marked";
+import msg from "msg.js";
 import xss from "xss";
 import PFPExtra from "../datamodel/PFPExtra";
 import ViewUtil from "../view/ViewUtil";
@@ -24,7 +25,7 @@ export default class PFPCard extends DomNode {
                 extra.mineable !== true ? undefined : el("a.mineable",
                     el("img", { src: "/images/icon/mining.png", height: "14" }),
                     {
-                        title: "채굴 가능한 PFP입니다. 클릭하시면 자세한 정보를 확인하실 수 있습니다.",
+                        title: msg("IS_MINING_DESC2"),
                         href: extra.miningInfoURL,
                         target: "_blank",
                         click: (event: MouseEvent) => event.stopPropagation(),

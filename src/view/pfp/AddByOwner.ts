@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Layout from "../Layout";
 
 export default class AddByOwner implements View {
@@ -7,9 +8,9 @@ export default class AddByOwner implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = "관리자 PFP 등록";
+        Layout.current.title = msg("ADD_MANAGER_PFP");
         Layout.current.content.append(this.container = el(".add-pfp-by-owner-view",
-            el("h1", "관리자 PFP 등록"),
+            el("h1", msg("ADD_MANAGER_PFP")),
         ));
     }
 

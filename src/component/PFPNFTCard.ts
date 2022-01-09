@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
+import msg from "msg.js";
 import CommonUtil from "../CommonUtil";
 import PFPStoreContract from "../contracts/PFPStoreContract";
 import Loader from "../Loader";
@@ -91,7 +92,7 @@ export default class PFPNFTCard extends DomNode {
         this.rarityDisplay?.delete();
         this.rarityDisplay = el(".rarity",
             rarity.scores[this.id] === undefined ?
-                "아직 계산되지 않았습니다." :
+                msg("CALCULATED_YET") :
                 CommonUtil.numberWithCommas(String(rarity.scores[this.id])),
             rarity.scores[this.id] === undefined ? undefined :
                 el("span.rank", `Rank #${rarity.rankings[this.id] + 1}`),

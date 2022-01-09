@@ -1,4 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
+import msg from "msg.js";
 import CommonUtil from "../../CommonUtil";
 import Klip from "../../klaytn/Klip";
 import Wallet from "../../klaytn/Wallet";
@@ -35,13 +36,13 @@ export default class UserInfo extends DomNode {
             this.addressDisplay.style({ display: "block" });
             this.addressDisplay.empty().appendText(CommonUtil.shortenAddress(address));
             (this.mobile === true ? this : this.addressDisplay).append(el("ul",
-                el("li", el("a", "내 PFP", {
+                el("li", el("a", msg("MY_PFP"), {
                     click: () => ViewUtil.go("/user/my-pfps"),
                 })),
-                el("li", el("a", "내 Arts", {
+                el("li", el("a", msg("MY_ARTS"), {
                     click: () => ViewUtil.go("/user/my-arts"),
                 })),
-                Klip.connected !== true ? undefined : el("li", el("a", "로그아웃", {
+                Klip.connected !== true ? undefined : el("li", el("a", msg("LOGOUT"), {
                     click: () => Klip.disconnect(),
                 })),
             ));

@@ -1,6 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import { constants } from "ethers";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import superagent from "superagent";
 import Alert from "../../component/dialogue/Alert";
 import Confirm from "../../component/dialogue/Confirm";
@@ -25,26 +26,26 @@ export default class UpdateArt implements View {
     constructor(params: ViewParams) {
         const id = parseInt(params.id, 10);
 
-        Layout.current.title = "작품 정보 수정";
+        Layout.current.title = msg("REVISION_ART_INFO");
         Layout.current.content.append(this.container = el(".art-update-view",
-            el("header", el("h1", "작품 정보 수정")),
+            el("header", el("h1", msg("REVISION_ART_INFO"))),
             el("main",
                 el(".form",
-                    el("h2", "기본 정보 수정"),
+                    el("h2", msg("UPDATE_BASE_INFO")),
                     el("label",
-                        el("h3", "작품 이미지 주소"),
+                        el("h3", msg("ART_IMAGE_ADDRESS")),
                         this.imagePreview = el("img.image-preview"),
                         this.imageInput = el("input", {
                             type: "url",
-                            placeholder: "작품 이미지 주소",
+                            placeholder: msg("ART_IMAGE_ADDRESS"),
                             change: () => {
                                 (this.imagePreview as DomNode<HTMLImageElement>).domElement.src = this.imageInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", "작품 업로드"),
-                        el("p", "현재 이미지 파일만 업로드 가능합니다. 추후 비디오/오디오 및 3D 모델 업로드도 가능해질 예정입니다."),
+                        el("h3", msg("ART_UPLOAD")),
+                        el("p", msg("ART_UPLOAD_DESC1")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -65,22 +66,22 @@ export default class UpdateArt implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", "작품명"),
-                        this.nameInput = el("input", { type: "text", placeholder: "작품명" }),
+                        el("h3", msg("ART_NAME")),
+                        this.nameInput = el("input", { type: "text", placeholder: msg("ART_NAME") }),
                     ),
                     el("label",
-                        el("h3", "소개글"),
+                        el("h3", msg("INTRODUCTION")),
                         el("p",
-                            el("span", "소개글은 마크다운 문법을 사용합니다."),
-                            el("a", "마크다운 문법 보기", { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
+                            el("span", msg("INTRODUCTION_DESC1")),
+                            el("a", msg("VIEW_MARKDOWN"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
                         ),
-                        this.descriptionTextarea = el("textarea", { placeholder: "작품 소개" }),
+                        this.descriptionTextarea = el("textarea", { placeholder: msg("ART_PRESENT") }),
                     ),
                     el("label",
-                        el("h3", "외부 링크"),
-                        this.externalURLInput = el("input", { type: "url", placeholder: "외부 링크" }),
+                        el("h3", msg("EXTERNAL_LINK")),
+                        this.externalURLInput = el("input", { type: "url", placeholder: msg("EXTERNAL_LINK") }),
                     ),
-                    el("button", "정보 저장", {
+                    el("button", msg("SAVE_INFO"), {
                         click: async () => {
                             const metadata = {
                                 image: this.imageInput.domElement.value,
@@ -96,15 +97,15 @@ export default class UpdateArt implements View {
                                     signedMessage,
                                 }),
                             });
-                            new Alert("저장 완료", "정보를 저장했습니다.");
+                            new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1"));
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", "2차 판매 수수료 정보 수정"),
+                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO")),
                     el("label",
-                        el("h3", "작가 기본 판매 수수료로 설정"),
-                        el("p", "작가가 설정한 기본 판매 수수료로 설정합니다."),
+                        el("h3", msg("SETTING_ARTIST_BASE_SALES_FEE")),
+                        el("p", msg("SETTING_ARTIST_BASE_SALES_FEE_DESC1")),
                         this.exceptionalRoyaltiesCheckbox = el("input", { type: "checkbox" }, {
                             change: () => {
                                 if (this.exceptionalRoyaltiesCheckbox.domElement.checked === true) {
@@ -116,9 +117,9 @@ export default class UpdateArt implements View {
                         }),
                     ),
                     this.exceptionalRoyaltyLabel = el("label",
-                        el("h3", "2차 판매 수수료 비율(%)"),
-                        el("p", "2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 2번째 자리까지 지정 가능합니다."),
-                        this.exceptionalRoyaltyInput = el("input", { type: "number", placeholder: "2차 판매 수수료 비율(%)" }),
+                        el("h3", msg("2ND_SALES_FEE_RATIO")),
+                        el("p", msg("2ND_SALES_FEE_RATIO_DESC1")),
+                        this.exceptionalRoyaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO")}),
                     ),
                     el("button", "정보 저장", {
                         click: async () => {
@@ -128,16 +129,16 @@ export default class UpdateArt implements View {
                             } else {
                                 await ArtsContract.setExceptionalRoyalties([id], [0]);
                             }
-                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
                         },
                     }),
                 ),
-                el("a.delete-button", "작품 삭제", {
+                el("a.delete-button", msg("ART_DELETE"), {
                     click: () => {
-                        new Confirm("작품 삭제", "정말 작품을 삭제하시겠습니까? 이 작업은 돌이킬 수 없습니다.", "작품 삭제", async () => {
+                        new Confirm(msg("ART_DELETE"), msg("ART_DELETE_DESC1"), msg("ART_DELETE"), async () => {
                             await ArtsContract.burn(id);
                             setTimeout(() => {
-                                new Alert("작가 삭제 완료", "작품이 삭제되었습니다.");
+                                new Alert(msg("ART_DELETE_DONE"), msg("ART_DELETE_DONE_DESC1"));
                                 ViewUtil.go("/user/my-arts");
                             }, 2000);
                         });

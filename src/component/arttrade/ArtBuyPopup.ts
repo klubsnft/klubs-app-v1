@@ -1,5 +1,6 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
+import msg from "msg.js";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import ArtStoreContract from "../../contracts/ArtStoreContract";
@@ -19,19 +20,19 @@ export default class BuyPopup extends Popup {
     constructor(private ids: number[]) {
         super(".popup-background");
         this.append(this.content = el(".popup.art-buy-popup",
-            el("h2", "구매하기"),
-            el("p", "NFT를 구매합니다. 최초 구매시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 구매를 위한 것입니다."),
+            el("h2", msg("BUYING_MIX")),
+            el("p", msg("BUY_POPUP_DESC1")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", "구매 진행", {
+                el("button", msg("BUY_PROCESS"), {
                     click: async () => {
                         await ArtStoreContract.buy(ids, this.prices, this.mileages);
                         this.delete();
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", "취소", {
+                el("button", msg("CANCEL"), {
                     click: () => this.delete(),
                 }),
             ),
@@ -50,7 +51,7 @@ export default class BuyPopup extends Popup {
                 el(".info",
                     el(".name", data.name),
                     el("label",
-                        el("span", "판매 가격"),
+                        el("span", msg("SELL_PRICE")),
                         saleInfo.price.eq(0) === true ? undefined : el(".price",
                             el("img", { src: "/images/mix.png", height: "24" }),
                             el("span", CommonUtil.numberWithCommas(utils.formatEther(saleInfo.price))),

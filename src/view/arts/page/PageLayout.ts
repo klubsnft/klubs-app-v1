@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Confirm from "../../../component/dialogue/Confirm";
 import ArtistsContract from "../../../contracts/ArtistsContract";
 import ArtsContract from "../../../contracts/ArtsContract";
@@ -21,7 +22,7 @@ export default class PageLayout implements View {
         Layout.current.content.append(this.container = el(".arts-page-layout",
             el("header",
                 el("p",
-                    "Klubs Arts는 NFT 작가들과 함께 만들어나가는 공간입니다."
+                    msg("ARTS_DESC1")
                 ),
                 this.controller = el(".controller"),
             ),
@@ -41,12 +42,12 @@ export default class PageLayout implements View {
             const added = await ArtistsContract.added(address);
             if (added === true) {
                 this.controller.empty().append(
-                    el("a", "작가 정보", {
-                        click: () => ViewUtil.go(`/artists/${address}`),
+                    el("a", msg("REVISION_ARTIST"), {
+                        click: () => ViewUtil.go("/arts/artists/update"),
                     }),
-                    el("a", "작품 등록", {
+                    el("a", msg("ADD_ART"), {
                         click: async () => {
-                            new Confirm("작품 등록", "작품 정보를 생성하시겠습니까?", "생성하기", async () => {
+                            new Confirm(msg("ADD_ART"), msg("ADD_ART_CONFIRM"), msg("CREATE_IT"), async () => {
                                 await ArtsContract.mint();
                                 const artCount = await ArtsContract.artistArtCount(address);
                                 const id = await ArtsContract.artistArts(address, artCount.toNumber() - 1);
@@ -56,7 +57,7 @@ export default class PageLayout implements View {
                     }),
                 );
             } else {
-                this.controller.empty().append(el("a", "작가 등록", {
+                this.controller.empty().append(el("a", msg("ADD_CREATOR"), {
                     click: () => ViewUtil.go("/arts/artists/add"),
                 }));
             }

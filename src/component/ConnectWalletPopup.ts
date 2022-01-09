@@ -1,4 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
+import msg from "msg.js";
 import Klip from "../klaytn/Klip";
 
 export default class ConnectWalletPopup extends Popup {
@@ -9,17 +10,17 @@ export default class ConnectWalletPopup extends Popup {
         super(".popup-background");
         this.append(
             this.content = el(".connect-wallet-popup",
-                el("h2", "클레이튼 지갑 연결"),
-                el("p", "Klubs는 클레이튼 블록체인과의 연결이 필요합니다. 카이카스 혹은 카카오톡 클립에서 연결해주시기 바랍니다."),
+                el("h2", msg("CONNECT_WALLET")),
+                el("p", msg("CONNECT_WALLET_DESC1")),
                 el(".button-container",
                     el("button.connect-kaikas-button",
                         el("img", { src: "/images/icon/kaikas.svg" }),
-                        "카이카스 설치",
+                        msg("INSTALL_KAIKAS"),
                         { href: "https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi", target: "_blank" },
                     ),
                     el("button.connect-klip-button",
                         el("img", { src: "/images/icon/klip.svg" }),
-                        "카카오톡 클립으로 연결",
+                        msg("CONNECT_KLIPS"),
                         {
                             click: async () => {
                                 await Klip.connect();
@@ -28,7 +29,7 @@ export default class ConnectWalletPopup extends Popup {
                             },
                         },
                     ),
-                    el("button.button.cancel-button", "연결하지 않고 둘러보기", {
+                    el("button.button.cancel-button", msg("NOT_CONNECT_AROUND"), {
                         click: () => this.delete(),
                     }),
                 ),

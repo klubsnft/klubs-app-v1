@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Alert from "../../component/dialogue/Alert";
 import ArtistsContract from "../../contracts/ArtistsContract";
 import Wallet from "../../klaytn/Wallet";
@@ -12,29 +13,29 @@ export default class AddArtist implements View {
     private input: DomNode<HTMLInputElement>;
 
     constructor() {
-        Layout.current.title = "Klubs Arts 작가 등록";
+        Layout.current.title = msg("ADD_KLUBS_ARTISTS");
         Layout.current.content.append(
             (this.container = el(".add-artist-view",
                 el("header",
-                    el("h1", "Klubs Arts 작가 등록"),
-                    el("p", "Klubs Arts 작가로 등록합니다."),
+                    el("h1", msg("ADD_KLUBS_ARTISTS")),
+                    el("p", msg("ADD_KLUBS_ARTISTS_DESC1")),
                 ),
                 el("main",
                     el("label",
-                        el("h6", "지갑 주소"),
-                        this.input = el("input", { placeholder: "지갑 주소", readonly: "readonly" }),
+                        el("h6", msg("WALLET_ADDRESS")),
+                        this.input = el("input", { placeholder: msg("WALLET_ADDRESS"), readonly: "readonly" }),
                     ),
-                    el("button", "등록하기", {
+                    el("button", msg("REGISTER"), {
                         click: async () => {
                             const address = await Wallet.loadAddress();
                             if (address !== undefined) {
                                 const added = await ArtistsContract.added(address);
                                 if (added === true) {
-                                    new Alert("작가 등록 실패", "해당 지갑은 이미 작가로 등록되어있습니다.");
+                                    new Alert(msg("FAIL_ARTIST_REGISTER"), msg("FAIL_ARTIST_REGISTER_DESC1"));
                                 } else {
                                     await ArtistsContract.add();
                                     setTimeout(() => {
-                                        new Alert("작가 등록 완료", "작가 등록이 완료되었습니다.\n작가들의 의견에 귀를 기울이겠습니다.\nKlubs에 오신 것을 환영합니다.");
+                                        new Alert(msg("SUCCESS_ARTIST_REGISTER"), msg("SUCCESS_ARTIST_REGISTER_DESC1"));
                                         ViewUtil.go("/arts/artists/update");
                                     }, 2000);
                                 }
