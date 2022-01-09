@@ -1,6 +1,7 @@
 import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
+import msg from "msg.js";
 import Config from "../../Config";
 import PFPsContract from "../../contracts/PFPsContract";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
@@ -20,12 +21,12 @@ export default class SellPopup extends Popup {
     constructor(private addr: string[], private ids: number[]) {
         super(".popup-background");
         this.append(this.content = el(".popup.pfp-sell-popup",
-            el("h2", "판매하기"),
-            el("p", "보유중인 NFT를 판매합니다. 최초 판매시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 판매를 위한 것입니다."),
+            el("h2", msg("SELL_IT")),
+            el("p", msg("SELL_POPUP_DESC1")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", "판매 시작", {
+                el("button", msg("START_SELL"), {
                     click: async () => {
                         const prices: BigNumberish[] = [];
                         for (const input of this.inputs) {
@@ -36,7 +37,7 @@ export default class SellPopup extends Popup {
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", "취소", {
+                el("button", msg("CANCEL"), {
                     click: () => this.delete(),
                 }),
             ),
@@ -55,8 +56,8 @@ export default class SellPopup extends Popup {
                 el(".info",
                     el(".name", data.name),
                     el("label",
-                        el("span", `판매 가격 (원작자 2차 판매 수수료: ${royalty.royalty / 100}%, Klubs 수수료 ${Config.fee}% 포함)`),
-                        input = el("input", { placeholder: "판매 가격 (MIX)" }),
+                        el("span", `${msg("SELL_POPUP_DESC2")} ${royalty.royalty / 100}${msg("SELL_POPUP_DESC3")} ${Config.fee}${msg("SELL_POPUP_DESC4")}`),
+                        input = el("input", { placeholder: msg("PRICE_SELL_MIX") }),
                     ),
                 ),
             ));

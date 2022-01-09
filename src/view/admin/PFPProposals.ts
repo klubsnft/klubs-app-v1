@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import PFPsContract from "../../contracts/PFPsContract";
 import Layout from "../Layout";
 
@@ -8,9 +9,9 @@ export default class PFPProposals implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = "등록을 기다리는 PFP 정보들";
+        Layout.current.title = msg("WAITING_PFP_INFOS");
         Layout.current.content.append(this.container = el(".admin-pfp-proposals-view",
-            el("h1", "등록을 기다리는 PFP 정보들"),
+            el("h1", msg("WAITING_PFP_INFOS")),
         ));
         this.load();
     }
@@ -22,7 +23,7 @@ export default class PFPProposals implements View {
             if (await PFPsContract.added(proposal.addr) !== true) {
                 const proposalDisplay = el(".proposal",
                     JSON.stringify(proposal),
-                    el("a", "통과", {
+                    el("a", msg("PASS"), {
                         click: async () => {
                             await PFPsContract.passProposal(id);
                             proposalDisplay.delete();

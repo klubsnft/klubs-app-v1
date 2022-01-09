@@ -1,4 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
+import msg from "msg.js";
 import ArtsContract from "../../contracts/ArtsContract";
 import ArtStoreContract from "../../contracts/ArtStoreContract";
 import Wallet from "../../klaytn/Wallet";
@@ -13,16 +14,16 @@ export default class ArtsPageTabs extends DomNode {
     constructor(type: string) {
         super(".arts-page-tabs");
         this.append(
-            el(`a.tab${type === "all" ? ".on" : ""}`, "전체", {
+            el(`a.tab${type === "all" ? ".on" : ""}`, msg("ALL"), {
                 click: () => ViewUtil.go(`/arts`),
             }),
-            this.mineTab = el(`a.tab${type === "mine" ? ".on" : ""}`, "내 NFT", {
+            this.mineTab = el(`a.tab${type === "mine" ? ".on" : ""}`, msg("MY_NFT"), {
                 click: () => ViewUtil.go(`/arts/mine`),
             }),
-            this.saleTab = el(`a.tab${type === "selling" ? ".on" : ""}`, "판매중", {
+            this.saleTab = el(`a.tab${type === "selling" ? ".on" : ""}`, msg("SELLING"), {
                 click: () => ViewUtil.go(`/arts/selling`),
             }),
-            this.auctionTab = el(`a.tab${type === "auctions" ? ".on" : ""}`, "경매중", {
+            this.auctionTab = el(`a.tab${type === "auctions" ? ".on" : ""}`, msg("BIDDING"), {
                 click: () => ViewUtil.go(`/arts/auctions`),
             }),
         );
@@ -34,13 +35,13 @@ export default class ArtsPageTabs extends DomNode {
         const address = await Wallet.loadAddress();
         if (address !== undefined) {
             const balance = (await ArtsContract.balanceOf(address)).toNumber();
-            this.mineTab.empty().appendText(`내 NFT (${balance})`);
+            this.mineTab.empty().appendText(`${msg("MY_NFT")} (${balance})`);
         }
 
         const onSalesCount = (await ArtStoreContract.onSalesCount()).toNumber();
-        this.saleTab.empty().appendText(`판매중 (${onSalesCount})`);
+        this.saleTab.empty().appendText(`${msg("SELLING")} (${onSalesCount})`);
 
         const onAuctionsCount = (await ArtStoreContract.onAuctionsCount()).toNumber();
-        this.auctionTab.empty().appendText(`경매중 (${onAuctionsCount})`);
+        this.auctionTab.empty().appendText(`${msg("BIDDING")} (${onAuctionsCount})`);
     }
 }

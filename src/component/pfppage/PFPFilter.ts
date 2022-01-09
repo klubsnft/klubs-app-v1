@@ -1,4 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
+import msg from "msg.js";
 import RarityInfo from "../../RarityInfo";
 import PFPPage from "../../view/pfp/page/PFPPage";
 
@@ -11,7 +12,7 @@ export default class PFPFilter extends DomNode {
         super(".pfp-filter");
         this.append(
             this.idInput = el("input", {
-                placeholder: "ID로 검색",
+                placeholder: msg("SEARCH_ID"),
                 change: () => pageView.loadNFTs(),
             }),
         );
@@ -46,7 +47,7 @@ export default class PFPFilter extends DomNode {
                 selects.push(select as any);
                 return select;
             }),
-            el("a.reset-button", "필터 초기화", {
+            el("a.reset-button", msg("INIT_FILLETER"), {
                 click: () => {
                     this.filtered = {};
                     for (const select of selects) {

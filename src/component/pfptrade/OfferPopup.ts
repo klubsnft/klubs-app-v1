@@ -1,6 +1,7 @@
 import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
+import msg from "msg.js";
 import PFPStoreContract from "../../contracts/PFPStoreContract";
 import Loader from "../../Loader";
 import ViewUtil from "../../view/ViewUtil";
@@ -18,12 +19,12 @@ export default class OfferPopup extends Popup {
     constructor(private addr: string, private id: number) {
         super(".popup-background");
         this.append(this.content = el(".popup.pfp-offer-popup",
-            el("h2", "가격 제안"),
-            el("p", "NFT의 가격을 제안합니다. 최초 제안시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 제안를 위한 것입니다. 소유자가 수락하는 즉시 거래가 완료됩니다."),
+            el("h2", msg("OFFER_PRICE")),
+            el("p", msg("OFFER_POPUP_DESC1")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", "제안하기", {
+                el("button", msg("OFFER_IT"), {
                     click: async () => {
                         const prices: BigNumberish[] = [];
                         for (const input of this.inputs) {
@@ -34,7 +35,7 @@ export default class OfferPopup extends Popup {
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", "취소", {
+                el("button", msg("CANCEL"), {
                     click: () => this.delete(),
                 }),
             ),
@@ -51,8 +52,8 @@ export default class OfferPopup extends Popup {
             el(".info",
                 el(".name", data.name),
                 el("label",
-                    el("span", "제안 가격"),
-                    input = el("input", { placeholder: "제안 가격 (MIX)" }),
+                    el("span", msg("PRICE_OFFER")),
+                    input = el("input", { placeholder: msg("PRICE_OFFER_MIX") }),
                 ),
             ),
         ));

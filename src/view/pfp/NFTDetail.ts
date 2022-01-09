@@ -97,7 +97,7 @@ export default class NFTDetail implements View {
 
             // 경매
             el("section",
-                el("h2", msg("BID")),
+                el("h2", msg("ACTION")),
                 this.auctionForm = el(".auction-form"),
             ),
 
@@ -318,9 +318,9 @@ export default class NFTDetail implements View {
                 diff = auction.endBlock - await Klaytn.loadBlockNumber();
                 p.empty();
                 if (diff < 0) {
-                    p.appendText(msg("ENDED_BID"));
+                    p.appendText(msg("ENDED_AUCTION"));
                 } else {
-                    p.appendText(`${msg("ENDED_BID_DESC1")} ${diff} ${msg("ENDED_BID_DESC2")} (${CommonUtil.displayBlockDuration(diff)})`);
+                    p.appendText(`${msg("ENDED_AUCTION_DESC1")} ${diff} ${msg("ENDED_AUCTION_DESC2")} (${CommonUtil.displayBlockDuration(diff)})`);
                 }
             };
             await refresh();
@@ -357,7 +357,7 @@ export default class NFTDetail implements View {
                 if (biddingCount === 0) {
                     if (walletAddress === auction.seller) {
                         this.auctionForm.append(
-                            el("a.claim-button", msg("END_BID"), {
+                            el("a.claim-button", msg("END_AUCTION"), {
                                 click: async () => {
                                     await PFPStoreContract.cancelAuction(addr, id);
                                     ViewUtil.waitTransactionAndRefresh();
@@ -367,7 +367,7 @@ export default class NFTDetail implements View {
                     }
                 } else {
                     this.auctionForm.append(
-                        el("a.claim-button", msg("END_BID"), {
+                        el("a.claim-button", msg("END_AUCTION"), {
                             click: async () => {
                                 await PFPStoreContract.claim(addr, id);
                                 ViewUtil.waitTransactionAndRefresh();
@@ -387,7 +387,7 @@ export default class NFTDetail implements View {
 
             else if (biddingCount === 0) {
                 this.auctionForm.append(
-                    el("a.claim-button", msg("END_BID"), {
+                    el("a.claim-button", msg("END_AUCTION"), {
                         click: async () => {
                             await PFPStoreContract.cancelAuction(addr, id);
                             ViewUtil.waitTransactionAndRefresh();
@@ -399,7 +399,7 @@ export default class NFTDetail implements View {
 
         else if (walletAddress === owner) {
             this.auctionForm.append(
-                el("a.create-auction-button", msg("START_BID"), {
+                el("a.create-auction-button", msg("START_AUCTION"), {
                     click: () => new CreateAuctionPopup(addr, id),
                 }),
             );
@@ -424,13 +424,13 @@ export default class NFTDetail implements View {
             } else if (trade.event === "AcceptOffer") {
                 eventName = msg("ACCEPT_OFFER");
             } else if (trade.event === "CreateAuction") {
-                eventName = msg("START_BID");
+                eventName = msg("START_AUCTION");
             } else if (trade.event === "CancelAuction") {
-                eventName = msg("CANCEL_BID");
+                eventName = msg("CANCEL_AUCTION");
             } else if (trade.event === "Bid") {
-                eventName = msg("BID");
+                eventName = msg("ACTION");
             } else if (trade.event === "Claim") {
-                eventName = msg("END_BID");
+                eventName = msg("END_AUCTION");
             }
 
             el(".activity",

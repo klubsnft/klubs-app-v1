@@ -1,6 +1,7 @@
 import { BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
+import msg from "msg.js";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import ArtStoreContract from "../../contracts/ArtStoreContract";
@@ -20,12 +21,12 @@ export default class ArtBidPopup extends Popup {
     constructor(private id: number) {
         super(".popup-background");
         this.append(this.content = el(".popup.art-bid-popup",
-            el("h2", "입찰하기"),
-            el("p", "경매에 입찰합니다. 최초 입찰시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 입찰을 위한 것입니다."),
+            el("h2", msg("BID_IT")),
+            el("p", msg("BID_POPUP_DESC1")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", "입찰하기", {
+                el("button", msg("BID_IT"), {
                     click: async () => {
                         if (await Wallet.connected() !== true) {
                             await Wallet.connect();
@@ -58,8 +59,8 @@ export default class ArtBidPopup extends Popup {
             el(".info",
                 el(".name", data.name),
                 el("label",
-                    el("span", "입찰 가격 (최소 입찰 가격: ", CommonUtil.numberWithCommas(utils.formatEther(auction.startPrice)), " MIX)"),
-                    input = el("input", { placeholder: "입찰 가격 (MIX)" }),
+                    el("span", msg("BID_PRICE_MIX_POPUP_DESC1"), CommonUtil.numberWithCommas(utils.formatEther(auction.startPrice)), " MIX)"),
+                    input = el("input", { placeholder: msg("BID_PRICE_MIX") }),
                 ),
             ),
         ));

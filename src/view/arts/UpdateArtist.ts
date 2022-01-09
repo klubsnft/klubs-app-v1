@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Alert from "../../component/dialogue/Alert";
 import ArtistsContract from "../../contracts/ArtistsContract";
 import Wallet from "../../klaytn/Wallet";
@@ -21,25 +22,25 @@ export default class UpdateArtist implements View {
 
     constructor() {
 
-        Layout.current.title = "작가 정보 수정";
+        Layout.current.title = msg("REVISION_ARTIST");
         Layout.current.content.append(this.container = el(".artist-update-view",
-            el("header", el("h1", "작가 정보 수정")),
+            el("header", el("h1", msg("REVISION_ARTIST"))),
             el("main",
                 el(".form",
-                    el("h2", "기본 정보 수정"),
+                    el("h2", msg("UPDATE_BASE_INFO")),
                     el("label",
-                        el("h3", "배너 이미지 주소"),
+                        el("h3", msg("BANNER_IMAGE_ADDRESS")),
                         this.bannerPreview = el("img.banner-preview"),
                         this.bannerInput = el("input", {
                             type: "url",
-                            placeholder: "배너 이미지 주소",
+                            placeholder: msg("BANNER_IMAGE_ADDRESS"),
                             change: () => {
                                 (this.bannerPreview as DomNode<HTMLImageElement>).domElement.src = this.bannerInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", "배너 업로드"),
+                        el("h3", msg("BANNER_UPLOAD")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -60,18 +61,18 @@ export default class UpdateArtist implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", "아이콘 이미지 주소"),
+                        el("h3", msg("ICON_IMAGE_ADDRESS")),
                         this.iconPreview = el("img.icon-preview"),
                         this.iconInput = el("input", {
                             type: "url",
-                            placeholder: "아이콘 이미지 주소",
+                            placeholder: msg("ICON_IMAGE_ADDRESS"),
                             change: () => {
                                 (this.iconPreview as DomNode<HTMLImageElement>).domElement.src = this.iconInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", "아이콘 업로드"),
+                        el("h3", msg("ICON_UPLOAD")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -92,23 +93,23 @@ export default class UpdateArtist implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", "작가명"),
-                        this.nameInput = el("input", { type: "text", placeholder: "작가명" }),
+                        el("h3", msg("ARTIST_NAME")),
+                        this.nameInput = el("input", { type: "text", placeholder: msg("ARTIST_NAME") }),
                     ),
                     el("label",
-                        el("h3", "소개글"),
+                        el("h3", msg("INTRODUCTION")),
                         el("p",
-                            el("span", "소개글은 마크다운 문법을 사용합니다."),
-                            el("a", "마크다운 문법 보기", { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
+                            el("span", msg("INTRODUCTION_DESC1")),
+                            el("a", msg("VIEW_MARKDOWN"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
                         ),
-                        this.descriptionTextarea = el("textarea", { placeholder: "작가 소개" }),
+                        this.descriptionTextarea = el("textarea", { placeholder: msg("ARTIST_INTRODUCE") }),
                     ),
                     el("label",
-                        el("h3", "트위터"),
-                        this.twitterInput = el("input", { type: "url", placeholder: "트위터 주소" }),
+                        el("h3", msg("TWITTER")),
+                        this.twitterInput = el("input", { type: "url", placeholder: msg("TWITTER_ADDRESS") }),
                     ),
                     el("label",
-                        el("h3", "Klubs에서 숨기기"),
+                        el("h3", msg("HIDE_KLUBS")),
                         this.hidingCheckbox = el("input", { type: "checkbox" }),
                     ),
                     el("button", "정보 저장", {
@@ -122,21 +123,21 @@ export default class UpdateArtist implements View {
                                 hiding: this.hidingCheckbox.domElement.checked,
                             };
                             await ArtistsContract.setExtra(JSON.stringify(extra));
-                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", "2차 판매 수수료 정보 수정"),
+                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO")),
                     el("label",
-                        el("h3", "2차 판매 수수료 비율(%)"),
-                        el("p", "2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 2번째 자리까지 지정 가능합니다."),
-                        this.baseRoyaltyInput = el("input", { type: "number", placeholder: "2차 판매 수수료 비율(%)" }),
+                        el("h3", msg("2ND_SALES_FEE_RATIO")),
+                        el("p", msg("2ND_SALES_FEE_RATIO_DESC1")),
+                        this.baseRoyaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO") }),
                     ),
-                    el("button", "정보 저장", {
+                    el("button", msg("SAVE_INFO"), {
                         click: async () => {
                             await ArtistsContract.setBaseRoyalty(Math.floor(parseFloat(this.baseRoyaltyInput.domElement.value) * 100));
-                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
                         },
                     }),
                 ),
