@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import ArtNFTCard from "../../component/ArtNFTCard";
 import Loading from "../../component/loading/Loading";
 import ArtsContract from "../../contracts/ArtsContract";
@@ -27,31 +28,31 @@ export default class MyArts implements View {
     private myNFTList: DomNode;
 
     constructor() {
-        Layout.current.title = "내 Arts";
+        Layout.current.title = msg("MY_ARTS");
         Layout.current.content.append(this.container = el(".user-my-arts-view",
-            el("header", el("h1", "내 Arts 정보")),
+            el("header", el("h1", msg("MY_ARTS_INFO"))),
             el("section",
-                el("h2", "내가 등록한 작품들"),
+                el("h2", msg("MY_ADD_ARTS")),
                 this.artistArtsLoading = new Loading(),
                 this.artistArtsList = el(".list"),
             ),
             el("section",
-                el("h2", "내가 판매중인 Arts"),
+                el("h2", msg("MY_SELLING_ARTS")),
                 this.sellingLoading = new Loading(),
                 this.sellingList = el(".list"),
             ),
             el("section",
-                el("h2", "내가 경매 진행중인 Arts"),
+                el("h2", msg("MY_BIDDING_ARTS")),
                 this.auctionLoading = new Loading(),
                 this.auctionList = el(".list"),
             ),
             el("section",
-                el("h2", "내가 가격을 제시한 Arts"),
+                el("h2", msg("MY_OFFER_ARTS")),
                 this.offeringLoading = new Loading(),
                 this.offeringList = el(".list"),
             ),
             el("section",
-                el("h2", "내 Arts 목록"),
+                el("h2", msg("MY_ARTS_LIST")),
                 this.myNFTLoading = new Loading(),
                 this.myNFTList = el(".list"),
             ),

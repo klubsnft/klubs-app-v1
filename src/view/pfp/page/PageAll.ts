@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { SkyRouter, View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import superagent from "superagent";
 import Loading from "../../../component/loading/Loading";
 import PFPNFTCard from "../../../component/PFPNFTCard";
@@ -42,7 +43,7 @@ export default class PageAll implements View, PFPPage {
 
         this.container.append(
             el("header",
-                el("h2", "NFT 목록"),
+                el("h2", msg("NFT_LIST")),
                 new PFPPageTabs(addr, "all"),
                 this.sortor = new PFPSortor(this),
             ),

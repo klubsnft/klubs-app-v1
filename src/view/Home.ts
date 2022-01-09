@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import ArtNFTCard from "../component/ArtNFTCard";
 import Loading from "../component/loading/Loading";
 import PFPCard from "../component/PFPCard";
@@ -17,12 +18,12 @@ export default class Home implements View {
     private artsList: DomNode;
 
     constructor() {
-        Layout.current.title = "Klaytn based NFT marketplace with MIX";
+        Layout.current.title = msg("HOME_TITLE");
         Layout.current.content.append(
             (this.container = el(".home-view",
                 el("header",
-                    el("p", "Klubs는 클레이튼 기반 NFT 마켓플레이스입니다. 100% On-Chain으로 구동되며 MIX를 사용합니다."),
-                    el("a", "Klubs 소개", {
+                    el("p", msg("KLUBS_PRESENT2")),
+                    el("a", msg("KLUBS_PRESENT1"), {
                         href: "https://medium.com/klubs/klubs-klaytn-based-nft-marketplace-with-mix-2c93d3a9e014",
                         target: "_blank",
                     }),
@@ -30,8 +31,8 @@ export default class Home implements View {
                 el(".content",
                     el(".slide",
                         el("header",
-                            el("h2", "PFP"),
-                            el("a", "PFP 전체 보기", { click: () => ViewUtil.go("/pfp") }),
+                            el("h2", msg("PFP")),
+                            el("a", msg("PFP_ALL"), { click: () => ViewUtil.go("/pfp") }),
                         ),
                         this.pfpLoading = new Loading(),
                         el(".pfp-list-container",
@@ -40,8 +41,8 @@ export default class Home implements View {
                     ),
                     el(".slide",
                         el("header",
-                            el("h2", "Arts"),
-                            el("a", "Arts 전체 보기", { click: () => ViewUtil.go("/arts") }),
+                            el("h2", msg("ARTS")),
+                            el("a", msg("ARTS_ALL"), { click: () => ViewUtil.go("/arts") }),
                         ),
                         this.artsLoading = new Loading(),
                         el(".arts-list-container",

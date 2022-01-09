@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { SkyRouter, View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import superagent from "superagent";
 import Loading from "../../component/loading/Loading";
 import PFPCard from "../../component/PFPCard";
@@ -38,34 +39,34 @@ export default class MyPFPs implements View, PFPPage {
     constructor(params: ViewParams) {
         this.page = params.page === undefined ? 1 : parseInt(params.page, 10);
 
-        Layout.current.title = "내 PFP";
+        Layout.current.title = msg("MY_INFO");
         Layout.current.content.append(this.container = el(".user-my-pfps-view",
-            el("header", el("h1", "내 PFP 정보")),
+            el("header", el("h1", msg("MY_PFP_INFO"))),
             el("section",
-                el("h2", "내가 관리하는 PFP"),
+                el("h2", msg("MY_MANAGE_PFP")),
                 this.managingLoading = new Loading(),
                 this.managingList = el(".list"),
             ),
             el("section",
-                el("h2", "내가 판매중인 PFP"),
+                el("h2", msg("MY_SELLING_PFP")),
                 this.sellingLoading = new Loading(),
                 this.sellingList = el(".list"),
             ),
             el("section",
-                el("h2", "내가 경매 진행중인 PFP"),
+                el("h2", msg("MY_BIDDING_PFP")),
                 this.auctionLoading = new Loading(),
                 this.auctionList = el(".list"),
             ),
             el("section",
-                el("h2", "내가 가격을 제시한 PFP"),
+                el("h2", msg("MY_OFFER_PFP")),
                 this.offeringLoading = new Loading(),
                 this.offeringList = el(".list"),
             ),
             el("section",
-                el("h2", "내 PFP 목록"),
+                el("h2", msg("MY_PFP_LIST")),
                 el("p.warning",
                     el("i.fas.fa-exclamation-triangle"),
-                    "이제 막 민팅한 프로젝트의 경우, 이곳이 아닌 해당 PFP 화면으로 이동해 내 PFP 목록을 확인해주세요.",
+                    msg("MY_PFP_DESC1"),
                 ),
                 this.myNFTLoading = new Loading(),
                 this.pagination1 = new PFPPagination(this, this.page),

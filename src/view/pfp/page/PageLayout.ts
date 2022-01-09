@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import marked from "marked";
+import msg from "msg.js";
 import { View, ViewParams } from "skyrouter";
 import xss from "xss";
 import PFPsContract from "../../../contracts/PFPsContract";
@@ -46,7 +47,7 @@ export default class PageLayout implements View {
 
     constructor(params: ViewParams) {
         PageLayout.current = this;
-        Layout.current.title = "PFP 상세정보";
+        Layout.current.title = msg("PFP_DETAIL_INFO");
         Layout.current.content.append(this.container = el(".pfp-page-layout",
             this.header = el("header",
                 this.iconDisplay = el("img"),
@@ -91,9 +92,9 @@ export default class PageLayout implements View {
                 this.miningInfoDisplay.empty().append(
                     el("a.mining",
                         el("img", { src: "/images/icon/mining.png", height: "14" }),
-                        el("span", "채굴 가능"),
+                        el("span", msg("IS_MINING")),
                         {
-                            title: "채굴 가능한 PFP입니다. 클릭하시면 자세한 정보를 확인하실 수 있습니다.",
+                            title: msg("IS_MINING_DESC2"),
                             href: data.miningInfoURL,
                             target: "_blank",
                             click: (event: MouseEvent) => event.stopPropagation(),
@@ -127,7 +128,7 @@ export default class PageLayout implements View {
         try {
             const address = await Wallet.loadAddress();
             if (address !== undefined && await PFPsContract.existsManager(addr, address) === true) {
-                el("button.update-button", "정보 수정", {
+                el("button.update-button", msg("REVSION_INFO"), {
                     click: () => ViewUtil.go(`/pfp/${addr}/update`),
                 }).appendTo(this.header);
             }

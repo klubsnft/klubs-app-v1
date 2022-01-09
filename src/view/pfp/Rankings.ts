@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import Loading from "../../component/loading/Loading";
@@ -15,21 +16,21 @@ export default class Rankings implements View {
     private list: DomNode;
 
     constructor() {
-        Layout.current.title = "PFP 랭킹";
+        Layout.current.title = msg("PFP_RANKING");
         Layout.current.content.append(
             (this.container = el(".pfp-ranking-view",
                 el("header",
-                    el("h1", "PFP 랭킹"),
-                    el("span", "Klubs의 상위 PFP는 거래량에 따라서 집계되었습니다.")
+                    el("h1", msg("PFP_RANKING")),
+                    el("span", msg("PFP_RANKIN_DESC1"))
                 ),
                 el("table",
                     el("thead",
                         el("tr",
                             el("td", "PFP", { colspan: "3" }),
-                            el("td", "총 거래량"),
-                            el("td.mobile", "30일 거래량"),
-                            el("td.mobile", "7일 거래량"),
-                            el("td.mobile", "24시간 거래량"),
+                            el("td", msg("TOTAL_TRADING_VOLUME")),
+                            el("td.mobile", msg("30DAYS_TRADING_VOLUME")),
+                            el("td.mobile", msg("7DAYS_TRADING_VOLUME")),
+                            el("td.mobile", msg("24HOURS_TRADING_VOLUME")),
                         ),
                     ),
                     this.list = el("tbody"),

@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Layout from "../Layout";
 
 export default class Proposal implements View {
@@ -7,9 +8,9 @@ export default class Proposal implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = "등록을 기다리는 PFP 정보";
+        Layout.current.title = msg("WAITING_PFP_INFO");
         Layout.current.content.append(this.container = el(".pfp-proposal-view",
-            el("h1", "등록을 기다리는 PFP 정보"),
+            el("h1", msg("WAITING_PFP_INFO")),
         ));
     }
 

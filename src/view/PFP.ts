@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Loading from "../component/loading/Loading";
 import PFPCard from "../component/PFPCard";
 import PFPsContract from "../contracts/PFPsContract";
@@ -13,19 +14,19 @@ export default class PFP implements View {
     private pfpList: DomNode;
 
     constructor() {
-        Layout.current.title = "PFP Projects";
+        Layout.current.title = msg("PFP_PROJECTS");
         Layout.current.content.append(
             this.container = el(".pfp-view",
                 el("header",
                     el("p",
-                        "PFP는 프로필 이미지 NFT로,\nNFT를 소유한 사람들 끼리 커뮤니티를 이루어 소통하는 목적을 띠고 있습니다."
+                        msg("PFP_PROJECTS_DESC")
                     ),
-                    el("a", "프로젝트 등록", {
+                    el("a", msg("PROJECT_ADD"), {
                         click: () => ViewUtil.go("/pfp/add"),
                     }),
                 ),
                 el(".content",
-                    el("h2", "프로젝트 목록"),
+                    el("h2", msg("PROJECT_LIST")),
                     this.pfpLoading = new Loading(),
                     this.pfpList = el(".pfp-list"),
                 ),

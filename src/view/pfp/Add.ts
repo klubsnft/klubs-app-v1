@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Layout from "../Layout";
 import ViewUtil from "../ViewUtil";
 
@@ -7,30 +8,30 @@ export default class Add implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = "PFP 등록";
+        Layout.current.title = msg("PFP_REGISTER");
         Layout.current.content.append(
             (this.container = el(".add-pfp-view",
-                el("header", el("h1", "PFP 프로젝트 등록")),
+                el("header", el("h1", msg("ADD_PFP_PROJECT"))),
                 el("main",
                     el("section",
                         { click: () => ViewUtil.go("/pfp/add-by-minter") },
-                        el("h2", "KIP17Mintable을 상속한 PFP 등록"),
+                        el("h2", msg("ADD_KIP17_MINTABLE_PFP")),
                         el("p",
-                            "KIP17Mintable를 상속한 PFP 프로젝트인 경우에 선택하는 메뉴입니다.",
+                            msg("ADD_KIP17_MINTABLE_PFP_DESC1"),
                         ),
                     ),
                     el("section",
                         { click: () => ViewUtil.go("/pfp/add-by-pfp-owner") },
-                        el("h2", "Ownable을 상속한 PFP 등록"),
+                        el("h2", msg("ADD_OWNABLE_PFP")),
                         el("p",
-                            "Ownable을 상속한 PFP 프로젝트인 경우에 선택하는 메뉴입니다.",
+                            msg("ADD_OWNABLE_PFP_DESC1"),
                         ),
                     ),
                     el("section",
                         { click: () => ViewUtil.go("/pfp/propose") },
-                        el("h2", "둘 다 상속하지 않은 PFP 등록"),
+                        el("h2", msg("ADD_WITHOUT_INHERITANCE_PFP")),
                         el("p",
-                            "KIP17Mintable나 Ownable을 상속하지 않은 경우에 선택하는 메뉴입니다. 만약 둘 중 하나라도 상속을 했다면 다른 메뉴를 선택해주시기 바랍니다.",
+                            msg("ADD_WITHOUT_INHERITANCE_PFP_DESC1"),
                         ),
                     ),
                 ),

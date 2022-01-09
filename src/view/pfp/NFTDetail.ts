@@ -1,6 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import marked from "marked";
+import msg from "msg.js";
 import { SkyRouter, View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import xss from "xss";
@@ -50,7 +51,7 @@ export default class NFTDetail implements View {
 
         this.contract = new KIP17Contract(addr);
 
-        Layout.current.title = "NFT 상세정보";
+        Layout.current.title = msg("NFT_DETAIL");
         Layout.current.content.append(this.container = el(".pfp-nft-detail-view",
 
             // 이미지
@@ -58,7 +59,7 @@ export default class NFTDetail implements View {
 
             // 기본 정보
             el("section",
-                el("h2", "기본 정보"),
+                el("h2", msg("BASE_INFO")),
                 el(".info",
                     this.pfpDisplay = el("a.pfp", {
                         click: () => ViewUtil.go(`/pfp/${addr}`),
@@ -67,7 +68,7 @@ export default class NFTDetail implements View {
                     this.ownerDisplay = el(".owner"),
                     this.descriptionDisplay = el(".description"),
                     this.sendButtonContainer = el(".send-button-container"),
-                    el("a.refresh-button", "정보 새로고침", {
+                    el("a.refresh-button", msg("REFRESH"), {
                         click: async () => {
                             await Loader.cacheMetadata(addr, id);
                             SkyRouter.refresh();
@@ -78,31 +79,31 @@ export default class NFTDetail implements View {
 
             // 프로퍼티
             el("section",
-                el("h2", "속성"),
+                el("h2", msg("PROPERTY")),
                 this.attributesDisplay = el(".attributes"),
             ),
 
             // 가격
             el("section",
-                el("h2", "거래하기"),
+                el("h2", msg("DEAL")),
                 this.tradeForm = el(".trade-form"),
             ),
 
             // 오퍼
             el("section",
-                el("h2", "가격 제안"),
+                el("h2", msg("OFFER_PRICE")),
                 this.offerForm = el(".offer-form"),
             ),
 
             // 경매
             el("section",
-                el("h2", "경매"),
+                el("h2", msg("BID")),
                 this.auctionForm = el(".auction-form"),
             ),
 
             // 거래 이력
             el("section",
-                el("h2", "거래 이력"),
+                el("h2", msg("TRANSACTION_HISTORY")),
                 this.activity = el(".activity"),
             ),
         ));
@@ -128,7 +129,7 @@ export default class NFTDetail implements View {
 
         const owner = await this.contract.ownerOf(id);
         if (owner === PFPStoreContract.address) {
-            this.ownerDisplay.empty().appendText("판매자 ");
+            this.ownerDisplay.empty().appendText(msg("SELLER"));
             const selling = await PFPStoreContract.checkSelling(addr, id);
             if (selling === true) {
                 const saleInfo = await PFPStoreContract.sales(addr, id);
@@ -142,7 +143,7 @@ export default class NFTDetail implements View {
                 }));
             }
         } else {
-            this.ownerDisplay.empty().appendText("소유자 ");
+            this.ownerDisplay.empty().appendText(msg("OWNER"));
             this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(owner), {
                 click: () => ViewUtil.go(`/user/${owner}`),
             }));
@@ -150,8 +151,8 @@ export default class NFTDetail implements View {
 
         const address = await Wallet.loadAddress();
         if (owner === address) {
-            this.sendButtonContainer.empty().append(el("a", "전송하기", {
-                click: () => new Prompt("전송하기", "전송받을 지갑 주소를 입력해주시기 바랍니다. 전송이 완료되면 절대 되찾을 수 없으니, 지갑 주소를 여러번 확인하시기 바랍니다.", "전송하기", async (to) => {
+            this.sendButtonContainer.empty().append(el("a", msg("TRANSFER"), {
+                click: () => new Prompt(msg("TRANSFER"), msg("TRANSFER_DESC1"), msg("TRANSFER"), async (to) => {
                     await this.contract.transfer(to, id);
                     ViewUtil.waitTransactionAndRefresh();
                 }),
@@ -208,18 +209,18 @@ export default class NFTDetail implements View {
                 ")",
             ));
         } else {
-            priceDispay.appendText("판매중이 아닙니다.");
+            priceDispay.appendText(msg("NOT_SELLING"));
         }
 
         if (walletAddress === owner) {
             this.tradeForm.append(
-                el("a.sell-button", "판매하기", {
+                el("a.sell-button", msg("SELL_IT"), {
                     click: () => new SellPopup([addr], [id]),
                 }),
             );
         } else if (saleInfo.seller === walletAddress) {
             this.tradeForm.append(
-                el("a.cancel-sell-button", "판매 취소", {
+                el("a.cancel-sell-button", msg("CANCEL_CELL"), {
                     click: async () => {
                         await PFPStoreContract.cancelSale([addr], [id]);
                         ViewUtil.waitTransactionAndRefresh();
@@ -228,7 +229,7 @@ export default class NFTDetail implements View {
             );
         } else if (saleInfo.price.gt(0)) {
             this.tradeForm.append(
-                el("a.buy-button", "구매하기", {
+                el("a.buy-button", msg("BUY_IT"), {
                     click: () => new BuyPopup([addr], [id]),
                 }),
             );
@@ -260,7 +261,7 @@ export default class NFTDetail implements View {
 
                         if (offerInfo.offeror === walletAddress) {
                             offer.append(
-                                el("a.cancel-offer-button", "제안 취소", {
+                                el("a.cancel-offer-button", msg("CANCEL_OFFER"), {
                                     click: async () => {
                                         await PFPStoreContract.cancelOffer(addr, id, offerId);
                                         ViewUtil.waitTransactionAndRefresh();
@@ -269,7 +270,7 @@ export default class NFTDetail implements View {
                             );
                         } else if (walletAddress === owner) {
                             offer.append(
-                                el("a.accept-offer-button", "제안 수락", {
+                                el("a.accept-offer-button", msg("ACCEPT_OFFER"), {
                                     click: () => new AcceptOfferPopup(addr, id, offerId),
                                 }),
                             );
@@ -277,7 +278,7 @@ export default class NFTDetail implements View {
 
                         if (walletAddress === Config.adminAddress) {
                             offer.append(
-                                el("a.cancel-offer-button", "강제 제안 취소", {
+                                el("a.cancel-offer-button", msg("FORCE_CANCEL_OFFER"), {
                                     click: async () => {
                                         await PFPStoreContract.cancelOfferByOwner([addr], [id], [offerId]);
                                         ViewUtil.waitTransactionAndRefresh();
@@ -296,7 +297,7 @@ export default class NFTDetail implements View {
 
         if (walletAddress !== owner && saleInfo.seller !== walletAddress) {
             this.offerForm.append(
-                el("a.offer-button", "가격 제안하기", {
+                el("a.offer-button", msg("OFFER_PRICE"), {
                     click: () => new OfferPopup(addr, id),
                 }),
             );
@@ -317,9 +318,9 @@ export default class NFTDetail implements View {
                 diff = auction.endBlock - await Klaytn.loadBlockNumber();
                 p.empty();
                 if (diff < 0) {
-                    p.appendText("경매 종료됨");
+                    p.appendText(msg("ENDED_BID"));
                 } else {
-                    p.appendText(`경매 종료까지 ${diff} 블록 남음 (${CommonUtil.displayBlockDuration(diff)})`);
+                    p.appendText(`${msg("ENDED_BID_DESC1")} ${diff} ${msg("ENDED_BID_DESC2")} (${CommonUtil.displayBlockDuration(diff)})`);
                 }
             };
             await refresh();
@@ -356,7 +357,7 @@ export default class NFTDetail implements View {
                 if (biddingCount === 0) {
                     if (walletAddress === auction.seller) {
                         this.auctionForm.append(
-                            el("a.claim-button", "경매 종료", {
+                            el("a.claim-button", msg("END_BID"), {
                                 click: async () => {
                                     await PFPStoreContract.cancelAuction(addr, id);
                                     ViewUtil.waitTransactionAndRefresh();
@@ -366,7 +367,7 @@ export default class NFTDetail implements View {
                     }
                 } else {
                     this.auctionForm.append(
-                        el("a.claim-button", "경매 종료", {
+                        el("a.claim-button", msg("END_BID"), {
                             click: async () => {
                                 await PFPStoreContract.claim(addr, id);
                                 ViewUtil.waitTransactionAndRefresh();
@@ -378,7 +379,7 @@ export default class NFTDetail implements View {
 
             else if (walletAddress !== auction.seller) {
                 this.auctionForm.append(
-                    el("a.bid-button", "입찰하기", {
+                    el("a.bid-button", msg("BID_IT"), {
                         click: () => new BidPopup(addr, id),
                     }),
                 );
@@ -386,7 +387,7 @@ export default class NFTDetail implements View {
 
             else if (biddingCount === 0) {
                 this.auctionForm.append(
-                    el("a.claim-button", "경매 종료", {
+                    el("a.claim-button", msg("END_BID"), {
                         click: async () => {
                             await PFPStoreContract.cancelAuction(addr, id);
                             ViewUtil.waitTransactionAndRefresh();
@@ -398,7 +399,7 @@ export default class NFTDetail implements View {
 
         else if (walletAddress === owner) {
             this.auctionForm.append(
-                el("a.create-auction-button", "경매 시작하기", {
+                el("a.create-auction-button", msg("START_BID"), {
                     click: () => new CreateAuctionPopup(addr, id),
                 }),
             );
@@ -411,25 +412,25 @@ export default class NFTDetail implements View {
         for (const trade of result.body) {
             let eventName;
             if (trade.event === "Sell") {
-                eventName = "판매";
+                eventName = msg("SELL");
             } else if (trade.event === "Buy") {
-                eventName = "구매";
+                eventName = msg("BUY");
             } else if (trade.event === "CancelSale") {
-                eventName = "판매 취소";
+                eventName = msg("CANCEL_CELL");
             } else if (trade.event === "MakeOffer") {
-                eventName = "제안";
+                eventName = msg("OFFER");
             } else if (trade.event === "CancelOffer") {
-                eventName = "제안 취소";
+                eventName = msg("CANCEL_OFFER");
             } else if (trade.event === "AcceptOffer") {
-                eventName = "제안 수락";
+                eventName = msg("ACCEPT_OFFER");
             } else if (trade.event === "CreateAuction") {
-                eventName = "경매 시작";
+                eventName = msg("START_BID");
             } else if (trade.event === "CancelAuction") {
-                eventName = "경매 취소";
+                eventName = msg("CANCEL_BID");
             } else if (trade.event === "Bid") {
-                eventName = "입찰";
+                eventName = msg("BID");
             } else if (trade.event === "Claim") {
-                eventName = "경매 종료";
+                eventName = msg("END_BID");
             }
 
             el(".activity",

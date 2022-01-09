@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import msg from "msg.js";
 import Alert from "../../component/dialogue/Alert";
 import Prompt from "../../component/dialogue/Prompt";
 import PFPsContract from "../../contracts/PFPsContract";
@@ -36,25 +37,25 @@ export default class Update implements View {
 
         const addr = params.addr;
 
-        Layout.current.title = "PFP 정보 수정";
+        Layout.current.title = msg("UPDATE_PFP_INFO");
         Layout.current.content.append(this.container = el(".pfp-update-view",
-            el("header", el("h1", "PFP 정보 수정")),
+            el("header", el("h1", msg("UPDATE_PFP_INFO"))),
             el("main",
                 el(".form",
-                    el("h2", "기본 정보 수정"),
+                    el("h2", msg("UPDATE_BASE_INFO")),
                     el("label",
-                        el("h3", "배너 이미지 주소"),
+                        el("h3", msg("BANNER_IMAGE_ADDRESS")),
                         this.bannerPreview = el("img.banner-preview"),
                         this.bannerInput = el("input", {
                             type: "url",
-                            placeholder: "배너 이미지 주소",
+                            placeholder: msg("BANNER_IMAGE_ADDRESS"),
                             change: () => {
                                 (this.bannerPreview as DomNode<HTMLImageElement>).domElement.src = this.bannerInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", "배너 업로드"),
+                        el("h3", msg("BANNER_UPLOAD")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -75,18 +76,18 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", "아이콘 이미지 주소"),
+                        el("h3", msg("ICON_IMAGE_ADDRESS")),
                         this.iconPreview = el("img.icon-preview"),
                         this.iconInput = el("input", {
                             type: "url",
-                            placeholder: "아이콘 이미지 주소",
+                            placeholder: msg("ICON_IMAGE_ADDRESS"),
                             change: () => {
                                 (this.iconPreview as DomNode<HTMLImageElement>).domElement.src = this.iconInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", "아이콘 업로드"),
+                        el("h3", msg("ICON_UPLOAD")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -107,28 +108,28 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", "이름"),
+                        el("h3", msg("NAME")),
                         this.nameInput = el("input", { type: "text", placeholder: "PFP 이름" }),
                     ),
                     el("label",
-                        el("h3", "소개글"),
+                        el("h3", msg("INTRODUCTION")),
                         el("p",
-                            el("span", "소개글은 마크다운 문법을 사용합니다."),
-                            el("a", "마크다운 문법 보기", { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
+                            el("span", msg("INTRODUCTION_DESC1")),
+                            el("a", msg("VIEW_MARKDOWN"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
                         ),
-                        this.descriptionTextarea = el("textarea", { placeholder: "PFP 소개" }),
+                        this.descriptionTextarea = el("textarea", { placeholder: "INTRODUCTION_PFP" }),
                     ),
                     el("label",
-                        el("h3", "오픈 카카오톡"),
-                        this.kakaotalkInput = el("input", { type: "url", placeholder: "오픈 카카오톡 주소" }),
+                        el("h3", msg("OPEN_KAKAO")),
+                        this.kakaotalkInput = el("input", { type: "url", placeholder: msg("OPEN_KAKAO_ADDRESS") }),
                     ),
                     el("label",
-                        el("h3", "트위터"),
-                        this.twitterInput = el("input", { type: "url", placeholder: "트위터 주소" }),
+                        el("h3", msg("TWITTER")),
+                        this.twitterInput = el("input", { type: "url", placeholder: msg("TWITTER_ADDRESS") }),
                     ),
                     el("label",
-                        el("h3", "채굴 가능 여부"),
-                        el("p", "PFP 프로젝트가 채굴이 가능한지 설정합니다."),
+                        el("h3", msg("IS_MINING")),
+                        el("p", msg("IS_MINING_DESC1")),
                         this.mineableCheckbox = el("input", { type: "checkbox" }, {
                             change: () => {
                                 if (this.mineableCheckbox.domElement.checked === true) {
@@ -140,15 +141,15 @@ export default class Update implements View {
                         }),
                     ),
                     this.miningInfoURLLabel = el("label",
-                        el("h3", "채굴 정보 URL"),
-                        el("p", "채굴 정보를 확인할 수 있는 페이지의 URL을 기입합니다."),
-                        this.miningInfoURLInput = el("input", { type: "url", placeholder: "채굴 정보 URL" }),
+                        el("h3", msg("MINING_INFO_URL")),
+                        el("p", msg("MINING_INFO_URL_DESC1")),
+                        this.miningInfoURLInput = el("input", { type: "url", placeholder: msg("MINING_INFO_URL") }),
                     ),
                     el("label",
-                        el("h3", "Klubs에서 숨기기"),
+                        el("h3", msg("HIDE_KLUBS")),
                         this.hidingCheckbox = el("input", { type: "checkbox" }),
                     ),
-                    el("button", "정보 저장", {
+                    el("button", msg("SAVE_INFO"), {
                         click: async () => {
                             const extra = {
                                 banner: this.bannerInput.domElement.value,
@@ -162,15 +163,15 @@ export default class Update implements View {
                                 hiding: this.hidingCheckbox.domElement.checked,
                             };
                             await PFPsContract.setExtra(addr, JSON.stringify(extra));
-                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", "발행량 정보 수정"),
+                    el("h2", "ISSUE_REVISE_INFO"),
                     el("label",
-                        el("h3", "KIP17Full 혹은 KIP17Enumerable 상속 여부"),
-                        el("p", "KIP17Full 혹은 KIP17Enumerable를 상속하신 경우, 총 발행량 정보를 매번 입력하지 않으셔도 됩니다."),
+                        el("h3", msg("IS_KIP17_FULL_OR_KIP17ENUMERABLE")),
+                        el("p", msg("IS_KIP17_FULL_OR_KIP17ENUMERABLE_DESC1")),
                         this.enumerableCheckbox = el("input", { type: "checkbox" }, {
                             change: () => {
                                 if (this.enumerableCheckbox.domElement.checked === true) {
@@ -182,8 +183,8 @@ export default class Update implements View {
                         }),
                     ),
                     this.totalSupplyLabel = el("label",
-                        el("h3", "총 발행량"),
-                        this.totalSupplyInput = el("input", { type: "number", placeholder: "총 발행량" }),
+                        el("h3", msg("TOTAL_ISSUE")),
+                        this.totalSupplyInput = el("input", { type: "number", placeholder: msg("TOTAL_ISSUE") }),
                     ),
                     el("button", "정보 저장", {
                         click: async () => {
@@ -192,35 +193,35 @@ export default class Update implements View {
                             } else {
                                 await PFPsContract.setTotalSupply(addr, parseInt(this.totalSupplyInput.domElement.value, 10));
                             }
-                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", "2차 판매 수수료 정보 수정"),
+                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO")),
                     el("label",
-                        el("h3", "2차 판매 수수료 비율(%)"),
-                        el("p", "2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 2번째 자리까지 지정 가능합니다."),
-                        this.royaltyInput = el("input", { type: "number", placeholder: "2차 판매 수수료 비율(%)" }),
+                        el("h3", msg("2ND_SALES_FEE_RATIO")),
+                        el("p", msg("2ND_SALES_FEE_RATIO_DESC1")),
+                        this.royaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO") }),
                     ),
                     el("label",
-                        el("h3", "2차 판매 수수료 수령자"),
-                        el("p", "2차 판매 수수료를 받을 지갑 주소를 입력합니다."),
-                        this.royaltyReceiverInput = el("input", { type: "text", placeholder: "2차 판매 수수료 수령자" }),
+                        el("h3", msg("2ND_SALES_FEE_RECIPIENT")),
+                        el("p", msg("2ND_SALES_FEE_RECIPIENT_DESC1")),
+                        this.royaltyReceiverInput = el("input", { type: "text", placeholder: msg("2ND_SALES_FEE_RECIPIENT") }),
                     ),
-                    el("button", "정보 저장", {
+                    el("button", msg("SAVE_INFO"), {
                         click: async () => {
                             await PFPsContract.setRoyalty(addr, this.royaltyReceiverInput.domElement.value, Math.floor(parseFloat(this.royaltyInput.domElement.value) * 100));
-                            setTimeout(() => new Alert("저장 완료", "정보를 저장했습니다."), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
                         },
                     }),
                 ),
                 el(".manage-managers",
-                    el("h2", "매니저 관리"),
+                    el("h2", msg("MANAGE_MANAGER")),
                     this.managerList = el("ul"),
-                    el("button", "매니저 추가", {
+                    el("button", msg("ADD_MANAGER"), {
                         click: () => {
-                            new Prompt("매니저 추가", "추가할 매니저의 지갑 주소를 입력해주시기 바랍니다.", "추가하기", async (manager) => {
+                            new Prompt(msg("ADD_MANAGER"), msg("ADD_MANAGER_PROMPT_DESC1"), msg("ADD"), async (manager) => {
                                 await PFPsContract.addManager(addr, manager);
                                 ViewUtil.waitTransactionAndRefresh();
                             });
