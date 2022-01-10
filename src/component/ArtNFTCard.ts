@@ -3,6 +3,7 @@ import { utils } from "ethers";
 import msg from "msg.js";
 import superagent from "superagent";
 import CommonUtil from "../CommonUtil";
+import ArtsContract from "../contracts/ArtsContract";
 import ArtStoreContract from "../contracts/ArtStoreContract";
 import ViewUtil from "../view/ViewUtil";
 import NFTDisplay from "./NFTDisplay";
@@ -24,30 +25,36 @@ export default class ArtNFTCard extends DomNode {
     }
 
     private async load() {
-        try {
-            const result = await superagent.get(`https://api.klu.bs/arts/${this.id}`);
-            const data = result.body;
-            if (data.image === undefined && this.showingForce !== true) {
-                this.delete();
-            } else {
-                const saleInfo = await ArtStoreContract.sales(this.id);
-                if (this.deleted !== true) {
-                    this.append(
-                        data.image === undefined ? undefined : new NFTDisplay(data.image, true),
-                        el(".info",
-                            el(".name", data.name === undefined ? msg("NO_TITLE") : data.name),
-                            saleInfo.price.eq(0) === true ? undefined : el(".price",
-                                el("img", { src: "/images/mix.png", height: "24" }),
-                                el("span", CommonUtil.numberWithCommas(utils.formatEther(saleInfo.price))),
-                            ),
-                        ),
-                    );
-                }
-            }
-        } catch (e) {
-            console.error(e);
+        if (await ArtsContract.exists(this.id) !== true) {
             if (this.deleted !== true) {
                 this.delete();
+            }
+        } else {
+            try {
+                const result = await superagent.get(`https://api.klu.bs/arts/${this.id}`);
+                const data = result.body;
+                if (data.image === undefined && this.showingForce !== true) {
+                    this.delete();
+                } else {
+                    const saleInfo = await ArtStoreContract.sales(this.id);
+                    if (this.deleted !== true) {
+                        this.append(
+                            data.image === undefined ? undefined : new NFTDisplay(data.image, true),
+                            el(".info",
+                                el(".name", data.name === undefined ? msg("NO_TITLE") : data.name),
+                                saleInfo.price.eq(0) === true ? undefined : el(".price",
+                                    el("img", { src: "/images/mix.png", height: "24" }),
+                                    el("span", CommonUtil.numberWithCommas(utils.formatEther(saleInfo.price))),
+                                ),
+                            ),
+                        );
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+                if (this.deleted !== true) {
+                    this.delete();
+                }
             }
         }
     }

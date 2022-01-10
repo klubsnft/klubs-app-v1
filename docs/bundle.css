@@ -2032,6 +2032,7 @@ p {
 }
 .pfp-nft-detail-view > section > .info > .owner > span,
 .pfp-nft-detail-view > section > .info > .owner > a {
+  margin-left: 5px;
   color: #C7FEA2;
 }
 .pfp-nft-detail-view > section > .info > .description {
@@ -2853,8 +2854,7 @@ p {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-ranking-view > table {
-  width: 100%;
-  max-width: 1240px;
+  min-width: 100%;
   margin: auto;
 }
 .pfp-ranking-view > table > thead {
@@ -3716,6 +3716,7 @@ p {
 }
 .arts-nft-detail-view > section > .info > .artist > span,
 .arts-nft-detail-view > section > .info > .artist > a {
+  margin-left: 5px;
   color: #C7FEA2;
 }
 .arts-nft-detail-view > section > .info > .owner {
@@ -3724,6 +3725,7 @@ p {
 }
 .arts-nft-detail-view > section > .info > .owner > span,
 .arts-nft-detail-view > section > .info > .owner > a {
+  margin-left: 5px;
   color: #C7FEA2;
 }
 .arts-nft-detail-view > section > .info > .description {
@@ -3931,17 +3933,87 @@ p {
 .arts-nft-detail-view > section > .activity > .list > .activity > .price > img {
   margin-right: 4px;
 }
+.artist-view > header {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.artist-view > header > h1,
+.artist-view > header > p {
+  margin: 4px 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.artist-view > header > .controller {
+  display: flex;
+}
+.artist-view > header > .controller > a {
+  display: block;
+  margin-left: 16px;
+  color: #121212;
+  background-color: #C7FEA2;
+  padding: 12px 0;
+  width: 150px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.artist-view > header > .controller > a:hover {
+  background-color: #CFFEB0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.artist-view > .content {
+  padding: 16px 0 16px 16px;
+}
+.artist-view > .content > h2 {
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 16px;
+}
+.artist-view > .content > .list-container > .list {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.artist-view > .content > .list-container > .list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.artist-view > .content > .list-container > .list > .art-nft-card {
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .artist-view > .content > .list-container > .list > .art-nft-card {
+    width: calc(50% - 16px);
+  }
+  .artist-view > .content > .list-container > .list > .art-nft-card > .nft-display {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+}
 .item-view {
   padding: 16px;
 }
 .item-view > .title {
-  font-size: 28px;
+  font-size: 24px;
+  line-height: 1.5em;
 }
 .meme-view {
   padding: 16px;
 }
 .meme-view > .title {
-  font-size: 28px;
+  font-size: 24px;
+  line-height: 1.5em;
 }
 .mix-view {
   max-width: 600px;

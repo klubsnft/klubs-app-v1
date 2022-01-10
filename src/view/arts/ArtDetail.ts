@@ -109,50 +109,52 @@ export default class ArtDetail implements View {
     }
 
     private async loadTrade(id: number) {
+        if (await ArtsContract.exists(id) === true) {
 
-        const owner = await ArtsContract.ownerOf(id);
-        if (owner === ArtStoreContract.address) {
-            this.ownerDisplay.empty().appendText(msg("SELLER"));
-            const selling = await ArtStoreContract.checkSelling(id);
-            if (selling === true) {
-                const saleInfo = await ArtStoreContract.sales(id);
-                this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(saleInfo.seller), {
-                    click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
-                }));
+            const owner = await ArtsContract.ownerOf(id);
+            if (owner === ArtStoreContract.address) {
+                this.ownerDisplay.empty().appendText(msg("SELLER"));
+                const selling = await ArtStoreContract.checkSelling(id);
+                if (selling === true) {
+                    const saleInfo = await ArtStoreContract.sales(id);
+                    this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(saleInfo.seller), {
+                        click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
+                    }));
+                } else {
+                    const auction = await ArtStoreContract.auctions(id);
+                    this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(auction.seller), {
+                        click: () => ViewUtil.go(`/user/${auction.seller}`),
+                    }));
+                }
             } else {
-                const auction = await ArtStoreContract.auctions(id);
-                this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(auction.seller), {
-                    click: () => ViewUtil.go(`/user/${auction.seller}`),
+                this.ownerDisplay.empty().appendText(msg("OWNER"));
+                this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(owner), {
+                    click: () => ViewUtil.go(`/user/${owner}`),
                 }));
             }
-        } else {
-            this.ownerDisplay.empty().appendText(msg("OWNER"));
-            this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(owner), {
-                click: () => ViewUtil.go(`/user/${owner}`),
-            }));
-        }
 
-        const address = await Wallet.loadAddress();
-        if (owner === address) {
-            this.sendButtonContainer.empty().append(el("a", msg("TRANSFER"), {
-                click: () => new Prompt(msg("TRANSFER"), msg("TRANSFER_DESC1"), msg("TRANSFER"), async (to) => {
-                    await ArtsContract.transfer(to, id);
-                    ViewUtil.waitTransactionAndRefresh();
-                }),
-            }));
-        }
+            const address = await Wallet.loadAddress();
+            if (owner === address) {
+                this.sendButtonContainer.empty().append(el("a", msg("TRANSFER"), {
+                    click: () => new Prompt(msg("TRANSFER"), msg("TRANSFER_DESC1"), msg("TRANSFER"), async (to) => {
+                        await ArtsContract.transfer(to, id);
+                        ViewUtil.waitTransactionAndRefresh();
+                    }),
+                }));
+            }
 
-        const artist = await ArtsContract.artToArtist(id);
-        if (artist === address) {
-            this.updateButtonContainer.empty().append(el("a", msg("REVISION_IT"), {
-                click: () => ViewUtil.go(`/arts/${id}/update`),
-            }));
-        }
+            const artist = await ArtsContract.artToArtist(id);
+            if (artist === address) {
+                this.updateButtonContainer.empty().append(el("a", msg("REVISION_IT"), {
+                    click: () => ViewUtil.go(`/arts/${id}/update`),
+                }));
+            }
 
-        this.loadSale(address, owner, id);
-        this.loadOffers(address, owner, id);
-        this.loadAuction(address, owner, id);
-        this.loadActivity(address, owner, id);
+            this.loadSale(address, owner, id);
+            this.loadOffers(address, owner, id);
+            this.loadAuction(address, owner, id);
+            this.loadActivity(address, owner, id);
+        }
     }
 
     private async loadInfo(id: number) {

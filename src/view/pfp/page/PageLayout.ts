@@ -128,7 +128,7 @@ export default class PageLayout implements View {
         try {
             const address = await Wallet.loadAddress();
             if (address !== undefined && await PFPsContract.existsManager(addr, address) === true) {
-                el("button.update-button", msg("REVSION_INFO"), {
+                el("button.update-button", msg("UPDATE_PFP_INFO"), {
                     click: () => ViewUtil.go(`/pfp/${addr}/update`),
                 }).appendTo(this.header);
             }
