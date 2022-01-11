@@ -39,11 +39,13 @@ export default class Layout implements View {
                 ),
                 el("main", (this.content = el(".content"))),
                 el("footer",
-                    "Copyright © 2021 Klubs. All rights reserved.",
                     el(".sns",
-                        el("a", { href: "https://discord.gg/mPanAs3s4w", target: "_blank" }, el("img", { src: "/images/icon/discord-footer.svg" })),
                         el("a", { href: "https://open.kakao.com/o/gfsahfHd", target: "_blank" }, el("img", { src: "/images/icon/kakao-talk-footer.svg" })),
+                        el("a", { href: "https://twitter.com/klubsnft", target: "_blank" }, el("img", { src: "/images/icon/twitter-footer.svg" })),
+                        el("a", { href: "https://t.me/joinchat/F61H3", target: "_blank" }, el("img", { src: "/images/icon/telegram-footer.svg" })),
+                        el("a", { href: "https://discord.gg/mPanAs3s4w", target: "_blank" }, el("img", { src: "/images/icon/discord-footer.svg" })),
                     ),
+                    "Copyright © 2021 Klubs. All rights reserved.",
                 ),
             ))
         );

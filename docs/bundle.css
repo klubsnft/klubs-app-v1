@@ -1810,6 +1810,7 @@ p {
 .layout > footer > .sns {
   display: flex;
   margin: auto;
+  margin-bottom: 16px;
 }
 .layout > footer > .sns > a > img {
   width: 32px;
@@ -3935,17 +3936,34 @@ p {
 }
 .artist-view > header {
   display: flex;
-  flex-direction: column;
   font-size: 1.25rem;
   background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
-  justify-content: center;
+  justify-content: space-between;
 }
-.artist-view > header > h1,
-.artist-view > header > p {
-  margin: 4px 16px;
+.artist-view > header > .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 16px;
+}
+.artist-view > header > .info > h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 4px;
   text-shadow: 0px 0px 5px #000000;
+}
+.artist-view > header > .info > p {
+  font-size: 0.85rem;
+  margin: 4px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.artist-view > header > .info > .social {
+  margin: 8px;
+}
+.artist-view > header > .info > .social > a {
+  margin-right: 8px;
 }
 .artist-view > header > .controller {
   display: flex;
@@ -4000,6 +4018,9 @@ p {
     height: auto;
     aspect-ratio: 1;
   }
+}
+.artist-view > .content > .list-container > .list > .art-nft-card:hover {
+  border: 0.5px solid #C7FEA2;
 }
 .item-view {
   padding: 16px;

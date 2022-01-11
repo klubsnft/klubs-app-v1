@@ -25,6 +25,7 @@ export default class Artist implements View {
         let data: any = {};
         try {
             data = JSON.parse(extras);
+            console.log(data)
         } catch (e) {
             console.log(e);
         }
@@ -33,8 +34,16 @@ export default class Artist implements View {
         Layout.current.title = artistName;
         Layout.current.content.append(this.container = el(".artist-view",
             el("header",
-                el("h1", msg("ARTIST")),
-                el("p", artistName),
+                el(".info",
+                    el("p", msg("ARTIST")),
+                    el("h1", artistName),
+                    el(".social",
+                        el("a",
+                            el("img", { src: "/images/icon/twitter.svg", height: 24 }),
+                            { href: data.twitter, target: "_blank" },
+                        ),
+                    )
+                ),
             ),
             el(".content",
                 el("h2", msg("ARTIST_ART_LIST")),
