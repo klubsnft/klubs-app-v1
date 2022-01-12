@@ -10,9 +10,9 @@ export default class PFPs implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = msg("PFP_INFOS");
+        Layout.current.title = msg("PFP_INFOS_TITLE");
         Layout.current.content.append(this.container = el(".admin-pfps-view",
-            el("h1", msg("PFP_INFOS")),
+            el("h1", msg("PFP_INFOS_TITLE")),
         ));
         this.load();
     }
@@ -32,14 +32,14 @@ export default class PFPs implements View {
                 addr, "\n",
                 JSON.stringify(managers), "\n",
                 extras, "\n",
-                el("a", msg("SETTING_EXTRA"), {
-                    click: () => new Prompt(msg("SETTING_EXTRA"), msg("INPUT_EXTRA"), msg("DONE"), async (extra) => {
+                el("a", msg("SETTING_EXTRA_BUTTON"), {
+                    click: () => new Prompt(msg("SETTING_EXTRA_TITLE"), msg("INPUT_EXTRA_DESCRIPTION"), msg("DONE_BUTTON"), async (extra) => {
                         await PFPsContract.setExtra(addr, extra);
                     }),
                 }), "\n",
                 royalty.royalty.toString(), "\n",
-                el("a", msg("SETTING_ROYALTY"), {
-                    click: () => new Prompt(msg("SETTING_ROYALTY"), msg("로열티 입력"), msg("DONE"), async (r) => {
+                el("a", msg("SETTING_ROYALTY_BUTTON"), {
+                    click: () => new Prompt(msg("SETTING_ROYALTY_TITLE"), msg("INPUT_ROYALTY_DESCRIPTION"), msg("DONE_BUTTON"), async (r) => {
                         await PFPsContract.setRoyalty(addr, royalty.receiver, r);
                     }),
                 }),

@@ -8,11 +8,11 @@ export default class User implements View {
     private container: DomNode;
 
     constructor(params: ViewParams) {
-        Layout.current.title = msg("USER_INFO");
+        Layout.current.title = msg("USER_INFO_TITLE");
         Layout.current.content.append(this.container = el(".user-view",
             el("header",
                 el("p",
-                    msg("USER_INFO")
+                    msg("USER_INFO_TITLE")
                 ),
             ),
             el("main",

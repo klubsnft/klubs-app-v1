@@ -8,7 +8,7 @@ export default class Me implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = msg("MY_INFO");
+        Layout.current.title = msg("MY_INFO_TITLE");
         Layout.current.content.append(this.container = el(".user-me-view",
 
         ));

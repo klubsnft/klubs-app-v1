@@ -9,9 +9,9 @@ export default class PFPProposals implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = msg("WAITING_PFP_INFOS");
+        Layout.current.title = msg("WAITING_PFP_INFOS_TITLE");
         Layout.current.content.append(this.container = el(".admin-pfp-proposals-view",
-            el("h1", msg("WAITING_PFP_INFOS")),
+            el("h1", msg("WAITING_PFP_INFOS_TITLE")),
         ));
         this.load();
     }
@@ -23,7 +23,7 @@ export default class PFPProposals implements View {
             if (await PFPsContract.added(proposal.addr) !== true) {
                 const proposalDisplay = el(".proposal",
                     JSON.stringify(proposal),
-                    el("a", msg("PASS"), {
+                    el("a", msg("PASS_BUTTON"), {
                         click: async () => {
                             await PFPsContract.passProposal(id);
                             proposalDisplay.delete();

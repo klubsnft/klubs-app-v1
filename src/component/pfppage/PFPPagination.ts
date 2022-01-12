@@ -23,7 +23,7 @@ export default class PFPPagination extends DomNode {
                         this.page = 1;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert(msg("ANNOUNCEMENT"), msg("FIRST_PAGE"));
+                        new Alert(msg("ANNOUNCEMENT_TITLE"), msg("FIRST_PAGE_DESCRIPTION"));
                     }
                 },
             }),
@@ -33,7 +33,7 @@ export default class PFPPagination extends DomNode {
                         this.page -= 1;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert(msg("ANNOUNCEMENT"), msg("FIRST_PAGE"));
+                        new Alert(msg("ANNOUNCEMENT_TITLE"), msg("FIRST_PAGE_DESCRIPTION"));
                     }
                 },
             }),
@@ -44,7 +44,7 @@ export default class PFPPagination extends DomNode {
                         this.page += 1;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert(msg("ANNOUNCEMENT"), msg("LAST_PAGE"));
+                        new Alert(msg("ANNOUNCEMENT_TITLE"), msg("LAST_PAGE_DESCRIPTION"));
                     }
                 },
             }),
@@ -54,7 +54,7 @@ export default class PFPPagination extends DomNode {
                         this.page = this.lastPage;
                         pageView.goPage(this.page);
                     } else {
-                        new Alert(msg("ANNOUNCEMENT"), msg("LAST_PAGE"));
+                        new Alert(msg("ANNOUNCEMENT_TITLE"), msg("LAST_PAGE_DESCRIPTION"));
                     }
                 },
             }),

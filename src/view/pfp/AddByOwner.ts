@@ -8,9 +8,9 @@ export default class AddByOwner implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = msg("ADD_MANAGER_PFP");
+        Layout.current.title = msg("ADD_MANAGER_PFP_TITLE");
         Layout.current.content.append(this.container = el(".add-pfp-by-owner-view",
-            el("h1", msg("ADD_MANAGER_PFP")),
+            el("h1", msg("ADD_MANAGER_PFP_TITLE")),
         ));
     }
 

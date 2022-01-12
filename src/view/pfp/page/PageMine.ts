@@ -47,7 +47,7 @@ export default class PageMine implements View, PFPPage {
 
         this.container.append(
             el("header",
-                el("h2", msg("NFT_LIST")),
+                el("h2", msg("NFT_LIST_TITLE")),
                 new PFPPageTabs(addr, "mine"),
                 this.sortor = new PFPSortor(this, "sell"),
             ),

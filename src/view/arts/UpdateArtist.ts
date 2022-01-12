@@ -22,25 +22,25 @@ export default class UpdateArtist implements View {
 
     constructor() {
 
-        Layout.current.title = msg("REVISION_ARTIST");
+        Layout.current.title = msg("REVISION_ARTIST_TITLE");
         Layout.current.content.append(this.container = el(".artist-update-view",
-            el("header", el("h1", msg("REVISION_ARTIST"))),
+            el("header", el("h1", msg("REVISION_ARTIST_TITLE"))),
             el("main",
                 el(".form",
-                    el("h2", msg("UPDATE_BASE_INFO")),
+                    el("h2", msg("UPDATE_BASE_INFO_TITLE")),
                     el("label",
-                        el("h3", msg("BANNER_IMAGE_ADDRESS")),
+                        el("h3", msg("BANNER_IMAGE_ADDRESS_INPUT")),
                         this.bannerPreview = el("img.banner-preview"),
                         this.bannerInput = el("input", {
                             type: "url",
-                            placeholder: msg("BANNER_IMAGE_ADDRESS"),
+                            placeholder: msg("BANNER_IMAGE_ADDRESS_INPUT"),
                             change: () => {
                                 (this.bannerPreview as DomNode<HTMLImageElement>).domElement.src = this.bannerInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", msg("BANNER_UPLOAD")),
+                        el("h3", msg("BANNER_UPLOAD_INPUT")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -61,18 +61,18 @@ export default class UpdateArtist implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", msg("ICON_IMAGE_ADDRESS")),
+                        el("h3", msg("ICON_IMAGE_ADDRESS_INPUT")),
                         this.iconPreview = el("img.icon-preview"),
                         this.iconInput = el("input", {
                             type: "url",
-                            placeholder: msg("ICON_IMAGE_ADDRESS"),
+                            placeholder: msg("ICON_IMAGE_ADDRESS_INPUT"),
                             change: () => {
                                 (this.iconPreview as DomNode<HTMLImageElement>).domElement.src = this.iconInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", msg("ICON_UPLOAD")),
+                        el("h3", msg("ICON_UPLOAD_INPUT")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -93,26 +93,26 @@ export default class UpdateArtist implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", msg("ARTIST_NAME")),
-                        this.nameInput = el("input", { type: "text", placeholder: msg("ARTIST_NAME") }),
+                        el("h3", msg("ARTIST_NAME_INPUT")),
+                        this.nameInput = el("input", { type: "text", placeholder: msg("ARTIST_NAME_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("INTRODUCTION")),
+                        el("h3", msg("INTRODUCTION_INPUT")),
                         el("p",
-                            el("span", msg("INTRODUCTION_DESC1")),
-                            el("a", msg("VIEW_MARKDOWN"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
+                            el("span", msg("INTRODUCTION_MARKDOWN_DESCRIPTION")),
+                            el("a", msg("INTRODUCTION_MARKDOWN_BUTTON"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
                         ),
-                        this.descriptionTextarea = el("textarea", { placeholder: msg("ARTIST_INTRODUCE") }),
+                        this.descriptionTextarea = el("textarea", { placeholder: msg("ARTIST_INTRODUCE_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("TWITTER")),
-                        this.twitterInput = el("input", { type: "url", placeholder: msg("TWITTER_ADDRESS") }),
+                        el("h3", msg("TWITTER_INPUT")),
+                        this.twitterInput = el("input", { type: "url", placeholder: msg("TWITTER_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("HIDE_KLUBS")),
+                        el("h3", msg("HIDE_KLUBS_INPUT")),
                         this.hidingCheckbox = el("input", { type: "checkbox" }),
                     ),
-                    el("button", "정보 저장", {
+                    el("button", msg("SAVE_INFO_BUTTON"), {
                         click: async () => {
                             const extra = {
                                 banner: this.bannerInput.domElement.value,
@@ -123,21 +123,21 @@ export default class UpdateArtist implements View {
                                 hiding: this.hidingCheckbox.domElement.checked,
                             };
                             await ArtistsContract.setExtra(JSON.stringify(extra));
-                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION")), 2000);
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO")),
+                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO_FORM")),
                     el("label",
-                        el("h3", msg("2ND_SALES_FEE_RATIO")),
-                        el("p", msg("2ND_SALES_FEE_RATIO_DESC1")),
-                        this.baseRoyaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO") }),
+                        el("h3", msg("2ND_SALES_FEE_RATIO_INPUT")),
+                        el("p", msg("2ND_SALES_FEE_RATIO_DESCRIPTION")),
+                        this.baseRoyaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO_INPUT") }),
                     ),
-                    el("button", msg("SAVE_INFO"), {
+                    el("button", msg("SAVE_INFO_BUTTON"), {
                         click: async () => {
                             await ArtistsContract.setBaseRoyalty(Math.floor(parseFloat(this.baseRoyaltyInput.domElement.value) * 100));
-                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION")), 2000);
                         },
                     }),
                 ),

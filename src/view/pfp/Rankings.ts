@@ -16,21 +16,21 @@ export default class Rankings implements View {
     private list: DomNode;
 
     constructor() {
-        Layout.current.title = msg("PFP_RANKING");
+        Layout.current.title = msg("PFP_RANKING_TITLE");
         Layout.current.content.append(
             (this.container = el(".pfp-ranking-view",
                 el("header",
-                    el("h1", msg("PFP_RANKING")),
-                    el("span", msg("PFP_RANKIN_DESC1"))
+                    el("h1", msg("PFP_RANKING_TITLE")),
+                    el("span", msg("PFP_RANKIN_DESCRIPTION"))
                 ),
                 el("table",
                     el("thead",
                         el("tr",
                             el("td", "PFP", { colspan: "3" }),
-                            el("td", msg("TOTAL_TRADING_VOLUME")),
-                            el("td.mobile", msg("30DAYS_TRADING_VOLUME")),
-                            el("td.mobile", msg("7DAYS_TRADING_VOLUME")),
-                            el("td.mobile", msg("24HOURS_TRADING_VOLUME")),
+                            el("td", msg("RANKING_TOTAL_TRADING_VOLUME")),
+                            el("td.mobile", msg("RANKING_30DAYS_TRADING_VOLUME")),
+                            el("td.mobile", msg("RANKING_7DAYS_TRADING_VOLUME")),
+                            el("td.mobile", msg("RANKING_24HOURS_TRADING_VOLUME")),
                         ),
                     ),
                     this.list = el("tbody"),

@@ -22,7 +22,7 @@ export default class PageLayout implements View {
         Layout.current.content.append(this.container = el(".arts-page-layout",
             el("header",
                 el("p",
-                    msg("ARTS_DESC1")
+                    msg("ARTS_DESCRIPTION")
                 ),
                 this.controller = el(".controller"),
             ),
@@ -42,12 +42,12 @@ export default class PageLayout implements View {
             const added = await ArtistsContract.added(address);
             if (added === true) {
                 this.controller.empty().append(
-                    el("a", msg("REVISION_ARTIST"), {
+                    el("a", msg("REVISION_ARTIST_BUTTON"), {
                         click: () => ViewUtil.go("/arts/artists/update"),
                     }),
-                    el("a", msg("ADD_ART"), {
+                    el("a", msg("ADD_ART_BUTTON"), {
                         click: async () => {
-                            new Confirm(msg("ADD_ART"), msg("ADD_ART_CONFIRM"), msg("CREATE_IT"), async () => {
+                            new Confirm(msg("ADD_ART_TITLE"), msg("ADD_ART_CONFIRM"), msg("CREATE_IT_BUTTON"), async () => {
                                 await ArtsContract.mint();
                                 const artCount = await ArtsContract.artistArtCount(address);
                                 const id = await ArtsContract.artistArts(address, artCount.toNumber() - 1);
@@ -57,7 +57,7 @@ export default class PageLayout implements View {
                     }),
                 );
             } else {
-                this.controller.empty().append(el("a", msg("ADD_CREATOR"), {
+                this.controller.empty().append(el("a", msg("ADD_ARTIST_BUTTON"), {
                     click: () => ViewUtil.go("/arts/artists/add"),
                 }));
             }

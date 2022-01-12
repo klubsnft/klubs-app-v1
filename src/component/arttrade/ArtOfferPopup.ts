@@ -19,12 +19,12 @@ export default class OfferPopup extends Popup {
     constructor(private id: number) {
         super(".popup-background");
         this.append(this.content = el(".popup.art-offer-popup",
-            el("h2", msg("OFFER_PRICE")),
-            el("p", msg("OFFER_POPUP_DESC1")),
+            el("h2", msg("OFFER_PRICE_TITLE")),
+            el("p", msg("OFFER_POPUP_DESCRIPTION")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", msg("OFFER_IT"), {
+                el("button", msg("OFFER_IT_BUTTON"), {
                     click: async () => {
                         const prices: BigNumberish[] = [];
                         for (const input of this.inputs) {
@@ -35,7 +35,7 @@ export default class OfferPopup extends Popup {
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", msg("CANCEL"), {
+                el("button", msg("CANCEL_BUTTON"), {
                     click: () => this.delete(),
                 }),
             ),
@@ -53,8 +53,8 @@ export default class OfferPopup extends Popup {
             el(".info",
                 el(".name", data.name),
                 el("label",
-                    el("span", msg("PRICE_OFFER")),
-                    input = el("input", { placeholder: msg("PRICE_OFFER_MIX") }),
+                    el("span", msg("PRICE_OFFER_INPUT")),
+                    input = el("input", { placeholder: msg("PRICE_OFFER_MIX_INPUT") }),
                 ),
             ),
         ));

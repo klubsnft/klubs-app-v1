@@ -11,14 +11,14 @@ export default class PFPSortor extends DomNode {
     constructor(pageView: PFPPage, multiple?: "sell" | "buy") {
         super(".pfp-sortor");
         this.append(
-            el("a.rarity-button", msg("VIEW_RARITY_SCORE"), { click: () => pageView.toggleRarityMode() }),
-            multiple === "sell" ? el("a.multiple-sell-button", msg("MULTIPLE_SELL"), { click: () => this.fireEvent("multiple-sell") }) : undefined,
-            multiple === "buy" ? el("a.multiple-buy-button", msg("MULTIPLE_BUY"), { click: () => this.fireEvent("multiple-buy") }) : undefined,
+            el("a.rarity-button", msg("VIEW_RARITY_SCORE_BUTTON"), { click: () => pageView.toggleRarityMode() }),
+            multiple === "sell" ? el("a.multiple-sell-button", msg("MULTIPLE_SELL_BUTTON"), { click: () => this.fireEvent("multiple-sell") }) : undefined,
+            multiple === "buy" ? el("a.multiple-buy-button", msg("MULTIPLE_BUY_BUTTON"), { click: () => this.fireEvent("multiple-buy") }) : undefined,
             this.select = el("select",
-                el("option", msg("BASE_SORT"), { value: "" }),
-                el("option", msg("LOWEST_PRICE_SORT"), { value: "price-asc" }),
-                el("option", msg("HIGHEST_PRICE_SORT"), { value: "price-desc" }),
-                el("option", msg("RARITY_SORT"), { value: "rarity-desc" }),
+                el("option", msg("SORT_BASE_OPTION"), { value: "" }),
+                el("option", msg("SORT_LOWEST_PRICE_OPTION"), { value: "price-asc" }),
+                el("option", msg("SORT_HIGHEST_PRICE_OPTION"), { value: "price-desc" }),
+                el("option", msg("SORT_RARITY_OPTION"), { value: "rarity-desc" }),
                 {
                     change: () => {
                         this.store.set("sort-type", this.select.domElement.value, true);

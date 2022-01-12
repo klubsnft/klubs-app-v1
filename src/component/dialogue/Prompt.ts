@@ -21,7 +21,7 @@ export default class Prompt extends Popup {
                     this.input = el("input"),
                 ),
                 el(".button-container",
-                    el("button", msg("CANCEL"), {
+                    el("button", msg("CANCEL_BUTTON"), {
                         click: () => this.delete(),
                     }),
                     el("button", confirmTitle, {

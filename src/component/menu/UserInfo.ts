@@ -36,13 +36,13 @@ export default class UserInfo extends DomNode {
             this.addressDisplay.style({ display: "block" });
             this.addressDisplay.empty().appendText(CommonUtil.shortenAddress(address));
             (this.mobile === true ? this : this.addressDisplay).append(el("ul",
-                el("li", el("a", msg("MY_PFP"), {
+                el("li", el("a", msg("MY_PFP_BUTTON"), {
                     click: () => ViewUtil.go("/user/my-pfps"),
                 })),
-                el("li", el("a", msg("MY_ARTS"), {
+                el("li", el("a", msg("MY_ARTS_BUTTON"), {
                     click: () => ViewUtil.go("/user/my-arts"),
                 })),
-                Klip.connected !== true ? undefined : el("li", el("a", msg("LOGOUT"), {
+                Klip.connected !== true ? undefined : el("li", el("a", msg("LOGOUT_BUTTON"), {
                     click: () => Klip.disconnect(),
                 })),
             ));

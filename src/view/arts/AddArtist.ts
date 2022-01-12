@@ -13,29 +13,29 @@ export default class AddArtist implements View {
     private input: DomNode<HTMLInputElement>;
 
     constructor() {
-        Layout.current.title = msg("ADD_KLUBS_ARTISTS");
+        Layout.current.title = msg("ADD_KLUBS_ARTISTS_TITLE");
         Layout.current.content.append(
             (this.container = el(".add-artist-view",
                 el("header",
-                    el("h1", msg("ADD_KLUBS_ARTISTS")),
-                    el("p", msg("ADD_KLUBS_ARTISTS_DESC1")),
+                    el("h1", msg("ADD_KLUBS_ARTISTS_TITLE")),
+                    el("p", msg("ADD_KLUBS_ARTISTS_DESCRIPTION")),
                 ),
                 el("main",
                     el("label",
                         el("h6", msg("WALLET_ADDRESS")),
                         this.input = el("input", { placeholder: msg("WALLET_ADDRESS"), readonly: "readonly" }),
                     ),
-                    el("button", msg("REGISTER"), {
+                    el("button", msg("REGISTER_BUTTON"), {
                         click: async () => {
                             const address = await Wallet.loadAddress();
                             if (address !== undefined) {
                                 const added = await ArtistsContract.added(address);
                                 if (added === true) {
-                                    new Alert(msg("FAIL_ARTIST_REGISTER"), msg("FAIL_ARTIST_REGISTER_DESC1"));
+                                    new Alert(msg("FAIL_ARTIST_REGISTER_TITLE"), msg("FAIL_ARTIST_REGISTER_DESCRIPTION"));
                                 } else {
                                     await ArtistsContract.add();
                                     setTimeout(() => {
-                                        new Alert(msg("SUCCESS_ARTIST_REGISTER"), msg("SUCCESS_ARTIST_REGISTER_DESC1"));
+                                        new Alert(msg("SUCCESS_ARTIST_REGISTER_TITLE"), msg("SUCCESS_ARTIST_REGISTER_DESCRIPTION"));
                                         ViewUtil.go("/arts/artists/update");
                                     }, 2000);
                                 }

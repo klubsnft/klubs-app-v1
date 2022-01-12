@@ -21,12 +21,12 @@ export default class BidPopup extends Popup {
     constructor(private addr: string, private id: number) {
         super(".popup-background");
         this.append(this.content = el(".popup.pfp-bid-popup",
-            el("h2", msg("BID_IT")),
-            el("p", msg("BID_POPUP_DESC1")),
+            el("h2", msg("BID_IT_TITLE")),
+            el("p", msg("BID_POPUP_DESCRIPTION")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", msg("BID_IT"), {
+                el("button", msg("BID_IT_BUTTON"), {
                     click: async () => {
                         if (await Wallet.connected() !== true) {
                             await Wallet.connect();
@@ -40,7 +40,7 @@ export default class BidPopup extends Popup {
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", msg("CANCEL"), {
+                el("button", msg("CANCEL_BUTTON"), {
                     click: () => this.delete(),
                 }),
             ),
@@ -58,8 +58,12 @@ export default class BidPopup extends Popup {
             el(".info",
                 el(".name", data.name),
                 el("label",
-                el("span", msg("BID_PRICE_MIX_POPUP_DESC1"), CommonUtil.numberWithCommas(utils.formatEther(auction.startPrice)), msg("BID_PRICE_MIX_POPUP_DESC2")),
-                    input = el("input", { placeholder: msg("BID_PRICE_MIX") }),
+                    el("span",
+                        msg("BID_PRICE_MIX_POPUP_DESCRIPTION").substring(0, msg("BID_PRICE_MIX_POPUP_DESCRIPTION").indexOf("{mix}")),
+                        CommonUtil.numberWithCommas(utils.formatEther(auction.startPrice)),
+                        msg("BID_PRICE_MIX_POPUP_DESCRIPTION").substring(msg("BID_PRICE_MIX_POPUP_DESCRIPTION").indexOf("{mix}") + 4),
+                    ),
+                    input = el("input", { placeholder: msg("BID_PRICE_MIX_INPUT") }),
                 ),
             ),
         ));

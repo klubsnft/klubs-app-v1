@@ -23,14 +23,14 @@ export default class Mix implements View {
                 this.priceDisplay = el("span"),
                 el("span", "원"),
             ),
-            el("a.buy-mix-button", msg("BUYING_MIX"), {
-                click: () => new Prompt(msg("BUY_MIX"), msg("HOW_TO_BUY_MIX"), msg("BUY_MIX"),
+            el("a.buy-mix-button", msg("BUYING_MIX_BUTTON"), {
+                click: () => new Prompt(msg("BUY_MIX_TITLE"), msg("HOW_TO_BUY_MIX_DESCRIPTION"), msg("BUY_MIX_CONFIRM"),
                     async (amount) => {
                         const mix = utils.parseEther(amount);
                         await KlayswapContract.buyMix(mix);
                     }),
             }),
-            el("p", msg("MIX_DESC1")),
+            el("p", msg("MIX_DESCRIPTION")),
             el("a.whitepaper-button", msg("MIX_WHITEPAPER_BUTTON"), { href: "https://medium.com/dogesoundclub/dsc-mix-nft-%ED%97%88%EB%B8%8C%EB%A5%BC-%EC%9C%84%ED%95%9C-%ED%86%A0%ED%81%B0-3299dd3a8d1d", target: "_blank" }),
         ));
         this.loadPrice();

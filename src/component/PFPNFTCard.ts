@@ -92,7 +92,7 @@ export default class PFPNFTCard extends DomNode {
         this.rarityDisplay?.delete();
         this.rarityDisplay = el(".rarity",
             rarity.scores[this.id] === undefined ?
-                msg("CALCULATED_YET") :
+                msg("CALCULATED_YET_DESCRIPTION") :
                 CommonUtil.numberWithCommas(String(rarity.scores[this.id])),
             rarity.scores[this.id] === undefined ? undefined :
                 el("span.rank", `Rank #${rarity.rankings[this.id] + 1}`),

@@ -25,7 +25,7 @@ export default class PFPCard extends DomNode {
                 extra.mineable !== true ? undefined : el("a.mineable",
                     el("img", { src: "/images/icon/mining.png", height: "14" }),
                     {
-                        title: msg("IS_MINING_DESC2"),
+                        title: msg("MINING_PFP_DESCRIPTION"),
                         href: extra.miningInfoURL,
                         target: "_blank",
                         click: (event: MouseEvent) => event.stopPropagation(),

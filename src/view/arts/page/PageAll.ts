@@ -23,7 +23,7 @@ export default class PageAll implements View {
 
         this.container.append(
             el("header",
-                el("h2", msg("NFT_LIST")),
+                el("h2", msg("NFT_LIST_TITLE")),
                 new ArtsPageTabs("all"),
             ),
             el(".content",

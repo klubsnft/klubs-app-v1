@@ -14,16 +14,16 @@ export default class PFPPageTabs extends DomNode {
     constructor(private addr: string, type: string) {
         super(".pfp-page-tabs");
         this.append(
-            el(`a.tab${type === "all" ? ".on" : ""}`, msg("ALL"), {
+            el(`a.tab${type === "all" ? ".on" : ""}`, msg("ALL_TAB"), {
                 click: () => ViewUtil.go(`/pfp/${addr}`),
             }),
-            this.mineTab = el(`a.tab${type === "mine" ? ".on" : ""}`, msg("MY_NFT"), {
+            this.mineTab = el(`a.tab${type === "mine" ? ".on" : ""}`, msg("MY_NFT_TAB"), {
                 click: () => ViewUtil.go(`/pfp/${addr}/mine`),
             }),
-            this.saleTab = el(`a.tab${type === "selling" ? ".on" : ""}`, msg("SELLING"), {
+            this.saleTab = el(`a.tab${type === "selling" ? ".on" : ""}`, msg("SELLING_TAB"), {
                 click: () => ViewUtil.go(`/pfp/${addr}/selling`),
             }),
-            this.auctionTab = el(`a.tab${type === "auctions" ? ".on" : ""}`, msg("BIDDING"), {
+            this.auctionTab = el(`a.tab${type === "auctions" ? ".on" : ""}`, msg("BIDDING_TAB"), {
                 click: () => ViewUtil.go(`/pfp/${addr}/auctions`),
             }),
         );
@@ -35,13 +35,13 @@ export default class PFPPageTabs extends DomNode {
         const address = await Wallet.loadAddress();
         if (address !== undefined) {
             const balance = (await PageLayout.current.contract.balanceOf(address)).toNumber();
-            this.mineTab.empty().appendText(`${msg("MY_NFT")} (${balance})`);
+            this.mineTab.empty().appendText(`${msg("MY_NFT_TAB")} (${balance})`);
         }
 
         const onSalesCount = (await PFPStoreContract.onSalesCount(this.addr)).toNumber();
-        this.saleTab.empty().appendText(`${msg("SELLING")} (${onSalesCount})`);
+        this.saleTab.empty().appendText(`${msg("SELLING_TAB")} (${onSalesCount})`);
 
         const onAuctionsCount = (await PFPStoreContract.onAuctionsCount(this.addr)).toNumber();
-        this.auctionTab.empty().appendText(`${msg("BIDDING")} (${onAuctionsCount})`);
+        this.auctionTab.empty().appendText(`${msg("BIDDING_TAB")} (${onAuctionsCount})`);
     }
 }

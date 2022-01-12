@@ -16,7 +16,7 @@ export default class Alert extends Popup {
                 el("h2", title),
                 el("p", message),
                 el(".button-container",
-                    el("button", confirmTitle === undefined ? msg("CHECK") : confirmTitle, {
+                    el("button", confirmTitle === undefined ? msg("CONFIRM_BUTTON") : confirmTitle, {
                         click: () => this.delete(),
                     }),
                 ),

@@ -45,7 +45,7 @@ export default class ArtDetail implements View {
 
         const id = parseInt(params.id, 10);
 
-        Layout.current.title = msg("NFT_DETAIL");
+        Layout.current.title = msg("NFT_DETAIL_TITLE");
         Layout.current.content.append(this.container = el(".arts-nft-detail-view",
 
             // 이미지
@@ -53,7 +53,7 @@ export default class ArtDetail implements View {
 
             // 기본 정보
             el("section",
-                el("h2", msg("BASE_INFO")),
+                el("h2", msg("BASE_INFO_TITLE")),
                 el(".info",
                     this.nameDisplay = el(".name"),
                     this.artistDisplay = el(".artist"),
@@ -66,19 +66,19 @@ export default class ArtDetail implements View {
 
             // 가격
             el("section",
-                el("h2", msg("DEAL")),
+                el("h2", msg("DEAL_TITLE")),
                 this.tradeForm = el(".trade-form"),
             ),
 
             // 오퍼
             el("section",
-                el("h2", msg("OFFER_PRICE")),
+                el("h2", msg("OFFER_PRICE_TITLE")),
                 this.offerForm = el(".offer-form"),
             ),
 
             // 경매
             el("section",
-                el("h2", msg("ACTION")),
+                el("h2", msg("AUCTION_TITLE")),
                 this.auctionForm = el(".auction-form"),
             ),
 
@@ -102,7 +102,7 @@ export default class ArtDetail implements View {
         } catch (e) {
             console.log(e);
         }
-        this.artistDisplay.empty().appendText(msg("ARTIST"));
+        this.artistDisplay.empty().appendText(msg("ARTIST_INFO"));
         this.artistDisplay.append(el("a", data.name !== undefined ? data.name : CommonUtil.shortenAddress(artist), {
             click: () => ViewUtil.go(`/artists/${artist}`),
         }));
@@ -127,7 +127,7 @@ export default class ArtDetail implements View {
                     }));
                 }
             } else {
-                this.ownerDisplay.empty().appendText(msg("OWNER"));
+                this.ownerDisplay.empty().appendText(msg("OWNER_INFO"));
                 this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(owner), {
                     click: () => ViewUtil.go(`/user/${owner}`),
                 }));
@@ -135,8 +135,8 @@ export default class ArtDetail implements View {
 
             const address = await Wallet.loadAddress();
             if (owner === address) {
-                this.sendButtonContainer.empty().append(el("a", msg("TRANSFER"), {
-                    click: () => new Prompt(msg("TRANSFER"), msg("TRANSFER_DESC1"), msg("TRANSFER"), async (to) => {
+                this.sendButtonContainer.empty().append(el("a", msg("TRANSFER_BUTTON"), {
+                    click: () => new Prompt(msg("TRANSFER_TITLE"), msg("TRANSFER_DESCRIPTION"), msg("TRANSFER_BUTTON"), async (to) => {
                         await ArtsContract.transfer(to, id);
                         ViewUtil.waitTransactionAndRefresh();
                     }),
@@ -145,7 +145,7 @@ export default class ArtDetail implements View {
 
             const artist = await ArtsContract.artToArtist(id);
             if (artist === address) {
-                this.updateButtonContainer.empty().append(el("a", msg("REVISION_IT"), {
+                this.updateButtonContainer.empty().append(el("a", msg("REVISION_IT_BUTTON"), {
                     click: () => ViewUtil.go(`/arts/${id}/update`),
                 }));
             }
@@ -193,12 +193,12 @@ export default class ArtDetail implements View {
                 ")",
             ));
         } else {
-            priceDispay.appendText(msg("NOT_SELLING"));
+            priceDispay.appendText(msg("NOT_SELLING_DESCRIPTION"));
         }
 
         if (saleInfo.seller === walletAddress) {
             this.tradeForm.append(
-                el("a.cancel-sell-button", msg("CANCEL_CELL"), {
+                el("a.cancel-sell-button", msg("CANCEL_SELL_BUTTON"), {
                     click: async () => {
                         await ArtStoreContract.cancelSale([id]);
                         ViewUtil.waitTransactionAndRefresh();
@@ -207,13 +207,13 @@ export default class ArtDetail implements View {
             );
         } else if (saleInfo.price.gt(0)) {
             this.tradeForm.append(
-                el("a.buy-button", msg("BUY_IT"), {
+                el("a.buy-button", msg("BUY_IT_BUTTON"), {
                     click: () => new BuyPopup([id]),
                 }),
             );
         } else if (walletAddress === owner) {
             this.tradeForm.append(
-                el("a.sell-button", msg("SELL_IT"), {
+                el("a.sell-button", msg("SELL_IT_BUTTON"), {
                     click: () => new SellPopup([id]),
                 }),
             );
@@ -254,7 +254,7 @@ export default class ArtDetail implements View {
                             );
                         } else if (walletAddress === owner) {
                             offer.append(
-                                el("a.accept-offer-button", msg("ACCEPT_OFFER"), {
+                                el("a.accept-offer-button", msg("ACCEPT_OFFER_BUTTON"), {
                                     click: () => new AcceptOfferPopup(id, offerId),
                                 }),
                             );
@@ -262,7 +262,7 @@ export default class ArtDetail implements View {
 
                         if (walletAddress === Config.adminAddress) {
                             offer.append(
-                                el("a.cancel-offer-button", msg("FORCE_CANCEL_OFFER"), {
+                                el("a.cancel-offer-button", msg("FORCE_CANCEL_OFFER_BUTTON"), {
                                     click: async () => {
                                         await ArtStoreContract.cancelOfferByOwner([id], [offerId]);
                                         ViewUtil.waitTransactionAndRefresh();
@@ -281,7 +281,7 @@ export default class ArtDetail implements View {
 
         if (walletAddress !== owner && saleInfo.seller !== walletAddress) {
             this.offerForm.append(
-                el("a.offer-button", msg("OFFER_PRICE"), {
+                el("a.offer-button", msg("OFFER_PRICE_BUTTON"), {
                     click: () => new OfferPopup(id),
                 }),
             );
@@ -302,9 +302,9 @@ export default class ArtDetail implements View {
                 diff = auction.endBlock - await Klaytn.loadBlockNumber();
                 p.empty();
                 if (diff < 0) {
-                    p.appendText(msg("ENDED_AUCTION"));
+                    p.appendText(msg("ENDED_AUCTION_DESCRIPTION"));
                 } else {
-                    p.appendText(`${msg("ENDED_AUCTION_DESC1")} ${diff} ${msg("ENDED_AUCTION_DESC2")} (${CommonUtil.displayBlockDuration(diff)})`);
+                    p.appendText(`${msg("END_AUCTION_REMAINS").replace(/{n}/, String(diff))} (${CommonUtil.displayBlockDuration(diff)})`);
                 }
             };
             await refresh();
@@ -344,7 +344,7 @@ export default class ArtDetail implements View {
                 if (biddingCount === 0) {
                     if (walletAddress === auction.seller) {
                         this.auctionForm.append(
-                            el("a.claim-button", msg("END_AUCTION"), {
+                            el("a.claim-button", msg("END_AUCTION_BUTTON"), {
                                 click: async () => {
                                     await ArtStoreContract.cancelAuction(id);
                                     ViewUtil.waitTransactionAndRefresh();
@@ -354,7 +354,7 @@ export default class ArtDetail implements View {
                     }
                 } else {
                     this.auctionForm.append(
-                        el("a.claim-button", msg("END_AUCTION"), {
+                        el("a.claim-button", msg("END_AUCTION_BUTTON"), {
                             click: async () => {
                                 await ArtStoreContract.claim(id);
                                 ViewUtil.waitTransactionAndRefresh();
@@ -366,7 +366,7 @@ export default class ArtDetail implements View {
 
             else if (walletAddress !== auction.seller) {
                 this.auctionForm.append(
-                    el("a.bid-button", msg("BID_IT"), {
+                    el("a.bid-button", msg("BID_IT_BUTTON"), {
                         click: () => new ArtBidPopup(id),
                     }),
                 );
@@ -374,7 +374,7 @@ export default class ArtDetail implements View {
 
             else if (biddingCount === 0) {
                 this.auctionForm.append(
-                    el("a.claim-button", msg("END_AUCTION"), {
+                    el("a.claim-button", msg("END_AUCTION_BUTTON"), {
                         click: async () => {
                             await ArtStoreContract.cancelAuction(id);
                             ViewUtil.waitTransactionAndRefresh();
@@ -386,7 +386,7 @@ export default class ArtDetail implements View {
 
         else if (walletAddress === owner) {
             this.auctionForm.append(
-                el("a.create-auction-button", msg("START_AUCTION"), {
+                el("a.create-auction-button", msg("START_AUCTION_BUTTON"), {
                     click: () => new ArtCreateAuctionPopup(id),
                 }),
             );
@@ -399,27 +399,27 @@ export default class ArtDetail implements View {
         for (const trade of result.body) {
             let eventName;
             if (trade.event === "Sell") {
-                eventName = msg("SELL");
+                eventName = msg("ACTIVITY_SELL");
             } else if (trade.event === "ChangeSellPrice") {
-                eventName = msg("CHANGE_SELL_PRICE");
+                eventName = msg("ACTIVITY_CHANGE_SELL_PRICE");
             } else if (trade.event === "Buy") {
-                eventName = msg("BUY");
+                eventName = msg("ACTIVITY_BUY");
             } else if (trade.event === "CancelSale") {
-                eventName = msg("CANCEL_CELL");
+                eventName = msg("ACTIVITY_CANCEL_SALE");
             } else if (trade.event === "MakeOffer") {
-                eventName = msg("OFFER");
+                eventName = msg("ACTIVITY_OFFER");
             } else if (trade.event === "CancelOffer") {
-                eventName = msg("CANCEL_OFFER");
+                eventName = msg("ACTIVITY_CANCEL_OFFER");
             } else if (trade.event === "AcceptOffer") {
-                eventName = msg("ACCEPT_OFFER");
+                eventName = msg("ACTIVITY_ACCEPT_OFFER");
             } else if (trade.event === "CreateAuction") {
-                eventName = msg("START_AUCTION");
+                eventName = msg("ACTIVITY_START_AUCTION");
             } else if (trade.event === "CancelAuction") {
-                eventName = msg("CANCEL_AUCTION");
+                eventName = msg("ACTIVITY_CANCEL_AUCTION");
             } else if (trade.event === "Bid") {
-                eventName = msg("ACTION");
+                eventName = msg("ACTIVITY_BID");
             } else if (trade.event === "Claim") {
-                eventName = msg("END_AUCTION");
+                eventName = msg("ACTIVITY_END_AUCTION");
             }
 
             el(".activity",

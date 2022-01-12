@@ -12,8 +12,8 @@ export default class MultiplePFPSelector extends DomNode {
     constructor(addr: string, multiple: "sell" | "buy") {
         super(".multiple-pfp-selector");
         this.append(
-            this.selectedCount = el("p", msg("0_SELECTED")),
-            el("a", multiple === "sell" ? msg("SELL_IT") : msg("BUY_IT"), {
+            this.selectedCount = el("p", msg("SELECTED_DESCRIPTION").replace(/{n}/, "0")),
+            el("a", multiple === "sell" ? msg("SELL_IT_BUTTON") : msg("BUY_IT_BUTTON"), {
                 click: () => {
                     const addrs: string[] = [];
                     SkyUtil.repeat(this.selectedIds.length, () => {
@@ -26,7 +26,7 @@ export default class MultiplePFPSelector extends DomNode {
                     }
                 },
             }),
-            el("a", msg("CANCEL"), { click: () => this.delete() }),
+            el("a", msg("CANCEL_BUTTON"), { click: () => this.delete() }),
         );
     }
 
@@ -47,6 +47,6 @@ export default class MultiplePFPSelector extends DomNode {
     }
 
     private update() {
-        this.selectedCount.empty().appendText(`${this.selectedIds.length}${msg("SELECTED")}`);
+        this.selectedCount.empty().appendText(msg("SELECTED_DESCRIPTION").replace(/{n}/, String(this.selectedIds.length)));
     }
 }

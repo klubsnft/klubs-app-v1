@@ -33,11 +33,11 @@ export default class Artist implements View {
         Layout.current.title = artistName;
         Layout.current.content.append(this.container = el(".artist-view",
             el("header",
-                el("h1", msg("ARTIST")),
+                el("h1", msg("ARTIST_TITLE")),
                 el("p", artistName),
             ),
             el(".content",
-                el("h2", msg("ARTIST_ART_LIST")),
+                el("h2", msg("ARTIST_ART_LIST_TITLE")),
                 el(".list-container",
                     this.nftLoading = new Loading(),
                     this.nftList = el(".list"),

@@ -43,7 +43,7 @@ export default class PageAll implements View, PFPPage {
 
         this.container.append(
             el("header",
-                el("h2", msg("NFT_LIST")),
+                el("h2", msg("NFT_LIST_TITLE")),
                 new PFPPageTabs(addr, "all"),
                 this.sortor = new PFPSortor(this),
             ),

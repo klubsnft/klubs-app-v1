@@ -21,19 +21,19 @@ export default class AcceptOfferPopup extends Popup {
     constructor(private id: number, private offerId: BigNumberish) {
         super(".popup-background");
         this.append(this.content = el(".popup.art-accept-offer-popup",
-            el("h2", msg("ACCEPT_OFFER_IT")),
-            el("p", msg("ART_ACCEPT_OFFER_POPUP")),
+            el("h2", msg("ACCEPT_OFFER_IT_TITLE")),
+            el("p", msg("ART_ACCEPT_OFFER_POPUP_DESCRIPTION")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", msg("ACCEPT_OFFER"), {
+                el("button", msg("ACCEPT_OFFER_BUTTON"), {
                     click: async () => {
                         await ArtStoreContract.acceptOffer(id, offerId);
                         this.delete();
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", msg("CANCEL"), {
+                el("button", msg("CANCEL_BUTTON"), {
                     click: () => this.delete(),
                 }),
             ),
@@ -52,7 +52,7 @@ export default class AcceptOfferPopup extends Popup {
             el(".info",
                 el(".name", data.name),
                 el("label",
-                    el("span", `${msg("ART_ACCEPT_OFFER_POPUP_DESC1")} ${royalty.toNumber() / 100}${msg("ART_ACCEPT_OFFER_POPUP_DESC2")} ${Config.fee}${msg("ART_ACCEPT_OFFER_POPUP_DESC3")}`),
+                    el("span", msg("ACCEPT_OFFER_POPUP_DESCRIPTION").replace(/{royalty}/, String(royalty.toNumber() / 100)).replace(/{fee}/, String(Config.fee))),
                     offerInfo.price.eq(0) === true ? undefined : el(".price",
                         el("img", { src: "/images/mix.png", height: "24" }),
                         el("span", CommonUtil.numberWithCommas(utils.formatEther(offerInfo.price))),

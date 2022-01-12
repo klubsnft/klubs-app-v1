@@ -18,19 +18,19 @@ export default class BuyPopup extends Popup {
     constructor(private addr: string[], private ids: number[]) {
         super(".popup-background");
         this.append(this.content = el(".popup.pfp-buy-popup",
-            el("h2", msg("BUY_IT")),
-            el("p", msg("BUY_POPUP_DESC1")),
+            el("h2", msg("BUY_IT_TITLE")),
+            el("p", msg("BUY_POPUP_DESCRIPTION")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", msg("BUY_PROCESS"), {
+                el("button", msg("BUY_PROCESS_BUTTON"), {
                     click: async () => {
                         await PFPStoreContract.buy(addr, ids);
                         this.delete();
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", msg("CANCEL"), {
+                el("button", msg("CANCEL_BUTTON"), {
                     click: () => this.delete(),
                 }),
             ),

@@ -37,25 +37,25 @@ export default class Update implements View {
 
         const addr = params.addr;
 
-        Layout.current.title = msg("UPDATE_PFP_INFO");
+        Layout.current.title = msg("UPDATE_PFP_INFO_TITLE");
         Layout.current.content.append(this.container = el(".pfp-update-view",
-            el("header", el("h1", msg("UPDATE_PFP_INFO"))),
+            el("header", el("h1", msg("UPDATE_PFP_INFO_TITLE"))),
             el("main",
                 el(".form",
-                    el("h2", msg("UPDATE_BASE_INFO")),
+                    el("h2", msg("UPDATE_BASE_INFO_TITLE")),
                     el("label",
-                        el("h3", msg("BANNER_IMAGE_ADDRESS")),
+                        el("h3", msg("BANNER_IMAGE_ADDRESS_INPUT")),
                         this.bannerPreview = el("img.banner-preview"),
                         this.bannerInput = el("input", {
                             type: "url",
-                            placeholder: msg("BANNER_IMAGE_ADDRESS"),
+                            placeholder: msg("BANNER_IMAGE_ADDRESS_INPUT"),
                             change: () => {
                                 (this.bannerPreview as DomNode<HTMLImageElement>).domElement.src = this.bannerInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", msg("BANNER_UPLOAD")),
+                        el("h3", msg("BANNER_UPLOAD_INPUT")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -76,18 +76,18 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", msg("ICON_IMAGE_ADDRESS")),
+                        el("h3", msg("ICON_IMAGE_ADDRESS_INPUT")),
                         this.iconPreview = el("img.icon-preview"),
                         this.iconInput = el("input", {
                             type: "url",
-                            placeholder: msg("ICON_IMAGE_ADDRESS"),
+                            placeholder: msg("ICON_IMAGE_ADDRESS_INPUT"),
                             change: () => {
                                 (this.iconPreview as DomNode<HTMLImageElement>).domElement.src = this.iconInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", msg("ICON_UPLOAD")),
+                        el("h3", msg("ICON_UPLOAD_INPUT")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -108,28 +108,28 @@ export default class Update implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", msg("NAME")),
-                        this.nameInput = el("input", { type: "text", placeholder: "PFP 이름" }),
+                        el("h3", msg("NAME_INPUT")),
+                        this.nameInput = el("input", { type: "text", placeholder: msg("NAME_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("INTRODUCTION")),
+                        el("h3", msg("INTRODUCTION_INPUT")),
                         el("p",
-                            el("span", msg("INTRODUCTION_DESC1")),
-                            el("a", msg("VIEW_MARKDOWN"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
+                            el("span", msg("INTRODUCTION_MARKDOWN_DESCRIPTION")),
+                            el("a", msg("INTRODUCTION_MARKDOWN_BUTTON"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
                         ),
                         this.descriptionTextarea = el("textarea", { placeholder: "INTRODUCTION_PFP" }),
                     ),
                     el("label",
-                        el("h3", msg("OPEN_KAKAO")),
-                        this.kakaotalkInput = el("input", { type: "url", placeholder: msg("OPEN_KAKAO_ADDRESS") }),
+                        el("h3", msg("OPEN_KAKAO_INPUT")),
+                        this.kakaotalkInput = el("input", { type: "url", placeholder: msg("OPEN_KAKAO_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("TWITTER")),
-                        this.twitterInput = el("input", { type: "url", placeholder: msg("TWITTER_ADDRESS") }),
+                        el("h3", msg("TWITTER_INPUT")),
+                        this.twitterInput = el("input", { type: "url", placeholder: msg("TWITTER_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("IS_MINING")),
-                        el("p", msg("IS_MINING_DESC1")),
+                        el("h3", msg("MINING_INPUT")),
+                        el("p", msg("MINING_INPUT_DESCRIPTION")),
                         this.mineableCheckbox = el("input", { type: "checkbox" }, {
                             change: () => {
                                 if (this.mineableCheckbox.domElement.checked === true) {
@@ -141,15 +141,15 @@ export default class Update implements View {
                         }),
                     ),
                     this.miningInfoURLLabel = el("label",
-                        el("h3", msg("MINING_INFO_URL")),
-                        el("p", msg("MINING_INFO_URL_DESC1")),
-                        this.miningInfoURLInput = el("input", { type: "url", placeholder: msg("MINING_INFO_URL") }),
+                        el("h3", msg("MINING_INFO_URL_INPUT")),
+                        el("p", msg("MINING_INFO_URL_INPUT_DESCRIPTION")),
+                        this.miningInfoURLInput = el("input", { type: "url", placeholder: msg("MINING_INFO_URL_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("HIDE_KLUBS")),
+                        el("h3", msg("HIDE_KLUBS_INPUT")),
                         this.hidingCheckbox = el("input", { type: "checkbox" }),
                     ),
-                    el("button", msg("SAVE_INFO"), {
+                    el("button", msg("SAVE_INFO_BUTTON"), {
                         click: async () => {
                             const extra = {
                                 banner: this.bannerInput.domElement.value,
@@ -163,15 +163,15 @@ export default class Update implements View {
                                 hiding: this.hidingCheckbox.domElement.checked,
                             };
                             await PFPsContract.setExtra(addr, JSON.stringify(extra));
-                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION")), 2000);
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", "ISSUE_REVISE_INFO"),
+                    el("h2", msg("ISSUE_REVISE_INFO_TITLE")),
                     el("label",
-                        el("h3", msg("IS_KIP17_FULL_OR_KIP17ENUMERABLE")),
-                        el("p", msg("IS_KIP17_FULL_OR_KIP17ENUMERABLE_DESC1")),
+                        el("h3", msg("IS_KIP17_FULL_OR_KIP17ENUMERABLE_INPUT")),
+                        el("p", msg("IS_KIP17_FULL_OR_KIP17ENUMERABLE_DESCRIPTION")),
                         this.enumerableCheckbox = el("input", { type: "checkbox" }, {
                             change: () => {
                                 if (this.enumerableCheckbox.domElement.checked === true) {
@@ -183,45 +183,45 @@ export default class Update implements View {
                         }),
                     ),
                     this.totalSupplyLabel = el("label",
-                        el("h3", msg("TOTAL_ISSUE")),
-                        this.totalSupplyInput = el("input", { type: "number", placeholder: msg("TOTAL_ISSUE") }),
+                        el("h3", msg("TOTAL_ISSUE_INPUT")),
+                        this.totalSupplyInput = el("input", { type: "number", placeholder: msg("TOTAL_ISSUE_INPUT") }),
                     ),
-                    el("button", "정보 저장", {
+                    el("button", msg("SAVE_INFO_BUTTON"), {
                         click: async () => {
                             if (this.enumerableCheckbox.domElement.checked === true) {
                                 await PFPsContract.setEnumerable(addr, true);
                             } else {
                                 await PFPsContract.setTotalSupply(addr, parseInt(this.totalSupplyInput.domElement.value, 10));
                             }
-                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION")), 2000);
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO")),
+                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO_FORM")),
                     el("label",
-                        el("h3", msg("2ND_SALES_FEE_RATIO")),
-                        el("p", msg("2ND_SALES_FEE_RATIO_DESC1")),
-                        this.royaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO") }),
+                        el("h3", msg("2ND_SALES_FEE_RATIO_INPUT")),
+                        el("p", msg("2ND_SALES_FEE_RATIO_DESCRIPTION")),
+                        this.royaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("2ND_SALES_FEE_RECIPIENT")),
-                        el("p", msg("2ND_SALES_FEE_RECIPIENT_DESC1")),
-                        this.royaltyReceiverInput = el("input", { type: "text", placeholder: msg("2ND_SALES_FEE_RECIPIENT") }),
+                        el("h3", msg("2ND_SALES_FEE_RECIPIENT_INPUT")),
+                        el("p", msg("2ND_SALES_FEE_RECIPIENT_DESCRIPTION")),
+                        this.royaltyReceiverInput = el("input", { type: "text", placeholder: msg("2ND_SALES_FEE_RECIPIENT_INPUT") }),
                     ),
-                    el("button", msg("SAVE_INFO"), {
+                    el("button", msg("SAVE_INFO_BUTTON"), {
                         click: async () => {
                             await PFPsContract.setRoyalty(addr, this.royaltyReceiverInput.domElement.value, Math.floor(parseFloat(this.royaltyInput.domElement.value) * 100));
-                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION")), 2000);
                         },
                     }),
                 ),
                 el(".manage-managers",
-                    el("h2", msg("MANAGE_MANAGER")),
+                    el("h2", msg("MANAGE_MANAGER_FORM")),
                     this.managerList = el("ul"),
-                    el("button", msg("ADD_MANAGER"), {
+                    el("button", msg("ADD_MANAGER_BUTTON"), {
                         click: () => {
-                            new Prompt(msg("ADD_MANAGER"), msg("ADD_MANAGER_PROMPT_DESC1"), msg("ADD"), async (manager) => {
+                            new Prompt(msg("ADD_MANAGER_TITLE"), msg("ADD_MANAGER_PROMPT_DESCRIPTION"), msg("ADD_BUTTON"), async (manager) => {
                                 await PFPsContract.addManager(addr, manager);
                                 ViewUtil.waitTransactionAndRefresh();
                             });

@@ -17,7 +17,7 @@ export default class PFPFilter extends DomNode {
         super(".pfp-filter");
         this.append(
             this.idInput = el("input", {
-                placeholder: msg("SEARCH_ID"),
+                placeholder: msg("SEARCH_ID_INPUT_PLACEHOLDER"),
                 change: () => pageView.loadNFTs(),
             }),
         );
@@ -69,7 +69,7 @@ export default class PFPFilter extends DomNode {
                 selects.push(select as any);
                 return select;
             }),
-            el("a.reset-button", msg("INIT_FILLETER"), {
+            el("a.reset-button", msg("INIT_FILLETER_BUTTON"), {
                 click: () => {
 
                     this.filterData = {};

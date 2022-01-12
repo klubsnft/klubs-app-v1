@@ -47,7 +47,7 @@ export default class PageLayout implements View {
 
     constructor(params: ViewParams) {
         PageLayout.current = this;
-        Layout.current.title = msg("PFP_DETAIL_INFO");
+        Layout.current.title = msg("PFP_DETAIL_INFO_TITLE");
         Layout.current.content.append(this.container = el(".pfp-page-layout",
             this.header = el("header",
                 this.iconDisplay = el("img"),
@@ -92,9 +92,9 @@ export default class PageLayout implements View {
                 this.miningInfoDisplay.empty().append(
                     el("a.mining",
                         el("img", { src: "/images/icon/mining.png", height: "14" }),
-                        el("span", msg("IS_MINING")),
+                        el("span", msg("MINING_PFP")),
                         {
-                            title: msg("IS_MINING_DESC2"),
+                            title: msg("MINING_PFP_DESCRIPTION"),
                             href: data.miningInfoURL,
                             target: "_blank",
                             click: (event: MouseEvent) => event.stopPropagation(),
@@ -128,7 +128,7 @@ export default class PageLayout implements View {
         try {
             const address = await Wallet.loadAddress();
             if (address !== undefined && await PFPsContract.existsManager(addr, address) === true) {
-                el("button.update-button", msg("UPDATE_PFP_INFO"), {
+                el("button.update-button", msg("UPDATE_PFP_INFO_BUTTON"), {
                     click: () => ViewUtil.go(`/pfp/${addr}/update`),
                 }).appendTo(this.header);
             }

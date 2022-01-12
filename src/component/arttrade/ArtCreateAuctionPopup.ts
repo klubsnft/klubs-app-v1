@@ -23,12 +23,12 @@ export default class ArtCreateAuctionPopup extends Popup {
     constructor(private id: number) {
         super(".popup-background");
         this.append(this.content = el(".popup.art-create-auction-popup",
-            el("h2", msg("START_AUCTION")),
-            el("p", msg("CREATE_AUCTION_POPUP_DESC1")),
+            el("h2", msg("START_AUCTION_TITLE")),
+            el("p", msg("CREATE_AUCTION_POPUP_DESCRIPTION")),
             this.loading = new Loading(),
             this.info = el(".info"),
             el(".button-container",
-                el("button", msg("START_AUCTION"), {
+                el("button", msg("START_AUCTION_BUTTON"), {
                     click: async () => {
                         if (this.startPriceInput !== undefined && this.endBlockInput !== undefined) {
                             const startPrice = utils.parseEther(this.startPriceInput.domElement.value);
@@ -44,7 +44,7 @@ export default class ArtCreateAuctionPopup extends Popup {
                         }
                     },
                 }),
-                el("button", msg("CANCEL"), {
+                el("button", msg("CANCEL_BUTTON"), {
                     click: () => this.delete(),
                 }),
             ),
@@ -62,16 +62,16 @@ export default class ArtCreateAuctionPopup extends Popup {
             el(".name", data.name),
             img === undefined ? undefined : new NFTDisplay(img),
             el("label",
-                el("span", `${msg("CREATE_AUCTION_POPUP_DESC2")} ${royalty.toNumber() / 100}${msg("CREATE_AUCTION_POPUP_DESC3")} ${Config.fee}${msg("CREATE_AUCTION_POPUP_DESC4")}`),
-                this.startPriceInput = el("input", { placeholder: msg("AUCTION_START_PRICE") }),
+                el("span", msg("CREATE_AUCTION_START_PRICE_DESCRIPTION").replace(/{royalty}/, String(royalty.toNumber() / 100).replace(/{fee}/, String(Config.fee)))),
+                this.startPriceInput = el("input", { placeholder: msg("AUCTION_START_PRICE_INPUT") }),
             ),
             el("label",
-                el("span", `${msg("CREATE_AUCTION_POPUP_DESC5")} ${currentBlock})`),
+                el("span", msg("CREATE_AUCTION_POPUP_DESCRIPTION").replace(/{currentBlock}/, currentBlock)),
                 el("p.warning",
                     el("i.fas.fa-exclamation-triangle"),
-                    msg("CREATE_AUCTION_POPUP_DESC6"),
+                    msg("CREATE_AUCTION_POPUP_WARNING"),
                 ),
-                this.endBlockInput = el("input", { placeholder: msg("END_AUCTION_BLOCK") }),
+                this.endBlockInput = el("input", { placeholder: msg("END_AUCTION_BLOCK_INPUT") }),
             ),
         );
         this.loading.delete();

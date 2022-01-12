@@ -8,30 +8,30 @@ export default class Add implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = msg("PFP_REGISTER");
+        Layout.current.title = msg("PFP_REGISTER_TITLE");
         Layout.current.content.append(
             (this.container = el(".add-pfp-view",
-                el("header", el("h1", msg("ADD_PFP_PROJECT"))),
+                el("header", el("h1", msg("ADD_PFP_PROJECT_TITLE"))),
                 el("main",
                     el("section",
                         { click: () => ViewUtil.go("/pfp/add-by-minter") },
-                        el("h2", msg("ADD_KIP17_MINTABLE_PFP")),
+                        el("h2", msg("ADD_KIP17_MINTABLE_PFP_TITLE")),
                         el("p",
-                            msg("ADD_KIP17_MINTABLE_PFP_DESC1"),
+                            msg("ADD_KIP17_MINTABLE_PFP_DESCRIPTION"),
                         ),
                     ),
                     el("section",
                         { click: () => ViewUtil.go("/pfp/add-by-pfp-owner") },
-                        el("h2", msg("ADD_OWNABLE_PFP")),
+                        el("h2", msg("ADD_OWNABLE_PFP_TITLE")),
                         el("p",
-                            msg("ADD_OWNABLE_PFP_DESC1"),
+                            msg("ADD_OWNABLE_PFP_DESCRIPTION_1"),
                         ),
                     ),
                     el("section",
                         { click: () => ViewUtil.go("/pfp/propose") },
-                        el("h2", msg("ADD_WITHOUT_INHERITANCE_PFP")),
+                        el("h2", msg("ADD_WITHOUT_INHERITANCE_PFP_TITLE")),
                         el("p",
-                            msg("ADD_WITHOUT_INHERITANCE_PFP_DESC1"),
+                            msg("ADD_WITHOUT_INHERITANCE_PFP_DESCRIPTION_1"),
                         ),
                     ),
                 ),

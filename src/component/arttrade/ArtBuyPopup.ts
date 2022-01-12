@@ -20,19 +20,19 @@ export default class BuyPopup extends Popup {
     constructor(private ids: number[]) {
         super(".popup-background");
         this.append(this.content = el(".popup.art-buy-popup",
-            el("h2", msg("BUYING_MIX")),
-            el("p", msg("BUY_POPUP_DESC1")),
+            el("h2", msg("BUYING_MIX_TITLE")),
+            el("p", msg("BUY_POPUP_DESCRIPTION")),
             this.loading = new Loading(),
             this.list = el(".list"),
             el(".button-container",
-                el("button", msg("BUY_PROCESS"), {
+                el("button", msg("BUY_PROCESS_BUTTON"), {
                     click: async () => {
                         await ArtStoreContract.buy(ids, this.prices, this.mileages);
                         this.delete();
                         ViewUtil.waitTransactionAndRefresh();
                     },
                 }),
-                el("button", msg("CANCEL"), {
+                el("button", msg("CANCEL_BUTTON"), {
                     click: () => this.delete(),
                 }),
             ),

@@ -22,8 +22,8 @@ export default class Home implements View {
         Layout.current.content.append(
             (this.container = el(".home-view",
                 el("header",
-                    el("p", msg("KLUBS_PRESENT2")),
-                    el("a", msg("KLUBS_PRESENT1"), {
+                    el("p", msg("HOME_KLUBS_INTRO_DESCRIPTION")),
+                    el("a", msg("HOME_KLUBS_INTRO_BUTTON"), {
                         href: "https://medium.com/klubs/klubs-klaytn-based-nft-marketplace-with-mix-2c93d3a9e014",
                         target: "_blank",
                     }),
@@ -31,8 +31,8 @@ export default class Home implements View {
                 el(".content",
                     el(".slide",
                         el("header",
-                            el("h2", msg("PFP")),
-                            el("a", msg("PFP_ALL"), { click: () => ViewUtil.go("/pfp") }),
+                            el("h2", msg("HOME_PFP")),
+                            el("a", msg("HOME_PFP_ALL_BUTTON"), { click: () => ViewUtil.go("/pfp") }),
                         ),
                         this.pfpLoading = new Loading(),
                         el(".pfp-list-container",
@@ -41,8 +41,8 @@ export default class Home implements View {
                     ),
                     el(".slide",
                         el("header",
-                            el("h2", msg("ARTS")),
-                            el("a", msg("ARTS_ALL"), { click: () => ViewUtil.go("/arts") }),
+                            el("h2", msg("HOME_ARTS")),
+                            el("a", msg("HOME_ARTS_ALL_BUTTON"), { click: () => ViewUtil.go("/arts") }),
                         ),
                         this.artsLoading = new Loading(),
                         el(".arts-list-container",

@@ -8,9 +8,9 @@ export default class Meme implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = msg("MEME");
+        Layout.current.title = msg("MEME_TITLE");
         Layout.current.content.append(this.container = el(".meme-view",
-            el(".title", msg("MEME_DESC1")),
+            el(".title", msg("MEME_DESCRIPTION")),
         ));
     }
 

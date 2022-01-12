@@ -8,9 +8,9 @@ export default class Item implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.title = msg("ITEMS");
+        Layout.current.title = msg("ITEMS_TITLE");
         Layout.current.content.append(this.container = el(".item-view",
-            el(".title", msg("ITEMS_DESC1")),
+            el(".title", msg("ITEMS_DESCRIPTION")),
         ));
     }
 

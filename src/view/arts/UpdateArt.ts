@@ -26,26 +26,26 @@ export default class UpdateArt implements View {
     constructor(params: ViewParams) {
         const id = parseInt(params.id, 10);
 
-        Layout.current.title = msg("REVISION_ART_INFO");
+        Layout.current.title = msg("REVISION_ART_INFO_TITLE");
         Layout.current.content.append(this.container = el(".art-update-view",
-            el("header", el("h1", msg("REVISION_ART_INFO"))),
+            el("header", el("h1", msg("REVISION_ART_INFO_TITLE"))),
             el("main",
                 el(".form",
-                    el("h2", msg("UPDATE_BASE_INFO")),
+                    el("h2", msg("UPDATE_BASE_INFO_TITLE")),
                     el("label",
-                        el("h3", msg("ART_IMAGE_ADDRESS")),
+                        el("h3", msg("ART_IMAGE_ADDRESS_INPUT")),
                         this.imagePreview = el("img.image-preview"),
                         this.imageInput = el("input", {
                             type: "url",
-                            placeholder: msg("ART_IMAGE_ADDRESS"),
+                            placeholder: msg("ART_IMAGE_ADDRESS_INPUT"),
                             change: () => {
                                 (this.imagePreview as DomNode<HTMLImageElement>).domElement.src = this.imageInput.domElement.value;
                             },
                         }),
                     ),
                     el("label",
-                        el("h3", msg("ART_UPLOAD")),
-                        el("p", msg("ART_UPLOAD_DESC1")),
+                        el("h3", msg("ART_UPLOAD_INPUT")),
+                        el("p", msg("ART_UPLOAD_DESCRIPTION")),
                         el("input", {
                             type: "file",
                             change: (event) => {
@@ -66,22 +66,22 @@ export default class UpdateArt implements View {
                         }),
                     ),
                     el("label",
-                        el("h3", msg("ART_NAME")),
-                        this.nameInput = el("input", { type: "text", placeholder: msg("ART_NAME") }),
+                        el("h3", msg("ART_NAME_INPUT")),
+                        this.nameInput = el("input", { type: "text", placeholder: msg("ART_NAME_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("INTRODUCTION")),
+                        el("h3", msg("INTRODUCTION_INPUT")),
                         el("p",
-                            el("span", msg("INTRODUCTION_DESC1")),
-                            el("a", msg("VIEW_MARKDOWN"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
+                            el("span", msg("INTRODUCTION_MARKDOWN_DESCRIPTION")),
+                            el("a", msg("INTRODUCTION_MARKDOWN_BUTTON"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
                         ),
-                        this.descriptionTextarea = el("textarea", { placeholder: msg("ART_PRESENT") }),
+                        this.descriptionTextarea = el("textarea", { placeholder: msg("ART_PRESENT_INPUT") }),
                     ),
                     el("label",
-                        el("h3", msg("EXTERNAL_LINK")),
-                        this.externalURLInput = el("input", { type: "url", placeholder: msg("EXTERNAL_LINK") }),
+                        el("h3", msg("EXTERNAL_LINK_INPUT")),
+                        this.externalURLInput = el("input", { type: "url", placeholder: msg("EXTERNAL_LINK_INPUT") }),
                     ),
-                    el("button", msg("SAVE_INFO"), {
+                    el("button", msg("SAVE_INFO_BUTTON"), {
                         click: async () => {
                             const metadata = {
                                 image: this.imageInput.domElement.value,
@@ -97,15 +97,15 @@ export default class UpdateArt implements View {
                                     signedMessage,
                                 }),
                             });
-                            new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1"));
+                            new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION"));
                         },
                     }),
                 ),
                 el(".form",
-                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO")),
+                    el("h2", msg("REVISE_2ND_SALES_FEE_INFO_FORM")),
                     el("label",
-                        el("h3", msg("SETTING_ARTIST_BASE_SALES_FEE")),
-                        el("p", msg("SETTING_ARTIST_BASE_SALES_FEE_DESC1")),
+                        el("h3", msg("SETTING_ARTIST_BASE_SALES_FEE_INPUT")),
+                        el("p", msg("SETTING_ARTIST_BASE_SALES_FEE_DESCRIPTION")),
                         this.exceptionalRoyaltiesCheckbox = el("input", { type: "checkbox" }, {
                             change: () => {
                                 if (this.exceptionalRoyaltiesCheckbox.domElement.checked === true) {
@@ -117,11 +117,11 @@ export default class UpdateArt implements View {
                         }),
                     ),
                     this.exceptionalRoyaltyLabel = el("label",
-                        el("h3", msg("2ND_SALES_FEE_RATIO")),
-                        el("p", msg("2ND_SALES_FEE_RATIO_DESC1")),
-                        this.exceptionalRoyaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO")}),
+                        el("h3", msg("2ND_SALES_FEE_RATIO_INPUT")),
+                        el("p", msg("2ND_SALES_FEE_RATIO_DESCRIPTION")),
+                        this.exceptionalRoyaltyInput = el("input", { type: "number", placeholder: msg("2ND_SALES_FEE_RATIO_INPUT")}),
                     ),
-                    el("button", "정보 저장", {
+                    el("button", msg("SAVE_INFO_BUTTON"), {
                         click: async () => {
                             if (this.exceptionalRoyaltiesCheckbox.domElement.checked === true) {
                                 const royalty = Math.floor(parseFloat(this.exceptionalRoyaltyInput.domElement.value) * 100);
@@ -129,16 +129,16 @@ export default class UpdateArt implements View {
                             } else {
                                 await ArtsContract.setExceptionalRoyalties([id], [0]);
                             }
-                            setTimeout(() => new Alert(msg("SAVE_DONE"), msg("SAVE_DONE_DESC1")), 2000);
+                            setTimeout(() => new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION")), 2000);
                         },
                     }),
                 ),
-                el("a.delete-button", msg("ART_DELETE"), {
+                el("a.delete-button", msg("ART_DELETE_BUTTON"), {
                     click: () => {
-                        new Confirm(msg("ART_DELETE"), msg("ART_DELETE_DESC1"), msg("ART_DELETE"), async () => {
+                        new Confirm(msg("ART_DELETE_TITLE"), msg("ART_DELETE_DESCRIPTION"), msg("ART_DELETE_BUTTON"), async () => {
                             await ArtsContract.burn(id);
                             setTimeout(() => {
-                                new Alert(msg("ART_DELETE_DONE"), msg("ART_DELETE_DONE_DESC1"));
+                                new Alert(msg("ART_DELETE_DONE_TITLE"), msg("ART_DELETE_DONE_DESCRIPTION"));
                                 ViewUtil.go("/user/my-arts");
                             }, 2000);
                         });

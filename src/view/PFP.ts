@@ -14,19 +14,19 @@ export default class PFP implements View {
     private pfpList: DomNode;
 
     constructor() {
-        Layout.current.title = msg("PFP_PROJECTS");
+        Layout.current.title = msg("PFP_PROJECTS_TITLE");
         Layout.current.content.append(
             this.container = el(".pfp-view",
                 el("header",
                     el("p",
                         msg("PFP_PROJECTS_DESC")
                     ),
-                    el("a", msg("PROJECT_ADD"), {
+                    el("a", msg("PFP_PROJECT_ADD_BUTTON"), {
                         click: () => ViewUtil.go("/pfp/add"),
                     }),
                 ),
                 el(".content",
-                    el("h2", msg("PROJECT_LIST")),
+                    el("h2", msg("PFP_PROJECT_LIST")),
                     this.pfpLoading = new Loading(),
                     this.pfpList = el(".pfp-list"),
                 ),
