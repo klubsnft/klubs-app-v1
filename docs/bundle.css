@@ -232,7 +232,7 @@ p {
 .connect-wallet-popup > .button-container {
   padding: 16px;
 }
-.connect-wallet-popup > .button-container > button {
+.connect-wallet-popup > .button-container > a {
   margin-top: 10px;
   display: flex;
   justify-content: center;
@@ -244,11 +244,11 @@ p {
   font-size: 14px;
   border-radius: 4px;
 }
-.connect-wallet-popup > .button-container > button:hover {
+.connect-wallet-popup > .button-container > a:hover {
   background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.connect-wallet-popup > .button-container > button > img {
+.connect-wallet-popup > .button-container > a > img {
   margin-right: 10px;
 }
 .connect-wallet-popup > .button-container > .connect-kaikas-button {

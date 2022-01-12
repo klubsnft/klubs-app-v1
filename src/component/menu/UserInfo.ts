@@ -13,7 +13,7 @@ export default class UserInfo extends DomNode {
     constructor(private mobile?: boolean) {
         super(".user-menu");
         this.append(
-            this.connectWalletButton = el("a.connect-wallet", "CONNECT WALLET", {
+            this.connectWalletButton = el("a.connect-wallet", msg("CONNECT_WALLET_BUTTON"), {
                 click: () => Wallet.connect(),
             }),
             this.addressDisplay = el(".wallet-address"),

@@ -14,9 +14,9 @@ export default class Mix implements View {
     private priceDisplay: DomNode;
 
     constructor() {
-        Layout.current.title = msg("MIX");
+        Layout.current.title = msg("MIX_TITLLE");
         Layout.current.content.append(this.container = el(".mix-view",
-            el("h1", msg("MIX")),
+            el("h1", msg("MIX_TITLLE")),
             el("img", { src: "/images/mix.png", height: "200" }),
             el(".price",
                 el("span", "1 MIX = "),

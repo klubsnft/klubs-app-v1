@@ -209,7 +209,7 @@ export default class NFTDetail implements View {
                 ")",
             ));
         } else {
-            priceDispay.appendText(msg("NOT_SELLING"));
+            priceDispay.appendText(msg("NOT_SELLING_DESCRIPTION"));
         }
 
         if (walletAddress === owner) {

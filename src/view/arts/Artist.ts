@@ -25,7 +25,6 @@ export default class Artist implements View {
         let data: any = {};
         try {
             data = JSON.parse(extras);
-            console.log(data)
         } catch (e) {
             console.log(e);
         }
@@ -38,9 +37,9 @@ export default class Artist implements View {
                     el("p", msg("ARTIST_TITLE")),
                     el("h1", artistName),
                     el(".social",
-                        el("a",
+                        data.twitter === undefined ? undefined : el("a",
                             el("img", { src: "/images/icon/twitter.svg", height: 24 }),
-                            { href: data.twitter, target: "_blank" },
+                            { href: data.twitter.indexOf("https://twitter.com") === -1 ? `https://twitter.com/${data.twitter}` : data.twitter, target: "_blank" },
                         ),
                     )
                 ),
