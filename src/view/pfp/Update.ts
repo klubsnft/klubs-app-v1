@@ -18,6 +18,12 @@ export default class Update implements View {
     private descriptionTextarea: DomNode<HTMLInputElement>;
     private twitterInput: DomNode<HTMLInputElement>;
     private kakaotalkInput: DomNode<HTMLInputElement>;
+    private kakaotalkInput2: DomNode<HTMLInputElement>;
+    private kakaotalkInput3: DomNode<HTMLInputElement>;
+    private linktreeInput: DomNode<HTMLInputElement>;
+    private homepageInput: DomNode<HTMLInputElement>;
+    private discordInput: DomNode<HTMLInputElement>;
+    private telegramInput: DomNode<HTMLInputElement>;
     private hidingCheckbox: DomNode<HTMLInputElement>;
 
     private enumerableCheckbox: DomNode<HTMLInputElement>;
@@ -124,8 +130,32 @@ export default class Update implements View {
                         this.kakaotalkInput = el("input", { type: "url", placeholder: msg("OPEN_KAKAO_INPUT") }),
                     ),
                     el("label",
+                        el("h3", msg("OPEN_KAKAO2_INPUT")),
+                        this.kakaotalkInput2 = el("input", { type: "url", placeholder: msg("OPEN_KAKAO2_INPUT") }),
+                    ),
+                    el("label",
+                        el("h3", msg("OPEN_KAKAO3_INPUT")),
+                        this.kakaotalkInput3 = el("input", { type: "url", placeholder: msg("OPEN_KAKAO3_INPUT") }),
+                    ),
+                    el("label",
                         el("h3", msg("TWITTER_INPUT")),
                         this.twitterInput = el("input", { type: "url", placeholder: msg("TWITTER_INPUT") }),
+                    ),
+                    el("label",
+                        el("h3", msg("LINKTREE_INPUT")),
+                        this.linktreeInput = el("input", { type: "url", placeholder: msg("LINKTREE_INPUT") }),
+                    ),
+                    el("label",
+                        el("h3", msg("HOMEPAGE_INPUT")),
+                        this.homepageInput = el("input", { type: "url", placeholder: msg("HOMEPAGE_INPUT") }),
+                    ),
+                    el("label",
+                        el("h3", msg("DISCORD_INPUT")),
+                        this.discordInput = el("input", { type: "url", placeholder: msg("DISCORD_INPUT") }),
+                    ),
+                    el("label",
+                        el("h3", msg("TELEGRAM_INPUT")),
+                        this.telegramInput = el("input", { type: "url", placeholder: msg("TELEGRAM_INPUT") }),
                     ),
                     el("label",
                         el("h3", msg("MINING_INPUT")),
@@ -157,6 +187,12 @@ export default class Update implements View {
                                 name: this.nameInput.domElement.value,
                                 description: this.descriptionTextarea.domElement.value,
                                 kakaotalk: this.kakaotalkInput.domElement.value,
+                                kakaotalk2: this.kakaotalkInput2.domElement.value,
+                                kakaotalk3: this.kakaotalkInput3.domElement.value,
+                                linktreeInput: this.linktreeInput,
+                                homepageInput: this.homepageInput,
+                                discordInput: this.discordInput,
+                                telegramInput: this.telegramInput,
                                 twitter: this.twitterInput.domElement.value,
                                 mineable: this.mineableCheckbox.domElement.checked,
                                 miningInfoURL: this.miningInfoURLInput.domElement.value,
@@ -252,6 +288,12 @@ export default class Update implements View {
             this.nameInput.domElement.value = data.name === undefined ? "" : data.name;
             this.descriptionTextarea.domElement.value = data.description === undefined ? "" : data.description;
             this.kakaotalkInput.domElement.value = data.kakaotalk === undefined ? "" : data.kakaotalk;
+            this.kakaotalkInput2.domElement.value = data.kakaotalk2 === undefined ? "" : data.kakaotalk2;
+            this.kakaotalkInput3.domElement.value = data.kakaotalk3 === undefined ? "" : data.kakaotalk3;
+            this.linktreeInput.domElement.value = data.linktree === undefined ? "" : data.linktree;
+            this.homepageInput.domElement.value = data.homepage === undefined ? "" : data.homepage;
+            this.discordInput.domElement.value = data.discord === undefined ? "" : data.discord;
+            this.telegramInput.domElement.value = data.telegram === undefined ? "" : data.telegram;
             this.twitterInput.domElement.value = data.twitter === undefined ? "" : data.twitter;
 
             this.mineableCheckbox.domElement.checked = data.mineable;

@@ -111,6 +111,38 @@ export default class PageLayout implements View {
                     ),
                 );
             }
+            if (data.linktree !== undefined && data.linktree.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/linktree.svg", height: 24 }),
+                        { href: data.linktree, target: "_blank" },
+                    ),
+                );
+            }
+            if (data.homepage !== undefined && data.homepage.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/homepage.svg", height: 24 }),
+                        { href: data.homepage, target: "_blank" },
+                    ),
+                );
+            }
+            if (data.discord !== undefined && data.discord.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/discord.svg", height: 24 }),
+                        { href: data.discord, target: "_blank" },
+                    ),
+                );
+            }
+            if (data.telegram !== undefined && data.telegram.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/telegram.svg", height: 24 }),
+                        { href: data.telegram, target: "_blank" },
+                    ),
+                );
+            }
             if (data.kakaotalk !== undefined && data.kakaotalk.trim() !== "") {
                 this.socialList.append(
                     el("a",
@@ -119,6 +151,23 @@ export default class PageLayout implements View {
                     ),
                 );
             }
+            if (data.kakaotalk2 !== undefined && data.kakaotalk2.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/kakao-talk.svg", height: 24 }),
+                        { href: data.kakaotalk2, target: "_blank" },
+                    ),
+                );
+            }
+            if (data.kakaotalk3 !== undefined && data.kakaotalk3.trim() !== "") {
+                this.socialList.append(
+                    el("a",
+                        el("img", { src: "/images/icon/kakao-talk.svg", height: 24 }),
+                        { href: data.kakaotalk3, target: "_blank" },
+                    ),
+                );
+            }
+            
         } catch (e) {
             console.log(e);
         }
