@@ -9,6 +9,12 @@ export default class Update implements View {
     private descriptionTextarea;
     private twitterInput;
     private kakaotalkInput;
+    private kakaotalkInput2;
+    private kakaotalkInput3;
+    private linktreeInput;
+    private homepageInput;
+    private discordInput;
+    private telegramInput;
     private hidingCheckbox;
     private enumerableCheckbox;
     private totalSupplyLabel;
