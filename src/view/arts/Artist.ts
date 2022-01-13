@@ -37,7 +37,7 @@ export default class Artist implements View {
                     el("p", msg("ARTIST_TITLE")),
                     el("h1", artistName),
                     el(".social",
-                        data.twitter === undefined ? undefined : el("a",
+                        data.twitter === undefined || data.twitter.trim() === "" ? undefined : el("a",
                             el("img", { src: "/images/icon/twitter.svg", height: 24 }),
                             { href: data.twitter.indexOf("https://twitter.com") === -1 ? `https://twitter.com/${data.twitter}` : data.twitter, target: "_blank" },
                         ),
