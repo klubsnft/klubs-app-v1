@@ -1766,6 +1766,15 @@ p {
     display: none;
   }
 }
+.layout > header > .right > .language-select {
+  float: right;
+  margin-top: 2px;
+  margin-right: 16px;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 6px;
+}
 .layout > header > .right > .mix-button {
   float: right;
   margin-top: 2px;

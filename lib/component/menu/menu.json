@@ -1,32 +1,32 @@
 {
     "menu": [{
             "uri": "pfp",
-            "name": "PFP",
+            "key": "MENU_PFP",
             "children": [{
                     "uri": "pfp/rankings",
-                    "name": "PFP 랭킹"
+                    "key": "MENU_PFP_RANKING"
                 },
                 {
                     "uri": "pfp/add",
-                    "name": "PFP 등록"
+                    "key": "MENU_PFP_ADD"
                 },
                 {
                     "href": "https://studio.klu.bs",
-                    "name": "Studio"
+                    "key": "MENU_PFP_STUDIO"
                 }
             ]
         },
         {
             "uri": "arts",
-            "name": "Arts"
+            "key": "MENU_ARTS"
         },
         {
             "uri": "item",
-            "name": "Items"
+            "key": "MENU_ITEMS"
         },
         {
             "uri": "meme",
-            "name": "Meme"
+            "key": "MENU_MEME"
         }
     ]
 }

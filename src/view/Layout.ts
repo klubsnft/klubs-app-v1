@@ -1,5 +1,6 @@
 import { BodyNode, DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import BrowserInfo from "../BrowserInfo";
 import MobileMenu from "../component/menu/MobileMenu";
 import PCMenu from "../component/menu/PCMenu";
 import UserInfo from "../component/menu/UserInfo";
@@ -13,6 +14,8 @@ export default class Layout implements View {
 
     constructor() {
         Layout.current = this;
+
+        let select: DomNode<HTMLSelectElement>;
         BodyNode.append(
             (this.container = el(".layout",
                 el("header",
@@ -35,6 +38,15 @@ export default class Layout implements View {
                             el("img", { src: "/images/mix-with-text.png", height: "28" }),
                             { click: () => ViewUtil.go("/mix") },
                         ),
+                        select = el("select.language-select",
+                            el("option", "KO", { value: "ko" }),
+                            el("option", "EN", { value: "en" }),
+                            {
+                                change: () => {
+                                    BrowserInfo.changeLanguage(select.domElement.value);
+                                },
+                            },
+                        ),
                     ),
                 ),
                 el("main", (this.content = el(".content"))),
@@ -49,6 +61,8 @@ export default class Layout implements View {
                 ),
             ))
         );
+
+        select.domElement.value = BrowserInfo.language.substring(0, 2);
     }
 
     public set title(title: string) {

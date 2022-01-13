@@ -1,14 +1,15 @@
 import { DomNode, el } from "@hanul/skynode";
+import msg from "msg.js";
 import ViewUtil from "../../view/ViewUtil";
 
 interface Menu {
     uri?: string;
     href?: string;
-    name: string;
+    key: string;
     children?: {
         uri?: string;
         href?: string;
-        name: string;
+        key: string;
     }[];
 }
 
@@ -17,7 +18,7 @@ class MenuTreeBuilder {
     public build(menus: Menu[], parent?: Menu) {
         const lis: DomNode[] = parent === undefined ? [] : [el("li.parent",
             el(`a${location.pathname === `/${parent.uri}` ? ".on" : ""}`,
-                parent.name,
+                msg(parent.key),
                 {
                     href: parent.href === undefined ? undefined : parent.href,
                     target: parent.href === undefined ? undefined : "_blank",
@@ -28,7 +29,7 @@ class MenuTreeBuilder {
         for (const menuItem of menus) {
             const li = el("li",
                 el(`a${location.pathname === `/${menuItem.uri}` ? ".on" : ""}`,
-                    menuItem.name,
+                    msg(menuItem.key),
                     {
                         href: menuItem.href === undefined ? undefined : menuItem.href,
                         target: menuItem.href === undefined ? undefined : "_blank",
