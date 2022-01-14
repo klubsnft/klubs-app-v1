@@ -261,7 +261,7 @@ export default class NFTDetail implements View {
 
                         if (offerInfo.offeror === walletAddress) {
                             offer.append(
-                                el("a.cancel-offer-button", msg("CANCEL_OFFER"), {
+                                el("a.cancel-offer-button", msg("CANCEL_OFFER_BUTTON"), {
                                     click: async () => {
                                         await PFPStoreContract.cancelOffer(addr, id, offerId);
                                         ViewUtil.waitTransactionAndRefresh();
