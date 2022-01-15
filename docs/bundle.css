@@ -3928,8 +3928,9 @@ p {
   display: flex;
 }
 .arts-nft-detail-view > section > .activity > .list > .activity > .event {
-  width: 80px;
-  height: 24px;
+  width: 120px;
+  height: 2.5rem;
+  line-height: 1.2rem;
   color: #C7FEA2;
 }
 .arts-nft-detail-view > section > .activity > .list > .activity > .user {
