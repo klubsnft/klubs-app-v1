@@ -170,7 +170,7 @@ input {
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
 }
 body {
-  background: #121212;
+  background: #000;
   color: #fff;
 }
 a {
@@ -239,13 +239,13 @@ p {
   align-items: center;
   width: 100%;
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .connect-wallet-popup > .button-container > a:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .connect-wallet-popup > .button-container > a > img {
@@ -292,13 +292,13 @@ p {
 }
 .klip-qr-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .klip-qr-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-card {
@@ -332,7 +332,7 @@ p {
   height: 50px;
   border-radius: 50%;
   box-shadow: rgba(14, 14, 14, 0.6) 0px 0px 2px 0px;
-  border: solid 0.5px black;
+  border: solid 0.5px white;
   object-fit: cover;
 }
 .pfp-card > .info {
@@ -371,7 +371,7 @@ p {
   cursor: pointer;
 }
 .pfp-nft-card.selecting {
-  outline: 4px solid #C7FEA2;
+  outline: 4px solid #798577;
 }
 .pfp-nft-card.showing-rarity {
   position: relative;
@@ -405,7 +405,7 @@ p {
   position: absolute;
   left: 8px;
   bottom: 8px;
-  color: #C7FEA2;
+  color: #798577;
   display: flex;
   align-items: flex-end;
   width: calc(100% - 16px);
@@ -428,7 +428,7 @@ p {
   cursor: pointer;
 }
 .art-nft-card.selecting {
-  outline: 4px solid #C7FEA2;
+  outline: 4px solid #798577;
 }
 .art-nft-card.showing-rarity {
   position: relative;
@@ -485,13 +485,13 @@ p {
 }
 .dialogue.alert > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .dialogue.alert > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .dialogue.confirm {
@@ -518,13 +518,13 @@ p {
 }
 .dialogue.confirm > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .dialogue.confirm > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .dialogue.prompt {
@@ -558,10 +558,10 @@ p {
   height: 40px;
 }
 .dialogue.prompt > .input-container > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .dialogue.prompt > .input-container > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .dialogue.prompt > .button-container {
   display: flex;
@@ -570,13 +570,13 @@ p {
 }
 .dialogue.prompt > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .dialogue.prompt > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pc-menu > ul {
@@ -590,10 +590,10 @@ p {
   padding: 16px;
 }
 .pc-menu > ul > li > a:hover {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pc-menu > ul > li > a:active {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pc-menu > ul > li > ul {
   position: absolute;
@@ -610,10 +610,10 @@ p {
   padding: 10px;
 }
 .pc-menu > ul > li > ul > li > a:hover {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pc-menu > ul > li > ul > li > a:active {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pc-menu > ul > li:hover > ul {
   display: block;
@@ -630,10 +630,10 @@ p {
   font-size: 18px;
 }
 .mobile-menu > ul > li > a:hover {
-  color: #C7FEA2;
+  color: #798577;
 }
 .mobile-menu > ul > li > a:active {
-  color: #C7FEA2;
+  color: #798577;
 }
 .mobile-menu > ul > li > ul {
   margin-left: 10px;
@@ -644,10 +644,10 @@ p {
   color: #ccc;
 }
 .mobile-menu > ul > li > ul > li > a:hover {
-  color: #C7FEA2;
+  color: #798577;
 }
 .mobile-menu > ul > li > ul > li > a:active {
-  color: #C7FEA2;
+  color: #798577;
 }
 .mobile-menu > ul > li > ul > li.parent {
   display: none;
@@ -661,15 +661,16 @@ p {
   display: block;
   width: 100%;
   text-align: center;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   font-size: 14px;
-  padding: 8px;
+  padding: 8px 16px;
   border-radius: 4px;
 }
 .user-menu > .connect-wallet,
 .user-menu > .wallet-address:hover {
-  background-color: #CFFEB0;
+  background-color: #798577;
+  color: white;
 }
 .user-menu > .wallet-address {
   position: relative;
@@ -691,10 +692,10 @@ p {
   color: #fff;
 }
 .user-menu > .wallet-address > ul > li > a:hover {
-  color: #C7FEA2;
+  color: #798577;
 }
 .user-menu > .wallet-address > ul > li > a:active {
-  color: #C7FEA2;
+  color: #798577;
 }
 .user-menu > .wallet-address:hover > ul {
   display: block;
@@ -709,10 +710,10 @@ p {
   color: #ccc;
 }
 .user-menu > ul > li > a:hover {
-  color: #C7FEA2;
+  color: #798577;
 }
 .user-menu > ul > li > a:active {
-  color: #C7FEA2;
+  color: #798577;
 }
 .nft-display {
   width: 100%;
@@ -739,8 +740,8 @@ p {
   border-radius: 4px;
 }
 .pfp-pagination > a:hover {
-  color: #C7FEA2;
-  background-color: rgba(199, 254, 162, 0.2);
+  color: #798577;
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-pagination > a.disable {
@@ -762,8 +763,8 @@ p {
   flex-grow: 1;
 }
 .multiple-pfp-selector > a {
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   margin-right: 8px;
   width: 110px;
@@ -772,7 +773,6 @@ p {
   border-radius: 4px;
 }
 .multiple-pfp-selector > a:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-sell-popup {
@@ -833,10 +833,10 @@ p {
   height: 40px;
 }
 .pfp-sell-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-sell-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-sell-popup > .button-container {
   display: flex;
@@ -845,13 +845,13 @@ p {
 }
 .pfp-sell-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-sell-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-buy-popup {
@@ -916,13 +916,13 @@ p {
 }
 .pfp-buy-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-buy-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-offer-popup {
@@ -983,10 +983,10 @@ p {
   height: 40px;
 }
 .pfp-offer-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-offer-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-offer-popup > .button-container {
   display: flex;
@@ -995,13 +995,13 @@ p {
 }
 .pfp-offer-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-offer-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-accept-offer-popup {
@@ -1066,13 +1066,13 @@ p {
 }
 .pfp-accept-offer-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-accept-offer-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-create-auction-popup {
@@ -1144,10 +1144,10 @@ p {
   height: 40px;
 }
 .pfp-create-auction-popup > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-create-auction-popup > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-create-auction-popup > .button-container {
   display: flex;
@@ -1156,13 +1156,13 @@ p {
 }
 .pfp-create-auction-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-create-auction-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-bid-popup {
@@ -1223,10 +1223,10 @@ p {
   height: 40px;
 }
 .pfp-bid-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-bid-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-bid-popup > .button-container {
   display: flex;
@@ -1235,13 +1235,13 @@ p {
 }
 .pfp-bid-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-bid-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .art-sell-popup {
@@ -1302,10 +1302,10 @@ p {
   height: 40px;
 }
 .art-sell-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-sell-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-sell-popup > .button-container {
   display: flex;
@@ -1314,13 +1314,13 @@ p {
 }
 .art-sell-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .art-sell-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .art-buy-popup {
@@ -1385,13 +1385,13 @@ p {
 }
 .art-buy-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .art-buy-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .art-offer-popup {
@@ -1452,10 +1452,10 @@ p {
   height: 40px;
 }
 .art-offer-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-offer-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-offer-popup > .button-container {
   display: flex;
@@ -1464,13 +1464,13 @@ p {
 }
 .art-offer-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .art-offer-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .art-accept-offer-popup {
@@ -1535,13 +1535,13 @@ p {
 }
 .art-accept-offer-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .art-accept-offer-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .art-create-auction-popup {
@@ -1613,10 +1613,10 @@ p {
   height: 40px;
 }
 .art-create-auction-popup > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-create-auction-popup > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-create-auction-popup > .button-container {
   display: flex;
@@ -1625,13 +1625,13 @@ p {
 }
 .art-create-auction-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .art-create-auction-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .art-bid-popup {
@@ -1692,10 +1692,10 @@ p {
   height: 40px;
 }
 .art-bid-popup > .list > section > .info > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-bid-popup > .list > section > .info > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-bid-popup > .button-container {
   display: flex;
@@ -1704,13 +1704,13 @@ p {
 }
 .art-bid-popup > .button-container > button {
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .art-bid-popup > .button-container > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .layout {
@@ -1736,11 +1736,11 @@ p {
 }
 .layout > header > a > .logo {
   display: flex;
+  align-items: baseline;
 }
 .layout > header > a > .logo > span {
   margin-left: 4px;
-  margin-top: 12px;
-  color: #e17d1c;
+  color: #65FF45;
 }
 @media only screen and (max-width: 719px) {
   .layout > header > .pc-menu {
@@ -1834,10 +1834,17 @@ p {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
+  background-position: center;
   height: 200px;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .home-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .home-view > header > p {
   margin: 16px;
@@ -1845,19 +1852,19 @@ p {
 }
 .home-view > header > a {
   display: block;
-  margin-left: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
-  padding: 12px 0;
-  width: 150px;
-  font-size: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  color: white;
+  background-color: #798577;
+  padding: 10px 16px;
+  font-size: 0.825rem;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  justify-content: flex-end;
 }
 .home-view > header > a:hover {
-  background-color: #CFFEB0;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 .home-view > .content {
   padding: 16px;
@@ -1887,7 +1894,7 @@ p {
   color: #999;
 }
 .home-view > .content > .slide > header > a:hover {
-  color: #C7FEA2;
+  color: #798577;
 }
 .home-view > .content > .slide > .pfp-list-container {
   overflow-x: scroll;
@@ -1929,10 +1936,17 @@ p {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-image: url("/images/arts/banner-pc.png");
   background-size: cover;
+  background-position: center;
   height: 200px;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+@media only screen and (max-width: 719px) {
+  .pfp-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .pfp-view > header > p {
   margin: 16px;
@@ -1940,19 +1954,19 @@ p {
 }
 .pfp-view > header > a {
   display: block;
-  margin-left: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
-  padding: 12px 0;
-  width: 150px;
-  font-size: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  color: white;
+  background-color: #798577;
+  padding: 10px 16px;
+  font-size: 0.825rem;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  justify-content: flex-end;
 }
 .pfp-view > header > a:hover {
-  background-color: #CFFEB0;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 .pfp-view > .content {
   padding: 16px;
@@ -2028,7 +2042,7 @@ p {
   height: calc(100% - 40px);
 }
 .pfp-nft-detail-view > section > .info > .pfp {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-nft-detail-view > section > .info > .name {
   font-size: 24px;
@@ -2043,7 +2057,7 @@ p {
 .pfp-nft-detail-view > section > .info > .owner > span,
 .pfp-nft-detail-view > section > .info > .owner > a {
   margin-left: 5px;
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-nft-detail-view > section > .info > .description {
   flex-grow: 1;
@@ -2054,8 +2068,8 @@ p {
 .pfp-nft-detail-view > section > .info > .send-button-container > a {
   margin-top: 16px;
   display: block;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2065,7 +2079,6 @@ p {
 }
 .pfp-nft-detail-view > section > .info > .refresh-button:hover,
 .pfp-nft-detail-view > section > .info > .send-button-container > a:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-nft-detail-view > section > .attributes {
@@ -2079,7 +2092,7 @@ p {
   border-radius: 8px;
 }
 .pfp-nft-detail-view > section > .attributes > .attribute > .trait {
-  color: #C7FEA2;
+  color: #798577;
   margin-bottom: 16px;
 }
 .pfp-nft-detail-view > section > .trade-form {
@@ -2106,8 +2119,8 @@ p {
 .pfp-nft-detail-view > section > .trade-form > .cancel-sell-button,
 .pfp-nft-detail-view > section > .trade-form > .buy-button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2118,7 +2131,6 @@ p {
 .pfp-nft-detail-view > section > .trade-form > .sell-button:hover,
 .pfp-nft-detail-view > section > .trade-form > .cancel-sell-button:hover,
 .pfp-nft-detail-view > section > .trade-form > .buy-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-nft-detail-view > section > .offer-form {
@@ -2148,20 +2160,20 @@ p {
 .pfp-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button {
   margin-left: 8px;
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-nft-detail-view > section > .offer-form > .list > .offer > .accept-offer-button:hover,
 .pfp-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-nft-detail-view > section > .offer-form > .offer-button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2170,7 +2182,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .pfp-nft-detail-view > section > .offer-form > .offer-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-nft-detail-view > section > .auction-form {
@@ -2204,8 +2215,8 @@ p {
 .pfp-nft-detail-view > section > .auction-form > .claim-button,
 .pfp-nft-detail-view > section > .auction-form > .bid-button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2216,7 +2227,6 @@ p {
 .pfp-nft-detail-view > section > .auction-form > .create-auction-button:hover,
 .pfp-nft-detail-view > section > .auction-form > .claim-button:hover,
 .pfp-nft-detail-view > section > .auction-form > .bid-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-nft-detail-view > section > .activity {
@@ -2238,7 +2248,7 @@ p {
 .pfp-nft-detail-view > section > .activity > .list > .activity > .event {
   width: 80px;
   height: 24px;
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-nft-detail-view > section > .activity > .list > .activity > .user {
   flex-grow: 1;
@@ -2258,9 +2268,14 @@ p {
 .pfp-detail-view > header {
   position: relative;
   display: flex;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   padding: 16px;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .pfp-detail-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 @media only screen and (max-width: 719px) {
   .pfp-detail-view > header {
@@ -2300,7 +2315,7 @@ p {
 }
 .pfp-detail-view > header > .body > p > .mining {
   float: left;
-  color: #c7fea2;
+  color: #798577;
   display: flex;
   align-items: center;
 }
@@ -2320,8 +2335,8 @@ p {
   position: absolute;
   right: 16px;
   bottom: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 150px;
   font-size: 16px;
@@ -2330,7 +2345,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .pfp-detail-view > header > .update-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 @media only screen and (max-width: 719px) {
@@ -2346,7 +2360,7 @@ p {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background-color: black;
+  background-color: white;
 }
 @media only screen and (max-width: 719px) {
   .pfp-detail-view > main > header {
@@ -2374,11 +2388,11 @@ p {
   border-radius: 4px;
 }
 .pfp-detail-view > main > header > .tab-container > .tab.on {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-detail-view > main > header > .tab-container > .tab:hover {
-  color: #C7FEA2;
-  background-color: rgba(199, 254, 162, 0.2);
+  color: #798577;
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-detail-view > main > header > .filter {
@@ -2387,25 +2401,23 @@ p {
 }
 .pfp-detail-view > main > header > .filter > select {
   margin-left: 8px;
-  background-color: #C7FEA2;
+  background-color: #798577;
   padding: 8px;
   font-size: 14px;
   border-radius: 4px;
   border: none;
 }
 .pfp-detail-view > main > header > .filter > select:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-detail-view > main > header > select {
-  background-color: #C7FEA2;
+  background-color: #798577;
   padding: 8px;
   font-size: 14px;
   border-radius: 4px;
   border: none;
 }
 .pfp-detail-view > main > header > select:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-detail-view > main > .content {
@@ -2440,21 +2452,20 @@ p {
   height: 40px;
 }
 .pfp-detail-view > main > .content > .search-box > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-detail-view > main > .content > .search-box > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-detail-view > main > .content > .search-box > select {
   margin-top: 8px;
-  background-color: #C7FEA2;
+  background-color: #798577;
   padding: 8px;
   font-size: 14px;
   border-radius: 4px;
   border: none;
 }
 .pfp-detail-view > main > .content > .search-box > select:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-detail-view > main > .content > .list-container {
@@ -2499,17 +2510,22 @@ p {
   border-radius: 4px;
 }
 .pfp-detail-view > main > .content > .list-container > .pagination > a:hover {
-  color: #C7FEA2;
-  background-color: rgba(199, 254, 162, 0.2);
+  color: #798577;
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-update-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .pfp-update-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .pfp-update-view > header > h1 {
   font-size: 24px;
@@ -2554,7 +2570,7 @@ p {
 }
 .pfp-update-view > main > .form > label > p > a {
   justify-content: flex-end;
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-update-view > main > .form > label > input:not([type=checkbox]),
 .pfp-update-view > main > .form > label > textarea {
@@ -2569,11 +2585,11 @@ p {
 }
 .pfp-update-view > main > .form > label > input:not([type=checkbox]):hover,
 .pfp-update-view > main > .form > label > textarea:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-update-view > main > .form > label > input:not([type=checkbox]):focus,
 .pfp-update-view > main > .form > label > textarea:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-update-view > main > .form > label > textarea {
   height: 160px;
@@ -2584,8 +2600,8 @@ p {
 }
 .pfp-update-view > main > .form > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2594,7 +2610,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .pfp-update-view > main > .form > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-update-view > main > .manage-managers {
@@ -2617,13 +2632,13 @@ p {
 .pfp-update-view > main > .manage-managers > ul > li > button {
   justify-content: flex-end;
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 6px 8px;
   font-size: 14px;
   border-radius: 4px;
 }
 .pfp-update-view > main > .manage-managers > ul > li > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-update-view > main > .manage-managers > ul > li:hover {
@@ -2631,8 +2646,8 @@ p {
 }
 .pfp-update-view > main > .manage-managers > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2641,16 +2656,20 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .pfp-update-view > main > .manage-managers > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .add-pfp-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .add-pfp-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .add-pfp-view > header > h1 {
   font-size: 24px;
@@ -2679,16 +2698,21 @@ p {
 }
 .add-pfp-view > main > section:hover {
   cursor: pointer;
-  color: #C7FEA2;
+  color: #798577;
   background-color: #1f1f1f;
 }
 .add-pfp-by-minter-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .add-pfp-by-minter-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .add-pfp-by-minter-view > header > h1 {
   margin: 16px;
@@ -2735,15 +2759,15 @@ p {
   height: 40px;
 }
 .add-pfp-by-minter-view > main > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .add-pfp-by-minter-view > main > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .add-pfp-by-minter-view > main > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2752,16 +2776,20 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .add-pfp-by-minter-view > main > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .add-pfp-by-pfp-owner-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .add-pfp-by-pfp-owner-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .add-pfp-by-pfp-owner-view > header > h1 {
   margin: 16px;
@@ -2808,15 +2836,15 @@ p {
   height: 40px;
 }
 .add-pfp-by-pfp-owner-view > main > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .add-pfp-by-pfp-owner-view > main > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .add-pfp-by-pfp-owner-view > main > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2825,7 +2853,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .add-pfp-by-pfp-owner-view > main > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-ranking-view {
@@ -2853,14 +2880,13 @@ p {
 }
 .pfp-ranking-view > header > .filter > select {
   margin-top: 8px;
-  background-color: #C7FEA2;
+  background-color: #798577;
   padding: 8px;
   font-size: 14px;
   border-radius: 4px;
   border: none;
 }
 .pfp-ranking-view > header > .filter > select:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-ranking-view > table {
@@ -2873,7 +2899,7 @@ p {
   border-bottom: solid 0.5px #395728;
   position: sticky;
   top: 50px;
-  background-color: #121212;
+  background-color: #000;
 }
 .pfp-ranking-view > table > thead > tr > td {
   min-width: 150px;
@@ -2893,7 +2919,7 @@ p {
   font-weight: bold;
 }
 .pfp-ranking-view > table > tbody > tr:hover {
-  color: #C7FEA2;
+  color: #798577;
   background-color: #1f1f1f;
 }
 .pfp-ranking-view > .pagination {
@@ -2911,16 +2937,21 @@ p {
   text-decoration: none;
 }
 .pfp-ranking-view > .pagination > a:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   border-radius: 4px;
 }
 .pfp-propose-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .pfp-propose-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .pfp-propose-view > header > h1 {
   margin: 16px;
@@ -2967,15 +2998,15 @@ p {
   height: 40px;
 }
 .pfp-propose-view > main > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-propose-view > main > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-propose-view > main > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -2984,7 +3015,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .pfp-propose-view > main > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-page-layout {
@@ -2994,9 +3024,14 @@ p {
 .pfp-page-layout > header {
   position: relative;
   display: flex;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   padding: 16px;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .pfp-page-layout > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 @media only screen and (max-width: 719px) {
   .pfp-page-layout > header {
@@ -3036,7 +3071,7 @@ p {
 }
 .pfp-page-layout > header > .body > p > .mining {
   float: left;
-  color: #c7fea2;
+  color: #798577;
   display: flex;
   align-items: center;
 }
@@ -3056,8 +3091,8 @@ p {
   position: absolute;
   right: 16px;
   bottom: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 150px;
   font-size: 16px;
@@ -3066,7 +3101,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .pfp-page-layout > header > .update-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 @media only screen and (max-width: 719px) {
@@ -3110,11 +3144,11 @@ p {
   border-radius: 4px;
 }
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-page-tabs > .tab.on {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-page-tabs > .tab:hover {
-  color: #C7FEA2;
-  background-color: rgba(199, 254, 162, 0.2);
+  color: #798577;
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor:after {
@@ -3138,25 +3172,24 @@ p {
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button.on,
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-sell-button.on,
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-buy-button.on {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .rarity-button:hover,
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-sell-button:hover,
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > .multiple-buy-button:hover {
-  color: #C7FEA2;
-  background-color: rgba(199, 254, 162, 0.2);
+  color: #798577;
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > select {
   float: right;
-  background-color: #C7FEA2;
+  background-color: #798577;
   padding: 8px;
   font-size: 14px;
   border-radius: 4px;
   border: none;
 }
 .pfp-page-layout > main > .pfp-page-view > header > .pfp-sortor > select:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-page-layout > main > .pfp-page-view > .content {
@@ -3191,21 +3224,20 @@ p {
   height: 40px;
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > select {
   margin-top: 8px;
-  background-color: #C7FEA2;
+  background-color: #798577;
   padding: 8px;
   font-size: 14px;
   border-radius: 4px;
   border: none;
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > select:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > .reset-button {
@@ -3218,11 +3250,11 @@ p {
   text-align: center;
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > .reset-button.on {
-  color: #C7FEA2;
+  color: #798577;
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .pfp-filter > .reset-button:hover {
-  color: #C7FEA2;
-  background-color: rgba(199, 254, 162, 0.2);
+  color: #798577;
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .pfp-page-layout > main > .pfp-page-view > .content > .list-container {
@@ -3264,10 +3296,17 @@ p {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-image: url("/images/arts/banner-pc.png");
   background-size: cover;
+  background-position: center;
   height: 200px;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+@media only screen and (max-width: 719px) {
+  .arts-page-layout > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .arts-page-layout > header > p {
   margin: 16px;
@@ -3279,8 +3318,8 @@ p {
 .arts-page-layout > header > .controller > a {
   display: block;
   margin-left: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 150px;
   font-size: 16px;
@@ -3289,7 +3328,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .arts-page-layout > header > .controller > a:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .arts-page-layout > main > .arts-page-view > header {
@@ -3325,11 +3363,11 @@ p {
   border-radius: 4px;
 }
 .arts-page-layout > main > .arts-page-view > header > .arts-page-tabs > .tab.on {
-  color: #C7FEA2;
+  color: #798577;
 }
 .arts-page-layout > main > .arts-page-view > header > .arts-page-tabs > .tab:hover {
-  color: #C7FEA2;
-  background-color: rgba(199, 254, 162, 0.2);
+  color: #798577;
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .arts-page-layout > main > .arts-page-view > .content {
@@ -3371,10 +3409,15 @@ p {
 .add-artist-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .add-artist-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .add-artist-view > header > h1 {
   margin: 16px;
@@ -3421,15 +3464,15 @@ p {
   height: 40px;
 }
 .add-artist-view > main > label > input:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .add-artist-view > main > label > input:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .add-artist-view > main > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3438,16 +3481,20 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .add-artist-view > main > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .artist-update-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .artist-update-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .artist-update-view > header > h1 {
   font-size: 24px;
@@ -3492,7 +3539,7 @@ p {
 }
 .artist-update-view > main > .form > label > p > a {
   justify-content: flex-end;
-  color: #C7FEA2;
+  color: #798577;
 }
 .artist-update-view > main > .form > label > input:not([type=checkbox]),
 .artist-update-view > main > .form > label > textarea {
@@ -3507,11 +3554,11 @@ p {
 }
 .artist-update-view > main > .form > label > input:not([type=checkbox]):hover,
 .artist-update-view > main > .form > label > textarea:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .artist-update-view > main > .form > label > input:not([type=checkbox]):focus,
 .artist-update-view > main > .form > label > textarea:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .artist-update-view > main > .form > label > textarea {
   height: 160px;
@@ -3522,8 +3569,8 @@ p {
 }
 .artist-update-view > main > .form > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3532,7 +3579,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .artist-update-view > main > .form > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .artist-update-view > main > .manage-managers {
@@ -3555,13 +3601,13 @@ p {
 .artist-update-view > main > .manage-managers > ul > li > button {
   justify-content: flex-end;
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 6px 8px;
   font-size: 14px;
   border-radius: 4px;
 }
 .artist-update-view > main > .manage-managers > ul > li > button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
+  background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .artist-update-view > main > .manage-managers > ul > li:hover {
@@ -3569,8 +3615,8 @@ p {
 }
 .artist-update-view > main > .manage-managers > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3579,13 +3625,12 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .artist-update-view > main > .manage-managers > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .art-update-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-image: url("/images/arts/banner.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
@@ -3632,7 +3677,7 @@ p {
 }
 .art-update-view > main > .form > label > p > a {
   justify-content: flex-end;
-  color: #C7FEA2;
+  color: #798577;
 }
 .art-update-view > main > .form > label > input:not([type=checkbox]),
 .art-update-view > main > .form > label > textarea {
@@ -3647,11 +3692,11 @@ p {
 }
 .art-update-view > main > .form > label > input:not([type=checkbox]):hover,
 .art-update-view > main > .form > label > textarea:hover {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-update-view > main > .form > label > input:not([type=checkbox]):focus,
 .art-update-view > main > .form > label > textarea:focus {
-  border: 1px solid #C7FEA2;
+  border: 1px solid #798577;
 }
 .art-update-view > main > .form > label > textarea {
   height: 160px;
@@ -3662,8 +3707,8 @@ p {
 }
 .art-update-view > main > .form > button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3672,7 +3717,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .art-update-view > main > .form > button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .arts-nft-detail-view {
@@ -3727,7 +3771,7 @@ p {
 .arts-nft-detail-view > section > .info > .artist > span,
 .arts-nft-detail-view > section > .info > .artist > a {
   margin-left: 5px;
-  color: #C7FEA2;
+  color: #65FF45;
 }
 .arts-nft-detail-view > section > .info > .owner {
   color: #999;
@@ -3736,7 +3780,7 @@ p {
 .arts-nft-detail-view > section > .info > .owner > span,
 .arts-nft-detail-view > section > .info > .owner > a {
   margin-left: 5px;
-  color: #C7FEA2;
+  color: #65FF45;
 }
 .arts-nft-detail-view > section > .info > .description {
   flex-grow: 1;
@@ -3747,8 +3791,8 @@ p {
 .arts-nft-detail-view > section > .info > .update-button-container > a {
   margin-top: 16px;
   display: block;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3758,7 +3802,6 @@ p {
 }
 .arts-nft-detail-view > section > .info > .send-button-container > a:hover,
 .arts-nft-detail-view > section > .info > .update-button-container > a:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .arts-nft-detail-view > section > .attributes {
@@ -3772,7 +3815,7 @@ p {
   border-radius: 8px;
 }
 .arts-nft-detail-view > section > .attributes > .attribute > .trait {
-  color: #C7FEA2;
+  color: #798577;
   margin-bottom: 16px;
 }
 .arts-nft-detail-view > section > .trade-form {
@@ -3799,8 +3842,8 @@ p {
 .arts-nft-detail-view > section > .trade-form > .cancel-sell-button,
 .arts-nft-detail-view > section > .trade-form > .buy-button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3811,7 +3854,6 @@ p {
 .arts-nft-detail-view > section > .trade-form > .sell-button:hover,
 .arts-nft-detail-view > section > .trade-form > .cancel-sell-button:hover,
 .arts-nft-detail-view > section > .trade-form > .buy-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .arts-nft-detail-view > section > .offer-form {
@@ -3840,20 +3882,19 @@ p {
 .arts-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button {
   margin-left: 8px;
   background-color: transparent;
-  color: #C7FEA2;
+  color: #798577;
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
 }
 .arts-nft-detail-view > section > .offer-form > .list > .offer > .accept-offer-button:hover,
 .arts-nft-detail-view > section > .offer-form > .list > .offer > .cancel-offer-button:hover {
-  background-color: rgba(199, 254, 162, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .arts-nft-detail-view > section > .offer-form > .offer-button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3862,7 +3903,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .arts-nft-detail-view > section > .offer-form > .offer-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .arts-nft-detail-view > section > .auction-form {
@@ -3896,8 +3936,8 @@ p {
 .arts-nft-detail-view > section > .auction-form > .claim-button,
 .arts-nft-detail-view > section > .auction-form > .bid-button {
   margin-top: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 100%;
   font-size: 16px;
@@ -3908,7 +3948,6 @@ p {
 .arts-nft-detail-view > section > .auction-form > .create-auction-button:hover,
 .arts-nft-detail-view > section > .auction-form > .claim-button:hover,
 .arts-nft-detail-view > section > .auction-form > .bid-button:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .arts-nft-detail-view > section > .activity {
@@ -3931,7 +3970,7 @@ p {
   width: 120px;
   height: 2.5rem;
   line-height: 1.2rem;
-  color: #C7FEA2;
+  color: #798577;
 }
 .arts-nft-detail-view > section > .activity > .list > .activity > .user {
   flex-grow: 1;
@@ -3947,10 +3986,15 @@ p {
 .artist-view > header {
   display: flex;
   font-size: 1.25rem;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: space-between;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .artist-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .artist-view > header > .info {
   display: flex;
@@ -3981,8 +4025,8 @@ p {
 .artist-view > header > .controller > a {
   display: block;
   margin-left: 16px;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   width: 150px;
   font-size: 16px;
@@ -3991,7 +4035,6 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .artist-view > header > .controller > a:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .artist-view > .content {
@@ -4030,7 +4073,7 @@ p {
   }
 }
 .artist-view > .content > .list-container > .list > .art-nft-card:hover {
-  border: 0.5px solid #C7FEA2;
+  border: 0.5px solid #798577;
 }
 .item-view {
   padding: 16px;
@@ -4059,8 +4102,8 @@ p {
   display: block;
   width: 150px;
   margin: 16px auto;
-  color: #121212;
-  background-color: #C7FEA2;
+  color: #000;
+  background-color: #798577;
   padding: 12px 0;
   font-size: 16px;
   text-align: center;
@@ -4068,17 +4111,21 @@ p {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .mix-view > a:hover {
-  background-color: #CFFEB0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 .user-view > header {
   display: flex;
   flex-direction: column;
   font-size: 1.25rem;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .user-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .user-view > header > p {
   margin: 16px;
@@ -4092,10 +4139,15 @@ p {
 .user-my-pfps-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .user-my-pfps-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .user-my-pfps-view > header > h1 {
   font-size: 24px;
@@ -4142,10 +4194,15 @@ p {
 .user-my-arts-view > header {
   display: flex;
   flex-direction: column;
-  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
   background-size: cover;
   height: 200px;
   justify-content: center;
+  background-image: url("/images/arts/banner-pc.png");
+}
+@media only screen and (max-width: 719px) {
+  .user-my-arts-view > header {
+    background-image: url("/images/arts/banner-mobile.png");
+  }
 }
 .user-my-arts-view > header > h1 {
   font-size: 24px;

@@ -3,10 +3,15 @@
         display         : flex;
         flex-direction  : column;
         font-size       : 1.25rem;
-        background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
         background-size : cover;
         height          : 200px;
         justify-content : center;
+        background-image: url("/images/arts/banner-pc.png");
+
+        @media @phone {
+            background-image: url("/images/arts/banner-mobile.png");
+        }
+
 
         >p {
             margin     : 16px;

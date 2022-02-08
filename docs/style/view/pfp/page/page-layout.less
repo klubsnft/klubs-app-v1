@@ -5,9 +5,14 @@
     >header {
         position        : relative;
         display         : flex;
-        background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
         background-size : cover;
         padding         : 16px;
+        background-image: url("/images/arts/banner-pc.png");
+
+        @media @phone {
+            background-image: url("/images/arts/banner-mobile.png");
+        }
+
 
         @media @phone {
             display: block;
@@ -40,7 +45,7 @@
 
                 >.mining {
                     float      : left;
-                    color      : #c7fea2;
+                    color      : #798577;
                     display    : flex;
                     align-items: center;
 
@@ -76,8 +81,7 @@
             box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
 
             &:hover {
-                background-color: @brand-400;
-                box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
             }
 
             @media @phone {
@@ -129,7 +133,7 @@
 
                         &:hover {
                             color           : @brand-primary;
-                            background-color: rgba(199, 254, 162, 0.2);
+                            background-color: rgba(121, 133, 119, 0.2);
                             box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
                         }
                     }
@@ -154,7 +158,7 @@
 
                         &:hover {
                             color           : @brand-primary;
-                            background-color: rgba(199, 254, 162, 0.2);
+                            background-color: rgba(121, 133, 119, 0.2);
                             box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
                         }
                     }
@@ -168,8 +172,7 @@
                         border          : none;
 
                         &:hover {
-                            background-color: @brand-400;
-                            box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
                         }
                     }
                 }
@@ -223,8 +226,7 @@
                     }
 
                     >select:hover {
-                        background-color: @brand-400;
-                        box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
                     }
 
                     >.reset-button {
@@ -242,7 +244,7 @@
 
                         &:hover {
                             color           : @brand-primary;
-                            background-color: rgba(199, 254, 162, 0.2);
+                            background-color: rgba(121, 133, 119, 0.2);
                             box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
                         }
                     }

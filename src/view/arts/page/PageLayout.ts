@@ -22,7 +22,7 @@ export default class PageLayout implements View {
         Layout.current.content.append(this.container = el(".arts-page-layout",
             el("header",
                 el("p",
-                    msg("ARTS_DESCRIPTION")
+                    // msg("ARTS_DESCRIPTION")
                 ),
                 this.controller = el(".controller"),
             ),
