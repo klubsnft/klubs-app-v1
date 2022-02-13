@@ -1,0 +1,7 @@
+import { View, ViewParams } from "skyrouter";
+export default class ProposeItem implements View {
+    constructor();
+    changeParams(params: ViewParams, uri: string): void;
+    close(): void;
+}
+//# sourceMappingURL=ProposeItem.d.ts.map

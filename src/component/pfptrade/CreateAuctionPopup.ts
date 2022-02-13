@@ -61,7 +61,7 @@ export default class CreateAuctionPopup extends Popup {
             el(".name", data.name),
             img === undefined ? undefined : new NFTDisplay(img),
             el("label",
-                el("span", msg("CREATE_AUCTION_START_PRICE_DESCRIPTION").replace(/{royalty}/, String(royalty.royalty / 100).replace(/{fee}/, String(Config.fee)))),
+                el("span", msg("CREATE_AUCTION_START_PRICE_DESCRIPTION").replace(/{royalty}/, String(royalty.royalty / 100)).replace(/{fee}/, String(Config.fee))),
                 this.startPriceInput = el("input", { placeholder: msg("AUCTION_START_PRICE_INPUT") }),
             ),
             el("label",

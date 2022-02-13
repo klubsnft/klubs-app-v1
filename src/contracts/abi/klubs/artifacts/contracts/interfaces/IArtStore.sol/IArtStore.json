@@ -370,6 +370,24 @@
       "constant": false,
       "inputs": [
         {
+          "name": "ids",
+          "type": "uint256[]"
+        },
+        {
+          "name": "prices",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "changeSellPrice",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
           "name": "id",
           "type": "uint256"
         }

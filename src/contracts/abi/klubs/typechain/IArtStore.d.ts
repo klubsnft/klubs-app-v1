@@ -39,6 +39,7 @@ interface IArtStoreInterface extends ethers.utils.Interface {
     "userSellInfoLength(address)": FunctionFragment;
     "offerCount(uint256)": FunctionFragment;
     "acceptOffer(uint256,uint256)": FunctionFragment;
+    "changeSellPrice(uint256[],uint256[])": FunctionFragment;
     "cancelAuction(uint256)": FunctionFragment;
     "userOfferInfoLength(address)": FunctionFragment;
     "onAuctions(uint256)": FunctionFragment;
@@ -120,6 +121,10 @@ interface IArtStoreInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "acceptOffer",
     values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "changeSellPrice",
+    values: [BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "cancelAuction",
@@ -227,6 +232,10 @@ interface IArtStoreInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "offerCount", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "acceptOffer",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "changeSellPrice",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -529,6 +538,18 @@ export class IArtStore extends Contract {
     "acceptOffer(uint256,uint256)"(
       id: BigNumberish,
       offerId: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    changeSellPrice(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "changeSellPrice(uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -894,6 +915,18 @@ export class IArtStore extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  changeSellPrice(
+    ids: BigNumberish[],
+    prices: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "changeSellPrice(uint256[],uint256[])"(
+    ids: BigNumberish[],
+    prices: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   cancelAuction(
     id: BigNumberish,
     overrides?: Overrides
@@ -1255,6 +1288,18 @@ export class IArtStore extends Contract {
     "acceptOffer(uint256,uint256)"(
       id: BigNumberish,
       offerId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    changeSellPrice(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "changeSellPrice(uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1655,6 +1700,18 @@ export class IArtStore extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    changeSellPrice(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "changeSellPrice(uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
     cancelAuction(id: BigNumberish, overrides?: Overrides): Promise<BigNumber>;
 
     "cancelAuction(uint256)"(
@@ -1982,6 +2039,18 @@ export class IArtStore extends Contract {
     "acceptOffer(uint256,uint256)"(
       id: BigNumberish,
       offerId: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    changeSellPrice(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "changeSellPrice(uint256[],uint256[])"(
+      ids: BigNumberish[],
+      prices: BigNumberish[],
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

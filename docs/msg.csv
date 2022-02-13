@@ -1,4 +1,4 @@
-key,ko,en,jp
+key,ko,en,ja
 CONNECT_WALLET_BUTTON,지갑 연결하기,Connect Wallet,ウォレットに接続
 CONNECT_WALLET_TITLE,지갑 연결하기,Connect Wallet,ウォレットに接続
 MENU_PFP,PFP,PFP,PFP
@@ -7,6 +7,7 @@ MENU_PFP_ADD,PFP 등록,PFP Registration,PFP登録
 MENU_PFP_STUDIO,Studio,Studio,スタジオ
 MENU_ARTS,Arts,ARts,アート
 MENU_ITEMS,Items,Items,アイテム
+MENU_METAVERSES,Metaverses,Metaverses
 MENU_MEME,Meme,Meme,ミーム
 HOME_PFP,PFP,PFP,PFP
 HOME_ARTS,Arts,Arts,アート
@@ -240,8 +241,8 @@ ACCEPT_OFFER_IT_DESCRIPTION,"보유중인 NFT에 제안된 가격을 수락합�
 CANCEL_BUTTON,취소,Cancel,取り消す
 ACCEPT_OFFER_POPUP_DESCRIPTION,"제안 가격 (원작자 2차 판매 수수료 {royalty}%, Klubs 수수료 {fee}% 포함)","Offer Price (including Resale Rolyalty: {royalty}%, Klubs Comission {fee}%) ","提案価額（原作者２次販売手数料 {royalty}%, Klubs 手数料 {fee}% 含め)"
 BID_POPUP_DESCRIPTION,"경매에 입찰합니다. 최초 입찰시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 입찰을 위한 것입니다.",Participate in bidding. The inital bidding requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual bidding.,オークションに入札します。最初入札には二回のトランザクションが発生します。一つはMIX使用許可であり、他は実際の入札の為です。
-BID_PRICE_MIX_INPUT,입찰 가격 (MIX),Bidding Price (MIX),入札価額（MIX)
-BID_PRICE_MIX_POPUP_DESCRIPTION,입찰 가격 (최소 입찰 가격: {mix} MIX),Bidding Price (Reserve Price: {mix} MIX),入札価額（最小入札価額：｛MIX}MIX）
+BID_PRICE_MIX_INPUT,입찰 가격 (MIX),Bidding Price (MIX),入札価額（MIX）
+BID_PRICE_MIX_POPUP_DESCRIPTION,입찰 가격 (최소 입찰 가격: {mix} MIX),Bidding Price (Reserve Price: {mix} MIX),入札価額（最小入札価額：{mix}MIX）
 BUY_POPUP_DESCRIPTION,"NFT를 구매합니다. 최초 구매시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 구매를 위한 것입니다.",Purchasing NFT. The initial pruchase requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual purchase.,"NFTを購入します。初回の購入には2回のトランザクションが発生します。
 一つはMIXの使用許可の為であり、もう一つは実際の購入のためです。"
 BUY_PROCESS_BUTTON,구매 진행,Proceed Purchase,購入に進む
@@ -278,4 +279,19 @@ LOGOUT_BUTTON,로그아웃,Logout,ログアウト
 ART_ACCEPT_OFFER_POPUP_DESCRIPTION,"보유중인 NFT에 제안된 가격을 수락합니다. 최초 수락시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 수락을 위한 것입니다. 수락하는 즉시 거래가 완료됩니다.",Accepting offered price for the listed NFT. The inital acceptance requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual bidding.,"保有しているNFTへのオファーを承認します。初回の受け入れ時には2回のトランザクションが発生します。
 一つはMIXの使用許可の為であり、もう一つは受け入れる為です。受け入れると即時に取引が完了します。"
 ARTIST_ART_LIST_TITLE,작품 목록,Artwork List,作品一覧
-진행도,,100.38%,進行度
+ADD_METAVERSE_TITLE,메타버스 등록
+ADD_METAVERSE_DESCRIPTION,메타버스 혹은 게임을 등록합니다.
+METAVERSES_TITLE,메타버스
+METAVERSES_DESCRIPTION,메타버스 혹은 게임 프로젝트 목록입니다.
+METAVERSES_ADD_BUTTON,메타버스 등록
+METAVERSE_LIST,메타버스 목록
+SUCCESS_ADD_METAVERSE_TITLE,정보 등록 완료
+SUCCESS_ADD_METAVERSE_DESCRIPTION,메타버스 정보 등록이 완료되었습니다.\nKlubs에 오신 것을 환영합니다.
+METAVERSE_TITLE,메타버스
+UPDATE_METAVERSE_BUTTON,메타버스 정보 수정
+METAVERSE_ITEM_LIST,아이템 목록
+ADD_METAVERSE_ITEM_BUTTON,아이템 등록
+ADD_METAVERSE_ITEM_TITLE,아이템 등록
+ADD_METAVERSE_ITEM_CONFIRM,아이템을 등록하시겠습니까?
+ADD_METAVERSE_ITEM_DESCRIPTION,메타버스 내 아이템을 추가합니다.
+METAVERSE_ITEM_TYPE_SELECT,아이템 종류 선택

@@ -18,8 +18,11 @@ import Home from "./view/Home";
 import Item from "./view/Item";
 import Layout from "./view/Layout";
 import Meme from "./view/Meme";
+import AddItem from "./view/metaverse/AddItem";
+import AddMetaverse from "./view/metaverse/AddMetaverse";
+import Metaverse from "./view/metaverse/Metaverse";
+import Metaverses from "./view/metaverse/Metaverses";
 import Mix from "./view/Mix";
-import PFP from "./view/PFP";
 import Add from "./view/pfp/Add";
 import AddByMinter from "./view/pfp/AddByMinter";
 import AddByOwner from "./view/pfp/AddByOwner";
@@ -30,6 +33,7 @@ import PFPPageAuctions from "./view/pfp/page/PageAuctions";
 import PFPPageLayout from "./view/pfp/page/PageLayout";
 import PFPPageMine from "./view/pfp/page/PageMine";
 import PFPPageSelling from "./view/pfp/page/PageSelling";
+import PFP from "./view/pfp/PFP";
 import Proposal from "./view/pfp/Proposal";
 import Propose from "./view/pfp/Propose";
 import Rankings from "./view/pfp/Rankings";
@@ -58,6 +62,7 @@ import User from "./view/user/User";
         "user/my-pfps",
     ]);
 
+    // PFPs
     SkyRouter.route("pfp", PFP);
     SkyRouter.route("pfp/add", Add);
     SkyRouter.route("pfp/add-by-owner", AddByOwner);
@@ -121,6 +126,7 @@ import User from "./view/user/User";
     SkyRouter.route("pfp/{addr}/update", Update);
     SkyRouter.route("pfp/proposal/{proposalId}", Proposal);
 
+    // Arts
     SkyRouter.route([
         "arts",
         "arts/mine",
@@ -145,6 +151,12 @@ import User from "./view/user/User";
     ]);
 
     SkyRouter.route("artists/{address}", Artist);
+
+    // Metaverse
+    SkyRouter.route("metaverses", Metaverses);
+    SkyRouter.route("metaverse/{id}", Metaverse);
+    SkyRouter.route("metaverse/add", AddMetaverse);
+    SkyRouter.route("metaverse/{id}/additem", AddItem);
 
     SkyRouter.route("item", Item);
     SkyRouter.route("meme", Meme);

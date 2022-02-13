@@ -48,6 +48,7 @@ interface IPFPStoreV2Interface extends ethers.utils.Interface {
     "auctionExtensionInterval()": FunctionFragment;
     "claim(address,uint256)": FunctionFragment;
     "cancelSale(address[],uint256[])": FunctionFragment;
+    "changeSellPrice(address[],uint256[],uint256[])": FunctionFragment;
     "userSellInfo(address,uint256)": FunctionFragment;
     "onAuctionsCount(address)": FunctionFragment;
     "onSales(address,uint256)": FunctionFragment;
@@ -159,6 +160,10 @@ interface IPFPStoreV2Interface extends ethers.utils.Interface {
     values: [string[], BigNumberish[]]
   ): string;
   encodeFunctionData(
+    functionFragment: "changeSellPrice",
+    values: [string[], BigNumberish[], BigNumberish[]]
+  ): string;
+  encodeFunctionData(
     functionFragment: "userSellInfo",
     values: [string, BigNumberish]
   ): string;
@@ -258,6 +263,10 @@ interface IPFPStoreV2Interface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "cancelSale", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "changeSellPrice",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "userSellInfo",
     data: BytesLike
@@ -668,6 +677,20 @@ export class IPFPStoreV2 extends Contract {
     "cancelSale(address[],uint256[])"(
       addrs: string[],
       ids: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    changeSellPrice(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "changeSellPrice(address[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -1120,6 +1143,20 @@ export class IPFPStoreV2 extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  changeSellPrice(
+    addrs: string[],
+    ids: BigNumberish[],
+    prices: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "changeSellPrice(address[],uint256[],uint256[])"(
+    addrs: string[],
+    ids: BigNumberish[],
+    prices: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   userSellInfo(
     seller: string,
     index: BigNumberish,
@@ -1563,6 +1600,20 @@ export class IPFPStoreV2 extends Contract {
     "cancelSale(address[],uint256[])"(
       addrs: string[],
       ids: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    changeSellPrice(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "changeSellPrice(address[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -2079,6 +2130,20 @@ export class IPFPStoreV2 extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    changeSellPrice(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "changeSellPrice(address[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
     userSellInfo(
       seller: string,
       index: BigNumberish,
@@ -2476,6 +2541,20 @@ export class IPFPStoreV2 extends Contract {
     "cancelSale(address[],uint256[])"(
       addrs: string[],
       ids: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    changeSellPrice(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "changeSellPrice(address[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

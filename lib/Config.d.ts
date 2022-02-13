@@ -10,6 +10,10 @@ declare const _default: {
         Artists: string;
         Arts: string;
         ArtStore: string;
+        Metaverses: string;
+        ItemStoreCommon: string;
+        ItemStoreAuction: string;
+        ItemStoreSale: string;
     };
 };
 export default _default;

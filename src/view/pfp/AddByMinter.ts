@@ -27,7 +27,7 @@ export default class AddByMinter implements View {
                         el("h6", msg("CONTRACT_ADDRESS_INPUT")),
                         this.input = el("input", { placeholder: msg("CONTRACT_ADDRESS_INPUT") }),
                     ),
-                    el("button", "등록하기", {
+                    el("button", msg("REGISTER_BUTTON"), {
                         click: async () => {
                             const addr = this.input.domElement.value;
                             const added = await PFPsContract.added(addr);

@@ -23,12 +23,12 @@ import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 interface PFPStoreV2Interface extends ethers.utils.Interface {
   functions: {
     "batchTransfer(address[],uint256[],address[])": FunctionFragment;
-    "buy(address[],uint256[],uint256[])": FunctionFragment;
     "userAuctionInfoLength(address)": FunctionFragment;
     "cancelOffer(address,uint256,uint256)": FunctionFragment;
     "bid(address,uint256,uint256)": FunctionFragment;
     "banUser(address)": FunctionFragment;
     "setPFPs(address)": FunctionFragment;
+    "mileage()": FunctionFragment;
     "onSalesCount(address)": FunctionFragment;
     "userAuctionInfo(address,uint256)": FunctionFragment;
     "offerCount(address,uint256)": FunctionFragment;
@@ -38,6 +38,7 @@ interface PFPStoreV2Interface extends ethers.utils.Interface {
     "acceptOffer(address,uint256,uint256)": FunctionFragment;
     "auctions(address,uint256)": FunctionFragment;
     "biddings(address,uint256,uint256)": FunctionFragment;
+    "buy(address[],uint256[],uint256[],uint256[])": FunctionFragment;
     "pfps()": FunctionFragment;
     "userOfferInfo(address,uint256)": FunctionFragment;
     "unbanUser(address)": FunctionFragment;
@@ -82,10 +83,6 @@ interface PFPStoreV2Interface extends ethers.utils.Interface {
     values: [string[], BigNumberish[], string[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "buy",
-    values: [string[], BigNumberish[], BigNumberish[]]
-  ): string;
-  encodeFunctionData(
     functionFragment: "userAuctionInfoLength",
     values: [string]
   ): string;
@@ -99,6 +96,7 @@ interface PFPStoreV2Interface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "banUser", values: [string]): string;
   encodeFunctionData(functionFragment: "setPFPs", values: [string]): string;
+  encodeFunctionData(functionFragment: "mileage", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "onSalesCount",
     values: [string]
@@ -134,6 +132,10 @@ interface PFPStoreV2Interface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "biddings",
     values: [string, BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "buy",
+    values: [string[], BigNumberish[], BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(functionFragment: "pfps", values?: undefined): string;
   encodeFunctionData(
@@ -267,7 +269,6 @@ interface PFPStoreV2Interface extends ethers.utils.Interface {
     functionFragment: "batchTransfer",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "userAuctionInfoLength",
     data: BytesLike
@@ -279,6 +280,7 @@ interface PFPStoreV2Interface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "bid", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "banUser", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setPFPs", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "mileage", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "onSalesCount",
     data: BytesLike
@@ -303,6 +305,7 @@ interface PFPStoreV2Interface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "auctions", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "biddings", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "pfps", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "userOfferInfo",
@@ -474,19 +477,6 @@ export class PFPStoreV2 extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "buy(address[],uint256[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
-    "buy(address[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
     userAuctionInfoLength(
       seller: string,
       overrides?: CallOverrides
@@ -511,17 +501,18 @@ export class PFPStoreV2 extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    bid(
+    "bid(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "bid(address,uint256,uint256)"(
+    "bid(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -538,6 +529,10 @@ export class PFPStoreV2 extends Contract {
       _pfps: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
+
+    mileage(overrides?: CallOverrides): Promise<[string]>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<[string]>;
 
     onSalesCount(addr: string, overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -661,14 +656,40 @@ export class PFPStoreV2 extends Contract {
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "biddings(address,uint256,uint256)"(
       arg0: string,
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
+
+    "buy(address[],uint256[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "buy(address[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
 
     pfps(overrides?: CallOverrides): Promise<[string]>;
 
@@ -760,17 +781,18 @@ export class PFPStoreV2 extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
 
-    makeOffer(
+    "makeOffer(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "makeOffer(address,uint256,uint256)"(
+    "makeOffer(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -1026,14 +1048,26 @@ export class PFPStoreV2 extends Contract {
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "offers(address,uint256,uint256)"(
       arg0: string,
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     onSalesIndex(
       arg0: string,
@@ -1094,19 +1128,6 @@ export class PFPStoreV2 extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "buy(address[],uint256[],uint256[])"(
-    addrs: string[],
-    ids: BigNumberish[],
-    prices: BigNumberish[],
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
-  "buy(address[],uint256[])"(
-    addrs: string[],
-    ids: BigNumberish[],
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
   userAuctionInfoLength(
     seller: string,
     overrides?: CallOverrides
@@ -1131,17 +1152,18 @@ export class PFPStoreV2 extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  bid(
+  "bid(address,uint256,uint256)"(
     addr: string,
     id: BigNumberish,
     price: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "bid(address,uint256,uint256)"(
+  "bid(address,uint256,uint256,uint256)"(
     addr: string,
     id: BigNumberish,
     price: BigNumberish,
+    _mileage: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1158,6 +1180,10 @@ export class PFPStoreV2 extends Contract {
     _pfps: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
+
+  mileage(overrides?: CallOverrides): Promise<string>;
+
+  "mileage()"(overrides?: CallOverrides): Promise<string>;
 
   onSalesCount(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1281,14 +1307,40 @@ export class PFPStoreV2 extends Contract {
     arg1: BigNumberish,
     arg2: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      bidder: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
 
   "biddings(address,uint256,uint256)"(
     arg0: string,
     arg1: BigNumberish,
     arg2: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      bidder: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
+
+  "buy(address[],uint256[],uint256[],uint256[])"(
+    addrs: string[],
+    ids: BigNumberish[],
+    prices: BigNumberish[],
+    mileages: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "buy(address[],uint256[])"(
+    addrs: string[],
+    ids: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
 
   pfps(overrides?: CallOverrides): Promise<string>;
 
@@ -1377,17 +1429,18 @@ export class PFPStoreV2 extends Contract {
 
   "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
 
-  makeOffer(
+  "makeOffer(address,uint256,uint256)"(
     addr: string,
     id: BigNumberish,
     price: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "makeOffer(address,uint256,uint256)"(
+  "makeOffer(address,uint256,uint256,uint256)"(
     addr: string,
     id: BigNumberish,
     price: BigNumberish,
+    _mileage: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1638,14 +1691,26 @@ export class PFPStoreV2 extends Contract {
     arg1: BigNumberish,
     arg2: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      offeror: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
 
   "offers(address,uint256,uint256)"(
     arg0: string,
     arg1: BigNumberish,
     arg2: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+  ): Promise<
+    [string, BigNumber, BigNumber] & {
+      offeror: string;
+      price: BigNumber;
+      mileage: BigNumber;
+    }
+  >;
 
   onSalesIndex(
     arg0: string,
@@ -1706,19 +1771,6 @@ export class PFPStoreV2 extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "buy(address[],uint256[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    "buy(address[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     userAuctionInfoLength(
       seller: string,
       overrides?: CallOverrides
@@ -1743,17 +1795,18 @@ export class PFPStoreV2 extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    bid(
+    "bid(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "bid(address,uint256,uint256)"(
+    "bid(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1764,6 +1817,10 @@ export class PFPStoreV2 extends Contract {
     setPFPs(_pfps: string, overrides?: CallOverrides): Promise<void>;
 
     "setPFPs(address)"(_pfps: string, overrides?: CallOverrides): Promise<void>;
+
+    mileage(overrides?: CallOverrides): Promise<string>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<string>;
 
     onSalesCount(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1887,14 +1944,40 @@ export class PFPStoreV2 extends Contract {
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "biddings(address,uint256,uint256)"(
       arg0: string,
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { bidder: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        bidder: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
+
+    "buy(address[],uint256[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "buy(address[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     pfps(overrides?: CallOverrides): Promise<string>;
 
@@ -1980,17 +2063,18 @@ export class PFPStoreV2 extends Contract {
 
     "renounceOwnership()"(overrides?: CallOverrides): Promise<void>;
 
-    makeOffer(
+    "makeOffer(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "makeOffer(address,uint256,uint256)"(
+    "makeOffer(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -2244,14 +2328,26 @@ export class PFPStoreV2 extends Contract {
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     "offers(address,uint256,uint256)"(
       arg0: string,
       arg1: BigNumberish,
       arg2: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { offeror: string; price: BigNumber }>;
+    ): Promise<
+      [string, BigNumber, BigNumber] & {
+        offeror: string;
+        price: BigNumber;
+        mileage: BigNumber;
+      }
+    >;
 
     onSalesIndex(
       arg0: string,
@@ -2414,19 +2510,6 @@ export class PFPStoreV2 extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "buy(address[],uint256[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
-    "buy(address[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
     userAuctionInfoLength(
       seller: string,
       overrides?: CallOverrides
@@ -2451,17 +2534,18 @@ export class PFPStoreV2 extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    bid(
+    "bid(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "bid(address,uint256,uint256)"(
+    "bid(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -2475,6 +2559,10 @@ export class PFPStoreV2 extends Contract {
       _pfps: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
+
+    mileage(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     onSalesCount(addr: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -2583,6 +2671,20 @@ export class PFPStoreV2 extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    "buy(address[],uint256[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "buy(address[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
     pfps(overrides?: CallOverrides): Promise<BigNumber>;
 
     "pfps()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -2655,17 +2757,18 @@ export class PFPStoreV2 extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<BigNumber>;
 
-    makeOffer(
+    "makeOffer(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "makeOffer(address,uint256,uint256)"(
+    "makeOffer(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -2964,19 +3067,6 @@ export class PFPStoreV2 extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "buy(address[],uint256[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      prices: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
-    "buy(address[],uint256[])"(
-      addrs: string[],
-      ids: BigNumberish[],
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
     userAuctionInfoLength(
       seller: string,
       overrides?: CallOverrides
@@ -3001,17 +3091,18 @@ export class PFPStoreV2 extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    bid(
+    "bid(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "bid(address,uint256,uint256)"(
+    "bid(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -3031,6 +3122,10 @@ export class PFPStoreV2 extends Contract {
       _pfps: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
+
+    mileage(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "mileage()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     onSalesCount(
       addr: string,
@@ -3142,6 +3237,20 @@ export class PFPStoreV2 extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    "buy(address[],uint256[],uint256[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      prices: BigNumberish[],
+      mileages: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "buy(address[],uint256[])"(
+      addrs: string[],
+      ids: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
     pfps(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     "pfps()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -3220,17 +3329,18 @@ export class PFPStoreV2 extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<PopulatedTransaction>;
 
-    makeOffer(
+    "makeOffer(address,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "makeOffer(address,uint256,uint256)"(
+    "makeOffer(address,uint256,uint256,uint256)"(
       addr: string,
       id: BigNumberish,
       price: BigNumberish,
+      _mileage: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

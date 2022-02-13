@@ -40,28 +40,6 @@ const _abi = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [
-      {
-        name: "addrs",
-        type: "address[]",
-      },
-      {
-        name: "ids",
-        type: "uint256[]",
-      },
-      {
-        name: "prices",
-        type: "uint256[]",
-      },
-    ],
-    name: "buy",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     constant: true,
     inputs: [
       {
@@ -155,6 +133,20 @@ const _abi = [
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "mileage",
+    outputs: [
+      {
+        name: "",
+        type: "address",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -377,9 +369,39 @@ const _abi = [
         name: "price",
         type: "uint256",
       },
+      {
+        name: "mileage",
+        type: "uint256",
+      },
     ],
     payable: false,
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "addrs",
+        type: "address[]",
+      },
+      {
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        name: "prices",
+        type: "uint256[]",
+      },
+      {
+        name: "mileages",
+        type: "uint256[]",
+      },
+    ],
+    name: "buy",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -663,6 +685,37 @@ const _abi = [
     ],
     payable: false,
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+      {
+        name: "id",
+        type: "uint256",
+      },
+      {
+        name: "price",
+        type: "uint256",
+      },
+      {
+        name: "_mileage",
+        type: "uint256",
+      },
+    ],
+    name: "bid",
+    outputs: [
+      {
+        name: "biddingId",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -1046,9 +1099,44 @@ const _abi = [
         name: "price",
         type: "uint256",
       },
+      {
+        name: "mileage",
+        type: "uint256",
+      },
     ],
     payable: false,
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "addr",
+        type: "address",
+      },
+      {
+        name: "id",
+        type: "uint256",
+      },
+      {
+        name: "price",
+        type: "uint256",
+      },
+      {
+        name: "_mileage",
+        type: "uint256",
+      },
+    ],
+    name: "makeOffer",
+    outputs: [
+      {
+        name: "offerId",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -1133,6 +1221,10 @@ const _abi = [
       },
       {
         name: "_mix",
+        type: "address",
+      },
+      {
+        name: "_mileage",
         type: "address",
       },
     ],

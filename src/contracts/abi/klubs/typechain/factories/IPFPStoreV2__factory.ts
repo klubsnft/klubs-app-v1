@@ -611,6 +611,28 @@ const _abi = [
     type: "function",
   },
   {
+    constant: false,
+    inputs: [
+      {
+        name: "addrs",
+        type: "address[]",
+      },
+      {
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        name: "prices",
+        type: "uint256[]",
+      },
+    ],
+    name: "changeSellPrice",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     constant: true,
     inputs: [
       {

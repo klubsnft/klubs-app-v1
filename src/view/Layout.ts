@@ -41,7 +41,7 @@ export default class Layout implements View {
                         select = el("select.language-select",
                             el("option", "KO", { value: "ko" }),
                             el("option", "EN", { value: "en" }),
-                            el("option", "JP", { value: "jp" }),
+                            el("option", "JP", { value: "ja" }),
                             {
                                 change: () => {
                                     BrowserInfo.changeLanguage(select.domElement.value);

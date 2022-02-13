@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
-import { View, ViewParams } from "skyrouter";
 import msg from "msg.js";
+import { View, ViewParams } from "skyrouter";
 import Alert from "../../component/dialogue/Alert";
 import Prompt from "../../component/dialogue/Prompt";
 import PFPsContract from "../../contracts/PFPsContract";
@@ -10,6 +10,7 @@ import ViewUtil from "../ViewUtil";
 export default class Update implements View {
 
     private container: DomNode;
+
     private bannerPreview: DomNode;
     private bannerInput: DomNode<HTMLInputElement>;
     private iconPreview: DomNode;
@@ -123,7 +124,7 @@ export default class Update implements View {
                             el("span", msg("INTRODUCTION_MARKDOWN_DESCRIPTION")),
                             el("a", msg("INTRODUCTION_MARKDOWN_BUTTON"), { href: "https://www.markdownguide.org/cheat-sheet/", target: "_blank" }),
                         ),
-                        this.descriptionTextarea = el("textarea", { placeholder: "INTRODUCTION_PFP" }),
+                        this.descriptionTextarea = el("textarea", { placeholder: msg("INTRODUCTION_INPUT") }),
                     ),
                     el("label",
                         el("h3", msg("OPEN_KAKAO_INPUT")),
