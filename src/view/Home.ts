@@ -22,7 +22,7 @@ export default class Home implements View {
         Layout.current.content.append(
             (this.container = el(".home-view",
                 el("header",
-                    el("p", msg("HOME_KLUBS_INTRO_DESCRIPTION")),
+                    // el("p", msg("HOME_KLUBS_INTRO_DESCRIPTION")),
                     el("a", msg("HOME_KLUBS_INTRO_BUTTON"), {
                         href: "https://medium.com/klubs/klubs-klaytn-based-nft-marketplace-with-mix-2c93d3a9e014",
                         target: "_blank",

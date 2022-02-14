@@ -1,12 +1,18 @@
 .arts-page-layout {
     >header {
-        display         : flex;
-        flex-direction  : column;
-        font-size       : 1.25rem;
-        background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
-        background-size : cover;
-        height          : 200px;
-        justify-content : center;
+        display            : flex;
+        flex-direction     : column;
+        font-size          : 1.25rem;
+        background-image   : url("/images/arts/banner-pc.png");
+        background-size    : cover;
+        background-position: center;
+        height             : 200px;
+        justify-content    : flex-end;
+        align-items        : flex-end;
+
+        @media @phone {
+            background-image: url("/images/arts/banner-mobile.png");
+        }
 
         >p {
             margin     : 16px;
@@ -29,8 +35,7 @@
                 box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
 
                 &:hover {
-                    background-color: @brand-400;
-                    box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
                 }
             }
         }
@@ -76,7 +81,7 @@
 
                         &:hover {
                             color           : @brand-primary;
-                            background-color: rgba(199, 254, 162, 0.2);
+                            background-color: rgba(121, 133, 119, 0.2);
                             box-shadow      : 0 8px 16px 0 rgba(0, 0, 0, 0.2);
                         }
                     }

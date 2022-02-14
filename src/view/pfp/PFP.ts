@@ -19,7 +19,7 @@ export default class PFP implements View {
             this.container = el(".pfp-view",
                 el("header",
                     el("p",
-                        msg("PFP_PROJECTS_DESCRIPTION")
+                        // msg("PFP_PROJECTS_DESCRIPTION")
                     ),
                     el("a", msg("PFP_PROJECT_ADD_BUTTON"), {
                         click: () => ViewUtil.go("/pfp/add"),
