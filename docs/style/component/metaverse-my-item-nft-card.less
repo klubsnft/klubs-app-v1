@@ -1,0 +1,77 @@
+.metaverse-my-item-nft-card {
+    background-color: @shadow;
+    width           : 200px;
+    height          : 300px;
+    overflow        : hidden;
+    border-radius   : 8px;
+
+    &.selecting {
+        outline: 4px solid @brand-primary;
+    }
+
+    &.showing-rarity {
+        position: relative;
+        height  : 260px;
+    }
+
+    >.nft-display {
+        width : 200px;
+        height: 200px;
+
+        >* {
+            border-radius: 8px 8px 0px 0px;
+        }
+    }
+
+    >.info {
+        padding  : 4px 8px;
+        display  : flex;
+        font-size: 14px;
+
+        >.name {
+            padding  : 4px 0;
+            flex-grow: 1;
+        }
+
+        >.price {
+            display    : flex;
+            align-items: center;
+            color      : @mix-price;
+
+            >img {
+                margin-right: 4px;
+            }
+        }
+
+        >.balance {
+            padding: 4px 0;
+        }
+    }
+
+    >.count {
+        padding  : 4px 8px;
+        display  : flex;
+        font-size: 14px;
+    }
+
+    >a {
+        display         : block;
+        margin-top      : 6px;
+        color           : @background;
+        background-color: @brand-primary;
+        padding         : 12px 0;
+        width           : 100%;
+        font-size       : 16px;
+        text-align      : center;
+        border-radius   : 4px;
+        box-shadow      : 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+        &:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.card-view:hover {
+    background-color: @shadow-hover;
+}

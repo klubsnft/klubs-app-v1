@@ -18,7 +18,7 @@ export default class PageLayout implements View {
 
     public static async loadRarity(addr: string): Promise<RarityInfo | undefined> {
         if (this.rarities[addr] === undefined) {
-            const rarity = await Loader.loadRarity(addr);
+            const rarity = await Loader.loadPFPRarity(addr);
             if (rarity !== null) {
                 rarity.rankings = {};
                 const all = Object.entries(rarity.scores);

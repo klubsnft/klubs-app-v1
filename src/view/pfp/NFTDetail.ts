@@ -70,7 +70,7 @@ export default class NFTDetail implements View {
                     this.sendButtonContainer = el(".send-button-container"),
                     el("a.refresh-button", msg("REFRESH_METADATA_BUTTON"), {
                         click: async () => {
-                            await Loader.cacheMetadata(addr, id);
+                            await Loader.cachePFPMetadata(addr, id);
                             SkyRouter.refresh();
                         },
                     }),
@@ -167,7 +167,7 @@ export default class NFTDetail implements View {
 
     private async loadInfo(addr: string, id: number) {
         try {
-            const data = await Loader.loadMetadata(addr, id);
+            const data = await Loader.loadPFPMetadata(addr, id);
             this.nftDisplayContainer.empty();
             if (data.image !== undefined) {
                 this.nftDisplayContainer.append(new NFTDisplay(data.image));

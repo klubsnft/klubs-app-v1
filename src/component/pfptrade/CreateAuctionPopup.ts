@@ -53,7 +53,7 @@ export default class CreateAuctionPopup extends Popup {
     }
 
     private async load() {
-        const data = await Loader.loadMetadata(this.addr, this.id);
+        const data = await Loader.loadPFPMetadata(this.addr, this.id);
         const royalty = await PFPsContract.royalties(this.addr);
         const currentBlock = await Klaytn.loadBlockNumber();
         const img = data.image;

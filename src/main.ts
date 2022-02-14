@@ -15,13 +15,18 @@ import ArtsPageSelling from "./view/arts/page/PageSelling";
 import UpdateArt from "./view/arts/UpdateArt";
 import UpdateArtist from "./view/arts/UpdateArtist";
 import Home from "./view/Home";
-import Item from "./view/Item";
 import Layout from "./view/Layout";
 import Meme from "./view/Meme";
 import AddItem from "./view/metaverse/AddItem";
 import AddMetaverse from "./view/metaverse/AddMetaverse";
+import ItemPageAll from "./view/metaverse/item-page/ItemPageAll";
+import ItemPageLayout from "./view/metaverse/item-page/ItemPageLayout";
+import ItemPageMine from "./view/metaverse/item-page/ItemPageMine";
+import ItemProposal from "./view/metaverse/ItemProposal";
 import Metaverse from "./view/metaverse/Metaverse";
 import Metaverses from "./view/metaverse/Metaverses";
+import UpdateItem from "./view/metaverse/UpdateItem";
+import UpdateMetaverse from "./view/metaverse/UpdateMetaverse";
 import Mix from "./view/Mix";
 import Add from "./view/pfp/Add";
 import AddByMinter from "./view/pfp/AddByMinter";
@@ -154,11 +159,39 @@ import User from "./view/user/User";
 
     // Metaverse
     SkyRouter.route("metaverses", Metaverses);
-    SkyRouter.route("metaverse/{id}", Metaverse);
+    SkyRouter.route("metaverse/{id}", Metaverse, ["metaverse/add"]);
     SkyRouter.route("metaverse/add", AddMetaverse);
     SkyRouter.route("metaverse/{id}/additem", AddItem);
+    SkyRouter.route("metaverse/{id}/update", UpdateMetaverse);
 
-    SkyRouter.route("item", Item);
+    SkyRouter.route([
+        "metaverse/{metaverseId}/item/{addr}",
+        "metaverse/{metaverseId}/item/{addr}/page/{page}",
+        "metaverse/{metaverseId}/item/{addr}/mine",
+        "metaverse/{metaverseId}/item/{addr}/mine/{page}",
+        "metaverse/{metaverseId}/item/{addr}/selling",
+        "metaverse/{metaverseId}/item/{addr}/selling/{page}",
+        "metaverse/{metaverseId}/item/{addr}/auctions",
+        "metaverse/{metaverseId}/item/{addr}/auctions/{page}",
+    ], ItemPageLayout, [
+        "metaverse/{metaverseId}/item/propose",
+    ]);
+
+    SkyRouter.route([
+        "metaverse/{metaverseId}/item/{addr}",
+        "metaverse/{metaverseId}/item/{addr}/page/{page}",
+    ], ItemPageAll, [
+        "metaverse/{metaverseId}/item/propose",
+    ]);
+
+    SkyRouter.route([
+        "metaverse/{metaverseId}/item/{addr}/mine",
+        "metaverse/{metaverseId}/item/{addr}/mine/{page}",
+    ], ItemPageMine);
+
+    SkyRouter.route("metaverse/{metaverseId}/item/{addr}/update", UpdateItem);
+    SkyRouter.route("metaverse/{metaverseId}/item/proposal/{proposalId}", ItemProposal);
+
     SkyRouter.route("meme", Meme);
 
     SkyRouter.route("mix", Mix);

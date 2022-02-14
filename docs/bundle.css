@@ -461,6 +461,118 @@ p {
 .card-view:hover {
   background-color: #222222;
 }
+.metaverse-card {
+  position: relative;
+  background-color: #1f1f1f;
+  width: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+.metaverse-card:hover {
+  background-color: #222222;
+}
+.metaverse-card > .banner {
+  display: block;
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  object-fit: cover;
+}
+.metaverse-card > .icon {
+  position: absolute;
+  top: 125px;
+  left: calc(50% - 25px);
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: rgba(14, 14, 14, 0.6) 0px 0px 2px 0px;
+  border: solid 0.5px black;
+  object-fit: cover;
+}
+.metaverse-card > .info {
+  margin-top: 30px;
+  padding: 16px;
+}
+.metaverse-card > .info > .name {
+  font-size: 22px;
+  height: 28px;
+  line-height: 1.2em;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.metaverse-card > .info > .description {
+  margin-top: 10px;
+  font-size: 14px;
+  height: 162px;
+  line-height: 1.5em;
+  color: #ccc;
+  overflow: hidden;
+  word-break: break-all;
+}
+.item-card {
+  position: relative;
+  background-color: #1f1f1f;
+  width: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+.item-card:hover {
+  background-color: #222222;
+}
+.item-card > .banner {
+  display: block;
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  object-fit: cover;
+}
+.item-card > .icon {
+  position: absolute;
+  top: 125px;
+  left: calc(50% - 25px);
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: rgba(14, 14, 14, 0.6) 0px 0px 2px 0px;
+  border: solid 0.5px black;
+  object-fit: cover;
+}
+.item-card > .info {
+  margin-top: 30px;
+  padding: 16px;
+}
+.item-card > .info > .name {
+  font-size: 22px;
+  height: 28px;
+  line-height: 1.2em;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.item-card > .info > .description {
+  margin-top: 10px;
+  font-size: 14px;
+  height: 162px;
+  line-height: 1.5em;
+  color: #ccc;
+  overflow: hidden;
+  word-break: break-all;
+}
 .dialogue.alert {
   position: relative;
   max-width: 600px;
@@ -723,6 +835,151 @@ p {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+.metaverse-item-nft-card {
+  background-color: #1f1f1f;
+  width: 200px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.metaverse-item-nft-card.selecting {
+  outline: 4px solid #798577;
+}
+.metaverse-item-nft-card.showing-rarity {
+  position: relative;
+  height: 260px;
+}
+.metaverse-item-nft-card > .nft-display {
+  width: 200px;
+  height: 200px;
+}
+.metaverse-item-nft-card > .nft-display > * {
+  border-radius: 8px 8px 0px 0px;
+}
+.metaverse-item-nft-card > .info {
+  padding: 4px 8px;
+  display: flex;
+  font-size: 14px;
+}
+.metaverse-item-nft-card > .info > .name {
+  padding: 4px 0;
+  flex-grow: 1;
+}
+.metaverse-item-nft-card > .info > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.metaverse-item-nft-card > .info > .price > img {
+  margin-right: 4px;
+}
+.metaverse-item-nft-card > .info > .balance {
+  padding: 4px 0;
+  flex-grow: 1;
+}
+.metaverse-item-nft-card > .count,
+.metaverse-item-nft-card > .seller {
+  padding: 4px 8px;
+  display: flex;
+  font-size: 14px;
+}
+.metaverse-item-nft-card > .rarity {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  color: #798577;
+  display: flex;
+  align-items: flex-end;
+  width: calc(100% - 16px);
+}
+.metaverse-item-nft-card > .rarity > .number-with-commas {
+  flex-grow: 1;
+}
+.metaverse-item-nft-card > .rarity > .rank {
+  font-size: 12px;
+}
+.metaverse-item-nft-card > a {
+  display: block;
+  margin-top: 6px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-item-nft-card > a:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.card-view:hover {
+  background-color: #222222;
+}
+.metaverse-my-item-nft-card {
+  background-color: #1f1f1f;
+  width: 200px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.metaverse-my-item-nft-card.selecting {
+  outline: 4px solid #798577;
+}
+.metaverse-my-item-nft-card.showing-rarity {
+  position: relative;
+  height: 260px;
+}
+.metaverse-my-item-nft-card > .nft-display {
+  width: 200px;
+  height: 200px;
+}
+.metaverse-my-item-nft-card > .nft-display > * {
+  border-radius: 8px 8px 0px 0px;
+}
+.metaverse-my-item-nft-card > .info {
+  padding: 4px 8px;
+  display: flex;
+  font-size: 14px;
+}
+.metaverse-my-item-nft-card > .info > .name {
+  padding: 4px 0;
+  flex-grow: 1;
+}
+.metaverse-my-item-nft-card > .info > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.metaverse-my-item-nft-card > .info > .price > img {
+  margin-right: 4px;
+}
+.metaverse-my-item-nft-card > .info > .balance {
+  padding: 4px 0;
+}
+.metaverse-my-item-nft-card > .count {
+  padding: 4px 8px;
+  display: flex;
+  font-size: 14px;
+}
+.metaverse-my-item-nft-card > a {
+  display: block;
+  margin-top: 6px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-my-item-nft-card > a:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.card-view:hover {
+  background-color: #222222;
 }
 .pfp-pagination {
   display: flex;
@@ -1710,6 +1967,178 @@ p {
   border-radius: 4px;
 }
 .art-bid-popup > .button-container > button:hover {
+  background-color: rgba(121, 133, 119, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.metaverse-item-sell-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.metaverse-item-sell-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.metaverse-item-sell-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.metaverse-item-sell-popup > .list {
+  padding: 0 16px;
+}
+.metaverse-item-sell-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.metaverse-item-sell-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.metaverse-item-sell-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.metaverse-item-sell-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.metaverse-item-sell-popup > .list > section > .info > .name {
+  font-size: 24px;
+}
+.metaverse-item-sell-popup > .list > section > .info > label {
+  display: block;
+  margin-top: 16px;
+}
+.metaverse-item-sell-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.metaverse-item-sell-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.metaverse-item-sell-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #798577;
+}
+.metaverse-item-sell-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #798577;
+}
+.metaverse-item-sell-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.metaverse-item-sell-popup > .button-container > button {
+  background-color: transparent;
+  color: #798577;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.metaverse-item-sell-popup > .button-container > button:hover {
+  background-color: rgba(121, 133, 119, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.metaverse-item-buy-popup {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+}
+.metaverse-item-buy-popup > h2 {
+  font-size: 24px;
+  padding: 16px;
+}
+.metaverse-item-buy-popup > p {
+  padding: 16px;
+  border-top: 1px solid #666;
+  color: #999;
+}
+.metaverse-item-buy-popup > .list {
+  padding: 0 16px;
+}
+.metaverse-item-buy-popup > .list > section {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  display: flex;
+}
+.metaverse-item-buy-popup > .list > section > .nft-display {
+  width: 100px;
+  height: 100px;
+  margin-right: 16px;
+}
+.metaverse-item-buy-popup > .list > section > .nft-display > * {
+  border-radius: 4px;
+}
+.metaverse-item-buy-popup > .list > section > .info {
+  flex-grow: 1;
+}
+.metaverse-item-buy-popup > .list > section > .info > .name {
+  font-size: 24px;
+}
+.metaverse-item-buy-popup > .list > section > .info > label {
+  display: block;
+  margin-top: 16px;
+}
+.metaverse-item-buy-popup > .list > section > .info > label > span {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+.metaverse-item-buy-popup > .list > section > .info > label > .price {
+  display: flex;
+  align-items: center;
+  color: #e17d1c;
+}
+.metaverse-item-buy-popup > .list > section > .info > label > .price > img {
+  margin-right: 4px;
+}
+.metaverse-item-buy-popup > .list > section > .info > label > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.metaverse-item-buy-popup > .list > section > .info > label > input:hover {
+  border: 1px solid #798577;
+}
+.metaverse-item-buy-popup > .list > section > .info > label > input:focus {
+  border: 1px solid #798577;
+}
+.metaverse-item-buy-popup > .button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+.metaverse-item-buy-popup > .button-container > button {
+  background-color: transparent;
+  color: #798577;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.metaverse-item-buy-popup > .button-container > button:hover {
   background-color: rgba(121, 133, 119, 0.2);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -3031,10 +3460,6 @@ p {
 @media only screen and (max-width: 719px) {
   .pfp-page-layout > header {
     background-image: url("/images/arts/banner-mobile.png");
-  }
-}
-@media only screen and (max-width: 719px) {
-  .pfp-page-layout > header {
     display: block;
   }
 }
@@ -4074,6 +4499,914 @@ p {
 }
 .artist-view > .content > .list-container > .list > .art-nft-card:hover {
   border: 0.5px solid #798577;
+}
+.metaverses-view > header {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.metaverses-view > header > p {
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.metaverses-view > header > a {
+  display: block;
+  margin-left: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 150px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverses-view > header > a:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverses-view > .content {
+  padding: 16px;
+  max-width: 1420px;
+  margin: auto;
+}
+.metaverses-view > .content > h2 {
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 16px;
+}
+.metaverses-view > .content > .metaverse-list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.metaverses-view > .content > .metaverse-list > .metaverse-card {
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  width: calc(25% - 16px);
+}
+@media only screen and (max-width: 719px) {
+  .metaverses-view > .content > .metaverse-list > .metaverse-card {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 720px) and (max-width: 959px) {
+  .metaverses-view > .content > .metaverse-list > .metaverse-card {
+    width: calc(50% - 16px);
+  }
+}
+.metaverse-view > header {
+  position: relative;
+  display: flex;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  padding: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-view > header {
+    display: block;
+  }
+}
+.metaverse-view > header > img {
+  width: 156px;
+  height: 156px;
+  border-radius: 8px;
+}
+.metaverse-view > header > .body {
+  margin-left: 16px;
+  width: 100%;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-view > header > .body {
+    margin-top: 16px;
+    margin-left: 0;
+  }
+}
+.metaverse-view > header > .body > h1 {
+  font-size: 32px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.metaverse-view > header > .body > p {
+  margin-top: 8px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.metaverse-view > header > .body > p:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.metaverse-view > header > .body > p > .mining {
+  float: left;
+  color: #c7fea2;
+  display: flex;
+  align-items: center;
+}
+.metaverse-view > header > .body > p > .mining > img {
+  margin-right: 6px;
+}
+.metaverse-view > header > .body > .social {
+  display: flex;
+  margin-top: 8px;
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.metaverse-view > header > .body > .social > a {
+  margin-right: 8px;
+}
+.metaverse-view > header > .button-container {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+}
+.metaverse-view > header > .button-container > button {
+  margin-left: 10px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 150px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-view > header > .button-container > button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-view > header > .button-container > button {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    margin-top: 16px;
+  }
+}
+.metaverse-view > .content {
+  padding: 16px;
+  max-width: 1420px;
+  margin: auto;
+}
+.metaverse-view > .content > h2 {
+  font-size: 24px;
+  color: #999;
+  margin-bottom: 16px;
+}
+.metaverse-view > .content > .item-list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.metaverse-view > .content > .item-list > .item-card {
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  width: calc(25% - 16px);
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-view > .content > .item-list > .item-card {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 720px) and (max-width: 959px) {
+  .metaverse-view > .content > .item-list > .item-card {
+    width: calc(50% - 16px);
+  }
+}
+.add-metaverse-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.add-metaverse-view > header > h1 {
+  margin: 16px;
+  margin-bottom: 0;
+  font-size: 24px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.add-metaverse-view > header > p {
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.add-metaverse-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
+}
+.add-metaverse-view > main > .form {
+  margin-bottom: 45px;
+}
+.add-metaverse-view > main > .form > h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.add-metaverse-view > main > .form > label {
+  display: block;
+  margin-top: 16px;
+}
+.add-metaverse-view > main > .form > label > h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.add-metaverse-view > main > .form > label > .banner-preview,
+.add-metaverse-view > main > .form > label > .icon-preview {
+  max-width: 100%;
+  max-height: 100px;
+  margin-bottom: 12px;
+}
+.add-metaverse-view > main > .form > label > p {
+  margin-top: -4px;
+  margin-bottom: 12px;
+  display: flex;
+  color: #999;
+}
+.add-metaverse-view > main > .form > label > p > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.add-metaverse-view > main > .form > label > p > a {
+  justify-content: flex-end;
+  color: #798577;
+}
+.add-metaverse-view > main > .form > label > input:not([type=checkbox]),
+.add-metaverse-view > main > .form > label > textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.add-metaverse-view > main > .form > label > input:not([type=checkbox]):hover,
+.add-metaverse-view > main > .form > label > textarea:hover {
+  border: 1px solid #798577;
+}
+.add-metaverse-view > main > .form > label > input:not([type=checkbox]):focus,
+.add-metaverse-view > main > .form > label > textarea:focus {
+  border: 1px solid #798577;
+}
+.add-metaverse-view > main > .form > label > textarea {
+  height: 160px;
+}
+.add-metaverse-view > main > .form > label > input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.add-metaverse-view > main > .form > button {
+  margin-top: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.add-metaverse-view > main > .form > button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverse-update-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.metaverse-update-view > header > h1 {
+  font-size: 24px;
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.metaverse-update-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
+}
+.metaverse-update-view > main > .form {
+  margin-bottom: 45px;
+}
+.metaverse-update-view > main > .form > h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.metaverse-update-view > main > .form > label {
+  display: block;
+  margin-top: 16px;
+}
+.metaverse-update-view > main > .form > label > h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.metaverse-update-view > main > .form > label > .banner-preview,
+.metaverse-update-view > main > .form > label > .icon-preview {
+  max-width: 100%;
+  max-height: 100px;
+  margin-bottom: 12px;
+}
+.metaverse-update-view > main > .form > label > p {
+  margin-top: -4px;
+  margin-bottom: 12px;
+  display: flex;
+  color: #999;
+}
+.metaverse-update-view > main > .form > label > p > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.metaverse-update-view > main > .form > label > p > a {
+  justify-content: flex-end;
+  color: #798577;
+}
+.metaverse-update-view > main > .form > label > input:not([type=checkbox]),
+.metaverse-update-view > main > .form > label > textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.metaverse-update-view > main > .form > label > input:not([type=checkbox]):hover,
+.metaverse-update-view > main > .form > label > textarea:hover {
+  border: 1px solid #798577;
+}
+.metaverse-update-view > main > .form > label > input:not([type=checkbox]):focus,
+.metaverse-update-view > main > .form > label > textarea:focus {
+  border: 1px solid #798577;
+}
+.metaverse-update-view > main > .form > label > textarea {
+  height: 160px;
+}
+.metaverse-update-view > main > .form > label > input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.metaverse-update-view > main > .form > button {
+  margin-top: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-update-view > main > .form > button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverse-update-view > main > .manage-managers {
+  width: 100%;
+}
+.metaverse-update-view > main > .manage-managers > h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.metaverse-update-view > main > .manage-managers > ul > li {
+  display: flex;
+  padding: 4px 8px;
+  border-bottom: 1px solid #666;
+  align-items: center;
+}
+.metaverse-update-view > main > .manage-managers > ul > li > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.metaverse-update-view > main > .manage-managers > ul > li > button {
+  justify-content: flex-end;
+  background-color: transparent;
+  color: #798577;
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.metaverse-update-view > main > .manage-managers > ul > li > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.metaverse-update-view > main > .manage-managers > ul > li:hover {
+  background-color: #1f1f1f;
+}
+.metaverse-update-view > main > .manage-managers > button {
+  margin-top: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-update-view > main > .manage-managers > button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverse-item-update-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.metaverse-item-update-view > header > h1 {
+  font-size: 24px;
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.metaverse-item-update-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
+}
+.metaverse-item-update-view > main > .form {
+  margin-bottom: 45px;
+}
+.metaverse-item-update-view > main > .form > h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.metaverse-item-update-view > main > .form > label {
+  display: block;
+  margin-top: 16px;
+}
+.metaverse-item-update-view > main > .form > label > h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.metaverse-item-update-view > main > .form > label > .banner-preview,
+.metaverse-item-update-view > main > .form > label > .icon-preview {
+  max-width: 100%;
+  max-height: 100px;
+  margin-bottom: 12px;
+}
+.metaverse-item-update-view > main > .form > label > p {
+  margin-top: -4px;
+  margin-bottom: 12px;
+  display: flex;
+  color: #999;
+}
+.metaverse-item-update-view > main > .form > label > p > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.metaverse-item-update-view > main > .form > label > p > a {
+  justify-content: flex-end;
+  color: #798577;
+}
+.metaverse-item-update-view > main > .form > label > input:not([type=checkbox]),
+.metaverse-item-update-view > main > .form > label > textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.metaverse-item-update-view > main > .form > label > input:not([type=checkbox]):hover,
+.metaverse-item-update-view > main > .form > label > textarea:hover {
+  border: 1px solid #798577;
+}
+.metaverse-item-update-view > main > .form > label > input:not([type=checkbox]):focus,
+.metaverse-item-update-view > main > .form > label > textarea:focus {
+  border: 1px solid #798577;
+}
+.metaverse-item-update-view > main > .form > label > textarea {
+  height: 160px;
+}
+.metaverse-item-update-view > main > .form > label > input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.metaverse-item-update-view > main > .form > button {
+  margin-top: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-item-update-view > main > .form > button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverse-item-update-view > main > .manage-managers {
+  width: 100%;
+}
+.metaverse-item-update-view > main > .manage-managers > h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.metaverse-item-update-view > main > .manage-managers > ul > li {
+  display: flex;
+  padding: 4px 8px;
+  border-bottom: 1px solid #666;
+  align-items: center;
+}
+.metaverse-item-update-view > main > .manage-managers > ul > li > span {
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+.metaverse-item-update-view > main > .manage-managers > ul > li > button {
+  justify-content: flex-end;
+  background-color: transparent;
+  color: #798577;
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.metaverse-item-update-view > main > .manage-managers > ul > li > button:hover {
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.metaverse-item-update-view > main > .manage-managers > ul > li:hover {
+  background-color: #1f1f1f;
+}
+.metaverse-item-update-view > main > .manage-managers > button {
+  margin-top: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-item-update-view > main > .manage-managers > button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.add-metaverse-item-view > header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  height: 200px;
+  justify-content: center;
+}
+.add-metaverse-item-view > header > h1 {
+  margin: 16px;
+  margin-bottom: 0;
+  font-size: 24px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.add-metaverse-item-view > header > p {
+  margin: 16px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.add-metaverse-item-view > main {
+  max-width: 632px;
+  margin: auto;
+  padding: 32px 16px;
+}
+.add-metaverse-item-view > main > .warning {
+  display: block;
+  color: #9F6000;
+  background-color: #FEEFB3;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+}
+.add-metaverse-item-view > main > .warning > i {
+  margin-right: 6px;
+}
+.add-metaverse-item-view > main > label {
+  display: block;
+  margin-top: 16px;
+}
+.add-metaverse-item-view > main > label > h6 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.add-metaverse-item-view > main > label > input,
+.add-metaverse-item-view > main > label > select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #111;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.add-metaverse-item-view > main > label > input:hover,
+.add-metaverse-item-view > main > label > select:hover {
+  border: 1px solid #798577;
+}
+.add-metaverse-item-view > main > label > input:focus,
+.add-metaverse-item-view > main > label > select:focus {
+  border: 1px solid #798577;
+}
+.add-metaverse-item-view > main > button {
+  margin-top: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.add-metaverse-item-view > main > button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverse-item-page-layout {
+  display: flex;
+  flex-direction: column;
+}
+.metaverse-item-page-layout > header {
+  position: relative;
+  display: flex;
+  background-image: url("/images/arts/pexels-steve-johnson-1840623-blur.jpg");
+  background-size: cover;
+  padding: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > header {
+    display: block;
+  }
+}
+.metaverse-item-page-layout > header > img {
+  width: 156px;
+  height: 156px;
+  border-radius: 8px;
+}
+.metaverse-item-page-layout > header > .body {
+  margin-left: 16px;
+  width: 100%;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > header > .body {
+    margin-top: 16px;
+    margin-left: 0;
+  }
+}
+.metaverse-item-page-layout > header > .body > h1 {
+  font-size: 32px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.metaverse-item-page-layout > header > .body > p {
+  margin-top: 8px;
+  text-shadow: 0px 0px 5px #000000;
+}
+.metaverse-item-page-layout > header > .body > p:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.metaverse-item-page-layout > header > .body > p > .mining {
+  float: left;
+  color: #c7fea2;
+  display: flex;
+  align-items: center;
+}
+.metaverse-item-page-layout > header > .body > p > .mining > img {
+  margin-right: 6px;
+}
+.metaverse-item-page-layout > header > .body > .social {
+  display: flex;
+  margin-top: 8px;
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.metaverse-item-page-layout > header > .body > .social > a {
+  margin-right: 8px;
+}
+.metaverse-item-page-layout > header > .update-button {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  color: #000;
+  background-color: #798577;
+  padding: 12px 0;
+  width: 150px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.metaverse-item-page-layout > header > .update-button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > header > .update-button {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    margin-top: 16px;
+  }
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: black;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > header {
+    display: block;
+  }
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > h2 {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-page-tabs {
+    display: flex;
+    margin-left: -8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-page-tabs > .tab {
+  margin-left: 8px;
+  background-color: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-page-tabs > .tab.on {
+  color: #798577;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-page-tabs > .tab:hover {
+  color: #798577;
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .rarity-button,
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .multiple-sell-button,
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .multiple-buy-button {
+  float: left;
+  margin-right: 8px;
+  background-color: transparent;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .rarity-button.on,
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .multiple-sell-button.on,
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .multiple-buy-button.on {
+  color: #798577;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .rarity-button:hover,
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .multiple-sell-button:hover,
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > .multiple-buy-button:hover {
+  color: #798577;
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > select {
+  float: right;
+  background-color: #798577;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > header > .metaverse-item-sortor > select:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content {
+  display: flex;
+  padding: 16px 0 16px 16px;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > .content {
+    display: block;
+  }
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter {
+    width: auto;
+  }
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px;
+  height: 40px;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > input:hover {
+  border: 1px solid #798577;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > input:focus {
+  border: 1px solid #798577;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > select {
+  margin-top: 8px;
+  background-color: #798577;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > select:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > .reset-button {
+  margin-top: 8px;
+  display: block;
+  background-color: transparent;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  text-align: center;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > .reset-button.on {
+  color: #798577;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .metaverse-item-filter > .reset-button:hover {
+  color: #798577;
+  background-color: rgba(199, 254, 162, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container {
+  width: calc(100% - 240px);
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container {
+    width: auto;
+  }
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list > .metaverse-item-nft-card,
+.metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list > .metaverse-my-item-nft-card {
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+@media only screen and (max-width: 719px) {
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list > .metaverse-item-nft-card,
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list > .metaverse-my-item-nft-card {
+    width: calc(50% - 16px);
+  }
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list > .metaverse-item-nft-card > .nft-display,
+  .metaverse-item-page-layout > main > .metaverse-item-page-view > .content > .list-container > .list > .metaverse-my-item-nft-card > .nft-display {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
 }
 .item-view {
   padding: 16px;

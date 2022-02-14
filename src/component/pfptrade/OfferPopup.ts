@@ -45,7 +45,7 @@ export default class OfferPopup extends Popup {
 
     private async load() {
         let input: DomNode<HTMLInputElement>;
-        const data = await Loader.loadMetadata(this.addr, this.id);
+        const data = await Loader.loadPFPMetadata(this.addr, this.id);
         const img = data.image;
         this.list.append(el("section",
             img === undefined ? undefined : new NFTDisplay(img),

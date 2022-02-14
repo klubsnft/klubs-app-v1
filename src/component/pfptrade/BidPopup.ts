@@ -50,7 +50,7 @@ export default class BidPopup extends Popup {
 
     private async load() {
         let input: DomNode<HTMLInputElement>;
-        const data = await Loader.loadMetadata(this.addr, this.id);
+        const data = await Loader.loadPFPMetadata(this.addr, this.id);
         const auction = await PFPStoreContract.auctions(this.addr, this.id);
         const img = data.image;
         this.list.append(el("section",

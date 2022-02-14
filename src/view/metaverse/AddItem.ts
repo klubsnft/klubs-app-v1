@@ -27,8 +27,8 @@ export default class AddItem implements View {
                     el("label",
                         el("h6", msg("METAVERSE_ITEM_TYPE_SELECT")),
                         this.select = el("select",
-                            el("option", "KIP-17", { value: "0" }),
-                            el("option", "KIP-37", { value: "1" }),
+                            el("option", "KIP-37", { value: "0" }),
+                            el("option", "KIP-17", { value: "1" }),
                         ),
                     ),
                     el("button", msg("REGISTER_BUTTON"), {

@@ -1,0 +1,1 @@
+{"version":3,"file":"ItemPageTabs.d.ts","sourceRoot":"","sources":["../../../src/component/metaverseitempage/ItemPageTabs.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAM,MAAM,gBAAgB,CAAC;AAM7C,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,OAAO;IAIjC,OAAO,CAAC,WAAW;IAAU,OAAO,CAAC,IAAI;IAFrD,OAAO,CAAC,OAAO,CAAU;gBAEL,WAAW,EAAE,MAAM,EAAU,IAAI,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM;YAa7D,IAAI;CAQrB"}

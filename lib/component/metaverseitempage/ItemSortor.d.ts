@@ -1,0 +1,9 @@
+import { DomNode } from "@hanul/skynode";
+import PFPPage from "../../view/pfp/page/PFPPage";
+export default class ItemSortor extends DomNode {
+    private store;
+    private select;
+    constructor(pageView: PFPPage, multiple?: "sell" | "buy");
+    get sortType(): string;
+}
+//# sourceMappingURL=ItemSortor.d.ts.map

@@ -42,7 +42,7 @@ export default class AcceptOfferPopup extends Popup {
     }
 
     private async load() {
-        const data = await Loader.loadMetadata(this.addr, this.id);
+        const data = await Loader.loadPFPMetadata(this.addr, this.id);
         const img = data.image;
         const offerInfo = await PFPStoreContract.offers(this.addr, this.id, this.offerId);
         const royalty = await PFPsContract.royalties(this.addr);

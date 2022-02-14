@@ -1,0 +1,1 @@
+{"version":3,"file":"ItemSaleCard.d.ts","sourceRoot":"","sources":["../../src/component/ItemSaleCard.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAM,MAAM,gBAAgB,CAAC;AAQ7C,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,OAAO;IAGzC,OAAO,CAAC,WAAW;IACnB,OAAO,CAAC,IAAI;IACZ,OAAO,CAAC,SAAS;gBAFT,WAAW,EAAE,MAAM,EACnB,IAAI,EAAE,MAAM,EACZ,SAAS,EAAE,MAAM;YAMf,IAAI;CAgCrB"}

@@ -41,7 +41,7 @@ export default class BuyPopup extends Popup {
     private async load() {
         for (const [index, addr] of this.addr.entries()) {
             const id = this.ids[index];
-            const data = await Loader.loadMetadata(addr, id);
+            const data = await Loader.loadPFPMetadata(addr, id);
             const img = data.image;
             const saleInfo = await PFPStoreContract.sales(addr, id);
             this.list.append(el("section",

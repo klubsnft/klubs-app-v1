@@ -2,18 +2,28 @@ import superagent from "superagent";
 
 class Loader {
 
-    public async loadMetadata(addr: string, id: number) {
+    public async loadPFPMetadata(addr: string, id: number) {
         let result = await superagent.get(`https://api.klu.bs/v2/pfp/${addr}/${id}/metadata`);
         return result.body;
     }
 
-    public async cacheMetadata(addr: string, id: number) {
+    public async cachePFPMetadata(addr: string, id: number) {
         let result = await superagent.get(`https://api.klu.bs/v2/pfp/${addr}/${id}/metadata/cache`);
         return result.body;
     }
 
-    public async loadRarity(addr: string) {
+    public async loadPFPRarity(addr: string) {
         let result = await superagent.get(`https://api.klu.bs/v2/pfp/${addr}/rarity`);
+        return result.body;
+    }
+
+    public async loadMetaverseItemMetadata(addr: string, id: number) {
+        let result = await superagent.get(`https://api.klu.bs/metaverseitem/${addr}/${id}/metadata`);
+        return result.body;
+    }
+
+    public async cacheMetaverseItemMetadata(addr: string, id: number) {
+        let result = await superagent.get(`https://api.klu.bs/metaverseitem/${addr}/${id}/metadata/cache`);
         return result.body;
     }
 }

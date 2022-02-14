@@ -48,7 +48,7 @@ export default class SellPopup extends Popup {
     private async load() {
         for (const [index, addr] of this.addr.entries()) {
             let input: DomNode<HTMLInputElement>;
-            const data = await Loader.loadMetadata(addr, this.ids[index]);
+            const data = await Loader.loadPFPMetadata(addr, this.ids[index]);
             const royalty = await PFPsContract.royalties(addr);
             const img = data.image;
             this.list.append(el("section",

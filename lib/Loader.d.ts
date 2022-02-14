@@ -1,7 +1,9 @@
 declare class Loader {
-    loadMetadata(addr: string, id: number): Promise<any>;
-    cacheMetadata(addr: string, id: number): Promise<any>;
-    loadRarity(addr: string): Promise<any>;
+    loadPFPMetadata(addr: string, id: number): Promise<any>;
+    cachePFPMetadata(addr: string, id: number): Promise<any>;
+    loadPFPRarity(addr: string): Promise<any>;
+    loadMetaverseItemMetadata(addr: string, id: number): Promise<any>;
+    cacheMetaverseItemMetadata(addr: string, id: number): Promise<any>;
 }
 declare const _default: Loader;
 export default _default;

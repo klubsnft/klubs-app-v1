@@ -61,7 +61,7 @@ export default class PFPNFTCard extends DomNode {
 
     private async load() {
         try {
-            const data = await Loader.loadMetadata(this.addr, this.id);
+            const data = await Loader.loadPFPMetadata(this.addr, this.id);
             const saleInfo = await PFPStoreContract.sales(this.addr, this.id);
             if (this.deleted !== true) {
                 this.append(
