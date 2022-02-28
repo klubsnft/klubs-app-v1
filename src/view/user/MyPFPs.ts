@@ -103,7 +103,7 @@ export default class MyPFPs implements View, PFPPage {
                 const extras = await PFPsContract.extras(addr);
                 let data: any = {};
                 try { data = JSON.parse(extras); } catch (e) { }
-                if (this.container.deleted !== true) {
+                if (data.hiding !== true && this.container.deleted !== true) {
                     new PFPCard(addr, data).appendTo(this.managingList);
                 }
             };
@@ -125,7 +125,10 @@ export default class MyPFPs implements View, PFPPage {
         for (let i = 0; i < count; i += 1) {
             const promise = async (index: number) => {
                 const info = await PFPStoreContract.userSellInfo(address, index);
-                if (this.container.deleted !== true) {
+                const extras = await PFPsContract.extras(info.pfp);
+                let data: any = {};
+                try { data = JSON.parse(extras); } catch (e) { }
+                if (data.hiding !== true && this.container.deleted !== true) {
                     new PFPNFTCard(info.pfp, info.id).appendTo(this.sellingList);
                 }
             };
@@ -147,7 +150,10 @@ export default class MyPFPs implements View, PFPPage {
         for (let i = 0; i < count; i += 1) {
             const promise = async (index: number) => {
                 const info = await PFPStoreContract.userAuctionInfo(address, index);
-                if (this.container.deleted !== true) {
+                const extras = await PFPsContract.extras(info.pfp);
+                let data: any = {};
+                try { data = JSON.parse(extras); } catch (e) { }
+                if (data.hiding !== true && this.container.deleted !== true) {
                     new PFPNFTCard(info.pfp, info.id).appendTo(this.auctionList);
                 }
             };
@@ -169,7 +175,10 @@ export default class MyPFPs implements View, PFPPage {
         for (let i = 0; i < count; i += 1) {
             const promise = async (index: number) => {
                 const info = await PFPStoreContract.userOfferInfo(address, index);
-                if (this.container.deleted !== true) {
+                const extras = await PFPsContract.extras(info.pfp);
+                let data: any = {};
+                try { data = JSON.parse(extras); } catch (e) { }
+                if (data.hiding !== true && this.container.deleted !== true) {
                     new PFPNFTCard(info.pfp, info.id).appendTo(this.offeringList);
                 }
             };

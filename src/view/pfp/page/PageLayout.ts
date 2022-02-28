@@ -3,6 +3,7 @@ import marked from "marked";
 import msg from "msg.js";
 import { View, ViewParams } from "skyrouter";
 import xss from "xss";
+import Alert from "../../../component/dialogue/Alert";
 import PFPsContract from "../../../contracts/PFPsContract";
 import KIP17Contract from "../../../contracts/standard/KIP17Contract";
 import Wallet from "../../../klaytn/Wallet";
@@ -76,6 +77,11 @@ export default class PageLayout implements View {
         const extras = await PFPsContract.extras(addr);
         try {
             const data: any = JSON.parse(extras);
+            if (data.hiding === true) {
+                new Alert("오류", "찾을 수 없는 PFP 입니다.");
+                ViewUtil.go("/pfp");
+                return;
+            }
             if (data.icon === undefined || data.icon.trim() === "") {
                 this.iconDisplay.domElement.src = "/images/placeholder.svg";
             } else {
