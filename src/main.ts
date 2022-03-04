@@ -14,6 +14,7 @@ import ArtsPageMine from "./view/arts/page/PageMine";
 import ArtsPageSelling from "./view/arts/page/PageSelling";
 import UpdateArt from "./view/arts/UpdateArt";
 import UpdateArtist from "./view/arts/UpdateArtist";
+import CheckHolder from "./view/CheckHolder";
 import Home from "./view/Home";
 import Layout from "./view/Layout";
 import Meme from "./view/Meme";
@@ -198,6 +199,8 @@ import User from "./view/user/User";
 
     SkyRouter.route("admin/pfp-proposals", PFPProposals);
     SkyRouter.route("admin/pfps", PFPs);
+
+    SkyRouter.route("checkholder", CheckHolder);
 
     if (sessionStorage.__spa_path) {
         SkyRouter.go(sessionStorage.__spa_path);
