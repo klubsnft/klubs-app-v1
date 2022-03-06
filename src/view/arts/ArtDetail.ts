@@ -121,16 +121,9 @@ export default class ArtDetail implements View {
                         click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
                     }));
                 } else {
-                    let seller: string;
                     const auction = await ArtStoreContract.auctions(id);
-                    if (auction.seller === "0x0000000000000000000000000000000000000000") {
-                        seller = ArtStoreContract.address;
-                    } else {
-                        seller = auction.seller;
-                    }
-
-                    this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(seller), {
-                        click: () => ViewUtil.go(`/user/${seller}`),
+                    this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(auction.seller), {
+                        click: () => ViewUtil.go(`/user/${auction.seller}`),
                     }));
                 }
             } else {
