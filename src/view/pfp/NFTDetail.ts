@@ -137,9 +137,16 @@ export default class NFTDetail implements View {
                     click: () => ViewUtil.go(`/user/${saleInfo.seller}`),
                 }));
             } else {
+                let seller: string;
                 const auction = await PFPStoreContract.auctions(addr, id);
-                this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(auction.seller), {
-                    click: () => ViewUtil.go(`/user/${auction.seller}`),
+                if (auction.seller === "0x0000000000000000000000000000000000000000") {
+                    seller = PFPStoreContract.address;
+                } else {
+                    seller = auction.seller;
+                }
+
+                this.ownerDisplay.append(el("a", CommonUtil.shortenAddress(seller), {
+                    click: () => ViewUtil.go(`/user/${seller}`),
                 }));
             }
         } else {
