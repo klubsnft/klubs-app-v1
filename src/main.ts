@@ -14,9 +14,9 @@ import ArtsPageMine from "./view/arts/page/PageMine";
 import ArtsPageSelling from "./view/arts/page/PageSelling";
 import UpdateArt from "./view/arts/UpdateArt";
 import UpdateArtist from "./view/arts/UpdateArtist";
-import CheckHolder from "./view/CheckHolder";
 import Home from "./view/Home";
 import Layout from "./view/Layout";
+import LinkWalletToDiscord from "./view/LinkWalletToDiscord";
 import Meme from "./view/Meme";
 import AddItem from "./view/metaverse/AddItem";
 import AddMetaverse from "./view/metaverse/AddMetaverse";
@@ -200,7 +200,7 @@ import User from "./view/user/User";
     SkyRouter.route("admin/pfp-proposals", PFPProposals);
     SkyRouter.route("admin/pfps", PFPs);
 
-    SkyRouter.route("checkholder", CheckHolder);
+    SkyRouter.route("link-wallet-to-discord", LinkWalletToDiscord);
 
     if (sessionStorage.__spa_path) {
         SkyRouter.go(sessionStorage.__spa_path);

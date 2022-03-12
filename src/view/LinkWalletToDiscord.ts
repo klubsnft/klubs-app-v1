@@ -6,7 +6,7 @@ import DiscordUserInfo from "../DiscordUserInfo";
 import Wallet from "../klaytn/Wallet";
 import Layout from "./Layout";
 
-export default class CheckHolder implements View {
+export default class LinkWalletToDiscord implements View {
 
     private container: DomNode;
 
@@ -15,7 +15,7 @@ export default class CheckHolder implements View {
     constructor() {
         Layout.current.title = msg("HOME_TITLE");
         Layout.current.content.append(
-            this.container = el(".check-holder-view",
+            this.container = el(".link-wallet-to-discord-view",
                 el("header",
                     el("h1", msg("HOLDER_CHECK_TITLE")),
                     el("h2", msg("HOLDER_CHECK_DESC"))
@@ -23,7 +23,7 @@ export default class CheckHolder implements View {
                 el("article",
                     el("img", { src: "/images/logo.png" }),
                     el("a.discord-login-button", msg("HOLDER_CHECK_BUTTON"), {
-                        href: "https://discord.com/api/oauth2/authorize?client_id=939799459720728606&redirect_uri=https%3A%2F%2Fklu.bs%2Fcheckholder&response_type=code&scope=identify",
+                        href: `https://discord.com/api/oauth2/authorize?client_id=950261991921041408&redirect_uri=${encodeURIComponent("https://klu.bs/link-wallet-to-discord")}&response_type=code&scope=identify`,
                     }),
                 ),
             ));
@@ -37,7 +37,7 @@ export default class CheckHolder implements View {
             try {
                 await superagent.get("https://api.klu.bs/discord/token").query({
                     code,
-                    redirect_uri: `${window.location.protocol}//${window.location.host}/checkholder`,
+                    redirect_uri: `${window.location.protocol}//${window.location.host}/link-wallet-to-discord`,
                 });
             } catch (error) {
                 console.error(error);
@@ -65,11 +65,11 @@ export default class CheckHolder implements View {
         const address = await Wallet.loadAddress();
         if (address !== undefined) {
 
-            const message = "Check Holder";
+            const message = "Link Wallet to Discord";
             const signResult = await Wallet.signMessage(message);
 
             try {
-                const result = await fetch("https://api.klu.bs/checkholder", {
+                const result = await fetch("https://api.klu.bs/link-wallet-to-discord", {
                     method: "POST",
                     body: JSON.stringify({
                         code,
@@ -78,7 +78,7 @@ export default class CheckHolder implements View {
                         address,
                     }),
                 });
-                if ((await result.json()).isHolder === true) {
+                if ((await result.json()).linked === true) {
                     alert(msg("HOLDER_CHECK_SUCCESS_DESC"));
                 } else {
                     alert(msg("HOLDER_CHECK_FAIL_DESC"));

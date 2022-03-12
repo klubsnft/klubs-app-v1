@@ -2361,48 +2361,42 @@ p {
   padding-top: 8px;
   font-size: 1.25rem;
 }
-.check-holder-view {
+.link-wallet-to-discord-view {
   margin-top: 64px;
 }
-.check-holder-view > header {
+.link-wallet-to-discord-view > header {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
-.check-holder-view > header > h1 {
+.link-wallet-to-discord-view > header > h1 {
   font-size: 2rem;
   font-weight: 700;
 }
-.check-holder-view > header > h2 {
+.link-wallet-to-discord-view > header > h2 {
   font-size: 0.725rem;
   padding-top: 8px;
   color: #e0d8c8;
   font-weight: 300;
 }
-.check-holder-view > article {
+.link-wallet-to-discord-view > article {
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   margin-top: 16px;
 }
-.check-holder-view > article > img {
+.link-wallet-to-discord-view > article > img {
   max-width: 30%;
-  animation: rotate_image 60s linear infinite;
   transform-origin: 50% 50%;
   margin: 2rem;
 }
 @media only screen and (max-width: 719px) {
-  .check-holder-view > article > img {
+  .link-wallet-to-discord-view > article > img {
     max-width: 50%;
   }
 }
-@keyframes rotate_image {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.check-holder-view > article > a {
+.link-wallet-to-discord-view > article > a {
   width: 50%;
   cursor: pointer;
   padding: 8px 12px 9px;
@@ -2415,11 +2409,11 @@ p {
   color: white;
   background-color: rgba(47, 52, 47, 0.8);
 }
-.check-holder-view > article > a:hover {
+.link-wallet-to-discord-view > article > a:hover {
   background-color: rgba(47, 52, 47, 0.9);
   color: white;
 }
-.check-holder-view > article > a:active {
+.link-wallet-to-discord-view > article > a:active {
   background-color: #2f342f;
   color: white;
 }
