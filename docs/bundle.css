@@ -3798,18 +3798,19 @@ p {
 }
 .arts-page-layout > header > .controller > a {
   display: block;
-  margin-left: 16px;
-  color: #000;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  color: white;
   background-color: #798577;
-  padding: 12px 0;
-  width: 150px;
-  font-size: 16px;
+  padding: 10px 16px;
+  font-size: 0.825rem;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  justify-content: flex-end;
 }
 .arts-page-layout > header > .controller > a:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 .arts-page-layout > main > .arts-page-view > header {
   display: flex;

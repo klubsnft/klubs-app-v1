@@ -1,309 +1,305 @@
-key,ko,en,ja
-CONNECT_WALLET_BUTTON,지갑 연결하기,Connect Wallet,ウォレットに接続
-CONNECT_WALLET_TITLE,지갑 연결하기,Connect Wallet,ウォレットに接続
-MENU_PFP,PFP,PFP,PFP
-MENU_PFP_RANKING,PFP 랭킹,PFP Rankings,レア度ランキング
-MENU_PFP_ADD,PFP 등록,PFP Registration,PFP登録
-MENU_PFP_STUDIO,Studio,Studio,スタジオ
-MENU_ARTS,Arts,ARts,アート
-MENU_ITEMS,Items,Items,アイテム
-MENU_METAVERSES,Metaverses,Metaverses
-MENU_MEME,Meme,Meme,ミーム
-HOME_PFP,PFP,PFP,PFP
-HOME_ARTS,Arts,Arts,アート
+key,ko,en,ja,,,,,
+CONNECT_WALLET_BUTTON,지갑 연결하기,Connect Wallet,ウォレットに接続,,,,,
+CONNECT_WALLET_TITLE,지갑 연결하기,Connect Wallet,ウォレットに接続,,,,,
+MENU_PFP,PFP,PFP,PFP,,,,,
+MENU_PFP_RANKING,PFP 랭킹,PFP Rankings,レア度ランキング,,,,,
+MENU_PFP_ADD,PFP 등록,PFP Registration,PFP登録,,,,,
+MENU_PFP_STUDIO,Studio,Studio,スタジオ,,,,,
+MENU_ARTS,Arts,ARts,アート,,,,,
+MENU_ITEMS,Items,Items,アイテム,,,,,
+MENU_METAVERSES,Metaverses,Metaverses,メタバース,,,,,
+MENU_MEME,Meme,Meme,ミーム,,,,,
+HOME_PFP,PFP,PFP,PFP,,,,,
+HOME_ARTS,Arts,Arts,アート,,,,,
 HOME_KLUBS_INTRO_DESCRIPTION,Klubs는 클레이튼 기반 NFT 마켓플레이스입니다. 100% On-Chain으로 구동되며 MIX를 사용합니다.,"Klubs is a Klaytn based NFT Marketplace. Run 100% on On-Chain, using MIX token for NFT purchase","クレイトン基盤のNFTマーケットプレイスです。
-フルオンチェーンで実装され、NFTの購入にはMIXコインを使用します。"
-HOME_KLUBS_INTRO_BUTTON,Klubs 소개,Klubs Introduction,Klubsの紹介
-HOME_PFP_ALL_BUTTON,PFP 전체 보기,See all PFPs (Collectibles),全てのPFPを見る
-HOME_ARTS_ALL_BUTTON,Arts 전체 보기,See all Arts,全てのアートをみる
-PFP_PROJECT_LIST,프로젝트 목록,PFP List,プロジェクトリスト
-PFP_PROJECT_ADD_BUTTON,프로젝트 등록,PFP Project Registration,プロジェクト登録
-ALL_TAB,전체,All,全て
-MY_NFT_TAB,내 NFT,My NFTs,MY NFT
-SELLING_TAB,판매중,On Sale,販売中
-BIDDING_TAB,경매중,Up for bids,出品中
-NFT_LIST_TITLE,NFT 목록,NFT List,NFTリスト
-SEARCH_ID_INPUT_PLACEHOLDER,ID로 검색,Search by ID,IDで検索
-INIT_FILLETER_BUTTON,필터 초기화,Reset Filter,フィルタ初期化
-SORT_BASE_OPTION,기본 정렬,Default,デフォルト
-PFP_PROJECTS_TITLE,PFP 프로젝트,PFP Project,PFPプロジェクト
+フルオンチェーンで実装され、NFTの購入にはMIXコインを使用します。",,,,,
+HOME_KLUBS_INTRO_BUTTON,Klubs 소개,Klubs Introduction,Klubsの紹介,,,,,
+HOME_PFP_ALL_BUTTON,PFP 전체 보기,See all PFPs (Collectibles),全てのPFPを見る,,,,,
+HOME_ARTS_ALL_BUTTON,Arts 전체 보기,See all Arts,全てのアートをみる,,,,,
+PFP_PROJECT_LIST,프로젝트 목록,PFP List,プロジェクトリスト,,,,,
+PFP_PROJECT_ADD_BUTTON,프로젝트 등록,PFP Project Registration,プロジェクト登録,,,,,
+ALL_TAB,전체,All,全て,,,,,
+MY_NFT_TAB,내 NFT,My NFTs,MY NFT,,,,,
+SELLING_TAB,판매중,On Sale,販売中,,,,,
+BIDDING_TAB,경매중,Up for bids,出品中,,,,,
+NFT_LIST_TITLE,NFT 목록,NFT List,NFTリスト,,,,,
+SEARCH_ID_INPUT_PLACEHOLDER,ID로 검색,Search by ID,IDで検索,,,,,
+INIT_FILLETER_BUTTON,필터 초기화,Reset Filter,フィルタ初期化,,,,,
+SORT_BASE_OPTION,기본 정렬,Default,デフォルト,,,,,
+PFP_PROJECTS_TITLE,PFP 프로젝트,PFP Project,PFPプロジェクト,,,,,
 PFP_PROJECTS_DESCRIPTION,"PFP는 프로필 이미지 NFT로,\nNFT를 소유한 사람들 끼리 커뮤니티를 이루어 소통하는 목적을 띠고 있습니다.",PFP is a Profile Picture NFT. It allows to build up a community by holders for active interaction with holder and project teams,"PFPはプロフィール画像NFTです。
-NFTホルダーのコミュニティを構築し、ホルダー同士や運営とのコミュニケーションをとれるようにすることが目的です。"
-PFP_RANKING_TITLE,PFP 랭킹,PFP Rankings,PFPランキング
-PFP_RANKIN_DESCRIPTION,Klubs의 상위 PFP는 거래량에 따라서 집계되었습니다.,Klubs ranks PFPs are based on trading volume,Klubsの上位PFPは取引量によって集計されました。
-RANKING_TOTAL_TRADING_VOLUME,총 거래량,Total Volume,総取引量
-RANKING_30DAYS_TRADING_VOLUME,30일 거래량,30 Days Volume,30日間取引量
-RANKING_7DAYS_TRADING_VOLUME,7일 거래량,7 Days Volume,7日間取引量
-RANKING_24HOURS_TRADING_VOLUME,24시간 거래량,24 Hours Volume,24時間取引量
-ADD_PFP_TITLE,PFP 등록 신청,PFP Registration,プロフィール画像登録申請
-ADD_KIP17_MINTABLE_PFP_TITLE,KIP17Mintable을 상속한 PFP 등록,KIP17 Mintable PFP Registration,KIP17 Mintable規格のプロフィール画像登録
-ADD_KIP17_MINTABLE_PFP_DESCRIPTION,KIP17Mintable를 상속한 PFP 프로젝트인 경우에 선택하는 메뉴입니다.,"Registration tab for PFP inherited KIP17 Mintable ",プロフィール画像の登録申請タブはKIP17 Mintable規格に準拠しています
-ADD_MINTER_TITLE,Minter로부터 PFP 등록,Minter PFP Registeration,MinterによるPFP登録
+NFTホルダーのコミュニティを構築し、ホルダー同士や運営とのコミュニケーションをとれるようにすることが目的です。",,,,,
+PFP_RANKING_TITLE,PFP 랭킹,PFP Rankings,PFPランキング,,,,,
+PFP_RANKIN_DESCRIPTION,Klubs의 상위 PFP는 거래량에 따라서 집계되었습니다.,Klubs ranks PFPs are based on trading volume,Klubsの上位PFPは取引量によって集計されました。,,,,,
+RANKING_TOTAL_TRADING_VOLUME,총 거래량,Total Volume,総取引量,,,,,
+RANKING_30DAYS_TRADING_VOLUME,30일 거래량,30 Days Volume,30日間取引量,,,,,
+RANKING_7DAYS_TRADING_VOLUME,7일 거래량,7 Days Volume,7日間取引量,,,,,
+RANKING_24HOURS_TRADING_VOLUME,24시간 거래량,24 Hours Volume,24時間取引量,,,,,
+ADD_PFP_TITLE,PFP 등록 신청,PFP Registration,プロフィール画像登録申請,,,,,
+ADD_KIP17_MINTABLE_PFP_TITLE,KIP17Mintable을 상속한 PFP 등록,KIP17 Mintable PFP Registration,KIP17 Mintable規格のプロフィール画像登録,,,,,
+ADD_KIP17_MINTABLE_PFP_DESCRIPTION,KIP17Mintable를 상속한 PFP 프로젝트인 경우에 선택하는 메뉴입니다.,Registration tab for PFP inherited KIP17 Mintable ,プロフィール画像の登録申請タブはKIP17 Mintable規格に準拠しています,,,,,
+ADD_MINTER_TITLE,Minter로부터 PFP 등록,Minter PFP Registeration,MinterによるPFP登録,,,,,
 ADD_MINTER_DESCRIPTION,반드시 KIP17Mintable을 상속한 PFP여야만 합니다. 그리고 등록자는 Minter중 하나여야 합니다.,Registration Tab for PFP inherited KIP17 Mintable. Registration should be one of the Minters,"KIP17 Mintableを相続したPFPの登録タブです。
-登録者は必ずMinterの一人でなければなりません。"
-CONTRACT_ADDRESS_INPUT,계약 주소,Contract Address,コントラクトアドレス
-REGISTER_BUTTON,등록하기,Register,登録
-SUCCESS_ADD_INFO_TITLE,정보 등록 완료,Registration Complete,登録完了
-SUCCESS_ADD_INFO_DESCRIPTION,계약 정보 등록이 완료되었습니다.\nKlubs에 오신 것을 환영합니다.,Contract information is registered successfully. Welcome to Klubs!,コントラクト情報の登録が完了しました。Klubsへようこそ！
-FAIL_ADD_INFO_TITLE,정보 등록 실패,Failed to register the contract information,コントラクト情報の登録に失敗しました
-ALREADY_REGISTER_INFO_DESCRIPTION,해당 계약은 이미 정보가 등록되어있습니다.,The contract has been already registered on Klubs,そのコントラクトはすでに登録されています
-ADD_OWNABLE_PFP_TITLE,Ownable을 상속한 PFP 등록,Ownable PFP Registration,Ownable PFPの登録
-ADD_OWNABLE_PFP_DESCRIPTION_1,Ownable을 상속한 PFP 프로젝트인 경우에 선택하는 메뉴입니다.,Registartion tab for PFP inherited Ownable,Ownableを相続したPFPの登録タブ
+登録者は必ずMinterの一人でなければなりません。",,,,,
+CONTRACT_ADDRESS_INPUT,계약 주소,Contract Address,コントラクトアドレス,,,,,
+REGISTER_BUTTON,등록하기,Register,登録,,,,,
+SUCCESS_ADD_INFO_TITLE,정보 등록 완료,Registration Complete,登録完了,,,,,
+SUCCESS_ADD_INFO_DESCRIPTION,계약 정보 등록이 완료되었습니다.\nKlubs에 오신 것을 환영합니다.,Contract information is registered successfully. Welcome to Klubs!,コントラクト情報の登録が完了しました。Klubsへようこそ！,,,,,
+FAIL_ADD_INFO_TITLE,정보 등록 실패,Failed to register the contract information,コントラクト情報の登録に失敗しました,,,,,
+ALREADY_REGISTER_INFO_DESCRIPTION,해당 계약은 이미 정보가 등록되어있습니다.,The contract has been already registered on Klubs,そのコントラクトはすでに登録されています,,,,,
+ADD_OWNABLE_PFP_TITLE,Ownable을 상속한 PFP 등록,Ownable PFP Registration,Ownable PFPの登録,,,,,
+ADD_OWNABLE_PFP_DESCRIPTION_1,Ownable을 상속한 PFP 프로젝트인 경우에 선택하는 메뉴입니다.,Registartion tab for PFP inherited Ownable,Ownableを相続したPFPの登録タブ,,,,,
 ADD_OWNABLE_PFP_DESCRIPTION_2,반드시 Ownable을 상속한 PFP여야만 합니다. 그리고 등록자는 반드시 Owner여야 합니다.,"PFP must inherit Ownable, and registrator should be an Owner","PFPは必ずOwnableを相続し、
-登録者は必ず所有者でなければなりません。"
-ADD_WITHOUT_INHERITANCE_PFP_TITLE,둘 다 상속하지 않은 PFP 등록,Other PFP Registartion,その他のＰＦＰ登録
+登録者は必ず所有者でなければなりません。",,,,,
+ADD_WITHOUT_INHERITANCE_PFP_TITLE,둘 다 상속하지 않은 PFP 등록,Other PFP Registartion,その他のＰＦＰ登録,,,,,
 ADD_WITHOUT_INHERITANCE_PFP_DESCRIPTION_1,KIP17Mintable나 Ownable을 상속하지 않은 경우에 선택하는 메뉴입니다. 만약 둘 중 하나라도 상속을 했다면 다른 메뉴를 선택해주시기 바랍니다.,"Registration tab for PFP that does not inherit KIP17Mintable or Ownable. If the porject inherits at least one of the features, please select other tabs.","KIP17Mintableや Ownableを相続しないPFPのためのタブです。
-いずれかを相続する場合は他のタブを選択してください。"
+いずれかを相続する場合は他のタブを選択してください。",,,,,
 ADD_WITHOUT_INHERITANCE_PFP_DESCRIPTION_2,"반드시 KIP17Mintable나 Ownable을 상속하지 않은 PFP여야만 하며, 계약 배포자만 신청하실 수 있습니다.","PFP must not inherit KIP17Mintable or Ownable, only contract distributor can register the project","PFPはKIP17Mintableまたは Ownableを相続してはいけません。
-コントラクトのディストリビューターのみがプロジェクトを申請できます。"
-MIX_DESCRIPTION,MIX는 NFT 프로젝트들의 허브를 위한 토큰입니다.,MIX is a key currency for NFT projects,MIXはNFTプロジェクトのため通貨です。
-MIX_TITLLE,MIX 정보,MIX Token Info,MIX情報
-BUY_MIX_TITLE,믹스 구매,Buy MIX,MIX購買
-BUY_MIX_CONFIRM,믹스 구매,Buy MIX,MIX購買
-BUYING_MIX_TITLE,MIX 구매하기,Buy MIX,MIX購買
-BUYING_MIX_BUTTON,MIX 구매하기,Buy MIX,MIX購買
-HOW_TO_BUY_MIX_DESCRIPTION,몇 MIX를 구매하시겠습니까?,Total MIX Purchase Amount,MIX総購入総
-MIX_WHITEPAPER_BUTTON,MIX 백서보기,MIX Whitepaper,MIX白書
-BASE_INFO_TITLE,기본 정보,Basic Info,基本情報
-REFRESH_METADATA_BUTTON,정보 새로고침,Refresh Info,情報の更新
-ARTIST_INFO,작가,Artist,アーティスト
-ARTIST_TITLE,작가,Artist,アーティスト
-OWNER_INFO,소유자,Owner,所有者
-PROPERTY_TITLE,속성,Properties,属性
-DEAL_TITLE,거래하기,Start Collecting NFTs,ＮＦＴの取引を始める
-NOT_SELLING_DESCRIPTION,판매중이 아닙니다.,Not on Sale,現在販売していません
-OFFER_PRICE_TITLE,가격 제안,Make Offer,オファーする
-OFFER_PRICE_BUTTON,가격 제안하기,Make Offer,オファーする
-AUCTION_TITLE,경매,Auction,オークション
-TRANSACTION_HISTORY,거래 이력,Transaction History,トランザクション履歴
-ACTIVITY_SELL,판매,Sell,販売
-ACTIVITY_CHANGE_SELL_PRICE,가격 변경,Change Price,価格の変更
-ACTIVITY_BUY,구매,Purchase,購入
-ACTIVITY_CANCEL_SALE,판매 취소,Cancel Listing,リストをキャンセル
-ACTIVITY_OFFER,제안,Make Offer,オファーする
-ACTIVITY_CANCEL_OFFER,제안 취소,Withdraw Offer,オファーをキャンセル
-ACTIVITY_ACCEPT_OFFER,제안 수락,Accept Offer,オファーを承認
-ACTIVITY_START_AUCTION,경매 시작,Opening Bid,オークションを開始
-ACTIVITY_CANCEL_AUCTION,경매 취소,Cancel Listing,リストをキャンセル
-ACTIVITY_BID,입찰,Bid,入札
-ACTIVITY_END_AUCTION,경매 종료,End of Auction,オークション終了
-ARTS_DESCRIPTION,Klubs Arts는 NFT 작가들과 함께 만들어나가는 공간입니다.,Klubs Arts is where Artists Build up Marketplace Together,Klubs Arts では、NFTアーティストたちと共にマーケットプレイスを築き上げます。
-ITEMS_TITLE,Items,Items,アイテム
-ITEMS_DESCRIPTION,Klubs Items는 게임 및 메타버스에서 사용되는 아이템을 거래할 수 있습니다.\nKlubs Arts 출시 후 출시됩니다.,Klubs Items tab supports trading items used in game and metaverse after releasing Klubs Arts feature.,Klubs ItemsタブではKlubs Arts機能リリース後のゲーム及びメタバースで使用されるアイテムを取引出来ます。
-MEME_TITLE,Meme,Meme,MEME
-MEME_DESCRIPTION,Klubs Meme는 인터넷 밈이나 패러디 등의 NFT를 거래할 수 있는 공간입니다.\nKlubs Items 출시 후 출시됩니다.,Klubs Meme tab supports trading of online meme and the variants after releasing Klubs Items feature.,Klubs MemeタブではインターネットミームやKlubs Items機能リリース後のバリアントの取引が可能です。
-MY_PFP_BUTTON,내 PFP,My PFPs,自分のPFP
-MY_PFP_TITLE,내 PFP,My PFPs,自分のPFP
-MY_MANAGE_PFP_TITLE,내가 관리하는 PFP,My PFP assets,管理中のPFP
-MY_SELLING_PFP_TITLE,내가 판매중인 PFP,On Sale,販売中
-MY_BIDDING_PFP_TITLE,내가 경매 진행중인 PFP,On Bid,オークション中
-MY_OFFER_PFP_TITLE,내가 가격을 제시한 PFP,Offered,オファー済
-MY_PFP_LIST_TITLE,내 PFP 목록,My PFP Lists,自分のPFPリスト
-MY_PFP_LIST_WARNING,"이제 막 민팅한 프로젝트의 경우, 이곳이 아닌 해당 PFP 화면으로 이동해 내 PFP 목록을 확인해주세요.","If the project is just minted, please open the PFP page to check your PFPs.",ミンティングしたばかりのプロジェクトは、PFP画面でPFPを確認してください。
-ADD_ARITST_BUTTON,작가 등록,Artist Registration,アーティスト登録
-HOME_TITLE,Klaytn based NFT marketplace with MIX,Klaytn based NFT marketplace with MIX,Klaytn based NFT marketplace with MIX
-MY_INFO_TITLE,내 정보,My Info,自分の情報
-MY_ADD_ARTS_TITLE,내가 등록한 작품들,Registered Artworks,登録した作品
-MY_ARTS_BUTTON,내 Arts,My Arts,自分のアート
-MY_ARTS_TITLE,내 Arts,My Arts,自分のアート
-MY_SELLING_ARTS_TITLE,내가 판매중인 Arts,On Sale,販売中
-MY_BIDDING_ARTS_TITLE,내가 경매 진행중인 Arts,On Bid,オークション中
-MY_OFFER_ARTS_TITLE,내가 가격을 제시한 Arts,Offered,オファー済
-MY_ARTS_LIST_TITLE,내 Arts 목록,My Art Lists,自分のアート一覧
-USER_INFO_TITLE,유저 정보,User Info,ユーザー情報
-WALLET_ADDRESS,지갑 주소,Wallet Address,ウォレットアドレス
-UPDATE_PFP_INFO_TITLE,PFP 정보 수정,PFP Info Update,PFP情報の修正
-UPDATE_PFP_INFO_BUTTON,PFP 정보 수정,PFP Info Update,PFP情報の修正
-UPDATE_BASE_INFO_TITLE,기본 정보 수정,Basic Info Update,基本情報の修正
-BANNER_IMAGE_ADDRESS_INPUT,배너 이미지 주소,Banner Image Address,バナー画像のアドレス
-BANNER_UPLOAD_INPUT,배너 업로드,Upload Banner Image,バナー画像のアップロード
-ICON_IMAGE_ADDRESS_INPUT,아이콘 이미지 주소,Icon Image Address,アイコン画像のアドレス
-ICON_UPLOAD_INPUT,아이콘 업로드,Upload Icon Image,アイコン画像のアップロード
-NAME_INPUT,이름,Name,名前
-INTRODUCTION_INPUT,소개글,Introduction,紹介文
-INTRODUCTION_MARKDOWN_DESCRIPTION,소개글은 마크다운 문법을 사용합니다.,Introduction section allows markdown syntax,紹介文はマークダウン構文の使用が可能です
-INTRODUCTION_MARKDOWN_BUTTON,마크다운 문법 보기,Check Markdown Guide,マークダウンガイドを見る
-OPEN_KAKAO_INPUT,오픈 카카오톡 주소,Open Kakaotalk Link,オプンカカオトークリンク
-OPEN_KAKAO2_INPUT,오픈 카카오톡2 주소,Open Kakaotalk2 Link,オプンカカオトーク２リンク
-OPEN_KAKAO3_INPUT,오픈 카카오톡3 주소,Open Kakaotalk3 Link,オプンカカオトーク３リンク
-TWITTER_INPUT,트위터 주소,Twitter Link,ツイッターリンク
-LINKTREE_INPUT,링크트리 주소,Linktree Link,リンクツリーリンク
-HOMEPAGE_INPUT,홈페이지 주소,Homepage Link,ホームページリンク
-DISCORD_INPUT,디스코드 주소,Discord Link,DISCORDリンク
-TELEGRAM_INPUT,텔레그램 주소,Telegram Link,テレグラムリンク
-MINING_INPUT,채굴 가능 여부,Mining Feature,採掘機能
-MINING_INPUT_DESCRIPTION,PFP 프로젝트가 채굴이 가능한지 설정합니다.,Mark availability of crypto mining,クリプト採掘可否の設定
-MINING_PFP,채굴 가능한 PFP,PFP with mining feature,採掘可能なＰＦＰ
-MINING_PFP_DESCRIPTION,채굴 가능한 PFP입니다. 클릭하시면 자세한 정보를 확인하실 수 있습니다.,"This is a PFP with a crypto mining feature, click for details",採掘機能のあるＰＦＰです。詳細はクリックで確認できます。
-MINING_INFO_URL_INPUT,채굴 정보 URL,Crypto Mining Info Link,採掘情報ＵＲＬ
-MINING_INFO_URL_INPUT_DESCRIPTION,채굴 정보를 확인할 수 있는 페이지의 URL을 기입합니다.,Input a link to check crypto mining info,採掘情報を確認するページのＵＲＬの記入
-HIDE_KLUBS_INPUT,Klubs에서 숨기기,Hide from Klubs,Klubsから非公開にする
-SAVE_INFO_BUTTON,정보 저장,Save Data,データの保存
-SAVE_DONE_TITLE,저장 완료,Save Complete,保存完了
-SAVE_DONE_DESCRIPTION,정보를 저장했습니다.,Klubs Successfully Saves the Data,データの保存が完了しました
-ISSUE_REVISE_INFO_TITLE,발행량 정보 수정,Update Total Issued Amount,発行量情報の修正
-IS_KIP17_FULL_OR_KIP17ENUMERABLE_INPUT,KIP17Full 혹은 KIP17Enumerable 상속 여부,Inheritance of KIP17Full or KIP17Enumerable,KIP17Full または KIP17Enumerable 規格での発行
-IS_KIP17_FULL_OR_KIP17ENUMERABLE_DESCRIPTION,"KIP17Full 혹은 KIP17Enumerable를 상속하신 경우, 총 발행량 정보를 매번 입력하지 않으셔도 됩니다.","If the art inherited KIP17Full or KIP17Enumerable, you don't need to update total issued amount info again.",KIP17Full または KIP17Enumerable 規格でアートを発行した場合、総発行量情報を再度入力する必要はありません。
-TOTAL_ISSUE_INPUT,총 발행량,Total Issued Amount,総発行量
-REVISE_2ND_SALES_FEE_INFO_FORM,2차 판매 수수료 정보 수정,Update Resale Royalty,ロイヤリティー情報の修正
-2ND_SALES_FEE_RATIO_INPUT,2차 판매 수수료 비율(%),Resale Royalty Comission (%),ロイヤリティー（％）
-2ND_SALES_FEE_RATIO_DESCRIPTION,"2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 2번째 자리까지 지정 가능합니다.",Resale Rolyalty can be set upto 10% with two decimal placec.,ロイヤリティーは最大１０％、小数点以下二桁まで設定出来ます。
-2ND_SALES_FEE_RECIPIENT_INPUT,2차 판매 수수료 수령자,Resale Rolyalty Recipient,ロイヤリティーの受取人
-2ND_SALES_FEE_RECIPIENT_DESCRIPTION,2차 판매 수수료를 받을 지갑 주소를 입력합니다.,Input the wallet address for resale royalty,ロイヤリティーを受け取るウォレットアドレスの入力
-MANAGE_MANAGER_FORM,매니저 관리,Administer Manager,マネージャーの管理
-ADD_MANAGER_BUTTON,매니저 추가,Add Manager,マネージャーの追加
-ADD_MANAGER_TITLE,매니저 추가,Add Manager,マネージャーの追加
-ADD_BUTTON,추가하기,Add,追加
-ADD_MANAGER_PROMPT_DESCRIPTION,추가할 매니저의 지갑 주소를 입력해주시기 바랍니다.,Input the wallet address of the new manager,追加するマネージャーのウォレットアドレスを入力してください。
-WAITING_PFP_INFO_TITLE,등록을 기다리는 PFP 정보,Pending PFP info for registration,未登録のPFP情報
-NFT_DETAIL_TITLE,NFT 상세정보,NFT details,NFTの詳細情報
-SELLER,"판매자 ",Seller,販売者
-TRANSFER_BUTTON,전송하기,Transfer,トランスファー
-TRANSFER_TITLE,전송하기,Transfer,トランスファー
+コントラクトのディストリビューターのみがプロジェクトを申請できます。",,,,,
+MIX_DESCRIPTION,MIX는 NFT 프로젝트들의 허브를 위한 토큰입니다.,MIX is a key currency for NFT projects,MIXはNFTプロジェクトのため通貨です。,,,,,
+MIX_TITLLE,MIX 정보,MIX Token Info,MIX情報,,,,,
+BUY_MIX_TITLE,믹스 구매,Buy MIX,MIX購買,,,,,
+BUY_MIX_CONFIRM,믹스 구매,Buy MIX,MIX購買,,,,,
+BUYING_MIX_TITLE,MIX 구매하기,Buy MIX,MIX購買,,,,,
+BUYING_MIX_BUTTON,MIX 구매하기,Buy MIX,MIX購買,,,,,
+HOW_TO_BUY_MIX_DESCRIPTION,몇 MIX를 구매하시겠습니까?,Total MIX Purchase Amount,MIX総購入総,,,,,
+MIX_WHITEPAPER_BUTTON,MIX 백서보기,MIX Whitepaper,MIX白書,,,,,
+BASE_INFO_TITLE,기본 정보,Basic Info,基本情報,,,,,
+REFRESH_METADATA_BUTTON,정보 새로고침,Refresh Info,情報の更新,,,,,
+ARTIST_INFO,작가,Artist,アーティスト,,,,,
+ARTIST_TITLE,작가,Artist,アーティスト,,,,,
+OWNER_INFO,소유자,Owner,所有者,,,,,
+PROPERTY_TITLE,속성,Properties,属性,,,,,
+DEAL_TITLE,거래하기,Start Collecting NFTs,ＮＦＴの取引を始める,,,,,
+NOT_SELLING_DESCRIPTION,판매중이 아닙니다.,Not on Sale,現在販売していません,,,,,
+OFFER_PRICE_TITLE,가격 제안,Make Offer,オファーする,,,,,
+OFFER_PRICE_BUTTON,가격 제안하기,Make Offer,オファーする,,,,,
+AUCTION_TITLE,경매,Auction,オークション,,,,,
+TRANSACTION_HISTORY,거래 이력,Transaction History,トランザクション履歴,,,,,
+ACTIVITY_SELL,판매,Sell,販売,,,,,
+ACTIVITY_CHANGE_SELL_PRICE,가격 변경,Change Price,価格の変更,,,,,
+ACTIVITY_BUY,구매,Purchase,購入,,,,,
+ACTIVITY_CANCEL_SALE,판매 취소,Cancel Listing,リストをキャンセル,,,,,
+ACTIVITY_OFFER,제안,Make Offer,オファーする,,,,,
+ACTIVITY_CANCEL_OFFER,제안 취소,Withdraw Offer,オファーをキャンセル,,,,,
+ACTIVITY_ACCEPT_OFFER,제안 수락,Accept Offer,オファーを承認,,,,,
+ACTIVITY_START_AUCTION,경매 시작,Opening Bid,オークションを開始,,,,,
+ACTIVITY_CANCEL_AUCTION,경매 취소,Cancel Listing,リストをキャンセル,,,,,
+ACTIVITY_BID,입찰,Bid,入札,,,,,
+ACTIVITY_END_AUCTION,경매 종료,End of Auction,オークション終了,,,,,
+ARTS_DESCRIPTION,Klubs Arts는 NFT 작가들과 함께 만들어나가는 공간입니다.,Klubs Arts is where Artists Build up Marketplace Together,Klubs Arts では、NFTアーティストたちと共にマーケットプレイスを築き上げます。,,,,,
+ITEMS_TITLE,Items,Items,アイテム,,,,,
+ITEMS_DESCRIPTION,Klubs Items는 게임 및 메타버스에서 사용되는 아이템을 거래할 수 있습니다.\nKlubs Arts 출시 후 출시됩니다.,Klubs Items tab supports trading items used in game and metaverse after releasing Klubs Arts feature.,Klubs ItemsタブではKlubs Arts機能リリース後のゲーム及びメタバースで使用されるアイテムを取引出来ます。,,,,,
+MEME_TITLE,Meme,Meme,MEME,,,,,
+MEME_DESCRIPTION,Klubs Meme는 인터넷 밈이나 패러디 등의 NFT를 거래할 수 있는 공간입니다.\nKlubs Items 출시 후 출시됩니다.,Klubs Meme tab supports trading of online meme and the variants after releasing Klubs Items feature.,Klubs MemeタブではインターネットミームやKlubs Items機能リリース後のバリアントの取引が可能です。,,,,,
+MY_PFP_BUTTON,내 PFP,My PFPs,自分のPFP,,,,,
+MY_PFP_TITLE,내 PFP,My PFPs,自分のPFP,,,,,
+MY_MANAGE_PFP_TITLE,내가 관리하는 PFP,My PFP assets,管理中のPFP,,,,,
+MY_SELLING_PFP_TITLE,내가 판매중인 PFP,On Sale,販売中,,,,,
+MY_BIDDING_PFP_TITLE,내가 경매 진행중인 PFP,On Bid,オークション中,,,,,
+MY_OFFER_PFP_TITLE,내가 가격을 제시한 PFP,Offered,オファー済,,,,,
+MY_PFP_LIST_TITLE,내 PFP 목록,My PFP Lists,自分のPFPリスト,,,,,
+MY_PFP_LIST_WARNING,"이제 막 민팅한 프로젝트의 경우, 이곳이 아닌 해당 PFP 화면으로 이동해 내 PFP 목록을 확인해주세요.","If the project is just minted, please open the PFP page to check your PFPs.",ミンティングしたばかりのプロジェクトは、PFP画面でPFPを確認してください。,,,,,
+ADD_ARITST_BUTTON,작가 등록,Artist Registration,アーティスト登録,,,,,
+HOME_TITLE,Klaytn based NFT marketplace with MIX,Klaytn based NFT marketplace with MIX,Klaytn based NFT marketplace with MIX,,,,,
+MY_INFO_TITLE,내 정보,My Info,自分の情報,,,,,
+MY_ADD_ARTS_TITLE,내가 등록한 작품들,Registered Artworks,登録した作品,,,,,
+MY_ARTS_BUTTON,내 Arts,My Arts,自分のアート,,,,,
+MY_ARTS_TITLE,내 Arts,My Arts,自分のアート,,,,,
+MY_SELLING_ARTS_TITLE,내가 판매중인 Arts,On Sale,販売中,,,,,
+MY_BIDDING_ARTS_TITLE,내가 경매 진행중인 Arts,On Bid,オークション中,,,,,
+MY_OFFER_ARTS_TITLE,내가 가격을 제시한 Arts,Offered,オファー済,,,,,
+MY_ARTS_LIST_TITLE,내 Arts 목록,My Art Lists,自分のアート一覧,,,,,
+USER_INFO_TITLE,유저 정보,User Info,ユーザー情報,,,,,
+WALLET_ADDRESS,지갑 주소,Wallet Address,ウォレットアドレス,,,,,
+UPDATE_PFP_INFO_TITLE,PFP 정보 수정,PFP Info Update,PFP情報の修正,,,,,
+UPDATE_PFP_INFO_BUTTON,PFP 정보 수정,PFP Info Update,PFP情報の修正,,,,,
+UPDATE_BASE_INFO_TITLE,기본 정보 수정,Basic Info Update,基本情報の修正,,,,,
+BANNER_IMAGE_ADDRESS_INPUT,배너 이미지 주소,Banner Image Address,バナー画像のアドレス,,,,,
+BANNER_UPLOAD_INPUT,배너 업로드,Upload Banner Image,バナー画像のアップロード,,,,,
+ICON_IMAGE_ADDRESS_INPUT,아이콘 이미지 주소,Icon Image Address,アイコン画像のアドレス,,,,,
+ICON_UPLOAD_INPUT,아이콘 업로드,Upload Icon Image,アイコン画像のアップロード,,,,,
+NAME_INPUT,이름,Name,名前,,,,,
+INTRODUCTION_INPUT,소개글,Introduction,紹介文,,,,,
+INTRODUCTION_MARKDOWN_DESCRIPTION,소개글은 마크다운 문법을 사용합니다.,Introduction section allows markdown syntax,紹介文はマークダウン構文の使用が可能です,,,,,
+INTRODUCTION_MARKDOWN_BUTTON,마크다운 문법 보기,Check Markdown Guide,マークダウンガイドを見る,,,,,
+OPEN_KAKAO_INPUT,오픈 카카오톡 주소,Open Kakaotalk Link,オプンカカオトークリンク,,,,,
+OPEN_KAKAO2_INPUT,오픈 카카오톡2 주소,Open Kakaotalk2 Link,オプンカカオトーク２リンク,,,,,
+OPEN_KAKAO3_INPUT,오픈 카카오톡3 주소,Open Kakaotalk3 Link,オプンカカオトーク３リンク,,,,,
+TWITTER_INPUT,트위터 주소,Twitter Link,ツイッターリンク,,,,,
+LINKTREE_INPUT,링크트리 주소,Linktree Link,リンクツリーリンク,,,,,
+HOMEPAGE_INPUT,홈페이지 주소,Homepage Link,ホームページリンク,,,,,
+DISCORD_INPUT,디스코드 주소,Discord Link,DISCORDリンク,,,,,
+TELEGRAM_INPUT,텔레그램 주소,Telegram Link,テレグラムリンク,,,,,
+MINING_INPUT,채굴 가능 여부,Mining Feature,採掘機能,,,,,
+MINING_INPUT_DESCRIPTION,PFP 프로젝트가 채굴이 가능한지 설정합니다.,Mark availability of crypto mining,クリプト採掘可否の設定,,,,,
+MINING_PFP,채굴 가능한 PFP,PFP with mining feature,採掘可能なＰＦＰ,,,,,
+MINING_PFP_DESCRIPTION,채굴 가능한 PFP입니다. 클릭하시면 자세한 정보를 확인하실 수 있습니다.,"This is a PFP with a crypto mining feature, click for details",採掘機能のあるＰＦＰです。詳細はクリックで確認できます。,,,,,
+MINING_INFO_URL_INPUT,채굴 정보 URL,Crypto Mining Info Link,採掘情報ＵＲＬ,,,,,
+MINING_INFO_URL_INPUT_DESCRIPTION,채굴 정보를 확인할 수 있는 페이지의 URL을 기입합니다.,Input a link to check crypto mining info,採掘情報を確認するページのＵＲＬの記入,,,,,
+HIDE_KLUBS_INPUT,Klubs에서 숨기기,Hide from Klubs,Klubsから非公開にする,,,,,
+SAVE_INFO_BUTTON,정보 저장,Save Data,データの保存,,,,,
+SAVE_DONE_TITLE,저장 완료,Save Complete,保存完了,,,,,
+SAVE_DONE_DESCRIPTION,정보를 저장했습니다.,Klubs Successfully Saves the Data,データの保存が完了しました,,,,,
+ISSUE_REVISE_INFO_TITLE,발행량 정보 수정,Update Total Issued Amount,発行量情報の修正,,,,,
+IS_KIP17_FULL_OR_KIP17ENUMERABLE_INPUT,KIP17Full 혹은 KIP17Enumerable 상속 여부,Inheritance of KIP17Full or KIP17Enumerable,KIP17Full または KIP17Enumerable 規格での発行,,,,,
+IS_KIP17_FULL_OR_KIP17ENUMERABLE_DESCRIPTION,"KIP17Full 혹은 KIP17Enumerable를 상속하신 경우, 총 발행량 정보를 매번 입력하지 않으셔도 됩니다.","If the art inherited KIP17Full or KIP17Enumerable, you don't need to update total issued amount info again.",KIP17Full または KIP17Enumerable 規格でアートを発行した場合、総発行量情報を再度入力する必要はありません。,,,,,
+TOTAL_ISSUE_INPUT,총 발행량,Total Issued Amount,総発行量,,,,,
+REVISE_2ND_SALES_FEE_INFO_FORM,2차 판매 수수료 정보 수정,Update Resale Royalty,ロイヤリティー情報の修正,,,,,
+2ND_SALES_FEE_RATIO_INPUT,2차 판매 수수료 비율(%),Resale Royalty Comission (%),ロイヤリティー（％）,,,,,
+2ND_SALES_FEE_RATIO_DESCRIPTION,"2차 판매 수수료 비율은 최대 10%까지 설정하실 수 있으며, 소수점 2번째 자리까지 지정 가능합니다.",Resale Rolyalty can be set upto 10% with two decimal placec.,ロイヤリティーは最大１０％、小数点以下二桁まで設定出来ます。,,,,,
+2ND_SALES_FEE_RECIPIENT_INPUT,2차 판매 수수료 수령자,Resale Rolyalty Recipient,ロイヤリティーの受取人,,,,,
+2ND_SALES_FEE_RECIPIENT_DESCRIPTION,2차 판매 수수료를 받을 지갑 주소를 입력합니다.,Input the wallet address for resale royalty,ロイヤリティーを受け取るウォレットアドレスの入力,,,,,
+MANAGE_MANAGER_FORM,매니저 관리,Administer Manager,マネージャーの管理,,,,,
+ADD_MANAGER_BUTTON,매니저 추가,Add Manager,マネージャーの追加,,,,,
+ADD_MANAGER_TITLE,매니저 추가,Add Manager,マネージャーの追加,,,,,
+ADD_BUTTON,추가하기,Add,追加,,,,,
+ADD_MANAGER_PROMPT_DESCRIPTION,추가할 매니저의 지갑 주소를 입력해주시기 바랍니다.,Input the wallet address of the new manager,追加するマネージャーのウォレットアドレスを入力してください。,,,,,
+WAITING_PFP_INFO_TITLE,등록을 기다리는 PFP 정보,Pending PFP info for registration,未登録のPFP情報,,,,,
+NFT_DETAIL_TITLE,NFT 상세정보,NFT details,NFTの詳細情報,,,,,
+SELLER,판매자 ,Seller,販売者,,,,,
+TRANSFER_BUTTON,전송하기,Transfer,トランスファー,,,,,
+TRANSFER_TITLE,전송하기,Transfer,トランスファー,,,,,
 TRANSFER_DESCRIPTION,"전송받을 지갑 주소를 입력해주시기 바랍니다. 전송이 완료되면 절대 되찾을 수 없으니, 지갑 주소를 여러번 확인하시기 바랍니다.",Please input the wallet address for transfer. It cannot be retreated once the transfer has been completed. Please double check the recipeint address.,"トランスファーするウォレットアドレスを入力してください。
-トランスファー後の修正は不可能です。ウォレットアドレスの入力間違いにご注意ください。"
-SELL_IT_BUTTON,판매하기,Sell,販売
-SELL_IT_TITLE,판매하기,Sell,販売
-CANCEL_SELL_BUTTON,판매 취소,Withdraw Selling,販売をキャンセル
-BUY_IT_BUTTON,구매하기,Purchase,購入
-BUY_IT_TITLE,구매하기,Purchase,購入
-ACCEPT_OFFER_BUTTON,제안 수락,Accept Offer,オファーを承認
-CANCEL_OFFER_BUTTON,제안 취소,Withdraw Offer,オファーをキャンセル
-FORCE_CANCEL_OFFER_BUTTON,강제 제안 취소,Force Offer Withdrawl,オファーを強制キャンセル
-ENDED_AUCTION_DESCRIPTION,경매 종료됨,Auction closed,オークションは終了しました
-END_AUCTION_REMAINS,경매 종료까지 {n}블록 남음,{n} blocks remaing  unitl the end of auction,オークション終了まで：｛ｎ｝ブロック
-END_AUCTION_BUTTON,경매 종료,End of Auction,オークション終了
-BID_IT_BUTTON,입찰하기,Bid,入札する
-BID_IT_TITLE,입찰하기,Bid,入札する
-START_AUCTION_BUTTON,경매 시작하기,Start Bidding,オークションの開始
-START_AUCTION_TITLE,경매 시작하기,Start Bidding,オークションの開始
-ADD_OWNER_PFP_TITLE,Owner로부터 PFP 등록,PFP Registration from Owner,Ownerによる PFP 登録
-ADD_PFP_PROJECT_TITLE,PFP 프로젝트 등록,PFP Project Registration,PFPプロジェクトの登録
-ADD_MANAGER_PFP_TITLE,관리자 PFP 등록,PFP Manager Registration,PFPの管理者登録
-PFP_REGISTER_TITLE,PFP 등록,PFP Registarion,PFP登録
-PFP_DETAIL_INFO_TITLE,PFP 상세정보,PFP Details,PFPの詳細情報
-REVISION_ARTIST_BUTTON,작가 정보 수정,Update Artist Info,アーティスト情報の修正
-REVISION_ARTIST_TITLE,작가 정보 수정,Update Artist Info,アーティスト情報の修正
-ARTIST_NAME_INPUT,작가명,Artist Name,アーティスト名
-ARTIST_INTRODUCE_INPUT,작가 소개,Artist Introduction,アーティスト紹介
-REVISION_ART_INFO_TITLE,작품 정보 수정,Update Artwork Info,作品情報の修正
-ART_IMAGE_ADDRESS_INPUT,작품 이미지 주소,Artwork Image Address,作品画像のアドレス
-ART_UPLOAD_INPUT,작품 업로드,Upload Artwork,作品のアップロード
+トランスファー後の修正は不可能です。ウォレットアドレスの入力間違いにご注意ください。",,,,,
+SELL_IT_BUTTON,판매하기,Sell,販売,,,,,
+SELL_IT_TITLE,판매하기,Sell,販売,,,,,
+CANCEL_SELL_BUTTON,판매 취소,Withdraw Selling,販売をキャンセル,,,,,
+BUY_IT_BUTTON,구매하기,Purchase,購入,,,,,
+BUY_IT_TITLE,구매하기,Purchase,購入,,,,,
+ACCEPT_OFFER_BUTTON,제안 수락,Accept Offer,オファーを承認,,,,,
+CANCEL_OFFER_BUTTON,제안 취소,Withdraw Offer,オファーをキャンセル,,,,,
+FORCE_CANCEL_OFFER_BUTTON,강제 제안 취소,Force Offer Withdrawl,オファーを強制キャンセル,,,,,
+ENDED_AUCTION_DESCRIPTION,경매 종료됨,Auction closed,オークションは終了しました,,,,,
+END_AUCTION_REMAINS,경매 종료까지 {n}블록 남음,{n} blocks remaing  unitl the end of auction,オークション終了まで：｛ｎ｝ブロック,,,,,
+END_AUCTION_BUTTON,경매 종료,End of Auction,オークション終了,,,,,
+BID_IT_BUTTON,입찰하기,Bid,入札する,,,,,
+BID_IT_TITLE,입찰하기,Bid,入札する,,,,,
+START_AUCTION_BUTTON,경매 시작하기,Start Bidding,オークションの開始,,,,,
+START_AUCTION_TITLE,경매 시작하기,Start Bidding,オークションの開始,,,,,
+ADD_OWNER_PFP_TITLE,Owner로부터 PFP 등록,PFP Registration from Owner,Ownerによる PFP 登録,,,,,
+ADD_PFP_PROJECT_TITLE,PFP 프로젝트 등록,PFP Project Registration,PFPプロジェクトの登録,,,,,
+ADD_MANAGER_PFP_TITLE,관리자 PFP 등록,PFP Manager Registration,PFPの管理者登録,,,,,
+PFP_REGISTER_TITLE,PFP 등록,PFP Registarion,PFP登録,,,,,
+PFP_DETAIL_INFO_TITLE,PFP 상세정보,PFP Details,PFPの詳細情報,,,,,
+REVISION_ARTIST_BUTTON,작가 정보 수정,Update Artist Info,アーティスト情報の修正,,,,,
+REVISION_ARTIST_TITLE,작가 정보 수정,Update Artist Info,アーティスト情報の修正,,,,,
+ARTIST_NAME_INPUT,작가명,Artist Name,アーティスト名,,,,,
+ARTIST_INTRODUCE_INPUT,작가 소개,Artist Introduction,アーティスト紹介,,,,,
+REVISION_ART_INFO_TITLE,작품 정보 수정,Update Artwork Info,作品情報の修正,,,,,
+ART_IMAGE_ADDRESS_INPUT,작품 이미지 주소,Artwork Image Address,作品画像のアドレス,,,,,
+ART_UPLOAD_INPUT,작품 업로드,Upload Artwork,作品のアップロード,,,,,
 ART_UPLOAD_DESCRIPTION,현재 이미지 파일만 업로드 가능합니다. 추후 비디오/오디오 및 3D 모델 업로드도 가능해질 예정입니다.,"Currently Klubs supports Image file only. Klubs will support video, audio and 3D Model file later.","現在はイメージファイルのみアップロードの可能です。
-追って映像、音源、３Ｄモデル等のアプロードも可能になる予定です。"
-ART_NAME_INPUT,작품명,Title of Artwork,作品名
-ART_PRESENT_INPUT,작품 소개,Atrwork Introduction,作品紹介
-EXTERNAL_LINK_INPUT,외부 링크,External Link,外部リンク
-SETTING_ARTIST_BASE_SALES_FEE_INPUT,작가 기본 판매 수수료로 설정,Input the default sales commission,ロイヤリティーを入力
-SETTING_ARTIST_BASE_SALES_FEE_DESCRIPTION,작가가 설정한 기본 판매 수수료로 설정합니다.,Artist can set the default sales commsion,アーティストはロイヤリティーを設定できます
-ART_DELETE_BUTTON,작품 삭제,Delete Artwork,作品の削除
-ART_DELETE_TITLE,작품 삭제,Delete Artwork,作品の削除
-ART_DELETE_DESCRIPTION,정말 작품을 삭제하시겠습니까? 이 작업은 돌이킬 수 없습니다.,Do you really wish to delete the artwork? This process cannot be reversed,本当に作品を削除しますか？この作業は元に戻せません。
-ART_DELETE_DONE_TITLE,작가 삭제 완료,Artist Deletion Complete,アーティストの削除が完了しました
-ART_DELETE_DONE_DESCRIPTION,작품이 삭제되었습니다.,Artwork has been deleted,作品の削除が完了しました
-REVISION_IT_BUTTON,수정하기,Update Info,登録情報を修正する
-ADD_KLUBS_ARTISTS_TITLE,Klubs Arts 작가 등록,Klubs Arts Artist Registratoin,Klubsアーティスト登録
-ADD_KLUBS_ARTISTS_DESCRIPTION,Klubs Arts 작가로 등록합니다.,Register as a Klubs Arts Artist,Klubsのアーティストとして登録する
-FAIL_ARTIST_REGISTER_TITLE,작가 등록 실패,Failed to Register as an Artist,アーティスト登録に失敗しました
-FAIL_ARTIST_REGISTER_DESCRIPTION,해당 지갑은 이미 작가로 등록되어있습니다.,The wallet address is already registered as an artist,そのウォレットははすでにアーティストとして登録されています。
-SUCCESS_ARTIST_REGISTER_TITLE,작가 등록 완료,Artist Registration Complete,アーティスト登録完了
+追って映像、音源、３Ｄモデル等のアプロードも可能になる予定です。",,,,,
+ART_NAME_INPUT,작품명,Title of Artwork,作品名,,,,,
+ART_PRESENT_INPUT,작품 소개,Atrwork Introduction,作品紹介,,,,,
+EXTERNAL_LINK_INPUT,외부 링크,External Link,外部リンク,,,,,
+SETTING_ARTIST_BASE_SALES_FEE_INPUT,작가 기본 판매 수수료로 설정,Input the default sales commission,ロイヤリティーを入力,,,,,
+SETTING_ARTIST_BASE_SALES_FEE_DESCRIPTION,작가가 설정한 기본 판매 수수료로 설정합니다.,Artist can set the default sales commsion,アーティストはロイヤリティーを設定できます,,,,,
+ART_DELETE_BUTTON,작품 삭제,Delete Artwork,作品の削除,,,,,
+ART_DELETE_TITLE,작품 삭제,Delete Artwork,作品の削除,,,,,
+ART_DELETE_DESCRIPTION,정말 작품을 삭제하시겠습니까? 이 작업은 돌이킬 수 없습니다.,Do you really wish to delete the artwork? This process cannot be reversed,本当に作品を削除しますか？この作業は元に戻せません。,,,,,
+ART_DELETE_DONE_TITLE,작가 삭제 완료,Artist Deletion Complete,アーティストの削除が完了しました,,,,,
+ART_DELETE_DONE_DESCRIPTION,작품이 삭제되었습니다.,Artwork has been deleted,作品の削除が完了しました,,,,,
+REVISION_IT_BUTTON,수정하기,Update Info,登録情報を修正する,,,,,
+ADD_KLUBS_ARTISTS_TITLE,Klubs Arts 작가 등록,Klubs Arts Artist Registratoin,Klubsアーティスト登録,,,,,
+ADD_KLUBS_ARTISTS_DESCRIPTION,Klubs Arts 작가로 등록합니다.,Register as a Klubs Arts Artist,Klubsのアーティストとして登録する,,,,,
+FAIL_ARTIST_REGISTER_TITLE,작가 등록 실패,Failed to Register as an Artist,アーティスト登録に失敗しました,,,,,
+FAIL_ARTIST_REGISTER_DESCRIPTION,해당 지갑은 이미 작가로 등록되어있습니다.,The wallet address is already registered as an artist,そのウォレットははすでにアーティストとして登録されています。,,,,,
+SUCCESS_ARTIST_REGISTER_TITLE,작가 등록 완료,Artist Registration Complete,アーティスト登録完了,,,,,
 SUCCESS_ARTIST_REGISTER_DESCRIPTION,작가 등록이 완료되었습니다.\n작가들의 의견에 귀를 기울이겠습니다.\nKlubs에 오신 것을 환영합니다.,Artist Registration Complete.\nWe are open to artists' feedback.\nWelcome to Klubs.,"アーティスト登録が完了しました。
 私たちはアーティストからのフィードバックを歓迎します。
-Klubsへようこそ。"
-ADD_ART_BUTTON,작품 등록,Artwork Registration,作品を登録
-ADD_ART_TITLE,작품 등록,Artwork Registration,作品を登録
-CREATE_IT_BUTTON,생성하기,Create,作成
-ADD_ART_CONFIRM,작품 정보를 생성하시겠습니까?,Do you want to create Artwork Info?,作品情報を作成しますか？
-PFP_INFOS_TITLE,PFP 정보들,PFP Info,PFP情報
-SETTING_EXTRA_BUTTON,Extra 설정,Extra Settings,その他の設定
-SETTING_EXTRA_TITLE,Extra 설정,Extra Settings,その他の設定
-DONE_BUTTON,완료,Complete,完了
-INPUT_EXTRA_DESCRIPTION,Extra 입력,Input Extra Info,その他の情報を入力
-SETTING_ROYALTY_BUTTON,로열티 설정,Resale Royalty Settings,ロイヤリティ設定
-SETTING_ROYALTY_TITLE,로열티 설정,Resale Royalty Settings,ロイヤリティ設定
-INPUT_ROYALTY_DESCRIPTION,로열티 입력,Input Resale Royalty,ロイヤリティ入力
-WAITING_PFP_INFOS_TITLE,등록을 기다리는 PFP 정보들,PFP Info awaiting registration,登録を待つPFP情報達
-PASS_BUTTON,통과,PASS,進む
-CALCULATED_YET_DESCRIPTION,아직 계산되지 않았습니다.,It is not calculated yet,清算が完了していません
-CONNECT_QR_KLIP_TITLE,QR 코드로 Klip 접속,Connect to Klip via QR Code,QRコードでKlipに接続
-CONNECT_QR_KLIP_DESCRIPTION_1,QR 코드 리더기 또는 카카오톡 앱을 통해 QR 코드를 스캔해주세요.,Please scan the QR code with a QR code reader or Kakaotalk app,QRコードリーダーまたはカカオトークのアプリを使用してQRコードをスキャンしてください。
-CONNECT_QR_KLIP_DESCRIPTION_2,카카오톡 실행 ▶ 상단 검색창 클릭 ▶ 코드 스캔 후 로그인,Open Kakaotalk ▶ Click Search tap on top ▶ Login after scanning,カカオトークを開く＞画面上部の検索エンジンをクリック＞コードをスキャンしてログイン
-CONNECT_QR_KLIP_DESCRIPTION_3,* Klip > 코드스캔 (사이드메뉴)에서도 스캔이 가능합니다.,You can scan the QR Code using Klip Code Scan tab on the side bar,サイドバーにあるKlipコードスキャンを使用してのQRコードのスキャンも可能です
-CONFIRM_BUTTON,확인,Confirm,確定
-CONNECT_WALLET_DESCRIPTION,Klubs는 클레이튼 블록체인과의 연결이 필요합니다. 카이카스 혹은 카카오톡 클립에서 연결해주시기 바랍니다.,Klubs requies connection with Klaytn Blockchain Network. Please connect through Kaikas or Kakaotalk Klip,Klubsへはクレイトンブロックチェーンへの接続が必要です。カイカスまたはカカオトーククリップで接続してください。
-INSTALL_KAIKAS_BUTTON,카이카스 설치,Install Kaikas,カイカスのインストール
-CONNECT_KLIPS_BUTTON,카카오톡 클립으로 연결,Connect via Kakaotalk Klip,カカオトーククリップで接続する
-NOT_CONNECT_AROUND_BUTTON,연결하지 않고 둘러보기,Explore without wallet connection,ウォレットに接続せずに閲覧
-NO_TITLE,제목 없음,No Title,No Title
-ACCEPT_OFFER_IT_TITLE,제안 수락하기,Accept Offer,オファーを承認する
+Klubsへようこそ。",,,,,
+ADD_ART_BUTTON,작품 등록,Artwork Registration,作品を登録,,,,,
+ADD_ART_TITLE,작품 등록,Artwork Registration,作品を登録,,,,,
+CREATE_IT_BUTTON,생성하기,Create,作成,,,,,
+ADD_ART_CONFIRM,작품 정보를 생성하시겠습니까?,Do you want to create Artwork Info?,作品情報を作成しますか？,,,,,
+PFP_INFOS_TITLE,PFP 정보들,PFP Info,PFP情報,,,,,
+SETTING_EXTRA_BUTTON,Extra 설정,Extra Settings,その他の設定,,,,,
+SETTING_EXTRA_TITLE,Extra 설정,Extra Settings,その他の設定,,,,,
+DONE_BUTTON,완료,Complete,完了,,,,,
+INPUT_EXTRA_DESCRIPTION,Extra 입력,Input Extra Info,その他の情報を入力,,,,,
+SETTING_ROYALTY_BUTTON,로열티 설정,Resale Royalty Settings,ロイヤリティ設定,,,,,
+SETTING_ROYALTY_TITLE,로열티 설정,Resale Royalty Settings,ロイヤリティ設定,,,,,
+INPUT_ROYALTY_DESCRIPTION,로열티 입력,Input Resale Royalty,ロイヤリティ入力,,,,,
+WAITING_PFP_INFOS_TITLE,등록을 기다리는 PFP 정보들,PFP Info awaiting registration,登録を待つPFP情報達,,,,,
+PASS_BUTTON,통과,PASS,進む,,,,,
+CALCULATED_YET_DESCRIPTION,아직 계산되지 않았습니다.,It is not calculated yet,清算が完了していません,,,,,
+CONNECT_QR_KLIP_TITLE,QR 코드로 Klip 접속,Connect to Klip via QR Code,QRコードでKlipに接続,,,,,
+CONNECT_QR_KLIP_DESCRIPTION_1,QR 코드 리더기 또는 카카오톡 앱을 통해 QR 코드를 스캔해주세요.,Please scan the QR code with a QR code reader or Kakaotalk app,QRコードリーダーまたはカカオトークのアプリを使用してQRコードをスキャンしてください。,,,,,
+CONNECT_QR_KLIP_DESCRIPTION_2,카카오톡 실행 ▶ 상단 검색창 클릭 ▶ 코드 스캔 후 로그인,Open Kakaotalk ▶ Click Search tap on top ▶ Login after scanning,カカオトークを開く＞画面上部の検索エンジンをクリック＞コードをスキャンしてログイン,,,,,
+CONNECT_QR_KLIP_DESCRIPTION_3,* Klip > 코드스캔 (사이드메뉴)에서도 스캔이 가능합니다.,You can scan the QR Code using Klip Code Scan tab on the side bar,サイドバーにあるKlipコードスキャンを使用してのQRコードのスキャンも可能です,,,,,
+CONFIRM_BUTTON,확인,Confirm,確定,,,,,
+CONNECT_WALLET_DESCRIPTION,Klubs는 클레이튼 블록체인과의 연결이 필요합니다. 카이카스 혹은 카카오톡 클립에서 연결해주시기 바랍니다.,Klubs requies connection with Klaytn Blockchain Network. Please connect through Kaikas or Kakaotalk Klip,Klubsへはクレイトンブロックチェーンへの接続が必要です。カイカスまたはカカオトーククリップで接続してください。,,,,,
+INSTALL_KAIKAS_BUTTON,카이카스 설치,Install Kaikas,カイカスのインストール,,,,,
+CONNECT_KLIPS_BUTTON,카카오톡 클립으로 연결,Connect via Kakaotalk Klip,カカオトーククリップで接続する,,,,,
+NOT_CONNECT_AROUND_BUTTON,연결하지 않고 둘러보기,Explore without wallet connection,ウォレットに接続せずに閲覧,,,,,
+NO_TITLE,제목 없음,No Title,No Title,,,,,
+ACCEPT_OFFER_IT_TITLE,제안 수락하기,Accept Offer,オファーを承認する,,,,,
 ACCEPT_OFFER_IT_DESCRIPTION,"보유중인 NFT에 제안된 가격을 수락합니다. 최초 수락시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 수락을 위한 것입니다. 수락하는 즉시 거래가 완료됩니다.",Accept the offer for your listed NFT. The inital acceptance requires two transaction. First transaction is for NFT usage permission. Second transcation is for the actual offer acceptance. Transaction is completed immediately upon the acceptance.,"保有中のNFTに提案された価額を受け入れます。最初受け入れたときに２回目のトランザクションが発生します。
-一つはNFT使用許可を為、他の一つは実際受け入れる為です。承認すると即トランザクションが完了します。"
-CANCEL_BUTTON,취소,Cancel,取り消す
-ACCEPT_OFFER_POPUP_DESCRIPTION,"제안 가격 (원작자 2차 판매 수수료 {royalty}%, Klubs 수수료 {fee}% 포함)","Offer Price (including Resale Rolyalty: {royalty}%, Klubs Comission {fee}%) ","提案価額（原作者２次販売手数料 {royalty}%, Klubs 手数料 {fee}% 含め)"
-BID_POPUP_DESCRIPTION,"경매에 입찰합니다. 최초 입찰시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 입찰을 위한 것입니다.",Participate in bidding. The inital bidding requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual bidding.,オークションに入札します。最初入札には二回のトランザクションが発生します。一つはMIX使用許可であり、他は実際の入札の為です。
-BID_PRICE_MIX_INPUT,입찰 가격 (MIX),Bidding Price (MIX),入札価額（MIX）
-BID_PRICE_MIX_POPUP_DESCRIPTION,입찰 가격 (최소 입찰 가격: {mix} MIX),Bidding Price (Reserve Price: {mix} MIX),入札価額（最小入札価額：{mix}MIX）
+一つはNFT使用許可を為、他の一つは実際受け入れる為です。承認すると即トランザクションが完了します。",,,,,
+CANCEL_BUTTON,취소,Cancel,取り消す,,,,,
+ACCEPT_OFFER_POPUP_DESCRIPTION,"제안 가격 (원작자 2차 판매 수수료 {royalty}%, Klubs 수수료 {fee}% 포함)","Offer Price (including Resale Rolyalty: {royalty}%, Klubs Comission {fee}%) ","提案価額（原作者２次販売手数料 {royalty}%, Klubs 手数料 {fee}% 含め)",,,,,
+BID_POPUP_DESCRIPTION,"경매에 입찰합니다. 최초 입찰시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 입찰을 위한 것입니다.",Participate in bidding. The inital bidding requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual bidding.,オークションに入札します。最初入札には二回のトランザクションが発生します。一つはMIX使用許可であり、他は実際の入札の為です。,,,,,
+BID_PRICE_MIX_INPUT,입찰 가격 (MIX),Bidding Price (MIX),入札価額（MIX）,,,,,
+BID_PRICE_MIX_POPUP_DESCRIPTION,입찰 가격 (최소 입찰 가격: {mix} MIX),Bidding Price (Reserve Price: {mix} MIX),入札価額（最小入札価額：{mix}MIX）,,,,,
 BUY_POPUP_DESCRIPTION,"NFT를 구매합니다. 최초 구매시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 구매를 위한 것입니다.",Purchasing NFT. The initial pruchase requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual purchase.,"NFTを購入します。初回の購入には2回のトランザクションが発生します。
-一つはMIXの使用許可の為であり、もう一つは実際の購入のためです。"
-BUY_PROCESS_BUTTON,구매 진행,Proceed Purchase,購入に進む
-SELL_PRICE,판매 가격,Selling Price,販売価額
-CREATE_AUCTION_POPUP_DESCRIPTION,"보유중인 NFT의 경매를 시작합니다. 최초 경매 시작시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 경매 시작을 위한 것입니다.","Starting the auction of the listed NFT. The initial auction requires two transaction. First transaction is for NFT usage permission. Second transcation is for the opening acutal auction. ","保有中のNFTのオークションを始めます。初回のオークション開始には2回のトランザクションが発生します。
-一つはMIXの使用許可の為であり、もう一つは実際にオークションを開始するためです。"
-CREATE_AUCTION_START_PRICE_DESCRIPTION,"경매 시작 가격 (원작자 2차 판매 수수료: {royalty}%, Klubs 수수료 {fee}% 포함)","Starting Price (including Resale Rolyalty: {royalty}%, Klubs Comission {fee}%) ","オークション開始時の価格（ロイヤリティー: {royalty}%, Klubs 手数料 {fee}% 含め)"
-CREATE_AUCTION_POPUP_DESCRIPTION,경매 종료 블록 (현재 블록: {currentBlock}),"End of Auction Block (Current Block: ",オークション終了ブロック（現在ブロック： {currentBlock}）
-AUCTION_START_PRICE_INPUT,경매 시작 가격 (MIX),Starting Price (MIX),オークション開始時の価格
-CREATE_AUCTION_POPUP_WARNING,클레이튼의 블록 타임은 대략 1초입니다. 종료 시간 계산에 유의해주시기 바랍니다.,Klatyn block time is about 1 second. Please be reminded for calculating the bidding period,クレイトンブロックタ時間は約１秒です。終了時間の計算の際はご注意ください。
-END_AUCTION_BLOCK_INPUT,경매 종료 블록,End of Auction Block Time,オークション終了ブロック時間
+ 一つはMIXの使用許可の為であり、もう一つは実際の購入のためです。",,,,,
+BUY_PROCESS_BUTTON,구매 진행,Proceed Purchase,購入に進む,,,,,
+SELL_PRICE,판매 가격,Selling Price,販売価額,,,,,
+CREATE_AUCTION_POPUP_DESCRIPTION,"보유중인 NFT의 경매를 시작합니다. 최초 경매 시작시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 경매 시작을 위한 것입니다.",Starting the auction of the listed NFT. The initial auction requires two transaction. First transaction is for NFT usage permission. Second transcation is for the opening acutal auction. ,"保有中のNFTのオークションを始めます。初回のオークション開始には2回のトランザクションが発生します。
+ 一つはMIXの使用許可の為であり、もう一つは実際にオークションを開始するためです。",,,,,
+CREATE_AUCTION_START_PRICE_DESCRIPTION,"경매 시작 가격 (원작자 2차 판매 수수료: {royalty}%, Klubs 수수료 {fee}% 포함)","Starting Price (including Resale Rolyalty: {royalty}%, Klubs Comission {fee}%) ","オークション開始時の価格（ロイヤリティー: {royalty}%, Klubs 手数料 {fee}% 含め)",,,,,
+CREATE_AUCTION_POPUP_DESCRIPTION,경매 종료 블록 (현재 블록: {currentBlock}),End of Auction Block (Current Block: ,オークション終了ブロック（現在ブロック： {currentBlock}）,,,,,
+AUCTION_START_PRICE_INPUT,경매 시작 가격 (MIX),Starting Price (MIX),オークション開始時の価格,,,,,
+CREATE_AUCTION_POPUP_WARNING,클레이튼의 블록 타임은 대략 1초입니다. 종료 시간 계산에 유의해주시기 바랍니다.,Klatyn block time is about 1 second. Please be reminded for calculating the bidding period,クレイトンブロックタ時間は約１秒です。終了時間の計算の際はご注意ください。,,,,,
+END_AUCTION_BLOCK_INPUT,경매 종료 블록,End of Auction Block Time,オークション終了ブロック時間,,,,,
 OFFER_POPUP_DESCRIPTION,"NFT의 가격을 제안합니다. 최초 제안시에는 2번의 트랜잭션이 발생합니다. 한번은 MIX 사용 허락을 위한 것이며, 다른 하나는 실제 제안를 위한 것입니다. 소유자가 수락하는 즉시 거래가 완료됩니다.",Offering NFT price. The inital offering requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual offer making. Transaction is completed immediately upon the acceptance from the owner.,"NFTへオファーします。初回のオファーには2回のトランザクションが発生します。
-一つはMIXの使用許可の為であり、もう一つは実際にオファーする為です。受け入れると即時にトランザクションが完了します。"
-OFFER_IT_BUTTON,제안하기,Make Offer,オファーする
-PRICE_OFFER_INPUT,제안 가격,Offer Price,オファー価額
-PRICE_OFFER_MIX_INPUT,제안 가격 (MIX),Offer Price (MIX),オファー価額（MIX)
+ 一つはMIXの使用許可の為であり、もう一つは実際にオファーする為です。受け入れると即時にトランザクションが完了します。",,,,,
+OFFER_IT_BUTTON,제안하기,Make Offer,オファーする,,,,,
+PRICE_OFFER_INPUT,제안 가격,Offer Price,オファー価額,,,,,
+PRICE_OFFER_MIX_INPUT,제안 가격 (MIX),Offer Price (MIX),オファー価額（MIX),,,,,
 SELL_POPUP_DESCRIPTION,"보유중인 NFT를 판매합니다. 최초 판매시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 판매를 위한 것입니다.",Selling the listed NFT. The inital sale requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual bidding.,"保有しているNFTを販売します。
 初回の販売時には2回のトランザクションが発生します。
-一つはMIXの使用許可の為であり、もう一つは実査に販売する為です。"
-START_SELL_BUTTON,판매 시작,Start Selling,販売を開始する
-PRICE_SELL_MIX_INPUT,판매 가격 (MIX),Price (MIX),販売価額
-SELL_POPUP_PRICE_DESCRIPTION,"판매 가격 (원작자 2차 판매 수수료: {royalty}%, Klubs 수수료 {fee}% 포함)","Price (including Resale Royalty: {royalty}%, Klubs Commission {fee}%) ","販売価額 (ロイヤリティー: {royalty}%, Klubs 手数料 {fee}% 含め)"
-VIEW_RARITY_SCORE_BUTTON,희소 점수 보기,Check Rarity Score,レア度を見る
-MULTIPLE_SELL_BUTTON,다중 판매,Multi-Sales,複数販売,マルチとは？
-MULTIPLE_BUY_BUTTON,다중 구매,Multi-Purchase,複数購入
-SORT_LOWEST_PRICE_OPTION,최저가 순,Low to High in Price,価格の低い順
-SORT_HIGHEST_PRICE_OPTION,최고가 순,High to Low in Price,価格の高い順
-SORT_RARITY_OPTION,희소 점수 순,High to Low in Rarity,レア度順
-ANNOUNCEMENT_TITLE,안내,Announcement,お知らせ
-FIRST_PAGE_DESCRIPTION,첫 페이지입니다.,This is the first page,最初のページです
-LAST_PAGE_DESCRIPTION,마지막 페이지입니다.,This is the last page,最後のページです
-SELECTED_DESCRIPTION,{n}개 선택됨,{n} NFTs are selected,{n}個　選択されています
-LOGOUT_BUTTON,로그아웃,Logout,ログアウト
+ 一つはMIXの使用許可の為であり、もう一つは実査に販売する為です。",,,,,
+START_SELL_BUTTON,판매 시작,Start Selling,販売を開始する,,,,,
+PRICE_SELL_MIX_INPUT,판매 가격 (MIX),Price (MIX),販売価額,,,,,
+SELL_POPUP_PRICE_DESCRIPTION,"판매 가격 (원작자 2차 판매 수수료: {royalty}%, Klubs 수수료 {fee}% 포함)","Price (including Resale Royalty: {royalty}%, Klubs Commission {fee}%) ","販売価額 (ロイヤリティー: {royalty}%, Klubs 手数料 {fee}% 含め)",,,,,
+VIEW_RARITY_SCORE_BUTTON,희소 점수 보기,Check Rarity Score,レア度を見る,,,,,
+MULTIPLE_SELL_BUTTON,다중 판매,Multi-Sales,複数販売,マルチとは？,,,,
+MULTIPLE_BUY_BUTTON,다중 구매,Multi-Purchase,複数購入,,,,,
+SORT_LOWEST_PRICE_OPTION,최저가 순,Low to High in Price,価格の低い順,,,,,
+SORT_HIGHEST_PRICE_OPTION,최고가 순,High to Low in Price,価格の高い順,,,,,
+SORT_RARITY_OPTION,희소 점수 순,High to Low in Rarity,レア度順,,,,,
+ANNOUNCEMENT_TITLE,안내,Announcement,お知らせ,,,,,
+FIRST_PAGE_DESCRIPTION,첫 페이지입니다.,This is the first page,最初のページです,,,,,
+LAST_PAGE_DESCRIPTION,마지막 페이지입니다.,This is the last page,最後のページです,,,,,　
+SELECTED_DESCRIPTION,{n}개 선택됨,{n} NFTs are selected,{n}個　選択されています,,,,,
+LOGOUT_BUTTON,로그아웃,Logout,ログアウト,,,,,
 ART_ACCEPT_OFFER_POPUP_DESCRIPTION,"보유중인 NFT에 제안된 가격을 수락합니다. 최초 수락시에는 2번의 트랜잭션이 발생합니다. 한번은 NFT 사용 허락을 위한 것이며, 다른 하나는 실제 수락을 위한 것입니다. 수락하는 즉시 거래가 완료됩니다.",Accepting offered price for the listed NFT. The inital acceptance requires two transaction. First transaction is for MIX usage permission. Second transcation is for the actual bidding.,"保有しているNFTへのオファーを承認します。初回の受け入れ時には2回のトランザクションが発生します。
-一つはMIXの使用許可の為であり、もう一つは受け入れる為です。受け入れると即時に取引が完了します。"
-ARTIST_ART_LIST_TITLE,작품 목록,Artwork List,作品一覧
-ADD_METAVERSE_TITLE,메타버스 등록
-ADD_METAVERSE_DESCRIPTION,메타버스 혹은 게임을 등록합니다.
-METAVERSES_TITLE,메타버스
-METAVERSES_DESCRIPTION,메타버스 혹은 게임 프로젝트 목록입니다.
-METAVERSES_ADD_BUTTON,메타버스 등록
-METAVERSE_LIST,메타버스 목록
-SUCCESS_ADD_METAVERSE_TITLE,정보 등록 완료
-SUCCESS_ADD_METAVERSE_DESCRIPTION,메타버스 정보 등록이 완료되었습니다.\nKlubs에 오신 것을 환영합니다.
-METAVERSE_TITLE,메타버스
-UPDATE_METAVERSE_BUTTON,메타버스 정보 수정
-UPDATE_METAVERSE_INFO_TITLE,메타버스 정보 수정
-METAVERSE_ITEM_LIST,아이템 목록
-ADD_METAVERSE_ITEM_BUTTON,아이템 등록
-ADD_METAVERSE_ITEM_TITLE,아이템 등록
-ADD_METAVERSE_ITEM_CONFIRM,아이템을 등록하시겠습니까?
-ADD_METAVERSE_ITEM_DESCRIPTION,메타버스 내 아이템을 추가합니다.
-METAVERSE_ITEM_TYPE_SELECT,아이템 종류 선택
-UPDATE_METAVERSE_ITEM_BUTTON,아이템 정보 수정
-METAVERSE_ITEM_DETAIL_INFO_TITLE,아이템 정보
-MINING_METAVERSE_ITEM,채굴 가능한 아이템
-MINING_METAVERSE_ITEM_DESCRIPTION,채굴 가능한 아이템입니다. 클릭하시면 자세한 정보를 확인하실 수 있습니다.
-UPDATE_METAVERSE_ITEM_INFO_BUTTON,아이템 정보 수정
-UPDATE_METAVERSE_ITEM_INFO_TITLE,아이템 정보 수정
-HOLDER_CHECK_TITLE,디스코드 지갑 연결
-HOLDER_CHECK_DESC,Enjoy Your Own NFT
-HOLDER_CHECK_BUTTON,디스코드 로그인
-HOLDER_CHECK_SUCCESS_DESC,지갑 연결 성공
-HOLDER_CHECK_FAIL_DESC,지갑 연결 실패
+一つはMIXの使用許可の為であり、もう一つは受け入れる為です。受け入れると即時に取引が完了します。",,,,,
+ARTIST_ART_LIST_TITLE,작품 목록,Artwork List,作品一覧,,,,,
+ADD_METAVERSE_TITLE,메타버스 등록,Metaverse registration.,メタバース登録。,,,,,
+ADD_METAVERSE_DESCRIPTION,메타버스 혹은 게임을 등록합니다.,Register for a Metaverse or game.,Metaverseまたはゲームに登録します。,,,,,
+METAVERSES_TITLE,메타버스,Metaverse,メタバース,,,,,
+METAVERSES_DESCRIPTION,메타버스 혹은 게임 프로젝트 목록입니다.,Metaverse or game project list.,メタバースまたはゲームプロジェクトリスト。,,,,,
+METAVERSES_ADD_BUTTON,메타버스 등록,Metaverse registration.,メタバース登録。,,,,,
+METAVERSE_LIST,메타버스 목록,Metaverse list.,メタバースリスト。,,,,,
+SUCCESS_ADD_METAVERSE_TITLE,정보 등록 완료,The information registration has been completed.,情報登録が完了しました。,,,,,
+SUCCESS_ADD_METAVERSE_DESCRIPTION,메타버스 정보 등록이 완료되었습니다.\nKlubs에 오신 것을 환영합니다.,Metaverse information registration has been completed.\n Welcome to Klubs.,メタバース情報の登録が完了しました。\nKlubsへようこそ。,,,,,
+METAVERSE_TITLE,메타버스,Metaverse,メタバース,,,,,
+UPDATE_METAVERSE_BUTTON,메타버스 정보 수정,Metaverse information modification.,メタバース情報の修正。,,,,,
+UPDATE_METAVERSE_INFO_TITLE,메타버스 정보 수정,Metaverse information modification.,メタバース情報の修正。,,,,,
+METAVERSE_ITEM_LIST,아이템 목록,Item List,アイテムリスト,,,,,
+ADD_METAVERSE_ITEM_BUTTON,아이템 등록,Item registration.,アイテム登録。,,,,,
+ADD_METAVERSE_ITEM_TITLE,아이템 등록,Item registration.,アイテム登録。,,,,,
+ADD_METAVERSE_ITEM_CONFIRM,아이템을 등록하시겠습니까?,Do you want to register the item?,アイテムを登録しますか？,,,,,
+ADD_METAVERSE_ITEM_DESCRIPTION,메타버스 내 아이템을 추가합니다.,Add items in the Metaverse,メタバースに項目を追加,,,,,
+METAVERSE_ITEM_TYPE_SELECT,아이템 종류 선택,Choose an item.,項目を選択します。,,,,,
+UPDATE_METAVERSE_ITEM_BUTTON,아이템 정보 수정,Item information modification.,アイテム情報の変更。,,,,,
+METAVERSE_ITEM_DETAIL_INFO_TITLE,아이템 정보,Item information,アイテム情報の変更。,,,,,
+MINING_METAVERSE_ITEM,채굴 가능한 아이템,Items that can be mined.,採掘可能なアイテム,,,,,
+MINING_METAVERSE_ITEM_DESCRIPTION,채굴 가능한 아이템입니다. 클릭하시면 자세한 정보를 확인하실 수 있습니다.,It's an item that can be mined. You can check the details by clicking.,採掘可能なアイテムです。 クリックすると詳細を確認できます。,,,,,
+UPDATE_METAVERSE_ITEM_INFO_BUTTON,아이템 정보 수정,Item information modification.,アイテム情報の変更。,,,,,
+UPDATE_METAVERSE_ITEM_INFO_TITLE,아이템 정보 수정,Item information modification.,アイテム情報の変更。,,,,,
+ADD_ARTIST_BUTTON,아티스트 등록,Register as an artist.,アーティストとして登録します。
