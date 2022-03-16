@@ -89,12 +89,12 @@ export default class UpdateArt implements View {
                                 description: this.descriptionTextarea.domElement.value,
                                 external_url: this.externalURLInput.domElement.value,
                             };
-                            const signedMessage = await Wallet.signMessage(`Upload Klubs Arts #${id} Metadata`);
+                            const signResult = await Wallet.signMessage(`Upload Klubs Arts #${id} Metadata`);
                             await fetch(`https://api.klu.bs/arts/${id}/setmetadata`, {
                                 method: "POST",
                                 body: JSON.stringify({
                                     metadata,
-                                    signedMessage,
+                                    signedMessage: signResult.signedMessage,
                                 }),
                             });
                             new Alert(msg("SAVE_DONE_TITLE"), msg("SAVE_DONE_DESCRIPTION"));
