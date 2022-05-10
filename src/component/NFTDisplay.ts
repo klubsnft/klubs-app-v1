@@ -3,8 +3,18 @@ import CONTENT_TYPES from "./CONTENT_TYPES.json";
 
 export default class NFTDisplay extends DomNode {
 
-    constructor(src: string, thumbnail?: boolean) {
+    constructor(src: string, thumbnail?: boolean, video?: boolean) {
         super(".nft-display");
+        if (video === true) {
+            if (thumbnail === true) {
+                el("video", { src }).appendTo(this);
+            } else {
+                const video: DomNode<HTMLVideoElement> = el("video", { src }).appendTo(this) as any;
+                video.domElement.muted = true;
+                video.domElement.loop = true;
+                video.domElement.play();
+            }
+        }
         const extname = src.substring(src.lastIndexOf(".") + 1);
         const contentType = (CONTENT_TYPES as any)[extname];
         if (contentType === undefined || (

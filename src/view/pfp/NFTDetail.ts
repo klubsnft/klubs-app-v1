@@ -169,7 +169,9 @@ export default class NFTDetail implements View {
         try {
             const data = await Loader.loadPFPMetadata(addr, id);
             this.nftDisplayContainer.empty();
-            if (data.image !== undefined) {
+            if (data.animation_url !== undefined) {
+                this.nftDisplayContainer.append(new NFTDisplay(data.animation_url, undefined, true));
+            } else if (data.image !== undefined) {
                 this.nftDisplayContainer.append(new NFTDisplay(data.image));
             }
             this.nameDisplay.empty().appendText(data.name !== undefined ? data.name : `#${id}`);
