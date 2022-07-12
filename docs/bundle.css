@@ -3166,6 +3166,10 @@ p {
   margin: auto;
   padding: 16px;
 }
+.add-pfp-view > main > h6 {
+  margin: 40px 0px;
+  font-size: 30px;
+}
 .add-pfp-view > main > section {
   margin-top: 16px;
   font-size: 16px;
