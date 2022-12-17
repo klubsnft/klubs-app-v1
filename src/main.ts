@@ -88,9 +88,9 @@ import User from "./view/user/User";
         "pfp/{addr}/auctions/{page}",
     ], PFPPageLayout, [
         "pfp/add",
-        "pfp/add-by-owner",
-        "pfp/add-by-minter",
-        "pfp/add-by-pfp-owner",
+        // "pfp/add-by-owner",
+        // "pfp/add-by-minter",
+        // "pfp/add-by-pfp-owner",
         "pfp/propose",
         "pfp/rankings",
     ]);
