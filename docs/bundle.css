@@ -2259,6 +2259,17 @@ p {
 .layout > footer > .sns > a > img:hover {
   cursor: pointer;
 }
+.home-view > .kollections {
+  padding: 30px;
+  color: #eee;
+}
+.home-view > .kollections > h1 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.home-view > .kollections > p {
+  line-height: 1.5em;
+}
 .home-view > header {
   display: flex;
   flex-direction: column;
